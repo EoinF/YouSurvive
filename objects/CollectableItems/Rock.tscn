@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://objects/CollectableItems/CollectableItem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/beach_tileset.png" type="Texture" id=2]
+[ext_resource path="res://assets/Shadow.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 195, 242, 12, 12 )
+
+[node name="Rock" type="Node2D"]
+
+[node name="CollectableItem" parent="." instance=ExtResource( 1 )]
+item_type = "rock"
+display_name = "Rock"
+
+[node name="Shadow" type="Sprite" parent="CollectableItem"]
+position = Vector2( 2.34147, 3.68658 )
+rotation = -0.688079
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="CollectableItem"]
+texture = SubResource( 1 )

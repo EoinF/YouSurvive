@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/beach_tileset.png" type="Texture" id=1]
+[ext_resource path="res://assets/Shadow.png" type="Texture" id=2]
+[ext_resource path="res://objects/Tree/Tree.gd" type="Script" id=3]
+[ext_resource path="res://effects/ShakeEffect/ShakeEffect.tscn" type="PackedScene" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 112, 208, 47, 63 )
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 3.61498
+height = 3.57303
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 4.14543
+height = 3.94487
+
+[node name="Tree" type="StaticBody2D" groups=[
+"Tree",
+]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="StaticShadow" type="Sprite" parent="."]
+position = Vector2( 9.66232, 5.79075 )
+rotation = 0.385965
+scale = Vector2( 2.61643, 1.25643 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -28.095 )
+texture = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2( -0.667419, -1.1048 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2( -0.118919, -3.1498 )
+shape = SubResource( 3 )
+
+[node name="InteractionCooldown" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="ShakeEffect" parent="." instance=ExtResource( 4 )]
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_InteractionArea_area_entered"]
+[connection signal="timeout" from="InteractionCooldown" to="." method="_on_InteractionCooldown_timeout"]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Inventory/Inventory.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Inventory/InventoryItem.tscn" type="PackedScene" id=2]
+
+[node name="Inventory" type="Panel"]
+self_modulate = Color( 1, 0.843137, 0, 1 )
+margin_right = 110.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" parent="." instance=ExtResource( 2 )]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -75.0
+margin_bottom = -5.0
+
+[node name="2" parent="." instance=ExtResource( 2 )]
+margin_left = 40.0
+margin_top = 5.0
+margin_right = -40.0
+margin_bottom = -5.0
+
+[node name="3" parent="." instance=ExtResource( 2 )]
+margin_left = 75.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+[connection signal="use_item" from="1" to="." method="_on_use_item_1"]
+[connection signal="use_item" from="2" to="." method="_on_use_item_2"]
+[connection signal="use_item" from="3" to="." method="_on_use_item_3"]

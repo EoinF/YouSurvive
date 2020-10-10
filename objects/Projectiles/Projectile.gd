@@ -1,0 +1,59 @@
+tool
+extends KinematicBody2D
+
+signal finish_launching(node)
+
+export var duration: float = 0.4
+export var MOVE_SPEED = 200
+export var item_type = "<not set>"
+
+var original_position: Vector2
+var direction: Vector2
+
+var elevation: float = 0
+var elapsed_time: float = 0
+var is_started = false
+
+
+func _get_configuration_warning():
+	if get_owner() != null:
+		if get_node("Sprite") == null:
+			return "Projectile must have a node named \"Sprite\""
+		elif get_node("Shadow") == null:
+			return "Projectile must have a node named \"Shadow\""
+		if item_type == "<not set>":
+			return "Item type must be set"
+
+	return ""
+
+
+func _process(_delta):
+	if is_started:
+		if (elapsed_time <= duration):
+			get_node("Sprite").position.y = -15 * sin(0.1 * PI + 0.9 * PI * (elapsed_time / duration))
+		else:
+			get_node("Sprite").position.y = 0
+			emit_signal("finish_launching", self)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	if (elapsed_time <= duration):
+		move_and_collide(direction * delta * MOVE_SPEED)
+		elapsed_time += delta
+
+
+func _ready():
+	var rotation = randf() * PI
+	get_node("Sprite").rotate(rotation)
+	get_node("Shadow").rotate(rotation)
+
+
+func launch_item(launch_origin, launch_direction):
+	print("launching a rock")
+	print(launch_origin)
+	print(launch_direction)
+	position = launch_origin
+	original_position = launch_origin
+	direction = launch_direction
+	is_started = true

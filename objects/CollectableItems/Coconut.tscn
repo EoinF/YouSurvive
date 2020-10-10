@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://objects/CollectableItems/CollectableItem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Shadow.png" type="Texture" id=2]
+[ext_resource path="res://assets/coconut.png" type="Texture" id=3]
+
+[node name="Coconut" type="Node2D"]
+
+[node name="CollectableItem" parent="." instance=ExtResource( 1 )]
+item_type = "coconut"
+fall_duration_seconds = 0.3
+fall_sway = 0.0
+display_name = "Coconut"
+
+[node name="Shadow" type="Sprite" parent="CollectableItem"]
+position = Vector2( 0.707108, 3.97748 )
+rotation = 34.038
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="CollectableItem"]
+rotation = 34.038
+texture = ExtResource( 3 )
