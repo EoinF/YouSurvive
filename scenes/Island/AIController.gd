@@ -65,9 +65,9 @@ func _process(delta):
 					else:
 						ai_node.state_timeout -= delta
 						var diff = ai_node.target - ai_node.node.global_position
-						ai_node.node.move(diff.x, diff.y) 
+						ai_node.node.move(diff.x, diff.y)
 				AIState.CHASE:
-					if direction_to_player.length() < 30:
+					if direction_to_player.length() < 40:
 						ai_node.node.attack(direction_to_player.x, direction_to_player.y)
 					elif direction_to_player.length() < 150:
 						ai_node.node.move(direction_to_player.x, direction_to_player.y)
