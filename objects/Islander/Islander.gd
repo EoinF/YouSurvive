@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal use_coconut_without_rock
 signal inventory_slot_change(inventory_slot)
 signal stamina_change(stamina)
-signal throw_rock(position, direction)
+signal throw_stone(position, direction)
 
 export var SPEED = 8 * 1000
 
@@ -29,6 +29,7 @@ var stamina = 70
 
 func _ready():
 	emit_signal("stamina_change", stamina)
+	get_node("AttackPivotPoint/AttackAnimation/AttackArea").attack_power = 1
 
 func _process(_delta):
 	if (active_sprite_state == "Run"):
@@ -111,6 +112,15 @@ func _on_AttackAnimation_animation_finished():
 func set_stamina(new_stamina):
 	stamina = new_stamina
 	emit_signal("stamina_change", stamina)
+	
+	if stamina <= 50:
+		get_node("AttackPivotPoint/AttackAnimation").scale.x = 0.5
+		get_node("AttackPivotPoint/AttackAnimation").scale.y = 0.5
+		get_node("AttackPivotPoint/AttackAnimation/AttackArea").attack_power = 0
+	else:
+		get_node("AttackPivotPoint/AttackAnimation").scale.x = 1.0
+		get_node("AttackPivotPoint/AttackAnimation").scale.y = 1.0
+		get_node("AttackPivotPoint/AttackAnimation/AttackArea").attack_power = 1
 
 
 func _on_StaminaTimer_timeout():
@@ -130,19 +140,19 @@ func _use_coconut():
 	emit_signal("use_coconut_without_rock")
 
 
-func _use_rock():
-	var inventory_slot = item_type_to_slot["rock"]
+func _use_stone():
+	var inventory_slot = item_type_to_slot["stone"]
 	if inventory_slot.amount > 0:
 		inventory_slot.amount -= 1
 		
 		emit_signal("inventory_slot_change", inventory_slot)
-		emit_signal("throw_rock", position, direction)
+		emit_signal("throw_stone", position, direction)
 
 
 func _on_Inventory_use_item(item_type):
 	match item_type:
-		"rock":
-			_use_rock()
+		"stone":
+			_use_stone()
 		"coconut":
 			_use_coconut()
 
@@ -150,7 +160,7 @@ func _on_Inventory_use_item(item_type):
 func _on_Hurtbox_area_entered(area):
 	if not _is_hurting and area.is_in_group("Attack") \
 	and not area.is_in_group("Islander") \
-	and not area.is_in_group("Rock"):
+	and not area.is_in_group("Stone"):
 		set_stamina(stamina - 10)
 		self.modulate = Color.lightpink
 		_is_hurting = true

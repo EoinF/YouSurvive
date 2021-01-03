@@ -9,16 +9,17 @@ flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 195, 242, 12, 12 )
 
-[node name="Rock" type="Node2D"]
+[node name="Stone" type="Node2D"]
 
 [node name="CollectableItem" parent="." instance=ExtResource( 1 )]
-item_type = "rock"
+item_type = "stone"
 display_name = "Rock"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 2.34147, 3.68658 )
-rotation = -0.688079
+rotation = 0.16306
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
+rotation = 0.851139
 texture = SubResource( 1 )

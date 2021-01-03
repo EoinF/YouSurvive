@@ -1,5 +1,6 @@
 [gd_scene load_steps=17 format=2]
 
+[ext_resource path="res://objects/Rock/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Islander/Islander.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Island/Input.gd" type="Script" id=3]
 [ext_resource path="res://objects/Tree/Tree.tscn" type="PackedScene" id=4]
@@ -9,8 +10,7 @@
 [ext_resource path="res://scenes/AlertMessage/AlertMessage.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Island/Props.gd" type="Script" id=9]
 [ext_resource path="res://scenes/Island/HUD.gd" type="Script" id=10]
-[ext_resource path="res://objects/CollectableItems/Coconut.tscn" type="PackedScene" id=11]
-[ext_resource path="res://objects/CollectableItems/Rock.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/CollectableItems/Stone.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/Island/Projectiles.gd" type="Script" id=13]
 [ext_resource path="res://objects/Crab/Crab.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/Island/AIController.gd" type="Script" id=15]
@@ -31,7 +31,7 @@ script = ExtResource( 13 )
 script = ExtResource( 9 )
 
 [node name="Islander" parent="Props" instance=ExtResource( 2 )]
-position = Vector2( 504.569, 333.04 )
+position = Vector2( 394.587, 359.881 )
 
 [node name="PlayerInteraction" type="Area2D" parent="Props/Islander"]
 
@@ -42,41 +42,301 @@ shape = SubResource( 1 )
 wait_time = 5.0
 autostart = true
 
+[node name="Camera2D" type="Camera2D" parent="Props/Islander"]
+current = true
+
 [node name="Tree" parent="Props" instance=ExtResource( 4 )]
-position = Vector2( 569.19, 329.734 )
+position = Vector2( 2082.62, 765.295 )
 
 [node name="Tree2" parent="Props" instance=ExtResource( 4 )]
-position = Vector2( 422.818, 281.651 )
+position = Vector2( 1977.38, 785.268 )
 
 [node name="Tree3" parent="Props" instance=ExtResource( 4 )]
-position = Vector2( 436.254, 370.746 )
+position = Vector2( 2154.38, 913.792 )
 
 [node name="Tree4" parent="Props" instance=ExtResource( 4 )]
-position = Vector2( 668.185, 252.659 )
+position = Vector2( 2097.21, 910.849 )
 
 [node name="Tree5" parent="Props" instance=ExtResource( 4 )]
-position = Vector2( 647.679, 352.362 )
+position = Vector2( 2013.22, 891.637 )
 
 [node name="Tree6" parent="Props" instance=ExtResource( 4 )]
-position = Vector2( 599.596, 378.898 )
+position = Vector2( 2212.08, 768.671 )
 
-[node name="Coconut" parent="Props" instance=ExtResource( 11 )]
-position = Vector2( 472.533, 332.375 )
-
-[node name="Rock" parent="Props" instance=ExtResource( 12 )]
-position = Vector2( 531.143, 356.783 )
-
-[node name="Rock2" parent="Props" instance=ExtResource( 12 )]
-position = Vector2( 531.143, 356.783 )
-
-[node name="Rock3" parent="Props" instance=ExtResource( 12 )]
-position = Vector2( 531.143, 356.783 )
+[node name="Stone" parent="Props" instance=ExtResource( 12 )]
+position = Vector2( 1503.7, 194.224 )
 
 [node name="Crab" parent="Props" instance=ExtResource( 14 )]
-position = Vector2( 696, 402 )
+position = Vector2( 1474.7, 759.294 )
 
 [node name="Crab2" parent="Props" instance=ExtResource( 14 )]
-position = Vector2( 480.553, 405.15 )
+position = Vector2( 1345.72, 720.783 )
+
+[node name="Crab3" parent="Props" instance=ExtResource( 14 )]
+position = Vector2( 1071.22, 460.663 )
+
+[node name="Crab5" parent="Props" instance=ExtResource( 14 )]
+position = Vector2( 2437.95, 849.539 )
+
+[node name="Crab4" parent="Props" instance=ExtResource( 14 )]
+position = Vector2( 1819.24, 734.048 )
+
+[node name="Rocks" type="YSort" parent="Props"]
+
+[node name="Rock" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 877.296, 290.022 )
+
+[node name="Rock2" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 888.005, 303.251 )
+
+[node name="Rock3" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 904.384, 312.7 )
+
+[node name="Rock4" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 917.614, 324.04 )
+
+[node name="Rock5" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 934.623, 330.969 )
+
+[node name="Rock6" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 928.323, 340.418 )
+
+[node name="Rock7" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 949.742, 346.718 )
+
+[node name="Rock8" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 957.931, 358.687 )
+
+[node name="Rock9" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 937.772, 354.278 )
+
+[node name="Rock10" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 945.962, 364.987 )
+
+[node name="Rock11" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 969.9, 364.357 )
+
+[node name="Rock12" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 972.42, 370.027 )
+
+[node name="Rock13" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 962.896, 381.138 )
+
+[node name="Rock14" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 988.294, 383.916 )
+
+[node name="Rock15" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 981.945, 393.044 )
+
+[node name="Rock16" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 994.644, 396.219 )
+
+[node name="Rock17" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 991.072, 406.14 )
+
+[node name="Rock18" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1016.07, 400.187 )
+
+[node name="Rock19" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1011.71, 412.093 )
+
+[node name="Rock20" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1036.31, 411.299 )
+
+[node name="Rock21" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1060.12, 413.68 )
+
+[node name="Rock22" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1073.62, 420.03 )
+
+[node name="Rock23" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1048.22, 421.617 )
+
+[node name="Rock24" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1088.7, 426.379 )
+
+[node name="Rock25" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1095.05, 417.649 )
+
+[node name="Rock26" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1111.71, 424.792 )
+
+[node name="Rock27" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1128.38, 420.03 )
+
+[node name="Rock28" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1122.03, 430.348 )
+
+[node name="Rock29" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1147.43, 429.554 )
+
+[node name="Rock30" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1160.92, 425.586 )
+
+[node name="Rock31" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1172.04, 434.316 )
+
+[node name="Rock32" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1183.94, 424.792 )
+
+[node name="Rock33" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1198.23, 435.11 )
+
+[node name="Rock34" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1204.58, 424.792 )
+
+[node name="Rock35" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1139.49, 436.697 )
+
+[node name="Rock36" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1222.04, 423.998 )
+
+[node name="Rock37" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1221.25, 434.316 )
+
+[node name="Rock38" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1240.29, 431.935 )
+
+[node name="Rock39" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1248.23, 426.379 )
+
+[node name="Rock40" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1250.61, 438.285 )
+
+[node name="Rock41" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1267.28, 429.554 )
+
+[node name="Rock42" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1220.45, 444.634 )
+
+[node name="Rock43" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1287.12, 442.253 )
+
+[node name="Rock44" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1293.47, 426.379 )
+
+[node name="Rock45" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1326.01, 442.253 )
+
+[node name="Rock46" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1355.38, 446.222 )
+
+[node name="Rock47" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1312.52, 433.523 )
+
+[node name="Rock48" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1336.33, 460.508 )
+
+[node name="Rock49" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1364.11, 458.127 )
+
+[node name="Rock50" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1382.37, 448.603 )
+
+[node name="Rock51" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1349.82, 435.11 )
+
+[node name="Rock52" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1391.89, 459.715 )
+
+[node name="Rock53" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1409.35, 451.778 )
+
+[node name="Rock54" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1431.58, 445.428 )
+
+[node name="Rock55" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1432.37, 454.952 )
+
+[node name="Rock56" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1457.77, 450.984 )
+
+[node name="Rock57" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1483.96, 448.603 )
+
+[node name="Rock58" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1464.91, 465.271 )
+
+[node name="Rock59" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1490.31, 464.477 )
+
+[node name="Rock60" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1510.15, 451.778 )
+
+[node name="Rock61" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1513.33, 465.271 )
+
+[node name="Rock62" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1537.93, 466.064 )
+
+[node name="Rock63" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1426.02, 474.001 )
+
+[node name="Rock64" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1264.9, 476.382 )
+
+[node name="Rock65" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1145.84, 462.889 )
+
+[node name="Rock66" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1325.22, 507.337 )
+
+[node name="Rock67" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1438.72, 508.924 )
+
+[node name="Rock68" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 823.11, 347.897 )
+
+[node name="Rock69" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 861.252, 403.759 )
+
+[node name="Rock70" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 678.153, 277.186 )
+
+[node name="Rock71" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 694.416, 450.428 )
+
+[node name="Rock72" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 816.039, 478.712 )
+
+[node name="Rock73" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 802.69, 474.707 )
+
+[node name="Rock74" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 762.645, 360.579 )
+
+[node name="Rock75" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1141.88, 641.541 )
+
+[node name="Rock76" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1541.28, 685.638 )
+
+[node name="Rock77" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1706.33, 870.847 )
+
+[node name="Rock78" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1831.06, 782.652 )
+
+[node name="Rock79" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1716.41, 671.779 )
+
+[node name="Rock80" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1698.77, 675.559 )
+
+[node name="Rock81" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1008.33, 429.874 )
+
+[node name="Rock82" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 983.131, 434.914 )
+
+[node name="Rock83" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 981.871, 446.253 )
+
+[node name="Rock84" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 1012.11, 446.253 )
+
+[node name="Rock85" parent="Props/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 564.837, 300.102 )
 
 [node name="TooltipContainer" type="Node2D" parent="."]
 visible = false
@@ -102,13 +362,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HUD" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 100
 script = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Inventory" parent="HUD" instance=ExtResource( 5 )]
 
@@ -146,7 +402,7 @@ script = ExtResource( 15 )
 [connection signal="spawn_item" from="Projectiles" to="Props" method="_on_Projectiles_spawn_item"]
 [connection signal="inventory_slot_change" from="Props/Islander" to="HUD" method="_on_Islander_inventory_slot_change"]
 [connection signal="stamina_change" from="Props/Islander" to="HUD" method="_on_Islander_stamina_change"]
-[connection signal="throw_rock" from="Props/Islander" to="Projectiles" method="_on_Islander_throw_rock"]
+[connection signal="throw_stone" from="Props/Islander" to="Projectiles" method="_on_Islander_throw_stone"]
 [connection signal="use_coconut_without_rock" from="Props/Islander" to="HUD" method="_on_Islander_use_coconut_without_rock"]
 [connection signal="area_entered" from="Props/Islander/PlayerInteraction" to="." method="_on_PlayerInteraction_area_entered"]
 [connection signal="area_exited" from="Props/Islander/PlayerInteraction" to="." method="_on_PlayerInteraction_area_exited"]

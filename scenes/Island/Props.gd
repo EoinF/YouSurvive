@@ -1,9 +1,9 @@
 extends YSort
 
 var scene_map = {
-	"Branch": preload("res://objects/CollectableItems/Branch.tscn"),
-	"Coconut": preload("res://objects/CollectableItems/Coconut.tscn"),
-	"Rock": preload("res://objects/CollectableItems/Rock.tscn")
+	"branch": preload("res://objects/CollectableItems/Branch.tscn"),
+	"coconut": preload("res://objects/CollectableItems/Coconut.tscn"),
+	"stone": preload("res://objects/CollectableItems/Stone.tscn")
 }
 
 func _ready():

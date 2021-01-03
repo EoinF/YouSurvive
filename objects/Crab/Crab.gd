@@ -18,6 +18,7 @@ var _attack_phase = AttackPhase.IDLE
 export var SPEED = 2 * 1000
 export var ATTACK_SPEED = 7 * 1000
 export var DEATH_COOLDOWN = 1.0
+export var HEALTH = 2
 
 func move(x, y):
 	if not _is_dying and _attack_phase == AttackPhase.IDLE:
@@ -75,11 +76,17 @@ func _on_AttackCooldown_timeout():
 
 func _on_Hurtbox_area_entered(area):
 	if not _is_dying and not area.is_in_group("Crab") and area.is_in_group("Attack"):
-		_death_cooldown = DEATH_COOLDOWN
-		_is_dying = true
-		get_node("AnimatedSprite").stop()
-		get_node("AttackCooldown").stop()
-		get_node("AttackTimer").stop()
-		get_node("PreAttackTimer").stop()
-		get_node("AttackArea/Shape").disabled = true
-		_attack_phase = AttackPhase.IDLE
+		HEALTH -= area.attack_power
+		if (HEALTH == 0):
+			_die()
+
+
+func _die():
+	_death_cooldown = DEATH_COOLDOWN
+	_is_dying = true
+	get_node("AnimatedSprite").stop()
+	get_node("AttackCooldown").stop()
+	get_node("AttackTimer").stop()
+	get_node("PreAttackTimer").stop()
+	get_node("AttackArea/Shape").disabled = true
+	_attack_phase = AttackPhase.IDLE

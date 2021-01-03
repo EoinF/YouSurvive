@@ -4,12 +4,12 @@
 [ext_resource path="res://assets/coconut.png" type="Texture" id=2]
 [ext_resource path="res://assets/beach_tileset.png" type="Texture" id=3]
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 212, 244, 11, 11 )
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 153.047, 373.309, 7.4537, 14.2649 )
@@ -73,13 +73,13 @@ visible = false
 rotation = 1.8326
 texture = ExtResource( 2 )
 
-[node name="rock" type="Sprite" parent="SpriteContainer"]
+[node name="stone" type="Sprite" parent="SpriteContainer"]
 visible = false
 rotation = 1.8326
-texture = SubResource( 2 )
+texture = SubResource( 1 )
 
 [node name="branch" type="Sprite" parent="SpriteContainer"]
 visible = false
 rotation = 0.261799
-texture = SubResource( 1 )
+texture = SubResource( 2 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
