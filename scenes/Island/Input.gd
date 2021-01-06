@@ -13,7 +13,7 @@ func _process(delta):
 
 
 func _process_movement_input(delta):
-	var islander = get_node("Props/Islander")
+	var islander = get_node("Objects/Props/Islander")
 	var x = 0
 	var y = 0
 	
@@ -35,10 +35,10 @@ func _process_interaction_input(_delta):
 	and Input.is_action_just_released('interact') \
 	and current_interaction_item.is_usable:
 		current_interaction_item.interact()
-		get_node("Props/Islander").pick_up_item(current_interaction_item.item_type)
+		get_node("Objects/Props/Islander").pick_up_item(current_interaction_item.item_type)
 	
 func _process_attack_input(_delta):
-	var islander = get_node("Props/Islander")
+	var islander = get_node("Objects/Props/Islander")
 	if Input.is_action_just_released('attack') and not islander.is_attacking():
 		islander.attack()
 		

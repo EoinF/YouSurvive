@@ -33,7 +33,7 @@ class AINode:
 var ai_nodes = []
 
 func _ready():
-	for prop in get_parent().get_node("Props").get_children():
+	for prop in get_parent().get_node("Objects/Props").get_children():
 		if prop.is_in_group("AI"):
 			ai_nodes.append(AINode.new(prop))
 
@@ -44,7 +44,7 @@ func _process(delta):
 		if ai_node.node == null:
 			ai_nodes.remove(i)
 		else:
-			var islander_position = get_parent().get_node("Props/Islander").global_position
+			var islander_position = get_parent().get_node("Objects/Props/Islander").global_position
 			var direction_to_player = islander_position - ai_node.node.global_position
 			
 			if direction_to_player.length() < 100:

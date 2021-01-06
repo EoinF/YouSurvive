@@ -5,7 +5,8 @@ signal inventory_slot_change(inventory_slot)
 signal stamina_change(stamina)
 signal throw_stone(position, direction)
 
-export var SPEED = 8 * 1000
+export var SPEED = 12 * 1000
+export var STAMINA = 50
 
 var walking_timeout = 0
 func is_attacking():
@@ -28,8 +29,7 @@ var unused_keys = ["1", "2", "3"]
 var stamina = 70
 
 func _ready():
-	emit_signal("stamina_change", stamina)
-	get_node("AttackPivotPoint/AttackAnimation/AttackArea").attack_power = 1
+	set_stamina(STAMINA)
 
 func _process(_delta):
 	if (active_sprite_state == "Run"):
