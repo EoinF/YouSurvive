@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/UIMessages/DialogueManager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/UIMessages/DialogueSegment.tscn" type="PackedScene" id=4]
 
-[node name="Island" instance=ExtResource( 1 )]
+[node name="Day1" instance=ExtResource( 1 )]
 
 [node name="Objects" parent="." index="0"]
 color = Color( 0.94902, 0.776471, 0.65098, 1 )

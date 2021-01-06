@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/Levels/Intro.gd" type="Script" id=3]
 [ext_resource path="res://scenes/TextEntry/TextEntry.tscn" type="PackedScene" id=4]
 
-[node name="Control" type="Control"]
+[node name="Intro" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -18,59 +18,87 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Dialogue1" parent="." instance=ExtResource( 1 )]
+[node name="NamelessDialogue" type="Node" parent="."]
 
-[node name="segment1" parent="Dialogue1" instance=ExtResource( 2 )]
+[node name="1" parent="NamelessDialogue" instance=ExtResource( 1 )]
+
+[node name="segment1" parent="NamelessDialogue/1" instance=ExtResource( 2 )]
+MESSAGE = "Hm. So you don't have a name then?"
+TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
+
+[node name="segment2" parent="NamelessDialogue/1" instance=ExtResource( 2 )]
+MESSAGE = "Very well......."
+TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
+NEXT_NODE_DELAY = 1
+
+[node name="segment5" parent="NamelessDialogue/1" instance=ExtResource( 2 )]
+MESSAGE = "I shall call you \"nameless one\""
+TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
+
+[node name="segment3" parent="NamelessDialogue/1" instance=ExtResource( 2 )]
+MESSAGE = "An appropriate appellation......."
+TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
+NEXT_NODE_DELAY = 1
+
+[node name="segment4" parent="NamelessDialogue/1" instance=ExtResource( 2 )]
+MESSAGE = "Now, let's begin."
+TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
+
+[node name="MainDialogue" type="Node" parent="."]
+
+[node name="1" parent="MainDialogue" instance=ExtResource( 1 )]
+
+[node name="segment1" parent="MainDialogue/1" instance=ExtResource( 2 )]
 MESSAGE = "Hello?"
 TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
 NEXT_NODE_DELAY = 1
 
-[node name="segment6" parent="Dialogue1" instance=ExtResource( 2 )]
+[node name="segment6" parent="MainDialogue/1" instance=ExtResource( 2 )]
 MESSAGE = "Are you awake yet?"
 TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
 
-[node name="segment2" parent="Dialogue1" instance=ExtResource( 2 )]
+[node name="segment2" parent="MainDialogue/1" instance=ExtResource( 2 )]
 MESSAGE = "Wake up......."
 TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
 
-[node name="segment3" parent="Dialogue1" instance=ExtResource( 2 )]
+[node name="segment3" parent="MainDialogue/1" instance=ExtResource( 2 )]
 MESSAGE = "Ah, so you are listening."
 TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
 NEXT_NODE_DELAY = 1
 
-[node name="segment4" parent="Dialogue1" instance=ExtResource( 2 )]
+[node name="segment4" parent="MainDialogue/1" instance=ExtResource( 2 )]
 MESSAGE = "Welcome back......."
 TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
 NEXT_NODE_DELAY = 1
 
-[node name="segment5" parent="Dialogue1" instance=ExtResource( 2 )]
+[node name="segment5" parent="MainDialogue/1" instance=ExtResource( 2 )]
 MESSAGE = "Let me ask - what is your name?"
 TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
 
-[node name="Dialogue2" parent="." instance=ExtResource( 1 )]
+[node name="2" parent="MainDialogue" instance=ExtResource( 1 )]
 
-[node name="segment1" parent="Dialogue2" instance=ExtResource( 2 )]
+[node name="segment1" parent="MainDialogue/2" instance=ExtResource( 2 )]
 MESSAGE = "Ah, {player_name}......."
 TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
 
-[node name="segment2" parent="Dialogue2" instance=ExtResource( 2 )]
+[node name="segment2" parent="MainDialogue/2" instance=ExtResource( 2 )]
 MESSAGE = "So you don't remember?"
 TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
 NEXT_NODE_DELAY = 1
 
-[node name="segment3" parent="Dialogue2" instance=ExtResource( 2 )]
+[node name="segment3" parent="MainDialogue/2" instance=ExtResource( 2 )]
 MESSAGE = "Well, no matter. Let's begin."
 TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
 
 [node name="Name Entry" parent="." instance=ExtResource( 4 )]
 visible = false
 LABEL_TEXT = "Enter your name"
-[connection signal="finish_dialogue" from="Dialogue1" to="." method="_on_Dialogue1_finish_dialogue"]
+[connection signal="finish_dialogue" from="NamelessDialogue/1" to="." method="_on_NamelessDialogue_1_finish_dialogue"]
+[connection signal="finish_dialogue" from="MainDialogue/1" to="." method="_on_Dialogue1_finish_dialogue"]
+[connection signal="finish_dialogue" from="MainDialogue/2" to="." method="_on_MainDialogue_2_finish_dialogue"]
 [connection signal="text_entered" from="Name Entry" to="." method="_on_Name_Entry_text_entered"]

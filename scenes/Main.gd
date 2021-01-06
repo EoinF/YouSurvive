@@ -1,15 +1,15 @@
 extends Node
 
 
+func _load_from_placeholder(node_path):
+	var scene_placeholder = get_node(node_path)
+	scene_placeholder.replace_by_instance()
+
 func _on_MainMenu_start_new_game():
-	var scene = load("res:///scenes/Levels/Day1.tscn")
-	add_child(scene.instance())
-	
+	_load_from_placeholder("DeferredScenes/Day1")
 	remove_child(get_node("MainMenu"))
 
 
 func _on_MainMenu_start_intro():
-	var scene = load("res:///scenes/Levels/Intro.tscn")
-	add_child(scene.instance())
-	
+	_load_from_placeholder("DeferredScenes/Intro")
 	remove_child(get_node("MainMenu"))
