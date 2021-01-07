@@ -6,11 +6,11 @@
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
 
-[node name="DeferredScenes" type="Node" parent="."]
+[node name="ExperimenterScenes" type="Node" parent="."]
 
-[node name="Intro" parent="DeferredScenes" instance_placeholder="res://scenes/Levels/Intro.tscn"]
+[node name="Intro" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Intro.tscn"]
 
-[node name="Day1" parent="DeferredScenes" instance_placeholder="res://scenes/Levels/Day1.tscn"]
+[node name="Day1" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Day1.tscn"]
 
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
 [connection signal="start_intro" from="MainMenu" to="." method="_on_MainMenu_start_intro"]

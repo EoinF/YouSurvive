@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://objects/Rock/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Islander/Islander.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Island/Input.gd" type="Script" id=3]
 [ext_resource path="res://objects/Tree/Tree.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Inventory/Inventory.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Island/TooltipContainer.gd" type="Script" id=7]
@@ -18,7 +17,6 @@
 radius = 4.61711
 
 [node name="Island" type="Node2D"]
-script = ExtResource( 3 )
 
 [node name="Objects" type="CanvasModulate" parent="."]
 
@@ -31,7 +29,7 @@ script = ExtResource( 13 )
 script = ExtResource( 9 )
 
 [node name="Islander" parent="Objects/Props" instance=ExtResource( 2 )]
-position = Vector2( 394.587, 359.881 )
+position = Vector2( 395, 360 )
 
 [node name="PlayerInteraction" type="Area2D" parent="Objects/Props/Islander"]
 
@@ -42,11 +40,8 @@ shape = SubResource( 1 )
 wait_time = 5.0
 autostart = true
 
-[node name="Camera2D" type="Camera2D" parent="Objects/Props/Islander"]
-current = true
-
 [node name="Tree" parent="Objects/Props" instance=ExtResource( 4 )]
-position = Vector2( 2082.62, 765.295 )
+position = Vector2( 2083.62, 765.295 )
 
 [node name="Tree2" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 1977.38, 785.268 )
@@ -76,7 +71,7 @@ position = Vector2( 1453.21, 633.966 )
 position = Vector2( 1388.21, 632.966 )
 
 [node name="Stone" parent="Objects/Props" instance=ExtResource( 12 )]
-position = Vector2( 1503.7, 194.224 )
+position = Vector2( 1459.86, 203.063 )
 
 [node name="Rocks" type="YSort" parent="Objects/Props"]
 
