@@ -1,5 +1,7 @@
 extends Control
 
+signal finish_scene(player_name)
+
 var player_name = ""
 
 func _ready():
@@ -31,5 +33,5 @@ func _on_MainDialogue_2_finish_dialogue():
 
 
 func _finish_scene():
-	print("done")
+	emit_signal("finish_scene", player_name)
 

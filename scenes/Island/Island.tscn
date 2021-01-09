@@ -371,7 +371,7 @@ __meta__ = {
 }
 
 [node name="HUD" type="CanvasLayer" parent="."]
-layer = 100
+layer = 2
 script = ExtResource( 10 )
 
 [node name="Inventory" parent="HUD" instance=ExtResource( 5 )]

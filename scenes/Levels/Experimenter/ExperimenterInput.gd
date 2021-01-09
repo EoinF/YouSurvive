@@ -1,8 +1,22 @@
 extends Node
 
-var CAMERA_MOVE_SPEED = 1000
+signal finish_scene
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var CAMERA_MOVE_SPEED = 1000
+var player_name: String
+
+func set_player_name(name: String):
+	player_name = name
+	get_node("MainDialogue/1").set_variables({
+		"player_name": player_name
+	})
+
+
+func _ready():
+	get_node("AnimationPlayer").play("fade")
+	get_node("Camera").set_follow_target(get_node("Objects/Props/Islander"), true)
+
+
 func _process(delta):
 	_process_movement_input(delta)
 
@@ -41,3 +55,11 @@ func _process_movement_input(delta):
 			deltaVector.y -= newY - camera.limit_bottom
 		
 		camera.translate(deltaVector)
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	get_node("MainDialogue/1").start()
+
+
+func _on_MainDialogue_1_finish_dialogue():
+	get_node("Camera").set_is_following(false)
