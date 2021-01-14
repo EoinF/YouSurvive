@@ -11,15 +11,17 @@ region = Rect2( 195, 242, 12, 12 )
 
 [node name="Stone" type="Node2D"]
 
-[node name="CollectableItem" parent="." instance=ExtResource( 1 )]
+[node name="CollectableItem" parent="." groups=[
+"stone",
+] instance=ExtResource( 1 )]
 item_type = "stone"
 display_name = "Rock"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 2.34147, 3.68658 )
-rotation = 0.16306
+rotation = 1.96627
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 0.851139
+rotation = 2.65435
 texture = SubResource( 1 )

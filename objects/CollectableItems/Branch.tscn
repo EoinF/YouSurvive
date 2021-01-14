@@ -11,16 +11,18 @@ region = Rect2( 153.039, 373.575, 6.94228, 13.8325 )
 
 [node name="Branch" type="Node2D"]
 
-[node name="CollectableItem" parent="." instance=ExtResource( 1 )]
+[node name="CollectableItem" parent="." groups=[
+"branch",
+] instance=ExtResource( 1 )]
 item_type = "branch"
 display_name = "Branch"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 1.63412, 1.92028 )
-rotation = 20.1965
+rotation = 20.596
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 18.6435
+rotation = 19.043
 texture = SubResource( 1 )

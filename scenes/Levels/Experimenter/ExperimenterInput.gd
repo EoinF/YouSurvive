@@ -2,7 +2,7 @@ extends Node
 
 signal finish_scene
 
-var CAMERA_MOVE_SPEED = 1000
+var CAMERA_MOVE_SPEED = 200
 var player_name: String
 
 func set_player_name(name: String):
@@ -13,8 +13,9 @@ func set_player_name(name: String):
 
 
 func _ready():
-	get_node("AnimationPlayer").play("fade")
+	#get_node("AnimationPlayer").play("fade")
 	get_node("Camera").set_follow_target(get_node("Objects/Props/Islander"), true)
+	pass
 
 
 func _process(delta):
