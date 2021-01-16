@@ -13,7 +13,6 @@ var variables: Dictionary
 
 
 func start():
-	visible = true
 	children = get_children()
 	current_length = 0
 	final_text = ""
@@ -28,30 +27,40 @@ func _apply_variables(text):
 	
 func _next_node():
 	node_index += 1
-	while(node_index < len(children) and !children[node_index].is_in_group("Dialogue")):
+	while (node_index < len(children)
+		and !children[node_index].is_in_group("Dialogue")
+		and !children[node_index].is_in_group("Event")):
 		node_index += 1
 		
+	visible = false
+		
 	if node_index >= len(children):
-		visible = false
 		emit_signal("finish_dialogue")
 	else:
 		var current_node = children[node_index]
-		current_length = 0
-		final_text = _apply_variables(current_node.MESSAGE)
-		next_wait_time = current_node.NEXT_NODE_DELAY
 		
-		var label = get_node("LabelContainer/Label")
-		label.text = ""
-		label.modulate = current_node.TEXT_COLOUR
-		var text_area = label.get_font("normal_font").get_string_size(final_text)
-		var background = get_node("LabelContainer")
-		background.color = current_node.BACKGROUND_COLOUR
-		background.rect_size.x = text_area.x + 40
-		
-		background.rect_position.x = (rect_size.x - background.rect_size.x) * current_node.X_POSITION_PERCENT
-		background.rect_position.y = (rect_size.y - background.rect_size.y) * current_node.Y_POSITION_PERCENT
-		
-		get_node("LetterTimer").start()
+		if current_node.is_in_group("Dialogue"):
+			current_length = 0
+			final_text = _apply_variables(current_node.MESSAGE)
+			next_wait_time = current_node.NEXT_NODE_DELAY
+			
+			var label = get_node("LabelContainer/Label")
+			label.text = ""
+			label.modulate = current_node.TEXT_COLOUR
+			var text_area = label.get_font("normal_font").get_string_size(final_text)
+			var background = get_node("LabelContainer")
+			background.color = current_node.BACKGROUND_COLOUR
+			background.rect_size.x = text_area.x + 40
+			
+			background.rect_position.x = (rect_size.x - background.rect_size.x) * current_node.X_POSITION_PERCENT
+			background.rect_position.y = (rect_size.y - background.rect_size.y) * current_node.Y_POSITION_PERCENT
+			
+			visible = true
+			get_node("LetterTimer").start()
+		else:
+			current_node.connect("finish_event", self, "_on_event_complete")
+			next_wait_time = current_node.NEXT_NODE_DELAY
+			current_node.trigger()
 
 
 func _on_LetterTimer_timeout():
@@ -64,6 +73,12 @@ func _on_LetterTimer_timeout():
 		next_node_timer.wait_time = next_wait_time
 		next_node_timer.start()
 
+func _on_event_complete():
+	print("complete event")
+	children[node_index].disconnect("finish_event", self, "_on_event_complete")
+	var next_node_timer = get_node("NextNodeTimer")
+	next_node_timer.wait_time = next_wait_time
+	next_node_timer.start()
 
 func _on_NextNodeTimer_timeout():
 	_next_node()

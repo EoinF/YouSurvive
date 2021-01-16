@@ -11,37 +11,29 @@ func set_tilemap_node_path(new_path):
 	var old_path = TILEMAP_NODE_PATH
 	TILEMAP_NODE_PATH = new_path
 
-	if(old_path != new_path):
-		generate_nav_tiles()
+	if(get_owner() != null and old_path != new_path):
+		generate_base_nav_tiles()
+		generate_static_body_nav_tiles()
 
 func set_objects_node_path(new_path):
 	var old_path = OBJECTS_NODE_PATH
 	OBJECTS_NODE_PATH = new_path
-	
-	#if (get_owner() != null):
-	#	var objects_node = get_parent().get_node(OBJECTS_NODE_PATH)
-	#	if (objects_node != null):
-	#		var static_bodies = get_all_static_bodys(objects_node)
-	#		var all_collision_nodes = get_all_collision_nodes(static_bodies)
-	#		
-	#		for x in all_collision_nodes:
-	#			print(x.get_name())
-	
-	if(old_path != new_path):
-		generate_nav_tiles()
+
+	if(get_owner() != null and old_path != new_path):
+		generate_static_body_nav_tiles()
 
 
-func get_all_static_bodys(root: Node):
+func _get_all_static_bodies(root: Node):
 	var current_nodes = []
 	for child in root.get_children():
 		if (child.get_class() == "StaticBody2D"):
 			current_nodes.append(child)
-		current_nodes += get_all_static_bodys(child)
+		current_nodes += _get_all_static_bodies(child)
 
 	return current_nodes
 
 
-func get_all_collision_nodes(static_bodies: Array):
+func _get_collision_nodes(static_bodies: Array):
 	var collision_nodes = []
 	for body in static_bodies:
 		for child in body.get_children():
@@ -50,7 +42,7 @@ func get_all_collision_nodes(static_bodies: Array):
 	return collision_nodes
 
 
-func generate_nav_tiles():
+func generate_base_nav_tiles():
 	if get_owner() != null:
 		var tilemap = get_parent().get_node(TILEMAP_NODE_PATH)
 		if tilemap != null and tilemap.get_class() == "TileMap":
@@ -62,20 +54,35 @@ func generate_nav_tiles():
 				if shape != null:
 					set_cell(tile_position.x, tile_position.y, 1)
 				else:
-					#for node in all_object_nodes:
-					#	var object_shape = node.get_shape()
-					#	if (object_shape != null):
-					#		set_cell(tile_position.x, tile_position.y, 1)
 					set_cell(tile_position.x, tile_position.y, 0)
 
+func generate_static_body_nav_tiles():
+	var objects_node = get_owner().get_node(OBJECTS_NODE_PATH)
+	if objects_node != null:
+		var static_bodies = _get_all_static_bodies(objects_node)
+		var all_collision_nodes = _get_collision_nodes(static_bodies)
+		for node in all_collision_nodes:
+			var shape: Shape2D = node.get_shape()
+			if shape.get_class() == "CapsuleShape2D":
+				var radius = min(shape.radius, shape.height)
+				var min_tile_x = int((node.global_position.x - radius) / 16)
+				var min_tile_y = int((node.global_position.y - radius) / 16)
+				var max_tile_x = min_tile_x + int(radius / 16) + 1
+				var max_tile_y = min_tile_y + int(radius / 16) + 1
+				
+				for i in range(min_tile_x, max_tile_x + 1):
+					for j in range(min_tile_y, max_tile_y + 1):
+						set_cell(i, j, 1)
+		
 
 func get_quickest_path_to(from, to):
 	var tile_from = Vector2(floor(from.x / 16), floor(from.y / 16))
 	var tile_to = Vector2(floor(to.x / 16), floor(to.y / 16))
 	
 	print("Getting path from " + str(tile_from) + " to " + str(tile_to))
+	print(str(get_cellv(tile_from)) + " to " + str(get_cellv(tile_to)))
 	
-	var start_node = { 'location': tile_from, 'g_cost': 0, 'f_cost': h(tile_from, tile_to), 'path': [] }
+	var start_node = { 'location': tile_from, 'g_cost': 0, 'f_cost': h(tile_from, tile_to), 'parent': null }
 	return a_star([start_node], tile_to)
 
 func a_star(frontier: Array, destination: Vector2):
@@ -86,9 +93,14 @@ func a_star(frontier: Array, destination: Vector2):
 				var g_cost = next_node.g_cost
 				var h_cost = h(next_node.location, destination)
 				next_node.f_cost = g_cost + h_cost
-				frontier = append_by_priority(frontier, next_node)
+				append_by_priority(frontier, next_node)
 
-	return frontier[0].path
+	var path = []
+	var current_node = frontier[0]
+	while(current_node != null):
+		path.push_front(current_node.location)
+		current_node = current_node.parent
+	return path
 
 
 func get_surrounding_nodes(current_node):
@@ -98,39 +110,64 @@ func get_surrounding_nodes(current_node):
 	var surrounding_nodes = [{
 		'location': Vector2(x - 1, y),
 		'g_cost': new_cost,
-		'path': current_node.path + [Vector2(x - 1, y)]
+		'parent': current_node
 	},
 	{
 		'location': Vector2(x + 1, y),
 		'g_cost': new_cost,
-		'path': current_node.path + [Vector2(x + 1, y)]
+		'parent': current_node
 	},
 	{
 		'location': Vector2(x, y - 1),
 		'g_cost': new_cost,
-		'path': current_node.path + [Vector2(x, y - 1)]
+		'parent': current_node
 	},
 	{
 		'location': Vector2(x, y + 1),
 		'g_cost': new_cost,
-		'path': current_node.path + [Vector2(x, y + 1)]
+		'parent': current_node
 	}]
 	return surrounding_nodes
 
 
 func append_by_priority(priority_list: Array, new_node):
-	var index_to_insert = 0
+	var index_to_insert = len(priority_list)
+	var is_index_found = false
+	var is_double_found = false
+	
 	for i in range(0, len(priority_list)):
 		var node = priority_list[i]
 		if node.location == new_node.location:
 			if new_node.f_cost < node.f_cost:
-				priority_list[i] = new_node
+				priority_list.remove(i)
+				if is_index_found:
+					break
+			else:
 				return
-		if new_node.f_cost > node.f_cost:
+		elif not is_index_found and new_node.f_cost < node.f_cost:
 			index_to_insert = i
-			# Don't break here because we need to check for an already existing node
+			is_index_found = true
+			if is_double_found:
+				break
 	priority_list.insert(index_to_insert, new_node)
-	return priority_list
+	return
+
+
+func binary_search(list, target_cost):
+	var left_margin = 0
+	var right_margin = len(list) - 1
+	var index = len(list) / 2
+	while(list[index].f_cost != target_cost and left_margin != right_margin):
+		if list[index].f_cost < target_cost:
+			left_margin = index
+		else:
+			right_margin = index
+		index = (left_margin + right_margin) / 2
+	
+	if list[index].f_cost != target_cost:
+		return list[index]
+	else:
+		return null
 
 
 func h(a, b):
