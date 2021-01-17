@@ -140,28 +140,22 @@ func get_surrounding_nodes(current_node):
 
 
 func append_by_priority(priority_list: Array, new_node):
-	for i in range(0, len(priority_list)):
-		var node = priority_list[i]
-		if new_node.f_cost < node.f_cost:
-			priority_list.insert(i, new_node)
-			return
-	priority_list.push_back(new_node)
+	var index_to_insert = binary_search(priority_list, new_node.f_cost)
+	priority_list.insert(index_to_insert, new_node)
+
 
 func binary_search(list, target_cost):
 	var left_margin = 0
-	var right_margin = len(list) - 1
+	var right_margin = len(list)
 	var index = len(list) / 2
-	while(list[index].f_cost != target_cost and left_margin != right_margin):
+	while(left_margin < right_margin and list[index].f_cost != target_cost):
 		if list[index].f_cost < target_cost:
-			left_margin = index
+			left_margin = index + 1
 		else:
 			right_margin = index
 		index = (left_margin + right_margin) / 2
 	
-	if list[index].f_cost != target_cost:
-		return list[index]
-	else:
-		return null
+	return index
 
 
 func h(a, b):
