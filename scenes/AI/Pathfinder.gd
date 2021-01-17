@@ -85,15 +85,24 @@ func get_quickest_path_to(from, to):
 	var start_node = { 'location': tile_from, 'g_cost': 0, 'f_cost': h(tile_from, tile_to), 'parent': null }
 	return a_star([start_node], tile_to)
 
+
+func vector_hash(vec: Vector2):
+	return vec.x + (vec.y * get_used_rect().size.x)
+
+
 func a_star(frontier: Array, destination: Vector2):
+	var explored_nodes = {}
 	while frontier[0].location != destination:
 		var current = frontier.pop_front()
 		for next_node in get_surrounding_nodes(current):
-			if get_cellv(next_node.location) == 0:
-				var g_cost = next_node.g_cost
-				var h_cost = h(next_node.location, destination)
-				next_node.f_cost = g_cost + h_cost
-				append_by_priority(frontier, next_node)
+			var location_key = vector_hash(next_node.location)
+			if !explored_nodes.has(location_key):
+				if get_cellv(next_node.location) == 0:
+					var g_cost = next_node.g_cost
+					var h_cost = h(next_node.location, destination)
+					next_node.f_cost = g_cost + h_cost
+					append_by_priority(frontier, next_node)
+					explored_nodes[location_key] = true
 
 	var path = []
 	var current_node = frontier[0]
@@ -131,27 +140,12 @@ func get_surrounding_nodes(current_node):
 
 
 func append_by_priority(priority_list: Array, new_node):
-	var index_to_insert = len(priority_list)
-	var is_index_found = false
-	var is_double_found = false
-	
 	for i in range(0, len(priority_list)):
 		var node = priority_list[i]
-		if node.location == new_node.location:
-			if new_node.f_cost < node.f_cost:
-				priority_list.remove(i)
-				if is_index_found:
-					break
-			else:
-				return
-		elif not is_index_found and new_node.f_cost < node.f_cost:
-			index_to_insert = i
-			is_index_found = true
-			if is_double_found:
-				break
-	priority_list.insert(index_to_insert, new_node)
-	return
-
+		if new_node.f_cost < node.f_cost:
+			priority_list.insert(i, new_node)
+			return
+	priority_list.push_back(new_node)
 
 func binary_search(list, target_cost):
 	var left_margin = 0
