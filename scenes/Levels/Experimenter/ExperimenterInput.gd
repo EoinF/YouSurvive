@@ -55,10 +55,3 @@ func _process_movement_input(delta):
 		
 		camera.translate(deltaVector)
 
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	get_node("MainDialogue/1").start()
-
-
-func _on_MainDialogue_1_finish_dialogue():
-	get_node("Camera").set_is_following(false)

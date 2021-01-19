@@ -1,5 +1,7 @@
 extends Node
 
+signal inventory_slot_change(inventory_slot)
+
 enum GoalTypes {
 	COLLECT
 	IDLE
@@ -11,6 +13,14 @@ class Goal:
 	var limit
 
 
+class InventorySlot:
+	var node_key: String
+	var amount: int
+	var item_type: String
+	
+var item_type_to_slot = {}
+var unused_keys = ["1", "2", "3"]
+
 var current_goal = {
 	goal_type = GoalTypes.IDLE,
 	target = "branch",
@@ -18,22 +28,32 @@ var current_goal = {
 }
 
 var exploration_nodes = []
-
 var current_move_path = []
-
 var current_target: Node = null
-
 var branches_in_view = []
 
 func _ready():
 	exploration_nodes = get_children()
 	exploration_nodes.shuffle()
 
+func pick_up_item(item_type):
+	if item_type in item_type_to_slot:
+		item_type_to_slot[item_type].amount += 1
+	else:
+		var node_key = unused_keys.pop_front()
+		item_type_to_slot[item_type] = InventorySlot.new()
+		item_type_to_slot[item_type].node_key = node_key
+		item_type_to_slot[item_type].amount = 1
+		item_type_to_slot[item_type].item_type = item_type
+		
+	emit_signal("inventory_slot_change", item_type_to_slot[item_type])
+
 
 func add_collection_goal(target_type, limit):
 	current_goal.goal_type = GoalTypes.COLLECT
 	current_goal.target = target_type
 	current_goal.limit = limit
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

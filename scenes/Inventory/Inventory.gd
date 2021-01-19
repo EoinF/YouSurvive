@@ -24,3 +24,7 @@ func use_item_x(node_key):
 	print("use item", item_type)
 	emit_signal("use_item", item_type)
 
+
+
+func _on_IslanderAIController_inventory_slot_change(inventory_slot):
+	pass # Replace with function body.

@@ -376,6 +376,9 @@ script = ExtResource( 10 )
 
 [node name="Inventory" parent="HUD" instance=ExtResource( 5 )]
 
+[node name="ExperimenterInventory" parent="HUD" instance=ExtResource( 5 )]
+visible = false
+
 [node name="AlertMessage" parent="HUD" instance=ExtResource( 8 )]
 
 [node name="StaminaBar" type="Control" parent="HUD"]
@@ -416,3 +419,4 @@ script = ExtResource( 15 )
 [connection signal="area_exited" from="Objects/Props/Islander/PlayerInteraction" to="." method="_on_PlayerInteraction_area_exited"]
 [connection signal="timeout" from="Objects/Props/Islander/StaminaTimer" to="Objects/Props/Islander" method="_on_StaminaTimer_timeout"]
 [connection signal="use_item" from="HUD/Inventory" to="Objects/Props/Islander" method="_on_Inventory_use_item"]
+[connection signal="use_item" from="HUD/ExperimenterInventory" to="Objects/Props/Islander" method="_on_Inventory_use_item"]

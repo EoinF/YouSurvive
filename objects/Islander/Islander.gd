@@ -6,7 +6,8 @@ signal stamina_change(stamina)
 signal throw_stone(position, direction)
 
 export var SPEED = 12 * 1000
-export var STAMINA = 50
+export var STAMINA = 25
+export var SPEED_WHILE_TIRED = 9 * 1000
 
 var walking_timeout = 0
 func is_attacking():
@@ -26,7 +27,7 @@ class InventorySlot:
 
 var item_type_to_slot = {}
 var unused_keys = ["1", "2", "3"]
-var stamina = 70
+var stamina: int
 
 func _ready():
 	set_stamina(STAMINA)
@@ -47,8 +48,13 @@ func _process(_delta):
 func move(x, y):
 	walking_timeout = 10
 	direction = Vector2(x, y).normalized()
-	velocity.x = direction.x * SPEED
-	velocity.y = direction.y * SPEED
+	
+	if (stamina <= 25):
+		velocity.x = direction.x * SPEED_WHILE_TIRED
+		velocity.y = direction.y * SPEED_WHILE_TIRED
+	else:
+		velocity.x = direction.x * SPEED
+		velocity.y = direction.y * SPEED
 	
 	var directionVertical = ""
 	var directionHorizontal = ""

@@ -79,6 +79,19 @@ func get_quickest_path_to(from, to):
 	var tile_from = Vector2(floor(from.x / 16), floor(from.y / 16))
 	var tile_to = Vector2(floor(to.x / 16), floor(to.y / 16))
 	
+	#
+	# Ensure the destination isn't on a blocked tile
+	#
+	if (get_cellv(tile_to) == 1):
+		if (get_cell(tile_to.x + 1, tile_to.y) == 0):
+			tile_to.x += 1
+		elif (get_cell(tile_to.x - 1, tile_to.y) == 0):
+			tile_to.x -= 1
+		elif (get_cell(tile_to.x, tile_to.y + 1) == 0):
+			tile_to.y += 1
+		elif (get_cell(tile_to.x, tile_to.y - 1) == 0):
+			tile_to.y -= 1
+	
 	print("Getting path from " + str(tile_from) + " to " + str(tile_to))
 	print(str(get_cellv(tile_from)) + " to " + str(get_cellv(tile_to)))
 	

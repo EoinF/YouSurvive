@@ -9,6 +9,10 @@ func _on_Islander_use_coconut_without_rock():
 
 func _on_Islander_inventory_slot_change(inventory_slot):
 	get_node("Inventory").update_inventory_slot(inventory_slot)
+	
+
+func _on_Experimenter_inventory_slot_change(inventory_slot):
+	get_node("ExperimenterInventory").update_inventory_slot(inventory_slot)
 
 
 func _on_Islander_stamina_change(stamina):

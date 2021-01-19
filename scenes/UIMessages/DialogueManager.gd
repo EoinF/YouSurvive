@@ -38,6 +38,7 @@ func _next_node():
 		emit_signal("finish_dialogue")
 	else:
 		var current_node = children[node_index]
+		print("going with ", current_node.get_name())
 		
 		if current_node.is_in_group("Dialogue"):
 			current_length = 0
@@ -69,16 +70,23 @@ func _on_LetterTimer_timeout():
 		get_node("LabelContainer/Label").text = final_text.substr(0, current_length)
 	else:
 		get_node("LetterTimer").stop()
-		var next_node_timer = get_node("NextNodeTimer")
-		next_node_timer.wait_time = next_wait_time
-		next_node_timer.start()
+		_start_next_node_timer()
+
 
 func _on_event_complete():
 	print("complete event")
 	children[node_index].disconnect("finish_event", self, "_on_event_complete")
+	_start_next_node_timer()
+	
+	
+func _start_next_node_timer():
 	var next_node_timer = get_node("NextNodeTimer")
-	next_node_timer.wait_time = next_wait_time
-	next_node_timer.start()
+	if next_wait_time > 0:
+		next_node_timer.set_wait_time(next_wait_time)
+		next_node_timer.start()
+	else:
+		_next_node()
+	
 
 func _on_NextNodeTimer_timeout():
 	_next_node()
