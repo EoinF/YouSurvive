@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Levels/Base/BaseDay1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Levels/Islander/IslanderInput.gd" type="Script" id=2]
+
+[node name="BaseDay1" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Islander" parent="Objects/Props" index="0"]
+STAMINA = 100
+
+[node name="Camera2D" type="Camera2D" parent="Objects/Props/Islander" index="9"]
+current = true
+
+[node name="Inventory" parent="HUD" index="0"]
+visible = true
