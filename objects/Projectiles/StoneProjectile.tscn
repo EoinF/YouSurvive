@@ -15,24 +15,27 @@ radius = 4.79525
 [node name="RockProjectile" type="Node2D"]
 
 [node name="Projectile" parent="." instance=ExtResource( 1 )]
-collision_mask = 10
+collision_layer = 8
+collision_mask = 20
 duration = 0.3
 MOVE_SPEED = 300
 item_type = "Stone"
 
 [node name="Shadow" type="Sprite" parent="Projectile"]
 position = Vector2( 0, 3.81079 )
-rotation = 18.5968
+rotation = 21.2063
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Projectile"]
-rotation = 18.5968
+rotation = 21.2063
 texture = SubResource( 1 )
 
 [node name="AttackArea" type="Area2D" parent="Projectile" groups=[
 "Attack",
 "Stone",
 ]]
+collision_layer = 3
+collision_mask = 0
 
 [node name="Shape" type="CollisionShape2D" parent="Projectile/AttackArea"]
 shape = SubResource( 2 )

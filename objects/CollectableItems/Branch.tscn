@@ -1,13 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://objects/CollectableItems/CollectableItem.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/beach_tileset.png" type="Texture" id=2]
+[ext_resource path="res://assets/Branch.tres" type="Texture" id=2]
 [ext_resource path="res://assets/Shadow.png" type="Texture" id=3]
-
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 153.039, 373.575, 6.94228, 13.8325 )
 
 [node name="Branch" type="Node2D"]
 
@@ -19,10 +14,10 @@ display_name = "Branch"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 1.63412, 1.92028 )
-rotation = 20.596
+rotation = 22.4151
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 19.043
-texture = SubResource( 1 )
+rotation = 20.8621
+texture = ExtResource( 2 )

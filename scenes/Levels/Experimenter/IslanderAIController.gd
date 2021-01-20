@@ -1,6 +1,5 @@
 extends Node
 
-signal inventory_slot_change(inventory_slot)
 
 enum GoalTypes {
 	COLLECT
@@ -13,14 +12,6 @@ class Goal:
 	var limit
 
 
-class InventorySlot:
-	var node_key: String
-	var amount: int
-	var item_type: String
-	
-var item_type_to_slot = {}
-var unused_keys = ["1", "2", "3"]
-
 var current_goal = {
 	goal_type = GoalTypes.IDLE,
 	target = "branch",
@@ -30,23 +21,11 @@ var current_goal = {
 var exploration_nodes = []
 var current_move_path = []
 var current_target: Node = null
-var branches_in_view = []
+var branches_in_view = {}
 
 func _ready():
 	exploration_nodes = get_children()
 	exploration_nodes.shuffle()
-
-func pick_up_item(item_type):
-	if item_type in item_type_to_slot:
-		item_type_to_slot[item_type].amount += 1
-	else:
-		var node_key = unused_keys.pop_front()
-		item_type_to_slot[item_type] = InventorySlot.new()
-		item_type_to_slot[item_type].node_key = node_key
-		item_type_to_slot[item_type].amount = 1
-		item_type_to_slot[item_type].item_type = item_type
-		
-	emit_signal("inventory_slot_change", item_type_to_slot[item_type])
 
 
 func add_collection_goal(target_type, limit):
@@ -98,7 +77,7 @@ func _get_closest_target_of_type(target_type):
 	var closest_node = null
 	var distance_to_closest = INF
 	if target_type == "branch":
-		for node in branches_in_view:
+		for node in branches_in_view.values():
 			var distance_to_current = islander_position.distance_to(node.global_position)
 			if distance_to_closest > distance_to_current:
 				closest_node = node
@@ -133,9 +112,9 @@ func _get_quickest_path_to(node):
 func _on_IslanderVisionSensor_area_entered(area):
 	var object_node = area.get_parent()
 	if object_node.is_in_group("branch"):
-		branches_in_view.append(object_node)
+		branches_in_view[object_node.get_instance_id()] = object_node
 
 
 func _on_IslanderVisionSensor_area_exited(area):
-	var index = branches_in_view.find(area.get_parent())
-	branches_in_view.remove(index)
+	var object_node = area.get_parent()
+	branches_in_view.erase(area.get_parent().get_instance_id())

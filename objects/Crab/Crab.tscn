@@ -74,13 +74,12 @@ height = 3.34459
 [node name="Crab" type="KinematicBody2D" groups=[
 "AI",
 ]]
-collision_layer = 8
-collision_mask = 15
+collision_layer = 16
+collision_mask = 31
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -111,6 +110,8 @@ one_shot = true
 "Crab",
 ]]
 position = Vector2( 0.148651, 2.97302 )
+collision_layer = 0
+collision_mask = 5
 script = ExtResource( 5 )
 
 [node name="Shape" type="CollisionShape2D" parent="AttackArea"]
@@ -120,6 +121,7 @@ shape = SubResource( 11 )
 disabled = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 0
 
 [node name="Shape" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2( 0, 1 )
