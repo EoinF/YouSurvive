@@ -11,7 +11,7 @@ enum AttackPhase {
 	ATTACKING
 	COOLDOWN
 }
-	
+
 
 var _attack_phase = AttackPhase.IDLE
 

@@ -4,6 +4,7 @@ extends Node
 signal finish_event
 
 export var NEXT_NODE_DELAY = 0
+export var DISABLED = false
 
 func _get_configuration_warning():
 	if get_owner() != null:

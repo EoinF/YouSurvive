@@ -47,3 +47,6 @@ func _on_Projectiles_spawn_item(item_type, source_position):
 	print(source_position)
 	_spawn_item(item_type, source_position)
 
+
+func _on_ItemPlacementTool_place_item(item_type, source_position):
+	_spawn_item(item_type, source_position)

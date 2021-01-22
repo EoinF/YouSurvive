@@ -3,6 +3,7 @@ extends Control
 signal use_item(item_type)
 
 func update_inventory_slot(inventory_slot):
+	print("inventory slot change ", inventory_slot.item_type, ", ", inventory_slot.amount)
 	get_node(inventory_slot.node_key).set_item_type(inventory_slot.item_type)
 	get_node(inventory_slot.node_key).set_amount(inventory_slot.amount)
 
@@ -24,7 +25,3 @@ func use_item_x(node_key):
 	print("use item", item_type)
 	emit_signal("use_item", item_type)
 
-
-
-func _on_IslanderAIController_inventory_slot_change(inventory_slot):
-	pass # Replace with function body.

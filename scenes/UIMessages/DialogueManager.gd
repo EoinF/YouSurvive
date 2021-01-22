@@ -18,18 +18,27 @@ func start():
 	final_text = ""
 	node_index = -1
 	_next_node()
-	
+
+
 func set_variables(_variables: Dictionary):
 	variables = _variables
 	
+
 func _apply_variables(text):
 	return text.format(variables)
-	
+
+
+func _is_active_dialogue_node(node):
+	return (
+		(node.is_in_group("Dialogue") or node.is_in_group("Event"))
+		and not node.DISABLED
+	)
+
+
 func _next_node():
 	node_index += 1
 	while (node_index < len(children)
-		and !children[node_index].is_in_group("Dialogue")
-		and !children[node_index].is_in_group("Event")):
+		and not _is_active_dialogue_node(children[node_index])):
 		node_index += 1
 		
 	visible = false
@@ -38,7 +47,6 @@ func _next_node():
 		emit_signal("finish_dialogue")
 	else:
 		var current_node = children[node_index]
-		print("going with ", current_node.get_name())
 		
 		if current_node.is_in_group("Dialogue"):
 			current_length = 0
@@ -52,7 +60,7 @@ func _next_node():
 			var background = get_node("LabelContainer")
 			background.color = current_node.BACKGROUND_COLOUR
 			background.rect_size.x = text_area.x + 40
-			
+
 			background.rect_position.x = (rect_size.x - background.rect_size.x) * current_node.X_POSITION_PERCENT
 			background.rect_position.y = (rect_size.y - background.rect_size.y) * current_node.Y_POSITION_PERCENT
 			

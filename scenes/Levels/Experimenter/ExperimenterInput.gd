@@ -2,8 +2,10 @@ extends Node
 
 signal finish_scene
 
+var is_controls_enabled = false
 var CAMERA_MOVE_SPEED = 1000
 var player_name: String
+
 
 func set_player_name(name: String):
 	player_name = name
@@ -12,12 +14,20 @@ func set_player_name(name: String):
 	})
 
 
+func enable_controls():
+	is_controls_enabled = true
+	
+
+func disable_controls():
+	is_controls_enabled = false
+
 func _ready():
 	get_node("MainDialogue/1").start()
 
 
 func _process(delta):
-	_process_movement_input(delta)
+	if is_controls_enabled:
+		_process_movement_input(delta)
 
 
 func _process_movement_input(delta):

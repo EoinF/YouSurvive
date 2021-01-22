@@ -160,7 +160,7 @@ func append_by_priority(priority_list: Array, new_node):
 func binary_search(list, target_cost):
 	var left_margin = 0
 	var right_margin = len(list)
-	var index = len(list) / 2
+	var index: int = len(list) / 2
 	while(left_margin < right_margin and list[index].f_cost != target_cost):
 		if list[index].f_cost < target_cost:
 			left_margin = index + 1

@@ -11,9 +11,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LetterTimer" type="Timer" parent="."]
-wait_time = 0.08
-
 [node name="LabelContainer" type="ColorRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -38,6 +35,9 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="LetterTimer" type="Timer" parent="."]
+wait_time = 0.08
 
 [node name="NextNodeTimer" type="Timer" parent="."]
 wait_time = 2.0

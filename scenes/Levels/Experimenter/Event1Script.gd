@@ -19,7 +19,6 @@ func after_complete():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	get_owner().get_node("AnimationPlayer").disconnect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
 	if anim_name == "fade":
-		pass
-		#after_complete()
-		#emit_signal("finish_event")
+		after_complete()
+		emit_signal("finish_event")
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Island/Island.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Levels/Base/Day1Objectives.gd" type="Script" id=2]
 [ext_resource path="res://objects/CollectableItems/Branch.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
@@ -50,10 +51,7 @@ position = Vector2( 2219.26, 796.301 )
 [node name="Branch5" parent="Objects/Props" index="17" instance=ExtResource( 8 )]
 position = Vector2( 1474.75, 642.882 )
 
-[node name="Inventory" parent="HUD" index="0"]
-visible = false
-
-[node name="Day1Label" type="Label" parent="HUD" index="3"]
+[node name="Day1Label" type="Label" parent="HUD" index="1"]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -67,6 +65,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 root_node = NodePath("../Objects")
 anims/fade = SubResource( 1 )
+
+[node name="Day1Objectives" type="Node" parent="." index="4"]
+script = ExtResource( 2 )
+[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
+[connection signal="objectives_updated" from="Day1Objectives" to="HUD" method="_on_Day1Objectives_objectives_updated"]

@@ -25,13 +25,19 @@ func pick_up_item(item_type, amount):
 		
 	emit_signal("inventory_slot_change", item_type_to_slot[item_type])
 
+
 func use_item(item_type):
 	if item_type_to_slot[item_type].amount > 0:
 		get_node("ItemPlacementTool").toggle_item_placement(item_type)
 
 
-func on_ItemPlacementTool_place_item(item_type):
-	item_type_to_slot[item_type].amount -= 1
-	if item_type_to_slot[item_type].amount == 0:
-		get_node("ItemPlacementTool").disable_item_placement()
+func _on_ItemPlacementTool_place_item(item_type, location):
+	if item_type_to_slot[item_type].amount > 0:
+		item_type_to_slot[item_type].amount -= 1
+		if item_type_to_slot[item_type].amount == 0:
+			get_node("ItemPlacementTool").disable_item_placement()
+		emit_signal("inventory_slot_change", item_type_to_slot[item_type])
 
+
+func _on_ExperimenterInventory_use_item(item_type):
+	use_item(item_type)
