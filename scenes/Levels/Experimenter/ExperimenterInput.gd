@@ -9,7 +9,7 @@ var player_name: String
 
 func set_player_name(name: String):
 	player_name = name
-	get_node("MainDialogue/1").set_variables({
+	get_node("HUD/DialogueContainer/MainDialogue1").set_variables({
 		"player_name": player_name
 	})
 
@@ -22,7 +22,7 @@ func disable_controls():
 	is_controls_enabled = false
 
 func _ready():
-	get_node("MainDialogue/1").start()
+	get_node("HUD/DialogueContainer/MainDialogue1").start()
 
 
 func _process(delta):

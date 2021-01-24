@@ -4,8 +4,6 @@ extends TileMap
 export var TILEMAP_NODE_PATH = "" setget set_tilemap_node_path
 export var OBJECTS_NODE_PATH = "" setget set_objects_node_path
 
-var all_object_nodes = []
-
 
 func set_tilemap_node_path(new_path):
 	var old_path = TILEMAP_NODE_PATH

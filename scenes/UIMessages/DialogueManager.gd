@@ -53,16 +53,17 @@ func _next_node():
 			final_text = _apply_variables(current_node.MESSAGE)
 			next_wait_time = current_node.NEXT_NODE_DELAY
 			
-			var label = get_node("LabelContainer/Label")
+			var label = get_node("Button/LabelContainer/Label")
 			label.text = ""
 			label.modulate = current_node.TEXT_COLOUR
 			var text_area = label.get_font("normal_font").get_string_size(final_text)
-			var background = get_node("LabelContainer")
+			var background = get_node("Button/LabelContainer")
 			background.color = current_node.BACKGROUND_COLOUR
-			background.rect_size.x = text_area.x + 40
 
-			background.rect_position.x = (rect_size.x - background.rect_size.x) * current_node.X_POSITION_PERCENT
-			background.rect_position.y = (rect_size.y - background.rect_size.y) * current_node.Y_POSITION_PERCENT
+			var button = get_node("Button")
+			button.rect_size.x = text_area.x + 40
+			button.rect_position.x = (rect_size.x - background.rect_size.x) * current_node.X_POSITION_PERCENT
+			button.rect_position.y = (rect_size.y - background.rect_size.y) * current_node.Y_POSITION_PERCENT
 			
 			visible = true
 			get_node("LetterTimer").start()
@@ -75,11 +76,10 @@ func _next_node():
 func _on_LetterTimer_timeout():
 	if (current_length < len(final_text)):
 		current_length += 1
-		get_node("LabelContainer/Label").text = final_text.substr(0, current_length)
+		get_node("Button/LabelContainer/Label").text = final_text.substr(0, current_length)
 	else:
 		get_node("LetterTimer").stop()
 		_start_next_node_timer()
-
 
 func _on_event_complete():
 	print("complete event")
@@ -98,3 +98,10 @@ func _start_next_node_timer():
 
 func _on_NextNodeTimer_timeout():
 	_next_node()
+
+
+func _on_Button_pressed():
+	print("button was pressed")
+	if visible:
+		get_node("NextNodeTimer").stop()
+		_next_node()
