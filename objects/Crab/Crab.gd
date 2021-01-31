@@ -15,10 +15,11 @@ enum AttackPhase {
 
 var _attack_phase = AttackPhase.IDLE
 
+export var CHASE_SPEED = 7 * 1000
 export var SPEED = 2 * 1000
-export var ATTACK_SPEED = 7 * 1000
+export var ATTACK_SPEED = 10 * 1000
 export var DEATH_COOLDOWN = 1.0
-export var HEALTH = 2
+export var HEALTH = 1
 
 func move(x, y):
 	if not _is_dying and _attack_phase == AttackPhase.IDLE:

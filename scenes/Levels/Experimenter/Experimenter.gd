@@ -2,6 +2,7 @@ extends Node2D
 
 signal inventory_slot_change(inventory_slot)
 
+export var CAMERA_MOVE_SPEED = 1000
 
 class InventorySlot:
 	var node_key: String
@@ -11,6 +12,47 @@ class InventorySlot:
 
 var item_type_to_slot = {}
 var unused_keys = ["1", "2", "3"]
+
+var is_controls_enabled = false
+
+
+func enable_controls():
+	is_controls_enabled = true
+	
+
+func disable_controls():
+	is_controls_enabled = false
+
+
+func move(deltaVector: Vector2):
+	if is_controls_enabled:
+		var camera = get_node("Camera")
+		var newX = camera.position.x + deltaVector.x
+		var newY = camera.position.y + deltaVector.y
+		
+		if newX < camera.limit_left:
+			deltaVector.x += camera.limit_left - newX
+		elif newX > camera.limit_right:
+			deltaVector.x -= newX - camera.limit_right
+		if newY < camera.limit_top:
+			deltaVector.y += camera.limit_top - newY
+		elif newY > camera.limit_bottom:
+			deltaVector.y -= newY - camera.limit_bottom
+			
+		camera.translate(deltaVector * CAMERA_MOVE_SPEED)
+
+
+func focus_target(target: Node2D):
+	var camera = get_node("Camera")
+	camera.translate(target.position - camera.position)
+
+
+func set_follow_target(target, is_following):
+	get_node("Camera").set_follow_target(target, is_following)
+
+
+func set_is_following(is_following):
+	get_node("Camera").set_is_following(is_following)
 
 
 func pick_up_item(item_type, amount):
@@ -27,7 +69,7 @@ func pick_up_item(item_type, amount):
 
 
 func use_item(item_type):
-	if item_type_to_slot[item_type].amount > 0:
+	if is_controls_enabled and item_type_to_slot[item_type].amount > 0:
 		get_node("ItemPlacementTool").toggle_item_placement(item_type)
 
 

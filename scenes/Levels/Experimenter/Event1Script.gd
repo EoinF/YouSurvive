@@ -9,10 +9,10 @@ func trigger():
 
 
 func after_complete():
-	var camera = get_owner().get_node("Camera")
+	var experimenter = get_owner().get_node("Experimenter")
 	var islander = get_owner().get_node("Objects/Props/Islander")
 	var ai_controller = get_owner().get_node("IslanderAIController")
-	camera.set_follow_target(islander, true)
+	experimenter.set_follow_target(islander, true)
 	ai_controller.add_collection_goal("branch", 10)
 
 
