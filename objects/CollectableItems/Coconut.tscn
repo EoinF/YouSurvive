@@ -9,16 +9,16 @@
 [node name="CollectableItem" parent="." groups=[
 "coconut",
 ] instance=ExtResource( 1 )]
-item_type = "coconut"
+object_type = "coconut"
 fall_duration_seconds = 0.3
 fall_sway = 0.0
 display_name = "Coconut"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 0.707108, 3.97748 )
-rotation = 34.4166
+rotation = 35.9897
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 34.4166
+rotation = 35.9897
 texture = ExtResource( 3 )

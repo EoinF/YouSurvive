@@ -9,6 +9,8 @@ export var SPEED = 12 * 1000
 export var STAMINA = 25
 export var SPEED_WHILE_TIRED = 9 * 1000
 
+var object_type = "islander"
+
 var walking_timeout = 0
 func is_attacking():
 	return get_node("AttackPivotPoint/AttackAnimation").is_playing()

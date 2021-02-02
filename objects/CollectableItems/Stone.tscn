@@ -14,14 +14,14 @@ region = Rect2( 195, 242, 12, 12 )
 [node name="CollectableItem" parent="." groups=[
 "stone",
 ] instance=ExtResource( 1 )]
-item_type = "stone"
+object_type = "stone"
 display_name = "Rock"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 2.34147, 3.68658 )
-rotation = 1.96627
+rotation = 3.13701
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 2.65435
+rotation = 3.82509
 texture = SubResource( 1 )

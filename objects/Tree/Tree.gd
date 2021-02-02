@@ -3,6 +3,8 @@ extends StaticBody2D
 export var COCONUT_DROPS = 0
 export var BRANCH_DROPS = 1
 
+var object_type = "tree"
+
 signal spawn_item(item_type, source_position)
 
 var item_drops = []

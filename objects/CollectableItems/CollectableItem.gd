@@ -3,7 +3,7 @@ extends Node2D
 
 const DEFAULT_DISPLAY_NAME = "Undefined"
 
-export var item_type = "<not set>"
+export var object_type = "<not set>"
 export var is_usable = true
 export var fall_duration_seconds = 0.8
 export var fall_sway = 1.0
@@ -20,8 +20,8 @@ func _get_configuration_warning():
 			return "Collectable Item must have a node named \"Sprite\""
 		elif get_node("Shadow") == null:
 			return "Collectable Item must have a node named \"Shadow\""
-		if item_type == "<not set>":
-			return "Item type must be set"
+		if object_type == "<not set>":
+			return "Object type must be set"
 
 	return ""
 

@@ -15,5 +15,5 @@ func _on_Islander_throw_stone(position, direction):
 
 
 func _finish_launching(node):
-	emit_signal("spawn_item", node.item_type, node.global_position)
+	emit_signal("spawn_item", node.object_type, node.global_position)
 	node.queue_free()

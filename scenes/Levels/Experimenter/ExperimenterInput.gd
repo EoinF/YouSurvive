@@ -11,6 +11,7 @@ func set_player_name(name: String):
 		"player_name": player_name
 	})
 
+
 func _ready():
 	get_node("HUD/DialogueContainer/MainDialogue1").start()
 

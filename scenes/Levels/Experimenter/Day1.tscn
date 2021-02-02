@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/Levels/Base/BaseDay1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Experimenter/ExperimenterInput.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://scenes/Levels/Experimenter/ItemPlacementTool.gd" type="Script" id=13]
 [ext_resource path="res://assets/PathfinderTileset.png" type="Texture" id=14]
 [ext_resource path="res://assets/Branch.tres" type="Texture" id=15]
+[ext_resource path="res://objects/ExplorationNode.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/Levels/Experimenter/Event4Script.gd" type="Script" id=17]
 [ext_resource path="res://scenes/Levels/Experimenter/Event5Script.gd" type="Script" id=18]
 
@@ -117,6 +118,8 @@ __meta__ = {
 [node name="MainDialogue1" parent="HUD/DialogueContainer" index="0" instance=ExtResource( 3 )]
 
 [node name="FadeInEvent" parent="HUD/DialogueContainer/MainDialogue1" index="3" instance=ExtResource( 10 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event1Script" type="Node" parent="HUD/DialogueContainer/MainDialogue1/FadeInEvent" index="0"]
 script = ExtResource( 9 )
@@ -157,16 +160,22 @@ NEXT_NODE_DELAY = 1
 Y_POSITION_PERCENT = 0.9
 
 [node name="GiftBranches" parent="HUD/DialogueContainer/MainDialogue1" index="9" instance=ExtResource( 10 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event3Script" type="Node" parent="HUD/DialogueContainer/MainDialogue1/GiftBranches" index="0"]
 script = ExtResource( 12 )
 
 [node name="StopCameraFollow" parent="HUD/DialogueContainer/MainDialogue1" index="10" instance=ExtResource( 10 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event2Script" type="Node" parent="HUD/DialogueContainer/MainDialogue1/StopCameraFollow" index="0"]
 script = ExtResource( 11 )
 
 [node name="EnableControls" parent="HUD/DialogueContainer/MainDialogue1" index="11" instance=ExtResource( 10 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event4Script" type="Node" parent="HUD/DialogueContainer/MainDialogue1/EnableControls" index="0"]
 script = ExtResource( 17 )
@@ -188,6 +197,8 @@ Y_POSITION_PERCENT = 0.9
 [node name="MainDialogue2" parent="HUD/DialogueContainer" index="1" instance=ExtResource( 3 )]
 
 [node name="DisableControls" parent="HUD/DialogueContainer/MainDialogue2" index="3" instance=ExtResource( 10 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event5Script" type="Node" parent="HUD/DialogueContainer/MainDialogue2/DisableControls" index="0"]
 script = ExtResource( 18 )
@@ -202,64 +213,63 @@ anims/highlight_inventory = SubResource( 1 )
 [node name="IslanderAIController" type="Node" parent="." index="4"]
 script = ExtResource( 7 )
 
-[node name="ExplorationNode1" type="Position2D" parent="IslanderAIController" index="0"]
-position = Vector2( 413.155, 375.889 )
+[node name="ExplorationNode1" parent="IslanderAIController" index="0" instance=ExtResource( 16 )]
 
-[node name="ExplorationNode2" type="Position2D" parent="IslanderAIController" index="1"]
+[node name="ExplorationNode2" parent="IslanderAIController" index="1" instance=ExtResource( 16 )]
 position = Vector2( 677.219, 239.412 )
 
-[node name="ExplorationNode10" type="Position2D" parent="IslanderAIController" index="2"]
+[node name="ExplorationNode10" parent="IslanderAIController" index="2" instance=ExtResource( 16 )]
 position = Vector2( 902.616, 374.828 )
 
-[node name="ExplorationNode11" type="Position2D" parent="IslanderAIController" index="3"]
+[node name="ExplorationNode11" parent="IslanderAIController" index="3" instance=ExtResource( 16 )]
 position = Vector2( 647.819, 467.482 )
 
-[node name="ExplorationNode3" type="Position2D" parent="IslanderAIController" index="4"]
+[node name="ExplorationNode3" parent="IslanderAIController" index="4" instance=ExtResource( 16 )]
 position = Vector2( 1200.98, 479.368 )
 
-[node name="ExplorationNode4" type="Position2D" parent="IslanderAIController" index="5"]
+[node name="ExplorationNode4" parent="IslanderAIController" index="5" instance=ExtResource( 16 )]
 position = Vector2( 1537.64, 541.733 )
 
-[node name="ExplorationNode9" type="Position2D" parent="IslanderAIController" index="6"]
+[node name="ExplorationNode9" parent="IslanderAIController" index="6" instance=ExtResource( 16 )]
 position = Vector2( 1627.62, 825.93 )
 
-[node name="ExplorationNode5" type="Position2D" parent="IslanderAIController" index="7"]
+[node name="ExplorationNode5" parent="IslanderAIController" index="7" instance=ExtResource( 16 )]
 position = Vector2( 1873.96, 968.484 )
 
-[node name="ExplorationNode6" type="Position2D" parent="IslanderAIController" index="8"]
+[node name="ExplorationNode6" parent="IslanderAIController" index="8" instance=ExtResource( 16 )]
 position = Vector2( 2106.6, 688.469 )
 
-[node name="ExplorationNode7" type="Position2D" parent="IslanderAIController" index="9"]
+[node name="ExplorationNode7" parent="IslanderAIController" index="9" instance=ExtResource( 16 )]
 position = Vector2( 2207.72, 950.806 )
 
-[node name="ExplorationNode8" type="Position2D" parent="IslanderAIController" index="10"]
+[node name="ExplorationNode8" parent="IslanderAIController" index="10" instance=ExtResource( 16 )]
 position = Vector2( 2426.92, 834.84 )
 
-[node name="ExplorationNode12" type="Position2D" parent="IslanderAIController" index="11"]
+[node name="ExplorationNode12" parent="IslanderAIController" index="11" instance=ExtResource( 16 )]
 position = Vector2( 1486.12, 38.1238 )
 
-[node name="ExplorationNode13" type="Position2D" parent="IslanderAIController" index="12"]
+[node name="ExplorationNode13" parent="IslanderAIController" index="12" instance=ExtResource( 16 )]
 position = Vector2( 1880.24, 211.876 )
 
-[node name="ExplorationNode14" type="Position2D" parent="IslanderAIController" index="13"]
+[node name="ExplorationNode14" parent="IslanderAIController" index="13" instance=ExtResource( 16 )]
 position = Vector2( 2312.5, 491.574 )
 
-[node name="ExplorationNode15" type="Position2D" parent="IslanderAIController" index="14"]
+[node name="ExplorationNode15" parent="IslanderAIController" index="14" instance=ExtResource( 16 )]
 position = Vector2( 1668.34, 421.649 )
 
-[node name="ExplorationNode16" type="Position2D" parent="IslanderAIController" index="15"]
+[node name="ExplorationNode16" parent="IslanderAIController" index="15" instance=ExtResource( 16 )]
 position = Vector2( 2081.53, -152.579 )
 
-[node name="ExplorationNode17" type="Position2D" parent="IslanderAIController" index="16"]
+[node name="ExplorationNode17" parent="IslanderAIController" index="16" instance=ExtResource( 16 )]
 position = Vector2( 2409.97, 228.827 )
 
-[node name="ExplorationNode18" type="Position2D" parent="IslanderAIController" index="17"]
+[node name="ExplorationNode18" parent="IslanderAIController" index="17" instance=ExtResource( 16 )]
 position = Vector2( 2522.27, -108.082 )
 
-[node name="ExplorationNode19" type="Position2D" parent="IslanderAIController" index="18"]
+[node name="ExplorationNode19" parent="IslanderAIController" index="18" instance=ExtResource( 16 )]
 position = Vector2( 3041.41, 245.779 )
 
-[node name="ExplorationNode20" type="Position2D" parent="IslanderAIController" index="19"]
+[node name="ExplorationNode20" parent="IslanderAIController" index="19" instance=ExtResource( 16 )]
 position = Vector2( 3052, 711.942 )
 
 [node name="Pathfinder" parent="." index="5" instance=ExtResource( 6 )]
@@ -298,7 +308,6 @@ shape = SubResource( 3 )
 visible = false
 position = Vector2( -2, -2 )
 texture = ExtResource( 15 )
-[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="." method="_on_PlayerInteraction_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/PlayerInteraction" to="." method="_on_PlayerInteraction_area_exited"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
@@ -311,4 +320,3 @@ texture = ExtResource( 15 )
 [connection signal="place_item" from="Experimenter/ItemPlacementTool" to="Experimenter" method="_on_ItemPlacementTool_place_item"]
 [connection signal="body_entered" from="Experimenter/ItemPlacementTool/PlacementSensor" to="Experimenter/ItemPlacementTool" method="_on_PlacementSensor_body_entered"]
 [connection signal="body_exited" from="Experimenter/ItemPlacementTool/PlacementSensor" to="Experimenter/ItemPlacementTool" method="_on_PlacementSensor_body_exited"]
-[connection signal="objectives_updated" from="Day1Objectives" to="HUD" method="_on_Day1Objectives_objectives_updated"]

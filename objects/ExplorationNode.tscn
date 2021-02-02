@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://objects/ExplorationNode.gd" type="Script" id=1]
+
+[node name="ExplorationNode1" type="Position2D"]
+position = Vector2( 413.155, 375.889 )
+script = ExtResource( 1 )

@@ -87,6 +87,30 @@ position = Vector2( 1453.21, 633.966 )
 [node name="Tree10" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 1388.21, 632.966 )
 
+[node name="Tree11" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1606.97, 236.384 )
+
+[node name="Tree12" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 2959.53, 701.083 )
+
+[node name="Tree13" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 3029.13, 651.695 )
+
+[node name="Tree14" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 3106.58, 701.083 )
+
+[node name="Tree15" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 3026.88, 762.819 )
+
+[node name="Tree16" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 3050.45, 202.71 )
+
+[node name="Tree17" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 2236.67, -22.9047 )
+
+[node name="Tree18" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1701.26, -74.538 )
+
 [node name="Stone" parent="Objects/Props" instance=ExtResource( 12 )]
 position = Vector2( 1459.86, 203.063 )
 

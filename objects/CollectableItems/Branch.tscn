@@ -9,15 +9,15 @@
 [node name="CollectableItem" parent="." groups=[
 "branch",
 ] instance=ExtResource( 1 )]
-item_type = "branch"
+object_type = "branch"
 display_name = "Branch"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 1.63412, 1.92028 )
-rotation = 22.4151
+rotation = 24.9244
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 20.8621
+rotation = 23.3714
 texture = ExtResource( 2 )
