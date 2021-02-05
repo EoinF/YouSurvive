@@ -213,64 +213,70 @@ anims/highlight_inventory = SubResource( 1 )
 [node name="IslanderAIController" type="Node" parent="." index="4"]
 script = ExtResource( 7 )
 
-[node name="ExplorationNode1" parent="IslanderAIController" index="0" instance=ExtResource( 16 )]
+[node name="ExplorationNodes" type="Node2D" parent="IslanderAIController" index="0"]
 
-[node name="ExplorationNode2" parent="IslanderAIController" index="1" instance=ExtResource( 16 )]
+[node name="ExplorationNode1" parent="IslanderAIController/ExplorationNodes" index="0" instance=ExtResource( 16 )]
+
+[node name="ExplorationNode2" parent="IslanderAIController/ExplorationNodes" index="1" instance=ExtResource( 16 )]
 position = Vector2( 677.219, 239.412 )
 
-[node name="ExplorationNode10" parent="IslanderAIController" index="2" instance=ExtResource( 16 )]
+[node name="ExplorationNode10" parent="IslanderAIController/ExplorationNodes" index="2" instance=ExtResource( 16 )]
 position = Vector2( 902.616, 374.828 )
 
-[node name="ExplorationNode11" parent="IslanderAIController" index="3" instance=ExtResource( 16 )]
+[node name="ExplorationNode11" parent="IslanderAIController/ExplorationNodes" index="3" instance=ExtResource( 16 )]
 position = Vector2( 647.819, 467.482 )
 
-[node name="ExplorationNode3" parent="IslanderAIController" index="4" instance=ExtResource( 16 )]
+[node name="ExplorationNode3" parent="IslanderAIController/ExplorationNodes" index="4" instance=ExtResource( 16 )]
 position = Vector2( 1200.98, 479.368 )
 
-[node name="ExplorationNode4" parent="IslanderAIController" index="5" instance=ExtResource( 16 )]
+[node name="ExplorationNode4" parent="IslanderAIController/ExplorationNodes" index="5" instance=ExtResource( 16 )]
 position = Vector2( 1537.64, 541.733 )
 
-[node name="ExplorationNode9" parent="IslanderAIController" index="6" instance=ExtResource( 16 )]
+[node name="ExplorationNode9" parent="IslanderAIController/ExplorationNodes" index="6" instance=ExtResource( 16 )]
 position = Vector2( 1627.62, 825.93 )
 
-[node name="ExplorationNode5" parent="IslanderAIController" index="7" instance=ExtResource( 16 )]
+[node name="ExplorationNode5" parent="IslanderAIController/ExplorationNodes" index="7" instance=ExtResource( 16 )]
 position = Vector2( 1873.96, 968.484 )
 
-[node name="ExplorationNode6" parent="IslanderAIController" index="8" instance=ExtResource( 16 )]
+[node name="ExplorationNode6" parent="IslanderAIController/ExplorationNodes" index="8" instance=ExtResource( 16 )]
 position = Vector2( 2106.6, 688.469 )
 
-[node name="ExplorationNode7" parent="IslanderAIController" index="9" instance=ExtResource( 16 )]
+[node name="ExplorationNode7" parent="IslanderAIController/ExplorationNodes" index="9" instance=ExtResource( 16 )]
 position = Vector2( 2207.72, 950.806 )
 
-[node name="ExplorationNode8" parent="IslanderAIController" index="10" instance=ExtResource( 16 )]
+[node name="ExplorationNode8" parent="IslanderAIController/ExplorationNodes" index="10" instance=ExtResource( 16 )]
 position = Vector2( 2426.92, 834.84 )
 
-[node name="ExplorationNode12" parent="IslanderAIController" index="11" instance=ExtResource( 16 )]
+[node name="ExplorationNode12" parent="IslanderAIController/ExplorationNodes" index="11" instance=ExtResource( 16 )]
 position = Vector2( 1486.12, 38.1238 )
 
-[node name="ExplorationNode13" parent="IslanderAIController" index="12" instance=ExtResource( 16 )]
+[node name="ExplorationNode13" parent="IslanderAIController/ExplorationNodes" index="12" instance=ExtResource( 16 )]
 position = Vector2( 1880.24, 211.876 )
 
-[node name="ExplorationNode14" parent="IslanderAIController" index="13" instance=ExtResource( 16 )]
+[node name="ExplorationNode14" parent="IslanderAIController/ExplorationNodes" index="13" instance=ExtResource( 16 )]
 position = Vector2( 2312.5, 491.574 )
 
-[node name="ExplorationNode15" parent="IslanderAIController" index="14" instance=ExtResource( 16 )]
+[node name="ExplorationNode15" parent="IslanderAIController/ExplorationNodes" index="14" instance=ExtResource( 16 )]
 position = Vector2( 1668.34, 421.649 )
 
-[node name="ExplorationNode16" parent="IslanderAIController" index="15" instance=ExtResource( 16 )]
+[node name="ExplorationNode16" parent="IslanderAIController/ExplorationNodes" index="15" instance=ExtResource( 16 )]
 position = Vector2( 2081.53, -152.579 )
 
-[node name="ExplorationNode17" parent="IslanderAIController" index="16" instance=ExtResource( 16 )]
+[node name="ExplorationNode17" parent="IslanderAIController/ExplorationNodes" index="16" instance=ExtResource( 16 )]
 position = Vector2( 2409.97, 228.827 )
 
-[node name="ExplorationNode18" parent="IslanderAIController" index="17" instance=ExtResource( 16 )]
+[node name="ExplorationNode18" parent="IslanderAIController/ExplorationNodes" index="17" instance=ExtResource( 16 )]
 position = Vector2( 2522.27, -108.082 )
 
-[node name="ExplorationNode19" parent="IslanderAIController" index="18" instance=ExtResource( 16 )]
+[node name="ExplorationNode19" parent="IslanderAIController/ExplorationNodes" index="18" instance=ExtResource( 16 )]
 position = Vector2( 3041.41, 245.779 )
 
-[node name="ExplorationNode20" parent="IslanderAIController" index="19" instance=ExtResource( 16 )]
+[node name="ExplorationNode20" parent="IslanderAIController/ExplorationNodes" index="19" instance=ExtResource( 16 )]
 position = Vector2( 3052, 711.942 )
+
+[node name="SleepTimer" type="Timer" parent="IslanderAIController" index="1"]
+wait_time = 0.4
+one_shot = true
 
 [node name="Pathfinder" parent="." index="5" instance=ExtResource( 6 )]
 visible = false
@@ -315,6 +321,7 @@ texture = ExtResource( 15 )
 [connection signal="mouse_entered" from="HUD/Container" to="Experimenter/ItemPlacementTool" method="_on_MainContainer_mouse_entered"]
 [connection signal="mouse_exited" from="HUD/Container" to="Experimenter/ItemPlacementTool" method="_on_MainContainer_mouse_exited"]
 [connection signal="use_item" from="HUD/Container/ExperimenterInventory" to="Experimenter" method="_on_ExperimenterInventory_use_item"]
+[connection signal="timeout" from="IslanderAIController/SleepTimer" to="IslanderAIController" method="_on_SleepTimer_timeout"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter/ItemPlacementTool" to="Objects/Props" method="_on_ItemPlacementTool_place_item"]
 [connection signal="place_item" from="Experimenter/ItemPlacementTool" to="Experimenter" method="_on_ItemPlacementTool_place_item"]
