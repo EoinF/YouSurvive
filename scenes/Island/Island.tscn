@@ -680,10 +680,11 @@ visible = false
 [node name="AlertMessage" parent="HUD/Container" instance=ExtResource( 8 )]
 
 [node name="StaminaBar" type="Control" parent="HUD/Container"]
-margin_left = 910.554
-margin_top = 2.12141
-margin_right = 1020.55
-margin_bottom = 42.1214
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -120.0
+margin_top = 5.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

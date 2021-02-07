@@ -46,7 +46,7 @@ __meta__ = {
 }
 
 [node name="LetterTimer" type="Timer" parent="."]
-wait_time = 0.08
+wait_time = 0.06
 
 [node name="NextNodeTimer" type="Timer" parent="."]
 wait_time = 2.0

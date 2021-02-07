@@ -88,14 +88,6 @@ visible = false
 [node name="ExperimenterInventory" parent="HUD/Container" index="1"]
 visible = true
 
-[node name="StaminaBar" parent="HUD/Container" index="3"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -109.996
-margin_top = 0.0
-margin_right = 0.0
-margin_bottom = 40.0
-
 [node name="RichTextLabel" parent="HUD/Container/ObjectivesDisplay" index="1"]
 text = "-  Collect branches (0 / 10)"
 
@@ -108,8 +100,10 @@ margin_bottom = 7.0
 [node name="DialogueContainer" type="Control" parent="HUD" index="2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 0.943878
-margin_bottom = 0.943848
+margin_left = -0.471924
+margin_top = 0.471947
+margin_right = -0.471924
+margin_bottom = 0.471924
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -125,7 +119,7 @@ DISABLED = false
 script = ExtResource( 9 )
 
 [node name="Segment1" parent="HUD/DialogueContainer/MainDialogue1" index="4" instance=ExtResource( 4 )]
-MESSAGE = "Okay {player_name}, so our test subject has awoken."
+MESSAGE = "Okay {player_name}, here is our fresh test subject."
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 NEXT_NODE_DELAY = 1
@@ -152,19 +146,19 @@ TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 NEXT_NODE_DELAY = 1
 Y_POSITION_PERCENT = 0.9
 
-[node name="Segment5" parent="HUD/DialogueContainer/MainDialogue1" index="8" instance=ExtResource( 4 )]
-MESSAGE = "Here are some branches. It's up to you where you put them."
-BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
-TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
-NEXT_NODE_DELAY = 1
-Y_POSITION_PERCENT = 0.9
-
-[node name="GiftBranches" parent="HUD/DialogueContainer/MainDialogue1" index="9" instance=ExtResource( 10 )]
+[node name="GiftBranches" parent="HUD/DialogueContainer/MainDialogue1" index="8" instance=ExtResource( 10 )]
 NEXT_NODE_DELAY = 0
 DISABLED = false
 
 [node name="Event3Script" type="Node" parent="HUD/DialogueContainer/MainDialogue1/GiftBranches" index="0"]
 script = ExtResource( 12 )
+
+[node name="Segment5" parent="HUD/DialogueContainer/MainDialogue1" index="9" instance=ExtResource( 4 )]
+MESSAGE = "You've been given some branches. It's up to you where you put them."
+BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
+TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
+NEXT_NODE_DELAY = 1
+Y_POSITION_PERCENT = 0.9
 
 [node name="StopCameraFollow" parent="HUD/DialogueContainer/MainDialogue1" index="10" instance=ExtResource( 10 )]
 NEXT_NODE_DELAY = 0
@@ -314,6 +308,7 @@ shape = SubResource( 3 )
 visible = false
 position = Vector2( -2, -2 )
 texture = ExtResource( 15 )
+[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="." method="_on_PlayerInteraction_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/PlayerInteraction" to="." method="_on_PlayerInteraction_area_exited"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
@@ -327,3 +322,4 @@ texture = ExtResource( 15 )
 [connection signal="place_item" from="Experimenter/ItemPlacementTool" to="Experimenter" method="_on_ItemPlacementTool_place_item"]
 [connection signal="body_entered" from="Experimenter/ItemPlacementTool/PlacementSensor" to="Experimenter/ItemPlacementTool" method="_on_PlacementSensor_body_entered"]
 [connection signal="body_exited" from="Experimenter/ItemPlacementTool/PlacementSensor" to="Experimenter/ItemPlacementTool" method="_on_PlacementSensor_body_exited"]
+[connection signal="objectives_updated" from="Day1Objectives" to="HUD" method="_on_Day1Objectives_objectives_updated"]

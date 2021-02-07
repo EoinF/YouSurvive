@@ -15,5 +15,7 @@ current = true
 
 [node name="RichTextLabel" parent="HUD/Container/ObjectivesDisplay" index="1"]
 text = "-  Collect branches (0 / 10)"
+[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="." method="_on_PlayerInteraction_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/PlayerInteraction" to="." method="_on_PlayerInteraction_area_exited"]
+[connection signal="objectives_updated" from="Day1Objectives" to="HUD" method="_on_Day1Objectives_objectives_updated"]
