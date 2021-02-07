@@ -31,6 +31,8 @@ var item_type_to_slot = {}
 var unused_keys = ["1", "2", "3"]
 var stamina: int
 
+var on_finished_emote_ref: FuncRef
+
 func _ready():
 	set_stamina(STAMINA)
 
@@ -97,6 +99,13 @@ func pick_up_item(item_type):
 	emit_signal("inventory_slot_change", item_type_to_slot[item_type])
 
 
+func start_target_spotted_emote(on_finished: FuncRef):
+	print("starting emote")
+	on_finished_emote_ref = on_finished
+	get_node("TargetFoundEmote").visible = true
+	get_node("EmoteTimer").start()
+
+
 func _update_active_sprite(new_sprite_state, new_sprite_direction):
 	if (new_sprite_direction != ""):
 		active_sprite_direction = new_sprite_direction
@@ -116,6 +125,7 @@ func _on_AttackAnimation_animation_finished():
 	var attack_animation = get_node("AttackPivotPoint/AttackAnimation")
 	attack_animation.visible = false
 	attack_animation.stop()
+
 
 func set_stamina(new_stamina):
 	stamina = new_stamina
@@ -178,3 +188,8 @@ func _on_Hurtbox_area_entered(area):
 func _on_HurtTimer_timeout():
 	self.modulate = Color.white
 	_is_hurting = false
+
+
+func _on_EmoteTimer_timeout():
+	get_node("TargetFoundEmote").visible = false
+	on_finished_emote_ref.call_func()

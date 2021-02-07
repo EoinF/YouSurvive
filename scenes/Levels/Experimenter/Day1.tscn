@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/UIMessages/DialogueSegment.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Levels/Experimenter/Camera.gd" type="Script" id=5]
 [ext_resource path="res://scenes/AI/Pathfinder.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Levels/Experimenter/IslanderAIController.gd" type="Script" id=7]
+[ext_resource path="res://scenes/AI/IslanderAIController.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Levels/Experimenter/Experimenter.gd" type="Script" id=8]
 [ext_resource path="res://scenes/Levels/Experimenter/Event1Script.gd" type="Script" id=9]
 [ext_resource path="res://scenes/UIMessages/Event.tscn" type="PackedScene" id=10]
@@ -75,7 +75,7 @@ script = ExtResource( 2 )
 collision_mask = 11
 SPEED_WHILE_TIRED = 9000
 
-[node name="PlayerInteraction" parent="Objects/Props/Islander" index="6"]
+[node name="PlayerInteraction" parent="Objects/Props/Islander" index="8"]
 collision_layer = 1
 collision_mask = 1
 
@@ -204,8 +204,7 @@ TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 [node name="AnimationPlayer" parent="." index="3"]
 anims/highlight_inventory = SubResource( 1 )
 
-[node name="IslanderAIController" type="Node" parent="." index="4"]
-script = ExtResource( 7 )
+[node name="IslanderAIController" parent="." index="4" instance=ExtResource( 7 )]
 
 [node name="ExplorationNodes" type="Node2D" parent="IslanderAIController" index="0"]
 
@@ -268,10 +267,6 @@ position = Vector2( 3041.41, 245.779 )
 [node name="ExplorationNode20" parent="IslanderAIController/ExplorationNodes" index="19" instance=ExtResource( 16 )]
 position = Vector2( 3052, 711.942 )
 
-[node name="SleepTimer" type="Timer" parent="IslanderAIController" index="1"]
-wait_time = 0.4
-one_shot = true
-
 [node name="Pathfinder" parent="." index="5" instance=ExtResource( 6 )]
 visible = false
 tile_set = SubResource( 2 )
@@ -316,7 +311,6 @@ texture = ExtResource( 15 )
 [connection signal="mouse_entered" from="HUD/Container" to="Experimenter/ItemPlacementTool" method="_on_MainContainer_mouse_entered"]
 [connection signal="mouse_exited" from="HUD/Container" to="Experimenter/ItemPlacementTool" method="_on_MainContainer_mouse_exited"]
 [connection signal="use_item" from="HUD/Container/ExperimenterInventory" to="Experimenter" method="_on_ExperimenterInventory_use_item"]
-[connection signal="timeout" from="IslanderAIController/SleepTimer" to="IslanderAIController" method="_on_SleepTimer_timeout"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter/ItemPlacementTool" to="Objects/Props" method="_on_ItemPlacementTool_place_item"]
 [connection signal="place_item" from="Experimenter/ItemPlacementTool" to="Experimenter" method="_on_ItemPlacementTool_place_item"]

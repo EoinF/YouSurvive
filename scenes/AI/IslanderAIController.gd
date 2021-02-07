@@ -1,5 +1,7 @@
 extends "res://scripts/goals.gd"
 
+signal target_spotted
+
 var goals = []
 var current_goal = IdleGoal.new()
 
@@ -24,7 +26,6 @@ func add_collection_goal(target_type, limit):
 	))
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if is_paused:
 		return
@@ -156,7 +157,8 @@ func _start_new_target_animation():
 	islander.move(direction.x, direction.y)
 	
 	is_paused = true
-	get_node("SleepTimer").start()
+	islander.start_target_spotted_emote(funcref(self, "_on_finish_animation"))
 
-func _on_SleepTimer_timeout():
+
+func _on_finish_animation():
 	is_paused = false
