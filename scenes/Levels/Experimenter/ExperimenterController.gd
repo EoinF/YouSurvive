@@ -1,31 +1,16 @@
 extends Node
 
-signal finish_scene
-
-var player_name: String
-
-
-func set_player_name(name: String):
-	player_name = name
-	get_node("HUD/DialogueContainer/MainDialogue1").set_variables({
-		"player_name": player_name
-	})
-
-
-func _ready():
-	get_node("HUD/DialogueContainer/MainDialogue1").start()
-
 
 func _process(delta):
 	_process_movement_input(delta)
 
 
 func _process_movement_input(delta):
-	var experimenter = get_node("Experimenter")
+	var experimenter = get_owner().get_node("Experimenter")
 	var x = 0
 	var y = 0
 	
-	var islander = get_node("Objects/Props/Islander")
+	var islander = get_owner().get_node("Objects/Props/Islander")
 	if Input.is_action_pressed('center_camera'):
 		experimenter.focus_target(islander)
 	
@@ -42,4 +27,3 @@ func _process_movement_input(delta):
 		var deltaVector = Vector2(x, y).normalized() * delta
 		
 		experimenter.move(deltaVector)
-

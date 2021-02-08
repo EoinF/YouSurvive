@@ -11,9 +11,9 @@ var item_drops = []
 var is_hittable = true
 
 func _ready():
-	for i in range(0, COCONUT_DROPS):
+	for _i in range(0, COCONUT_DROPS):
 		item_drops.append("coconut")
-	for i in range(0, BRANCH_DROPS):
+	for _i in range(0, BRANCH_DROPS):
 		item_drops.append("branch")
 
 

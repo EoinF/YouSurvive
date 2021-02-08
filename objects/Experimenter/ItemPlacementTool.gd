@@ -14,6 +14,7 @@ func _process(delta):
 		if bodies_entered.empty() and Input.is_action_just_released("left_click"):
 			emit_signal("place_item", placement_item_type, position)
 
+
 func toggle_item_placement(item_type):
 	if item_type == placement_item_type:
 		disable_item_placement()
@@ -23,8 +24,9 @@ func toggle_item_placement(item_type):
 
 
 func disable_item_placement():
-	get_node("Sprites/" + placement_item_type).visible = false
-	placement_item_type = null
+	if placement_item_type != null:
+		get_node("Sprites/" + placement_item_type).visible = false
+		placement_item_type = null
 
 
 func _on_PlacementSensor_body_entered(body):

@@ -1,7 +1,5 @@
 extends "res://scripts/goals.gd"
 
-signal target_spotted
-
 var goals = []
 var current_goal = IdleGoal.new()
 
@@ -18,15 +16,15 @@ func _ready():
 func add_collection_goal(target_type, limit):
 	goals.push_back(LocateGoal.new(
 		target_type,
-		10
+		limit
 	))
 	goals.push_back(CollectGoal.new(
 		target_type,
-		10
+		limit
 	))
 
 
-func _process(delta):
+func _process(_delta):
 	if is_paused:
 		return
 
@@ -34,7 +32,6 @@ func _process(delta):
 		objects_in_view = objects_in_view
 	}
 	
-	var previous_goal = current_goal
 	var current_priority = current_goal.get_priority(owner_context)
 	for goal in goals:
 		var next_priority = goal.get_priority(owner_context)
@@ -47,7 +44,7 @@ func _process(delta):
 		GoalTypes.LOCATE:
 			locate()
 		GoalTypes.COLLECT:
-			collect(previous_goal, current_goal)
+			collect()
 
 
 func locate():
@@ -71,7 +68,7 @@ func locate():
 		islander.move(direction.x, direction.y)
 
 
-func collect(previous_goal: Goal, current_goal: Goal):
+func collect():
 	if current_target == null or current_target.object_type != current_goal.target:
 		current_target = _get_closest_target_of_type(current_goal.target)
 		current_move_path = _get_quickest_path_to(current_target)
