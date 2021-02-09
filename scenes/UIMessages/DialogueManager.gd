@@ -22,7 +22,7 @@ func start():
 
 func set_variables(_variables: Dictionary):
 	variables = _variables
-	
+
 
 func _apply_variables(text):
 	return text.format(variables)
@@ -66,7 +66,9 @@ func _next_node():
 			button.rect_position.y = (rect_size.y - background.rect_size.y) * current_node.Y_POSITION_PERCENT
 			
 			visible = true
-			get_node("LetterTimer").start()
+			var letter_timer = get_node("LetterTimer")
+			letter_timer.set_wait_time(current_node.NEXT_LETTER_DELAY)
+			letter_timer.start()
 		else:
 			current_node.connect("finish_event", self, "_on_event_complete")
 			next_wait_time = current_node.NEXT_NODE_DELAY
@@ -81,12 +83,13 @@ func _on_LetterTimer_timeout():
 		get_node("LetterTimer").stop()
 		_start_next_node_timer()
 
+
 func _on_event_complete():
 	print("complete event")
 	children[node_index].disconnect("finish_event", self, "_on_event_complete")
 	_start_next_node_timer()
-	
-	
+
+
 func _start_next_node_timer():
 	var next_node_timer = get_node("NextNodeTimer")
 	if next_wait_time > 0:
@@ -94,7 +97,7 @@ func _start_next_node_timer():
 		next_node_timer.start()
 	else:
 		_next_node()
-	
+
 
 func _on_NextNodeTimer_timeout():
 	_next_node()
