@@ -45,8 +45,9 @@ func move(deltaVector: Vector2):
 
 
 func focus_target(_target: Node2D):
-	var camera = get_node("Camera")
-	camera.translate(_target.position - camera.position)
+	if is_controls_enabled:
+		var camera = get_node("Camera")
+		camera.translate(_target.position - camera.position)
 
 
 func set_follow_target(_target, _is_following):

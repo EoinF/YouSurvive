@@ -30,3 +30,7 @@ func _on_ObjectivesFast_finish_dialogue():
 
 func _on_ObjectivesSlow_finish_dialogue():
 	get_node("HUD/DialogueContainer/MainDialogue2").start()
+
+
+func _on_MainDialogue1_finish_dialogue():
+	var timer: Timer = get_node("Day1Objectives/SlowCompletionTimer")

@@ -75,6 +75,9 @@ SPEED_WHILE_TIRED = 9000
 collision_layer = 1
 collision_mask = 1
 
+[node name="IslanderVisionSensor" parent="Objects/Props/Islander" index="10"]
+visible = false
+
 [node name="HUD" parent="." index="1"]
 layer = 3
 
@@ -116,28 +119,24 @@ script = ExtResource( 13 )
 MESSAGE = "Okay {player_name}, here is our fresh test subject."
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
-NEXT_NODE_DELAY = 1
 Y_POSITION_PERCENT = 0.9
 
 [node name="Segment2" parent="HUD/DialogueContainer/MainDialogue1" index="5" instance=ExtResource( 4 )]
 MESSAGE = "He's already started on gathering materials for a shelter."
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
-NEXT_NODE_DELAY = 1
 Y_POSITION_PERCENT = 0.9
 
 [node name="Segment3" parent="HUD/DialogueContainer/MainDialogue1" index="6" instance=ExtResource( 4 )]
 MESSAGE = "He needs 10 branches in all."
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
-NEXT_NODE_DELAY = 1
 Y_POSITION_PERCENT = 0.9
 
 [node name="Segment4" parent="HUD/DialogueContainer/MainDialogue1" index="7" instance=ExtResource( 4 )]
 MESSAGE = "There aren't enough around so you'll have to pitch in with a couple."
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
-NEXT_NODE_DELAY = 1
 Y_POSITION_PERCENT = 0.9
 
 [node name="GiftBranches" parent="HUD/DialogueContainer/MainDialogue1" index="8" instance=ExtResource( 6 )]
@@ -149,7 +148,6 @@ script = ExtResource( 17 )
 MESSAGE = "You've been given some branches. It's up to you where you put them."
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
-NEXT_NODE_DELAY = 1
 Y_POSITION_PERCENT = 0.9
 
 [node name="StopCameraFollow" parent="HUD/DialogueContainer/MainDialogue1" index="10" instance=ExtResource( 6 )]
@@ -166,14 +164,21 @@ script = ExtResource( 16 )
 MESSAGE = "Click on the item on the top left to activate placement mode"
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
-NEXT_NODE_DELAY = 3
+NEXT_NODE_DELAY = 2.0
 Y_POSITION_PERCENT = 0.9
 
 [node name="Segment7" parent="HUD/DialogueContainer/MainDialogue1" index="13" instance=ExtResource( 4 )]
 MESSAGE = "Use the arrow keys or WASD to move around."
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
-NEXT_NODE_DELAY = 3
+NEXT_NODE_DELAY = 3.0
+Y_POSITION_PERCENT = 0.9
+
+[node name="Segment8" parent="HUD/DialogueContainer/MainDialogue1" index="14" instance=ExtResource( 4 )]
+MESSAGE = "Press the spacebar to focus on the test subject."
+BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
+TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
+NEXT_NODE_DELAY = 3.0
 Y_POSITION_PERCENT = 0.9
 
 [node name="ObjectivesFast" parent="HUD/DialogueContainer" index="1" instance=ExtResource( 3 )]
@@ -184,9 +189,23 @@ Y_POSITION_PERCENT = 0.9
 script = ExtResource( 20 )
 
 [node name="Segment1" parent="HUD/DialogueContainer/ObjectivesFast" index="4" instance=ExtResource( 4 )]
-MESSAGE = "Well, that was quick!"
+MESSAGE = "Done already? Well, that was a bit quick for my liking..."
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
+NEXT_NODE_DELAY = 1.0
+Y_POSITION_PERCENT = 0.9
+
+[node name="Segment2" parent="HUD/DialogueContainer/ObjectivesFast" index="5" instance=ExtResource( 4 )]
+MESSAGE = "We're trying to run interesting experiments here."
+BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
+TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
+Y_POSITION_PERCENT = 0.9
+
+[node name="Segment3" parent="HUD/DialogueContainer/ObjectivesFast" index="6" instance=ExtResource( 4 )]
+MESSAGE = "If you make it too easy, then there will be no real data to gather."
+BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
+TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
+Y_POSITION_PERCENT = 0.9
 
 [node name="ObjectivesSlow" parent="HUD/DialogueContainer" index="2" instance=ExtResource( 3 )]
 
@@ -199,20 +218,50 @@ script = ExtResource( 19 )
 MESSAGE = "You're finally done?"
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
+Y_POSITION_PERCENT = 0.9
+
+[node name="Segment2" parent="HUD/DialogueContainer/ObjectivesSlow" index="5" instance=ExtResource( 4 )]
+MESSAGE = "We're trying to run these experiments in a timely manner."
+BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
+TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
+Y_POSITION_PERCENT = 0.9
+
+[node name="Segment3" parent="HUD/DialogueContainer/ObjectivesSlow" index="6" instance=ExtResource( 4 )]
+MESSAGE = "If you waste so much time we'll never get them done."
+BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
+TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
+Y_POSITION_PERCENT = 0.9
 
 [node name="MainDialogue2" parent="HUD/DialogueContainer" index="3" instance=ExtResource( 3 )]
 
 [node name="Segment1" parent="HUD/DialogueContainer/MainDialogue2" index="3" instance=ExtResource( 4 )]
-MESSAGE = "You'll have a chance to redeem yourself tomorrow."
+MESSAGE = "Anyway. Let me calculate your score for this experiment..."
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
-NEXT_NODE_DELAY = 1
+NEXT_NODE_DELAY = 2.0
+Y_POSITION_PERCENT = 0.9
 
 [node name="Segment2" parent="HUD/DialogueContainer/MainDialogue2" index="4" instance=ExtResource( 4 )]
-MESSAGE = "Now, get out of my sight."
+MESSAGE = "Your score is..."
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
-NEXT_NODE_DELAY = 3
+NEXT_NODE_DELAY = 2.0
+NEXT_LETTER_DELAY = 0.15
+Y_POSITION_PERCENT = 0.9
+
+[node name="Segment3" parent="HUD/DialogueContainer/MainDialogue2" index="5" instance=ExtResource( 4 )]
+MESSAGE = "F"
+BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
+TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
+NEXT_NODE_DELAY = 3.0
+Y_POSITION_PERCENT = 0.9
+
+[node name="Segment4" parent="HUD/DialogueContainer/MainDialogue2" index="6" instance=ExtResource( 4 )]
+MESSAGE = "Better luck tomorrow."
+BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
+TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
+NEXT_NODE_DELAY = 1.0
+Y_POSITION_PERCENT = 0.9
 
 [node name="AnimationPlayer" parent="." index="3"]
 anims/highlight_inventory = SubResource( 1 )
@@ -290,19 +339,22 @@ OBJECTS_NODE_PATH = "Objects/Props"
 [node name="Experimenter" parent="." index="6" instance=ExtResource( 1 )]
 
 [node name="SlowCompletionTimer" type="Timer" parent="Day1Objectives" index="0"]
-wait_time = 45.0
+wait_time = 50.0
 one_shot = true
 autostart = true
 
 [node name="ExperimenterController" type="Node" parent="." index="8"]
 script = ExtResource( 18 )
+[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
 [connection signal="mouse_entered" from="HUD/Container" to="Experimenter" method="_on_MainContainer_mouse_entered"]
 [connection signal="mouse_exited" from="HUD/Container" to="Experimenter" method="_on_MainContainer_mouse_exited"]
 [connection signal="use_item" from="HUD/Container/ExperimenterInventory" to="Experimenter" method="_on_ExperimenterInventory_use_item"]
+[connection signal="finish_dialogue" from="HUD/DialogueContainer/MainDialogue1" to="." method="_on_MainDialogue1_finish_dialogue"]
 [connection signal="finish_dialogue" from="HUD/DialogueContainer/ObjectivesFast" to="." method="_on_ObjectivesFast_finish_dialogue"]
 [connection signal="finish_dialogue" from="HUD/DialogueContainer/ObjectivesSlow" to="." method="_on_ObjectivesSlow_finish_dialogue"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_Experimenter_place_item"]
 [connection signal="objective_completed" from="Day1Objectives" to="." method="_on_Day1Objectives_objective_completed"]
+[connection signal="objectives_updated" from="Day1Objectives" to="HUD" method="_on_Day1Objectives_objectives_updated"]

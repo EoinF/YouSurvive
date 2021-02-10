@@ -11,7 +11,7 @@ func _process_movement_input(delta):
 	var y = 0
 	
 	var islander = get_owner().get_node("Objects/Props/Islander")
-	if Input.is_action_pressed('center_camera'):
+	if Input.is_action_just_released('center_camera'):
 		experimenter.focus_target(islander)
 	
 	if Input.is_action_pressed('ui_left'):
