@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal use_item(item_type)
+
 var _message_use_coconut_without_rock = "You need a rock to break open the coconut"
 
 
@@ -21,3 +23,7 @@ func _on_Islander_stamina_change(stamina):
 
 func _on_objectives_updated(objectives):
 	get_node("Container/ObjectivesDisplay").set_objectives(objectives)
+
+
+func _on_Inventory_use_item(item_type):
+	emit_signal("use_item", item_type)

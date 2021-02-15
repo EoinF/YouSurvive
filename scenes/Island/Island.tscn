@@ -1,14 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://objects/Rock/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Islander/Islander.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Island/ObjectivesDisplay.gd" type="Script" id=3]
+[ext_resource path="res://scenes/Island/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/Tree/Tree.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Inventory/Inventory.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/Island/TooltipContainer.gd" type="Script" id=7]
-[ext_resource path="res://scenes/UIMessages/AlertMessage.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Island/Props.gd" type="Script" id=9]
-[ext_resource path="res://scenes/Island/HUD.gd" type="Script" id=10]
 [ext_resource path="res://scenes/Island/Projectiles.gd" type="Script" id=13]
 [ext_resource path="res://scenes/Island/AIController.gd" type="Script" id=15]
 [ext_resource path="res://scenes/Island/IslandLayout.tscn" type="PackedScene" id=16]
@@ -654,130 +650,11 @@ position = Vector2( 1012.11, 446.253 )
 [node name="Rock85" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
 position = Vector2( 564.837, 300.102 )
 
-[node name="HUD" type="CanvasLayer" parent="."]
-layer = 2
-script = ExtResource( 10 )
-
-[node name="Container" type="Control" parent="HUD"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Inventory" parent="HUD/Container" instance=ExtResource( 5 )]
-
-[node name="ExperimenterInventory" parent="HUD/Container" instance=ExtResource( 5 )]
-visible = false
-
-[node name="AlertMessage" parent="HUD/Container" instance=ExtResource( 8 )]
-
-[node name="StaminaBar" type="Control" parent="HUD/Container"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -120.0
-margin_top = 5.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ProgressBar" type="ProgressBar" parent="HUD/Container/StaminaBar"]
-margin_top = 16.0
-margin_right = 111.0
-margin_bottom = 30.0
-step = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="HUD/Container/StaminaBar"]
-margin_right = 109.0
-margin_bottom = 14.0
-text = "Stamina"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TooltipContainer" type="Control" parent="HUD/Container"]
-visible = false
-self_modulate = Color( 0.415686, 0.129412, 0.129412, 0.0862745 )
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Background" type="ColorRect" parent="HUD/Container/TooltipContainer"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -50.0
-margin_top = -10.0
-margin_right = 50.0
-margin_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color( 0.113725, 0.113725, 0.113725, 0.584314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Tooltip" type="Label" parent="HUD/Container/TooltipContainer/Background"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-text = "Hello world"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ObjectivesDisplay" type="Control" parent="HUD/Container"]
-margin_left = 5.0
-margin_top = 45.0
-margin_right = 195.0
-margin_bottom = 70.0
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="HUD/Container/ObjectivesDisplay"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.113725, 0.113725, 0.113725, 0.584314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HUD/Container/ObjectivesDisplay"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-bbcode_enabled = true
-bbcode_text = "-  Just win lol"
-text = "-  Just win lol"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="AIController" type="Node" parent="."]
 script = ExtResource( 15 )
 [connection signal="spawn_item" from="Objects/Projectiles" to="Objects/Props" method="_on_Projectiles_spawn_item"]
-[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="HUD" method="_on_Islander_inventory_slot_change"]
-[connection signal="stamina_change" from="Objects/Props/Islander" to="HUD" method="_on_Islander_stamina_change"]
 [connection signal="throw_stone" from="Objects/Props/Islander" to="Objects/Projectiles" method="_on_Islander_throw_stone"]
-[connection signal="use_coconut_without_rock" from="Objects/Props/Islander" to="HUD" method="_on_Islander_use_coconut_without_rock"]
 [connection signal="timeout" from="Objects/Props/Islander/StaminaTimer" to="Objects/Props/Islander" method="_on_StaminaTimer_timeout"]
-[connection signal="use_item" from="HUD/Container/Inventory" to="Objects/Props/Islander" method="_on_Inventory_use_item"]
+[connection signal="use_item" from="HUD" to="Objects/Props/Islander" method="_on_HUD_use_item"]

@@ -106,10 +106,6 @@ func _on_ItemPlacementTool_place_item(_item_type, _location):
 		})
 
 
-func _on_ExperimenterInventory_use_item(_item_type):
-	use_item(_item_type)
-
-
 func _on_MainContainer_mouse_entered():
 	get_node("ItemPlacementTool")._on_MainContainer_mouse_entered()
 
@@ -117,3 +113,6 @@ func _on_MainContainer_mouse_entered():
 func _on_MainContainer_mouse_exited():
 	get_node("ItemPlacementTool")._on_MainContainer_mouse_exited()
 
+
+func _on_HUD_use_item(_item_type):
+	use_item(_item_type)

@@ -81,15 +81,6 @@ visible = false
 [node name="HUD" parent="." index="1"]
 layer = 3
 
-[node name="Inventory" parent="HUD/Container" index="0"]
-visible = false
-
-[node name="ExperimenterInventory" parent="HUD/Container" index="1"]
-visible = true
-
-[node name="RichTextLabel" parent="HUD/Container/ObjectivesDisplay" index="1"]
-text = "-  Collect branches (0 / 10)"
-
 [node name="Day1Label" parent="HUD" index="1"]
 margin_left = -18.0
 margin_top = -7.0
@@ -361,11 +352,10 @@ autostart = true
 
 [node name="ExperimenterController" type="Node" parent="." index="8"]
 script = ExtResource( 18 )
+[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
-[connection signal="mouse_entered" from="HUD/Container" to="Experimenter" method="_on_MainContainer_mouse_entered"]
-[connection signal="mouse_exited" from="HUD/Container" to="Experimenter" method="_on_MainContainer_mouse_exited"]
-[connection signal="use_item" from="HUD/Container/ExperimenterInventory" to="Experimenter" method="_on_ExperimenterInventory_use_item"]
+[connection signal="use_item" from="HUD" to="Experimenter" method="_on_HUD_use_item"]
 [connection signal="finish_dialogue" from="HUD/DialogueContainer/MainDialogue1" to="." method="_on_MainDialogue1_finish_dialogue"]
 [connection signal="finish_dialogue" from="HUD/DialogueContainer/ObjectivesFast" to="." method="_on_ObjectivesFast_finish_dialogue"]
 [connection signal="finish_dialogue" from="HUD/DialogueContainer/ObjectivesSlow" to="." method="_on_ObjectivesSlow_finish_dialogue"]
@@ -373,4 +363,5 @@ script = ExtResource( 18 )
 [connection signal="inventory_slot_change" from="Experimenter" to="HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 [connection signal="objectives_updated" from="Day1Objectives" to="." method="_on_Day1Objectives_objectives_updated"]
+[connection signal="objectives_updated" from="Day1Objectives" to="HUD" method="_on_objectives_updated"]
 [connection signal="objectives_updated" from="Day1Objectives" to="HUD" method="_on_Day1Objectives_objectives_updated"]

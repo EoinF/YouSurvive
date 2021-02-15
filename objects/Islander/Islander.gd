@@ -167,14 +167,6 @@ func _use_stone():
 		emit_signal("throw_stone", position, direction)
 
 
-func _on_Inventory_use_item(item_type):
-	match item_type:
-		"stone":
-			_use_stone()
-		"coconut":
-			_use_coconut()
-
-
 func _on_Hurtbox_area_entered(area):
 	if not _is_hurting and area.is_in_group("Attack") \
 	and not area.is_in_group("Islander") \
@@ -193,3 +185,11 @@ func _on_HurtTimer_timeout():
 func _on_EmoteTimer_timeout():
 	get_node("TargetFoundEmote").visible = false
 	on_finished_emote_ref.call_func()
+
+
+func _on_HUD_use_item(item_type):
+	match item_type:
+		"stone":
+			_use_stone()
+		"coconut":
+			_use_coconut()
