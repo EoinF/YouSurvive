@@ -26,6 +26,7 @@ func _on_Name_Entry_text_entered(text: String):
 
 func _on_MainDialogue2_finish_dialogue():
 	emit_signal("finish_scene", player_name)
+	queue_free()
 
 
 func _on_NamelessDialogue_finish_dialogue():

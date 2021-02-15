@@ -111,6 +111,8 @@ __meta__ = {
 [node name="MainDialogue1" parent="HUD/DialogueContainer" index="0" instance=ExtResource( 3 )]
 
 [node name="FadeInEvent" parent="HUD/DialogueContainer/MainDialogue1" index="3" instance=ExtResource( 6 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event1Script" type="Node" parent="HUD/DialogueContainer/MainDialogue1/FadeInEvent" index="0"]
 script = ExtResource( 13 )
@@ -140,6 +142,8 @@ TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 Y_POSITION_PERCENT = 0.9
 
 [node name="GiftBranches" parent="HUD/DialogueContainer/MainDialogue1" index="8" instance=ExtResource( 6 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event3Script" type="Node" parent="HUD/DialogueContainer/MainDialogue1/GiftBranches" index="0"]
 script = ExtResource( 17 )
@@ -151,11 +155,15 @@ TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 Y_POSITION_PERCENT = 0.9
 
 [node name="StopCameraFollow" parent="HUD/DialogueContainer/MainDialogue1" index="10" instance=ExtResource( 6 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event2Script" type="Node" parent="HUD/DialogueContainer/MainDialogue1/StopCameraFollow" index="0"]
 script = ExtResource( 10 )
 
 [node name="EnableControls" parent="HUD/DialogueContainer/MainDialogue1" index="11" instance=ExtResource( 6 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event4Script" type="Node" parent="HUD/DialogueContainer/MainDialogue1/EnableControls" index="0"]
 script = ExtResource( 16 )
@@ -184,6 +192,8 @@ Y_POSITION_PERCENT = 0.9
 [node name="ObjectivesFast" parent="HUD/DialogueContainer" index="1" instance=ExtResource( 3 )]
 
 [node name="DisableControls" parent="HUD/DialogueContainer/ObjectivesFast" index="3" instance=ExtResource( 6 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event5Script" type="Node" parent="HUD/DialogueContainer/ObjectivesFast/DisableControls" index="0"]
 script = ExtResource( 20 )
@@ -192,7 +202,6 @@ script = ExtResource( 20 )
 MESSAGE = "Done already? Well, that was a bit quick for my liking..."
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
-NEXT_NODE_DELAY = 1.0
 Y_POSITION_PERCENT = 0.9
 
 [node name="Segment2" parent="HUD/DialogueContainer/ObjectivesFast" index="5" instance=ExtResource( 4 )]
@@ -210,6 +219,8 @@ Y_POSITION_PERCENT = 0.9
 [node name="ObjectivesSlow" parent="HUD/DialogueContainer" index="2" instance=ExtResource( 3 )]
 
 [node name="DisableControls" parent="HUD/DialogueContainer/ObjectivesSlow" index="3" instance=ExtResource( 6 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event6Script" type="Node" parent="HUD/DialogueContainer/ObjectivesSlow/DisableControls" index="0"]
 script = ExtResource( 19 )
@@ -241,7 +252,13 @@ TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 NEXT_NODE_DELAY = 2.0
 Y_POSITION_PERCENT = 0.9
 
-[node name="Segment2" parent="HUD/DialogueContainer/MainDialogue2" index="4" instance=ExtResource( 4 )]
+[node name="Segment5" parent="HUD/DialogueContainer/MainDialogue2" index="4" instance=ExtResource( 4 )]
+MESSAGE = "And remember, we're all in this together."
+BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
+TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
+Y_POSITION_PERCENT = 0.9
+
+[node name="Segment2" parent="HUD/DialogueContainer/MainDialogue2" index="5" instance=ExtResource( 4 )]
 MESSAGE = "Your score is..."
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
@@ -249,18 +266,17 @@ NEXT_NODE_DELAY = 2.0
 NEXT_LETTER_DELAY = 0.15
 Y_POSITION_PERCENT = 0.9
 
-[node name="Segment3" parent="HUD/DialogueContainer/MainDialogue2" index="5" instance=ExtResource( 4 )]
+[node name="Segment3" parent="HUD/DialogueContainer/MainDialogue2" index="6" instance=ExtResource( 4 )]
 MESSAGE = "F"
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 NEXT_NODE_DELAY = 3.0
 Y_POSITION_PERCENT = 0.9
 
-[node name="Segment4" parent="HUD/DialogueContainer/MainDialogue2" index="6" instance=ExtResource( 4 )]
+[node name="Segment4" parent="HUD/DialogueContainer/MainDialogue2" index="7" instance=ExtResource( 4 )]
 MESSAGE = "Better luck tomorrow."
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
-NEXT_NODE_DELAY = 1.0
 Y_POSITION_PERCENT = 0.9
 
 [node name="AnimationPlayer" parent="." index="3"]
@@ -345,7 +361,6 @@ autostart = true
 
 [node name="ExperimenterController" type="Node" parent="." index="8"]
 script = ExtResource( 18 )
-[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
 [connection signal="mouse_entered" from="HUD/Container" to="Experimenter" method="_on_MainContainer_mouse_entered"]
@@ -354,7 +369,8 @@ script = ExtResource( 18 )
 [connection signal="finish_dialogue" from="HUD/DialogueContainer/MainDialogue1" to="." method="_on_MainDialogue1_finish_dialogue"]
 [connection signal="finish_dialogue" from="HUD/DialogueContainer/ObjectivesFast" to="." method="_on_ObjectivesFast_finish_dialogue"]
 [connection signal="finish_dialogue" from="HUD/DialogueContainer/ObjectivesSlow" to="." method="_on_ObjectivesSlow_finish_dialogue"]
+[connection signal="finish_dialogue" from="HUD/DialogueContainer/MainDialogue2" to="." method="_on_MainDialogue2_finish_dialogue"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUD" method="_on_Experimenter_inventory_slot_change"]
-[connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_Experimenter_place_item"]
-[connection signal="objective_completed" from="Day1Objectives" to="." method="_on_Day1Objectives_objective_completed"]
+[connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 [connection signal="objectives_updated" from="Day1Objectives" to="HUD" method="_on_Day1Objectives_objectives_updated"]
+[connection signal="objectives_updated" from="Day1Objectives" to="." method="_on_Day1Objectives_objectives_updated"]

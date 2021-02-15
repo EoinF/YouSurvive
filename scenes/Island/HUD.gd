@@ -19,5 +19,5 @@ func _on_Islander_stamina_change(stamina):
 	get_node("Container/StaminaBar/ProgressBar").value = stamina
 
 
-func _on_Day1Objectives_objectives_updated(objectives):
+func _on_objectives_updated(objectives):
 	get_node("Container/ObjectivesDisplay").set_objectives(objectives)

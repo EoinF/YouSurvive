@@ -5,6 +5,9 @@ signal place_item(item_type, source_location)
 
 export var CAMERA_MOVE_SPEED = 1000
 
+var experiment_data = []
+var current_time = 0.0
+
 class InventorySlot:
 	var node_key: String
 	var amount: int
@@ -15,6 +18,10 @@ var item_type_to_slot = {}
 var unused_keys = ["1", "2", "3"]
 
 var is_controls_enabled = false
+
+
+func get_experiment_data():
+	return experiment_data
 
 
 func enable_controls():
@@ -77,6 +84,10 @@ func use_item(_item_type):
 		get_node("ItemPlacementTool").toggle_item_placement(_item_type)
 
 
+func _process(delta):
+	current_time += delta
+
+
 func _on_ItemPlacementTool_place_item(_item_type, _location):
 	if item_type_to_slot[_item_type].amount > 0:
 		item_type_to_slot[_item_type].amount -= 1
@@ -84,6 +95,15 @@ func _on_ItemPlacementTool_place_item(_item_type, _location):
 			get_node("ItemPlacementTool").disable_item_placement()
 		emit_signal("inventory_slot_change", item_type_to_slot[_item_type])
 		emit_signal("place_item", _item_type,_location)
+		
+		experiment_data.push_back({
+			"action_type": "place_item",
+			"current_time": current_time,
+			"location": {
+				"x": _location.x, "y": _location.y
+			},
+			"item_type": _item_type
+		})
 
 
 func _on_ExperimenterInventory_use_item(_item_type):

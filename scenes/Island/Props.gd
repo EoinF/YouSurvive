@@ -48,5 +48,5 @@ func _on_Projectiles_spawn_item(item_type, source_position):
 	_spawn_item(item_type, source_position)
 
 
-func _on_Experimenter_place_item(item_type, source_position):
+func _on_place_item(item_type, source_position):
 	_spawn_item(item_type, source_position)
