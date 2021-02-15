@@ -14,9 +14,10 @@
 [ext_resource path="res://assets/PathfinderTileset.png" type="Texture" id=14]
 [ext_resource path="res://scenes/Levels/Experimenter/Day1/Event4Script.gd" type="Script" id=16]
 [ext_resource path="res://scenes/Levels/Experimenter/Day1/Event3Script.gd" type="Script" id=17]
-[ext_resource path="res://scenes/Levels/Experimenter/ExperimenterController.gd" type="Script" id=18]
+[ext_resource path="res://scenes/Levels/Base/ExperimenterController.gd" type="Script" id=18]
 [ext_resource path="res://scenes/Levels/Experimenter/Day1/Event6Script.gd" type="Script" id=19]
 [ext_resource path="res://scenes/Levels/Experimenter/Day1/Event5Script.gd" type="Script" id=20]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "highlight_inventory"
