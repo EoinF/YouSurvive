@@ -7,6 +7,9 @@
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="IslanderScenes" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -20,9 +23,9 @@ script = ExtResource( 3 )
 
 [node name="Day1" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Day1/Day1.tscn"]
 
-[node name="Day2" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Day2/Day2.tscn"]
-
 [node name="Night1" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Night1/Night1.tscn"]
+
+[node name="Day2" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Day2/Day2.tscn"]
 
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
 [connection signal="finish_scenes" from="IslanderScenes" to="." method="_on_IslanderScenes_finish_scenes"]

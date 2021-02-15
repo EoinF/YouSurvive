@@ -18,7 +18,6 @@
 [ext_resource path="res://scenes/Levels/Experimenter/Day1/Event6Script.gd" type="Script" id=19]
 [ext_resource path="res://scenes/Levels/Experimenter/Day1/Event5Script.gd" type="Script" id=20]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "highlight_inventory"
 length = 4.5
@@ -373,5 +372,5 @@ script = ExtResource( 18 )
 [connection signal="finish_dialogue" from="HUD/DialogueContainer/MainDialogue2" to="." method="_on_MainDialogue2_finish_dialogue"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
-[connection signal="objectives_updated" from="Day1Objectives" to="HUD" method="_on_Day1Objectives_objectives_updated"]
 [connection signal="objectives_updated" from="Day1Objectives" to="." method="_on_Day1Objectives_objectives_updated"]
+[connection signal="objectives_updated" from="Day1Objectives" to="HUD" method="_on_Day1Objectives_objectives_updated"]

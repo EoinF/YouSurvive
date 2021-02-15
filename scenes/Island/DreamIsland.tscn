@@ -31,11 +31,12 @@ script = ExtResource( 9 )
 script = ExtResource( 6 )
 
 [node name="Islander" parent="Objects/Props" instance=ExtResource( 3 )]
-position = Vector2( 685.718, 312.857 )
+position = Vector2( 753.677, 265.663 )
 collision_mask = 22
 SPEED_WHILE_TIRED = 12000
 
 [node name="PlayerInteraction" type="Area2D" parent="Objects/Props/Islander"]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -47,6 +48,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="IslanderVisionSensor" type="Area2D" parent="Objects/Props/Islander"]
+visible = false
 collision_layer = 0
 collision_mask = 15
 
@@ -170,7 +172,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 5.0
+bbcode_enabled = true
+bbcode_text = "-  Just win lol"
 text = "-  Just win lol"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

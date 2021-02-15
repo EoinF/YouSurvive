@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 signal start_new_game
 signal start_intro

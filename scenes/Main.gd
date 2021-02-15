@@ -31,5 +31,7 @@ func _on_MainMenu_continue_game(save_data):
 			chapter_scenes.load_day1(save_data)
 		"Day2":
 			chapter_scenes.load_day2(save_data)
-	
+		"Night1":
+			chapter_scenes.load_night1(save_data)
+
 	remove_child(get_node("MainMenu"))
