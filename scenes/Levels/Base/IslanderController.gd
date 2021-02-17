@@ -4,12 +4,23 @@ extends Node
 var nearby_interaction_items = []
 var current_interaction_item = null
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var is_controls_enabled = true
+
+
+func enable_controls():
+	is_controls_enabled = true
+
+
+func disable_controls():
+	is_controls_enabled = false
+
+
 func _process(delta):
-	_process_movement_input(delta)
-	_process_interaction_input(delta)
-	_process_attack_input(delta)
-	_process_inventory_item_input()
+	if is_controls_enabled:
+		_process_movement_input(delta)
+		_process_interaction_input(delta)
+		_process_attack_input(delta)
+		_process_inventory_item_input()
 
 
 func _process_movement_input(delta):

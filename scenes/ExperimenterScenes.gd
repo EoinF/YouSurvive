@@ -25,7 +25,15 @@ func save_game(current_level, experiment_level = null, new_experiment_data = nul
 		save_data[experiment_level] = new_experiment_data
 	
 	save_file.store_string(to_json(save_data))
-	
+
+func load_scene(scene_name, _save_data = null):
+	if _save_data != null:
+		save_data = _save_data
+
+	var scene_placeholder = get_node(scene_name)
+	scene_placeholder.replace_by_instance()
+	get_node(scene_name).set_player_name(save_data.player_name)
+	get_node(scene_name).connect("finish_scene", self, "_on_" + scene_name + "finish_scene")
 
 func load_intro():
 	print("loading intro scene")
@@ -34,34 +42,14 @@ func load_intro():
 	get_node("Intro").connect("finish_scene", self, "_on_Intro_finish_scene")
 
 
-func load_day1(_save_data = DEFAULT_SAVE_DATA):
-	save_data = _save_data
-	var scene_placeholder = get_node("Day1")
-	scene_placeholder.replace_by_instance()
-	get_node("Day1").set_player_name(save_data.player_name)
-	get_node("Day1").connect("finish_scene", self, "_on_Day1_finish_scene")
-
-
-func load_day2(_save_data = DEFAULT_SAVE_DATA):
-	save_data = _save_data
-	var scene_placeholder = get_node("Day2")
-	scene_placeholder.replace_by_instance()
-	get_node("Day2").set_player_name(save_data.player_name)
-	get_node("Day2").connect("finish_scene", self, "_on_Day2_finish_scene")
-
-
 func _on_Intro_finish_scene(_player_name):
 	save_data.player_name = _player_name
 	
-	print("on intro finish scene", _player_name)
-	
 	save_game("Day1")
-	load_day1()
+	load_scene("Day1")
 
 
 func _on_Day1_finish_scene(experiment_data):
-	print("on day1 finish scene", save_data.player_name)
-	
 	var save_file = File.new()
 	save_file.open(constants.SAVE_FILE_LOCATION, File.WRITE)
 	
@@ -73,9 +61,14 @@ func _on_Day1_finish_scene(experiment_data):
 	save_file.store_string(to_json(save_data))
 	emit_signal("finish_scenes", save_data)
 	
-#	load_day2()
-	#save_game("Day2", "Day1", experiment_data)
+#	load_scene("Night1")
+	#save_game("Night1", "Day1", experiment_data)
 
 
+func _on_Night1_finish_scene():
+	save_game("Day1")
+	load_scene("Day2")
+	
+	
 func _on_Day2_finish_scene():
 	print("TODO: On finish day 2 scene")

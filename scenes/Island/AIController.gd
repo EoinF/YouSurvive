@@ -31,6 +31,16 @@ class AINode:
 
 
 var ai_nodes = []
+var is_ai_enabled = true
+
+
+func disable_ai():
+	is_ai_enabled = false
+	
+	
+func enable_ai():
+	is_ai_enabled = true
+
 
 func _ready():
 	for prop in get_parent().get_node("Objects/Props").get_children():
@@ -39,6 +49,8 @@ func _ready():
 
 
 func _process(delta):
+	if not is_ai_enabled:
+		return
 	for i in range(ai_nodes.size() - 1, -1, -1):
 		var ai_node = ai_nodes[i]
 		if ai_node.node == null:
