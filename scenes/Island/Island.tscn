@@ -44,6 +44,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="IslanderVisionSensor" type="Area2D" parent="Objects/Props/Islander"]
+visible = false
 collision_layer = 0
 collision_mask = 15
 
@@ -84,23 +85,8 @@ position = Vector2( 1388.21, 632.966 )
 [node name="Tree11" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 1606.97, 236.384 )
 
-[node name="Tree12" parent="Objects/Props" instance=ExtResource( 4 )]
-position = Vector2( 2959.53, 701.083 )
-
-[node name="Tree13" parent="Objects/Props" instance=ExtResource( 4 )]
-position = Vector2( 3029.13, 651.695 )
-
-[node name="Tree14" parent="Objects/Props" instance=ExtResource( 4 )]
-position = Vector2( 3106.58, 701.083 )
-
-[node name="Tree15" parent="Objects/Props" instance=ExtResource( 4 )]
-position = Vector2( 3026.88, 762.819 )
-
-[node name="Tree16" parent="Objects/Props" instance=ExtResource( 4 )]
-position = Vector2( 3050.45, 202.71 )
-
 [node name="Tree17" parent="Objects/Props" instance=ExtResource( 4 )]
-position = Vector2( 2236.67, -22.9047 )
+position = Vector2( 2150.37, -22.9047 )
 
 [node name="Tree18" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 1701.26, -74.538 )
@@ -195,25 +181,7 @@ position = Vector2( 1773.33, 141.422 )
 position = Vector2( 2039.17, 104.884 )
 
 [node name="Rock162" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
-position = Vector2( 2313.83, 130.083 )
-
-[node name="Rock163" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
-position = Vector2( 2695.59, 130.083 )
-
-[node name="Rock164" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
-position = Vector2( 2709.45, 377.027 )
-
-[node name="Rock165" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
-position = Vector2( 2545.66, 247.255 )
-
-[node name="Rock166" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
-position = Vector2( 2948.83, 211.977 )
-
-[node name="Rock167" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
-position = Vector2( 2832.92, 606.333 )
-
-[node name="Rock168" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
-position = Vector2( 2846.78, 617.672 )
+position = Vector2( 2235.07, 120.739 )
 
 [node name="Rock169" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
 position = Vector2( 1334.88, 390.886 )
@@ -253,9 +221,6 @@ position = Vector2( 1275.66, 356.868 )
 
 [node name="Rock181" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
 position = Vector2( 1459.61, 346.789 )
-
-[node name="Rock182" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
-position = Vector2( 2352.6, -176.12 )
 
 [node name="Rock111" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
 position = Vector2( 1779.83, 337.487 )
@@ -650,11 +615,13 @@ position = Vector2( 1012.11, 446.253 )
 [node name="Rock85" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
 position = Vector2( 564.837, 300.102 )
 
-[node name="HUD" parent="." instance=ExtResource( 3 )]
-
 [node name="AIController" type="Node" parent="."]
 script = ExtResource( 15 )
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="HUDLayer" instance=ExtResource( 3 )]
 [connection signal="spawn_item" from="Objects/Projectiles" to="Objects/Props" method="_on_Projectiles_spawn_item"]
 [connection signal="throw_stone" from="Objects/Props/Islander" to="Objects/Projectiles" method="_on_Islander_throw_stone"]
 [connection signal="timeout" from="Objects/Props/Islander/StaminaTimer" to="Objects/Props/Islander" method="_on_StaminaTimer_timeout"]
-[connection signal="use_item" from="HUD" to="Objects/Props/Islander" method="_on_HUD_use_item"]
+[connection signal="use_item" from="HUDLayer/HUD" to="Objects/Props/Islander" method="_on_HUD_use_item"]

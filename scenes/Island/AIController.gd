@@ -91,3 +91,7 @@ func _process(delta):
 					else:
 						ai_node.set_state(AIState.IDLE)
 
+
+func _on_Props_prop_added(prop):
+	if prop.is_in_group("AI"):
+		ai_nodes.append(AINode.new(prop))

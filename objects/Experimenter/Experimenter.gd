@@ -35,20 +35,21 @@ func disable_controls():
 
 func move(deltaVector: Vector2):
 	if is_controls_enabled:
+		var translate = deltaVector * CAMERA_MOVE_SPEED
 		var camera = get_node("Camera")
-		var newX = camera.position.x + deltaVector.x
-		var newY = camera.position.y + deltaVector.y
+		var newX = camera.global_position.x + translate.x
+		var newY = camera.global_position.y + translate.y
 		
 		if newX < camera.limit_left:
-			deltaVector.x += camera.limit_left - newX
+			translate.x += camera.limit_left - newX
 		elif newX > camera.limit_right:
-			deltaVector.x -= newX - camera.limit_right
+			translate.x -= newX - camera.limit_right
 		if newY < camera.limit_top:
-			deltaVector.y += camera.limit_top - newY
+			translate.y += camera.limit_top - newY
 		elif newY > camera.limit_bottom:
-			deltaVector.y -= newY - camera.limit_bottom
+			translate.y -= newY - camera.limit_bottom
 			
-		camera.translate(deltaVector * CAMERA_MOVE_SPEED)
+		camera.translate(translate)
 
 
 func focus_target(_target: Node2D):
@@ -115,4 +116,5 @@ func _on_MainContainer_mouse_exited():
 
 
 func _on_HUD_use_item(_item_type):
+	print("hud use item callback")
 	use_item(_item_type)

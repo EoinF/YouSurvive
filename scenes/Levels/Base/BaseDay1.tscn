@@ -19,7 +19,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0.823529, 0.647059, 0.529412, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../HUD/Day1Label:self_modulate")
+tracks/1/path = NodePath("../HUDLayer/HUD/Day1Label:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -43,15 +43,15 @@ position = Vector2( 2006.35, 907.949 )
 position = Vector2( 830.968, 440.548 )
 
 [node name="Branch3" parent="Objects/Props" index="15" instance=ExtResource( 8 )]
-position = Vector2( 2256.81, -23.2134 )
+position = Vector2( 2133.13, 2.94914 )
 
-[node name="Branch4" parent="Objects/Props" index="16" instance=ExtResource( 8 )]
-position = Vector2( 3115.35, 719.312 )
-
-[node name="Branch5" parent="Objects/Props" index="17" instance=ExtResource( 8 )]
+[node name="Branch5" parent="Objects/Props" index="16" instance=ExtResource( 8 )]
 position = Vector2( 1378.71, 736.539 )
 
-[node name="Day1Label" type="Label" parent="HUD" index="1"]
+[node name="HUD" parent="HUDLayer" index="0"]
+INVENTORY_TYPE = "Experimenter"
+
+[node name="Day1Label" type="Label" parent="HUDLayer/HUD" index="1"]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -72,4 +72,4 @@ anims/fade = SubResource( 1 )
 [node name="Day1Objectives" type="Node" parent="." index="4"]
 script = ExtResource( 2 )
 [connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
-[connection signal="objectives_updated" from="Day1Objectives" to="HUD" method="_on_objectives_updated"]
+[connection signal="objectives_updated" from="Day1Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]

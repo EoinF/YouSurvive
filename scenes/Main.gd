@@ -2,7 +2,7 @@ extends Node
 
 
 func _on_MainMenu_start_new_game():
-	get_node("ExperimenterScenes").load_day1()
+	get_node("ExperimenterScenes").load_scene("Day1")
 	remove_child(get_node("MainMenu"))
 
 
@@ -12,7 +12,7 @@ func _on_MainMenu_start_intro():
 
 
 func _on_ExperimenterScenes_finish_scenes(save_data):
-	get_node("IslanderScenes").load_day1(save_data)
+	get_node("IslanderScenes").load_scene("Day1", save_data)
 
 
 func _on_IslanderScenes_finish_scenes():
@@ -25,13 +25,7 @@ func _on_MainMenu_continue_game(save_data):
 		chapter_scenes = get_node("ExperimenterScenes")
 	else:
 		chapter_scenes = get_node("IslanderScenes")
-		
-	match save_data["current_level"]:
-		"Day1":
-			chapter_scenes.load_day1(save_data)
-		"Day2":
-			chapter_scenes.load_day2(save_data)
-		"Night1":
-			chapter_scenes.load_night1(save_data)
+	
+	chapter_scenes.load_scene(save_data["current_level"], save_data)
 
 	remove_child(get_node("MainMenu"))

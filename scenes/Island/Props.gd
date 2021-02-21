@@ -1,9 +1,12 @@
 extends YSort
 
+signal prop_added(node)
+
 var scene_map = {
 	"branch": preload("res://objects/CollectableItems/Branch.tscn"),
 	"coconut": preload("res://objects/CollectableItems/Coconut.tscn"),
-	"stone": preload("res://objects/CollectableItems/Stone.tscn")
+	"stone": preload("res://objects/CollectableItems/Stone.tscn"),
+	"crab": preload("res://objects/Crab/Crab.tscn")
 }
 
 func _ready():
@@ -14,9 +17,9 @@ func _ready():
 
 
 func _add_prop(prop, source_position):
-	var collectable = prop.get_node("CollectableItem")
-	collectable.position = source_position
+	prop.position = source_position
 	add_child(prop)
+	emit_signal("prop_added", prop)
 
 
 func _add_falling_prop(prop, source_position):
@@ -29,6 +32,7 @@ func _add_falling_prop(prop, source_position):
 	var collectable = prop.get_node("CollectableItem")
 	collectable.drop_item(from, to)
 	add_child(prop)
+	emit_signal("prop_added", prop)
 
 
 func _spawn_item_falling(item_type, source_position):
@@ -43,8 +47,6 @@ func _spawn_item(item_type, source_position):
 
 
 func _on_Projectiles_spawn_item(item_type, source_position):
-	print("spawn item: " + item_type)
-	print(source_position)
 	_spawn_item(item_type, source_position)
 
 

@@ -41,4 +41,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		
 	if anim_name == "RainCoconuts":
 		emit_signal("finish_scene")
+		queue_free()
 

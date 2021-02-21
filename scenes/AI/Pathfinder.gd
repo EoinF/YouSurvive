@@ -63,10 +63,10 @@ func generate_static_body_nav_tiles():
 			var shape: Shape2D = node.get_shape()
 			if shape.get_class() == "CapsuleShape2D":
 				var radius = min(shape.radius, shape.height)
-				var min_tile_x = int((node.global_position.x - radius) / 16)
-				var min_tile_y = int((node.global_position.y - radius) / 16)
-				var max_tile_x = min_tile_x + int(radius / 16) + 1
-				var max_tile_y = min_tile_y + int(radius / 16) + 1
+				var min_tile_x = floor((node.global_position.x - radius) / 16.0)
+				var min_tile_y = floor((node.global_position.y - radius) / 16.0)
+				var max_tile_x = min_tile_x + ceil(radius / 16.0)
+				var max_tile_y = min_tile_y + ceil(radius / 16.0)
 				
 				for i in range(min_tile_x, max_tile_x + 1):
 					for j in range(min_tile_y, max_tile_y + 1):

@@ -1,27 +1,22 @@
 extends Node
 
 signal objectives_updated(objectives)
-signal objective_completed(objective_key)
 
-var OBJECTIVE_REFILL_STAMINA_KEY = "OBJECTIVE_REFILL_STAMINA"
-var OBJECTIVE_REFILL_STAMINA_TEMPLATE = "Eat coconuts (stamina %d / %d)"
+var OBJECTIVE_COLLECT_COCONUTS_KEY = "OBJECTIVE_COLLECT_COCONUTS"
+var OBJECTIVE_COLLECT_COCONUTS_TEMPLATE = "Collect coconuts (%d/%d)"
 
-var current_stamina
-var required_stamina = 100
+var current_coconuts = 0
+var required_coconuts = 10
+
+var is_objective_1_complete = false
 
 func _ready():
 	emit_signal("objectives_updated", _get_objectives())
 
 
 func _get_objectives():
-	return [
-		OBJECTIVE_REFILL_STAMINA_TEMPLATE % [current_stamina, required_stamina]
-	]
-
-
-func _on_Islander_stamina_change(stamina):
-	current_stamina = stamina
-	emit_signal("objectives_updated", _get_objectives())
-	
-	if current_stamina >= required_stamina:
-		emit_signal("objectives_completed", OBJECTIVE_REFILL_STAMINA_KEY)
+	var objective1 = {}
+	objective1["description"] = OBJECTIVE_COLLECT_COCONUTS_TEMPLATE % [current_coconuts, required_coconuts]
+	objective1["key"] = OBJECTIVE_COLLECT_COCONUTS_KEY
+	objective1["is_complete"] = is_objective_1_complete
+	return [objective1]

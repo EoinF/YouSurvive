@@ -7,7 +7,7 @@ var DEFAULT_SAVE_DATA = {
 	"player_name": "test"
 }
 
-var save_data
+var save_data = DEFAULT_SAVE_DATA
 var constants
 
 func _ready():
@@ -66,6 +66,7 @@ func _on_Day1_finish_scene(experiment_data):
 
 
 func _on_Night1_finish_scene():
+	print("night 1 finished")
 	save_game("Day1")
 	load_scene("Day2")
 	
