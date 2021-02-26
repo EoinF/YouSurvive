@@ -30,7 +30,6 @@ script = ExtResource( 9 )
 [node name="Islander" parent="Objects/Props" instance=ExtResource( 2 )]
 position = Vector2( 395, 360 )
 collision_mask = 22
-SPEED_WHILE_TIRED = 12000
 
 [node name="PlayerInteraction" type="Area2D" parent="Objects/Props/Islander"]
 collision_layer = 0
@@ -46,7 +45,7 @@ autostart = true
 [node name="IslanderVisionSensor" type="Area2D" parent="Objects/Props/Islander"]
 visible = false
 collision_layer = 0
-collision_mask = 15
+collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Props/Islander/IslanderVisionSensor"]
 position = Vector2( -1, 0 )
@@ -54,42 +53,148 @@ shape = SubResource( 2 )
 
 [node name="Tree" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 2083.62, 765.295 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
 
 [node name="Tree2" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 1977.38, 785.268 )
+COCONUT_DROPS = 1
 
 [node name="Tree3" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 2154.38, 913.792 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
 
 [node name="Tree4" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 2097.21, 910.849 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
 
 [node name="Tree5" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 2013.22, 891.637 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
 
 [node name="Tree6" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 2212.08, 768.671 )
+COCONUT_DROPS = 1
 
 [node name="Tree7" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 610.268, 372.473 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
 
 [node name="Tree8" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 813.207, 435.966 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
 
 [node name="Tree9" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 1453.21, 633.966 )
+COCONUT_DROPS = 1
 
 [node name="Tree10" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 1388.21, 632.966 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
 
 [node name="Tree11" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 1606.97, 236.384 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
 
 [node name="Tree17" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 2150.37, -22.9047 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
 
 [node name="Tree18" parent="Objects/Props" instance=ExtResource( 4 )]
 position = Vector2( 1701.26, -74.538 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree19" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1779.1, -61.2379 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree20" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1688.72, 106.44 )
+COCONUT_DROPS = 1
+
+[node name="Tree21" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1636.39, 533.366 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree22" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1239.05, 244.714 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree23" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1297.85, 230.46 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree24" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1351.3, 219.769 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree25" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1404.76, 235.805 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree26" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1201.63, 294.605 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree27" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1141.05, 519.111 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree28" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1711.23, 804.199 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree29" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 2169.15, 234.024 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree30" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 2227.95, 203.733 )
+COCONUT_DROPS = 1
+
+[node name="Tree31" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 2245.77, 258.969 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree32" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1919.7, 61.1893 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree33" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1823.48, 153.843 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree34" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1862.68, 173.443 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
+
+[node name="Tree35" parent="Objects/Props" instance=ExtResource( 4 )]
+position = Vector2( 1789.63, 185.915 )
+COCONUT_DROPS = 1
+BRANCH_DROPS = 0
 
 [node name="Rocks" type="YSort" parent="Objects/Props"]
 

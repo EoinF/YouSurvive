@@ -54,6 +54,7 @@ func generate_base_nav_tiles():
 				else:
 					set_cell(tile_position.x, tile_position.y, 0)
 
+
 func generate_static_body_nav_tiles():
 	var objects_node = get_owner().get_node(OBJECTS_NODE_PATH)
 	if objects_node != null:
@@ -71,7 +72,7 @@ func generate_static_body_nav_tiles():
 				for i in range(min_tile_x, max_tile_x + 1):
 					for j in range(min_tile_y, max_tile_y + 1):
 						set_cell(i, j, 1)
-		
+
 
 func get_quickest_path_to(from, to):
 	var tile_from = Vector2(floor(from.x / 16), floor(from.y / 16))
@@ -96,6 +97,32 @@ func get_quickest_path_to(from, to):
 	var start_node = { 'location': tile_from, 'g_cost': 0, 'f_cost': h(tile_from, tile_to), 'parent': null }
 	return a_star([start_node], tile_to)
 
+
+func get_path_in_direction_of(origin: Vector2, direction: Vector2, max_distance = 200):
+	var current = Vector2(origin)
+	var previous_tileX = floor(origin.x / 16)
+	var previous_tileY = floor(origin.y / 16)
+	var valid_destination = Vector2(origin)
+	
+	var is_blockedX = false
+	var is_blockedY = false
+	
+	while !is_blockedX and !is_blockedY and current.distance_to(origin) < max_distance:
+		var tileX = floor(current.x / 16)
+		var tileY = floor(current.y / 16)
+		if get_cell(tileX, tileY) == 0:
+			valid_destination = current
+			is_blockedX = false
+			is_blockedY = false
+		else:
+			if tileX != previous_tileX:
+				is_blockedX = true
+			if tileY != previous_tileY:
+				is_blockedY = true
+		current += direction
+	return get_quickest_path_to(origin, valid_destination)
+	
+	
 
 func vector_hash(vec: Vector2):
 	return vec.x + (vec.y * get_used_rect().size.x)

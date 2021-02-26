@@ -5,9 +5,9 @@ signal inventory_slot_change(inventory_slot)
 signal stamina_change(stamina)
 signal throw_stone(position, direction)
 
-export var SPEED = 12 * 1000
+export var SPEED = 6 * 1000
 export var STAMINA = 25
-export var SPEED_WHILE_TIRED = 9 * 1000
+export var SPEED_WHILE_TIRED = 6 * 1000
 
 var object_type = "islander"
 

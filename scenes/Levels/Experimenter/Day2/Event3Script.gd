@@ -3,9 +3,11 @@ extends Node
 signal finish_event
 
 func trigger():
-	var animation_player = get_owner().get_node("AnimationPlayer")
-	animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
-	animation_player.play("fade")
+	after_complete()
+	emit_signal("finish_event")
+#	var animation_player = get_owner().get_node("AnimationPlayer")
+#	animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
+#	animation_player.play("fade")
 
 
 func after_complete():

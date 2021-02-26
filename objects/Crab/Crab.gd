@@ -5,6 +5,8 @@ var velocity = Vector2.ZERO
 var _death_cooldown = -1
 var _is_dying = false
 
+var object_type = "crab"
+
 enum AttackPhase {
 	IDLE
 	PRE_ATTACK

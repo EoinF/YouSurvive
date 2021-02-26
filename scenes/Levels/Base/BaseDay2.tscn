@@ -33,7 +33,7 @@ tracks/1/keys = {
 [node name="BaseDay2" instance=ExtResource( 1 )]
 
 [node name="Objects" parent="." index="0"]
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.823529, 0.647059, 0.529412, 1 )
 
 [node name="Tree" parent="Objects/Props" index="1"]
 COCONUT_DROPS = 1
