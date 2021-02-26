@@ -23,75 +23,6 @@ position = Vector2( 1187.46, 426.167 )
 [node name="IslanderVisionSensor" parent="Objects/Props/Islander" index="10"]
 collision_mask = 15
 
-[node name="Tree17" parent="Objects/Props" index="12"]
-position = Vector2( 2127.79, -7.03882 )
-
-[node name="Tree19" parent="Objects/Props" index="14"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
-[node name="Tree20" parent="Objects/Props" index="15"]
-COCONUT_DROPS = 0
-
-[node name="Tree21" parent="Objects/Props" index="16"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
-[node name="Tree22" parent="Objects/Props" index="17"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
-[node name="Tree23" parent="Objects/Props" index="18"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
-[node name="Tree24" parent="Objects/Props" index="19"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
-[node name="Tree25" parent="Objects/Props" index="20"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
-[node name="Tree26" parent="Objects/Props" index="21"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
-[node name="Tree27" parent="Objects/Props" index="22"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
-[node name="Tree28" parent="Objects/Props" index="23"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
-[node name="Tree29" parent="Objects/Props" index="24"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
-[node name="Tree30" parent="Objects/Props" index="25"]
-COCONUT_DROPS = 0
-
-[node name="Tree31" parent="Objects/Props" index="26"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
-[node name="Tree32" parent="Objects/Props" index="27"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
-[node name="Tree33" parent="Objects/Props" index="28"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
-[node name="Tree34" parent="Objects/Props" index="29"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
-[node name="Tree35" parent="Objects/Props" index="30"]
-COCONUT_DROPS = 0
-BRANCH_DROPS = 1
-
 [node name="HUD" parent="HUDLayer" index="0"]
 INVENTORY_TYPE = "Experimenter"
 
@@ -213,7 +144,6 @@ OBJECTS_NODE_PATH = "Objects/Props"
 [node name="ExperimenterController" type="Node" parent="." index="7"]
 script = ExtResource( 11 )
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
-[connection signal="stamina_change" from="Objects/Props/Islander" to="Day2Objectives" method="_on_Islander_stamina_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
 [connection signal="body_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_body_entered"]
@@ -221,6 +151,5 @@ script = ExtResource( 11 )
 [connection signal="mouse_entered" from="HUDLayer/HUD" to="Experimenter" method="_on_MainContainer_mouse_entered"]
 [connection signal="mouse_exited" from="HUDLayer/HUD" to="Experimenter" method="_on_MainContainer_mouse_exited"]
 [connection signal="use_item" from="HUDLayer/HUD" to="Experimenter" method="_on_HUD_use_item"]
-[connection signal="objectives_updated" from="Day2Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]

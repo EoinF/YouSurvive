@@ -35,56 +35,6 @@ tracks/1/keys = {
 [node name="Objects" parent="." index="0"]
 color = Color( 0.823529, 0.647059, 0.529412, 1 )
 
-[node name="Tree" parent="Objects/Props" index="1"]
-COCONUT_DROPS = 1
-BRANCH_DROPS = 0
-
-[node name="Tree2" parent="Objects/Props" index="2"]
-COCONUT_DROPS = 1
-BRANCH_DROPS = 0
-
-[node name="Tree3" parent="Objects/Props" index="3"]
-COCONUT_DROPS = 1
-BRANCH_DROPS = 0
-
-[node name="Tree4" parent="Objects/Props" index="4"]
-COCONUT_DROPS = 1
-BRANCH_DROPS = 0
-
-[node name="Tree5" parent="Objects/Props" index="5"]
-COCONUT_DROPS = 1
-BRANCH_DROPS = 0
-
-[node name="Tree6" parent="Objects/Props" index="6"]
-COCONUT_DROPS = 1
-
-[node name="Tree7" parent="Objects/Props" index="7"]
-COCONUT_DROPS = 1
-BRANCH_DROPS = 0
-
-[node name="Tree8" parent="Objects/Props" index="8"]
-COCONUT_DROPS = 1
-BRANCH_DROPS = 0
-
-[node name="Tree9" parent="Objects/Props" index="9"]
-COCONUT_DROPS = 1
-
-[node name="Tree10" parent="Objects/Props" index="10"]
-COCONUT_DROPS = 1
-BRANCH_DROPS = 0
-
-[node name="Tree11" parent="Objects/Props" index="11"]
-COCONUT_DROPS = 1
-BRANCH_DROPS = 0
-
-[node name="Tree17" parent="Objects/Props" index="12"]
-COCONUT_DROPS = 1
-BRANCH_DROPS = 0
-
-[node name="Tree18" parent="Objects/Props" index="13"]
-COCONUT_DROPS = 1
-BRANCH_DROPS = 0
-
 [node name="Day2Label" type="Label" parent="HUDLayer/HUD" index="1"]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5

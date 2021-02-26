@@ -14,6 +14,11 @@ var destination_position = position
 var shadow_position
 var elapsed_fall_time = fall_duration_seconds
 
+
+func get_resting_position():
+	return destination_position
+
+
 func _get_configuration_warning():
 	if get_owner() != null:
 		if get_node("Sprite") == null:

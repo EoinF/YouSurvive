@@ -42,6 +42,9 @@ class CollectGoal extends Goal:
 	
 	func get_priority(_owner_context):
 		if target in _owner_context.objects_in_view and len(_owner_context.objects_in_view[target]) > 0:
+			for object in _owner_context.objects_in_view[target].values():
+				if object.global_position.distance_to(_owner_context.islander_position) < 30:
+					return 4
 			return 2
 		else:
 			return -1

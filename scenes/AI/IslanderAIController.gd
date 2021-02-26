@@ -4,14 +4,12 @@ var goals = []
 var current_goal = null
 
 var current_direction: Vector2 = Vector2.ZERO
-var current_dodge_direction: Vector2 = Vector2.ZERO
 var exploration_nodes = []
 var current_move_path = []
 var current_target: Node = null
 var current_enemy: Node = null
 var objects_in_view = {}
 var is_paused = false
-var enemies_seen = []
 
 
 func _ready():
@@ -64,12 +62,9 @@ func _process(_delta):
 			collect()
 
 	if current_goal.goal_type != GoalTypes.DODGE_ENEMY:
-		current_dodge_direction = Vector2.ZERO
 		current_enemy = null
 	
-	if current_dodge_direction.length() > 0:
-		islander.move(current_dodge_direction.x, current_dodge_direction.y)
-	elif current_direction.length() > 0:
+	if current_direction.length() > 0:
 		islander.move(current_direction.x, current_direction.y)
 
 
@@ -77,7 +72,7 @@ func locate():
 	var islander = get_parent().get_node("Objects/Props/Islander")
 	if current_target == null:
 		current_target = _get_next_exploration_node()
-		current_move_path = _get_quickest_path_to(islander.global_position, current_target.global_position)
+		current_move_path = _get_quickest_path_to(islander.global_position, current_target.get_resting_position())
 		on_update_current_move_path()
 	var current_tile = Vector2(floor(islander.global_position.x / 16), floor(islander.global_position.y / 16))
 		
@@ -87,7 +82,7 @@ func locate():
 	on_update_current_move_path()
 	if len(current_move_path) == 0:
 		current_target = _get_next_exploration_node()
-		current_move_path = _get_quickest_path_to(islander.global_position, current_target.global_position)
+		current_move_path = _get_quickest_path_to(islander.global_position, current_target.get_resting_position())
 		on_update_current_move_path()
 	else:
 		var next_tile = current_move_path[0]
@@ -98,7 +93,7 @@ func collect():
 	var islander = get_parent().get_node("Objects/Props/Islander")
 	if current_target == null or current_target.object_type != current_goal.target:
 		current_target = _get_closest_target_of_type(current_goal.target)
-		current_move_path = _get_quickest_path_to(islander.global_position, current_target.global_position)
+		current_move_path = _get_quickest_path_to(islander.global_position, current_target.get_resting_position())
 		on_update_current_move_path()
 		_start_new_target_animation(current_target)
 		return
@@ -124,12 +119,10 @@ func collect():
 func dodge_enemy():
 	var islander_position = get_parent().get_node("Objects/Props/Islander").global_position
 
-	if current_enemy == null:
-		current_enemy = _get_closest_enemy_in_path(current_goal.target)
+	var closest_enemy = _get_closest_enemy_in_path(current_goal.target)
 	
-		if not current_enemy.get_instance_id() in enemies_seen:
-			#_start_new_target_animation(current_enemy)
-			enemies_seen.push_back(current_enemy.get_instance_id())
+	if current_enemy == null or closest_enemy.global_position.distance_to(islander_position) < 20:
+		current_enemy = closest_enemy
 		var direction_to_target = current_enemy.global_position - islander_position
 		var dodge_left = Vector2(-direction_to_target.y, direction_to_target.x)
 		var dodge_right = Vector2(direction_to_target.y, -direction_to_target.x)
