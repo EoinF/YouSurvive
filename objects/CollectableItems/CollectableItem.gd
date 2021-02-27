@@ -9,8 +9,8 @@ export var fall_duration_seconds = 0.8
 export var fall_sway = 1.0
 export var display_name = DEFAULT_DISPLAY_NAME
 
-var original_position = position
-var destination_position = position
+var original_position = global_position
+var destination_position = global_position
 var shadow_position
 var elapsed_fall_time = fall_duration_seconds
 
@@ -57,6 +57,8 @@ func interact():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	destination_position = global_position
+	original_position = global_position
 	var rotation = randf() * PI
 	get_node("Sprite").rotate(rotation)
 	get_node("Shadow").rotate(rotation)

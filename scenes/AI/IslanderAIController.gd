@@ -42,7 +42,7 @@ func _process(_delta):
 		objects_in_view = objects_in_view,
 		islander_position = islander.global_position,
 		current_direction = current_direction,
-		next_move_node = current_move_path.front()
+		next_move_node = current_move_path.front() if len(current_move_path) > 0 else null
 	}
 	
 	var current_priority = current_goal.get_priority(owner_context)
