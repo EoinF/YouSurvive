@@ -1,16 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Island/DreamIsland.tscn" type="PackedScene" id=1]
-[ext_resource path="res://objects/Crab/Crab.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/Islander/Islander.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/light2.png" type="Texture" id=3]
-[ext_resource path="res://scenes/Levels/Base/Night1Objectives.gd" type="Script" id=4]
-[ext_resource path="res://assets/coconut.png" type="Texture" id=5]
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 7.47797
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 57.5965
 
 [node name="BaseNight1" instance=ExtResource( 1 )]
 
@@ -18,60 +10,12 @@ radius = 57.5965
 color = Color( 0.0431373, 0.0392157, 0.0941176, 1 )
 
 [node name="Light2D" type="Light2D" parent="Objects/Props/Islander" index="11"]
-position = Vector2( 0, -12.2704 )
 texture = ExtResource( 3 )
-texture_scale = 0.5
-color = Color( 0.501961, 0.780392, 1, 1 )
-energy = 0.0
+texture_scale = 0.6
+color = Color( 0.235294, 0.537255, 0.717647, 1 )
 
-[node name="Light2D" type="Light2D" parent="Objects/Props/Tree" index="6"]
-position = Vector2( 0, -4.48007 )
-texture = ExtResource( 3 )
-texture_scale = 0.7
-color = Color( 0.94902, 1, 0.509804, 1 )
-energy = 0.0
-
-[node name="Crab" parent="Objects/Props" index="3" instance=ExtResource( 2 )]
-visible = false
-position = Vector2( 666.55, 484.007 )
-
-[node name="Light2D" type="Light2D" parent="Objects/Props/Crab" index="8"]
-texture = ExtResource( 3 )
-texture_scale = 0.3
-color = Color( 0.862745, 0.172549, 0.172549, 1 )
-energy = 0.0
-
-[node name="StartingArea" type="Area2D" parent="Objects" index="3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/StartingArea" index="0"]
-position = Vector2( 754.532, 266.363 )
-shape = SubResource( 1 )
-
-[node name="TreeArea" type="Area2D" parent="Objects" index="4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/TreeArea" index="0"]
-position = Vector2( 458.813, 246.333 )
-shape = SubResource( 2 )
-
-[node name="Night1Objectives" type="Node" parent="." index="3"]
-script = ExtResource( 4 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
-
-[node name="Particles2D" type="CPUParticles2D" parent="." index="5"]
-position = Vector2( 455.549, 215.014 )
-emitting = false
-amount = 50
-local_coords = false
-texture = ExtResource( 5 )
-emission_shape = 1
-emission_sphere_radius = 8.0
-direction = Vector2( 0, -1 )
-spread = 77.28
-initial_velocity = 12.74
-radial_accel = -1.37
-tangential_accel = -4.83
-tangential_accel_random = 0.32
-angle = -720.0
-hue_variation = 0.09
-hue_variation_random = 0.73
+[node name="Islander2" parent="Objects/Props" index="3" groups=[
+"Ghost",
+] instance=ExtResource( 2 )]
+modulate = Color( 0.0117647, 0.0117647, 0.0313726, 0.556863 )
+position = Vector2( 671.473, 433.652 )
