@@ -20,3 +20,12 @@ func _get_objectives():
 	objective1["key"] = OBJECTIVE_COLLECT_COCONUTS_KEY
 	objective1["is_complete"] = is_objective_1_complete
 	return [objective1]
+
+
+func _on_Islander_inventory_slot_change(inventory_slot):
+	if inventory_slot.item_type == "coconut":
+		current_coconuts = inventory_slot.amount
+
+		if current_coconuts == required_coconuts:
+			is_objective_1_complete = true
+		emit_signal("objectives_updated", _get_objectives())

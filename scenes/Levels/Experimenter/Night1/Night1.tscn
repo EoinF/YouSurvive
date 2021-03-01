@@ -201,10 +201,6 @@ color = Color( 0.658824, 0.654902, 0.403922, 1 )
 [node name="Light2D" parent="Objects/Props/Crab" index="8"]
 color = Color( 0.996078, 0.403922, 0.403922, 1 )
 
-[node name="RichTextLabel" parent="HUD/Container/ObjectivesDisplay" index="1"]
-bbcode_text = "[s]Just Win Lol[/s]"
-text = "Just Win Lol"
-
 [node name="IslanderController" type="Node" parent="." index="3"]
 script = ExtResource( 2 )
 

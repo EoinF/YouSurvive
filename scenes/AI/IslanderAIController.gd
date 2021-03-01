@@ -19,8 +19,10 @@ func _ready():
 	goals.append(DodgeGoal.new("crab"))
 	current_goal = goals[0]
 
+
 func on_update_current_move_path():
 	get_node("DebugPathMap").set_path(current_move_path)
+
 
 func add_collection_goal(target_type, limit):
 	goals.push_back(LocateGoal.new(
@@ -235,6 +237,7 @@ func _on_IslanderVisionSensor_area_exited(area):
 
 
 func _start_new_target_animation(target):
+	current_direction = Vector2.ZERO
 	var islander = get_owner().get_node("Objects/Props/Islander")
 	var current_position: Vector2 = islander.global_position
 	var target_position: Vector2 = target.global_position

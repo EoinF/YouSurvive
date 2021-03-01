@@ -55,5 +55,6 @@ script = ExtResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 root_node = NodePath("../Objects")
 anims/fade = SubResource( 1 )
+[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day2Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="stamina_change" from="Objects/Props/Islander" to="Day2Objectives" method="_on_Islander_stamina_change"]
 [connection signal="objectives_updated" from="Day2Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]

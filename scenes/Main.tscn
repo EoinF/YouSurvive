@@ -27,6 +27,8 @@ script = ExtResource( 3 )
 
 [node name="Day2" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Day2/Day2.tscn"]
 
+[node name="Night2" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Night2/Night2.tscn"]
+
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
 [connection signal="finish_scenes" from="IslanderScenes" to="." method="_on_IslanderScenes_finish_scenes"]
 [connection signal="finish_scene" from="IslanderScenes/Day1" to="IslanderScenes" method="_on_Day1_finish_scene"]

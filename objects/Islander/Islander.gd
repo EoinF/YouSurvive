@@ -22,6 +22,7 @@ var active_sprite_state = "Stand"
 var active_sprite_direction = "Down"
 var _is_hurting = false
 
+
 class InventorySlot:
 	var node_key: String
 	var amount: int
@@ -32,6 +33,11 @@ var unused_keys = ["1", "2", "3"]
 var stamina: int
 
 var on_finished_emote_ref: FuncRef
+
+
+func is_colliding():
+	return test_move(transform, velocity.normalized())
+
 
 func _ready():
 	set_stamina(STAMINA)
@@ -73,7 +79,7 @@ func move(x, y):
 	
 	_update_active_sprite("Run", directionVertical + directionHorizontal)
 
-func attack():
+func attack(x = 0, y = 0):
 	get_node("AttackPivotPoint/AttackAnimation/AttackArea/Shape").disabled = false
 	var attack_animation = get_node("AttackPivotPoint/AttackAnimation")
 	if(not attack_animation.is_playing()):
