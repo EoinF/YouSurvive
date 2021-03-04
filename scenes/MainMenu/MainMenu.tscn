@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/MainMenu/MainMenu.gd" type="Script" id=1]
 
@@ -29,6 +29,22 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 shadow_size = 3
 
+[sub_resource type="Animation" id=5]
+resource_name = "fadeLabel"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("HintLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="MainMenu" type="CanvasLayer"]
 layer = 128
 script = ExtResource( 1 )
@@ -56,6 +72,7 @@ __meta__ = {
 }
 
 [node name="NewGame" type="Button" parent="Panel"]
+modulate = Color( 0.729412, 0.686275, 0.686275, 0.741176 )
 margin_left = 266.0
 margin_top = 133.0
 margin_right = 452.0
@@ -68,11 +85,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ContinueGame" type="Button" parent="Panel"]
+margin_left = 266.0
+margin_top = 187.437
+margin_right = 452.0
+margin_bottom = 227.437
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Intro" type="Button" parent="Panel"]
 margin_left = 266.0
-margin_top = 187.0
+margin_top = 240.0
 margin_right = 452.0
-margin_bottom = 227.0
+margin_bottom = 280.0
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
@@ -81,19 +111,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ContinueGame" type="Button" parent="Panel"]
-visible = false
-margin_left = 266.0
-margin_top = 240.0
-margin_right = 452.0
-margin_bottom = 280.0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-text = "Continue"
+[node name="HintLabel" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 418.722
+margin_top = 170.162
+margin_right = 622.722
+margin_bottom = 184.162
+text = "You must continue your journey"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fadeLabel = SubResource( 5 )
 [connection signal="pressed" from="Panel/NewGame" to="." method="_on_NewGame_pressed"]
-[connection signal="pressed" from="Panel/Intro" to="." method="_on_Intro_pressed"]
 [connection signal="pressed" from="Panel/ContinueGame" to="." method="_on_ContinueGame_pressed"]
+[connection signal="pressed" from="Panel/Intro" to="." method="_on_Intro_pressed"]
