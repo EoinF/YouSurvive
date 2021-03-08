@@ -116,5 +116,4 @@ func _on_MainContainer_mouse_exited():
 
 
 func _on_HUD_use_item(_item_type):
-	print("hud use item callback")
 	use_item(_item_type)

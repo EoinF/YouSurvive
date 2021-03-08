@@ -5,9 +5,9 @@ signal inventory_slot_change(inventory_slot)
 signal stamina_change(stamina)
 signal throw_stone(position, direction)
 
-export var SPEED = 6 * 1000
+export var SPEED = 8 * 1000
 export var STAMINA = 25
-export var SPEED_WHILE_TIRED = 6 * 1000
+export var SPEED_WHILE_TIRED = 8 * 1000
 
 var object_type = "islander"
 
@@ -78,6 +78,13 @@ func move(x, y):
 		directionHorizontal = "Right"
 	
 	_update_active_sprite("Run", directionVertical + directionHorizontal)
+
+
+func throw_stone(x, y):
+	# First, face the direction to throw, then throw the stone
+	move(x, y)
+	_use_stone()
+
 
 func attack(x = 0, y = 0):
 	get_node("AttackPivotPoint/AttackAnimation/AttackArea/Shape").disabled = false

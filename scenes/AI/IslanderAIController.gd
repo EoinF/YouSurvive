@@ -15,10 +15,19 @@ var is_paused = false
 func _ready():
 	exploration_nodes = get_node("ExplorationNodes").get_children()
 	exploration_nodes.shuffle()
-	goals.append(IdleGoal.new())
-	goals.append(DodgeGoal.new("crab"))
+	goals.push_back(IdleGoal.new())
+	goals.push_back(DodgeGoal.new("crab"))
 	current_goal = goals[0]
 
+
+func add_kill_goal(target_type, limit):
+	goals.push_back(LocateGoal.new(
+		target_type,
+		limit
+	))
+	goals.push_back(KillGoal.new(
+		target_type, limit
+	))
 
 func on_update_current_move_path():
 	get_node("DebugPathMap").set_path(current_move_path)
@@ -41,6 +50,7 @@ func _process(_delta):
 		
 	var islander = get_parent().get_node("Objects/Props/Islander")
 	var owner_context = {
+		inventory = islander.item_type_to_slot,
 		objects_in_view = objects_in_view,
 		islander_position = islander.global_position,
 		current_direction = current_direction,
@@ -56,6 +66,8 @@ func _process(_delta):
 	
 	
 	match current_goal.goal_type:
+		GoalTypes.KILL_ENEMY:
+			kill_enemy()
 		GoalTypes.DODGE_ENEMY:
 			dodge_enemy()
 		GoalTypes.LOCATE:
@@ -147,6 +159,13 @@ func dodge_enemy():
 			var next_tile = current_move_path[0]
 			current_direction = (next_tile - current_tile).normalized()
 
+
+func kill_enemy():
+	if current_enemy == null:
+		current_enemy = _get_closest_target_of_type(current_goal.target)
+	var islander = get_parent().get_node("Objects/Props/Islander")
+	var direction_to_target = current_enemy.global_position - islander.global_position
+	islander.throw_stone(direction_to_target.x, direction_to_target.y)
 
 func _get_closest_enemy_in_path(target_type):
 	if len(current_move_path) == 0:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://objects/Projectiles/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Shadow.png" type="Texture" id=2]
 [ext_resource path="res://assets/beach_tileset.png" type="Texture" id=3]
+[ext_resource path="res://objects/Projectiles/AttackArea.gd" type="Script" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -15,27 +16,28 @@ radius = 4.79525
 [node name="RockProjectile" type="Node2D"]
 
 [node name="Projectile" parent="." instance=ExtResource( 1 )]
-collision_layer = 8
-collision_mask = 20
 duration = 0.3
 MOVE_SPEED = 300
-item_type = "Stone"
+spawned_object_type = "stone"
+object_type = "p_stone"
+attack_power = 0
 
 [node name="Shadow" type="Sprite" parent="Projectile"]
 position = Vector2( 0, 3.81079 )
-rotation = 21.2063
+rotation = 29.1937
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Projectile"]
-rotation = 21.2063
+rotation = 29.1937
 texture = SubResource( 1 )
 
 [node name="AttackArea" type="Area2D" parent="Projectile" groups=[
 "Attack",
 "Stone",
 ]]
-collision_layer = 3
-collision_mask = 0
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 4 )
 
 [node name="Shape" type="CollisionShape2D" parent="Projectile/AttackArea"]
 shape = SubResource( 2 )

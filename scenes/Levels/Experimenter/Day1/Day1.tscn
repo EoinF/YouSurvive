@@ -76,6 +76,9 @@ collision_mask = 1
 [node name="IslanderVisionSensor" parent="Objects/Props/Islander" index="10"]
 collision_mask = 15
 
+[node name="HUD" parent="HUDLayer" index="0"]
+INVENTORY_TYPE = "Experimenter"
+
 [node name="MainDialogue1" parent="HUDLayer/HUD" index="7" instance=ExtResource( 3 )]
 margin_left = -0.471924
 margin_top = 0.471947
@@ -334,6 +337,7 @@ wait_time = 50.0
 one_shot = true
 autostart = true
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
+[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
 [connection signal="body_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_body_entered"]
@@ -347,4 +351,5 @@ autostart = true
 [connection signal="finish_dialogue" from="HUDLayer/HUD/ObjectivesFast" to="." method="_on_ObjectivesFast_finish_dialogue"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
+[connection signal="objectives_updated" from="Day1Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
 [connection signal="objectives_updated" from="Day1Objectives" to="." method="_on_Day1Objectives_objectives_updated"]

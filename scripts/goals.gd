@@ -5,6 +5,7 @@ enum GoalTypes {
 	LOCATE
 	COLLECT
 	DODGE_ENEMY
+	KILL_ENEMY
 }
 
 class Goal:
@@ -33,7 +34,10 @@ class LocateGoal extends Goal:
 		self.goal_type = GoalTypes.LOCATE
 	
 	func get_priority(_owner_context):
-		return 1
+		if (not target in _owner_context.inventory) or (_owner_context.inventory[target].amount < limit):
+			return 1
+		else:
+			return 0
 
 
 class CollectGoal extends Goal:
@@ -41,7 +45,11 @@ class CollectGoal extends Goal:
 		self.goal_type = GoalTypes.COLLECT
 	
 	func get_priority(_owner_context):
-		if target in _owner_context.objects_in_view and len(_owner_context.objects_in_view[target]) > 0:
+		
+		var is_limit_reached = (target in _owner_context.inventory) and (_owner_context.inventory[target].amount >= limit)
+		if not is_limit_reached \
+			and target in _owner_context.objects_in_view \
+			and len(_owner_context.objects_in_view[target]) > 0:
 			for object in _owner_context.objects_in_view[target].values():
 				if object.global_position.distance_to(_owner_context.islander_position) < 30:
 					return 4
@@ -67,3 +75,20 @@ class DodgeGoal extends Goal:
 						return 3
 		
 		return -1
+		
+		
+class KillGoal extends Goal:
+	func _init(_target, _limit).(_target, _limit):
+		self.goal_type = GoalTypes.KILL_ENEMY
+	
+	func get_priority(_owner_context):
+		var has_weapon = "stone" in _owner_context.inventory and _owner_context.inventory["stone"].amount > 0
+		if has_weapon \
+			and target in _owner_context.objects_in_view \
+			and len(_owner_context.objects_in_view[target]) > 0:
+			for object in _owner_context.objects_in_view[target].values():
+				if object.global_position.distance_to(_owner_context.islander_position) < 200:
+					return 6
+			return 1
+		else:
+			return -1

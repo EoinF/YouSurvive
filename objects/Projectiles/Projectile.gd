@@ -5,7 +5,9 @@ signal finish_launching(node)
 
 export var duration: float = 0.4
 export var MOVE_SPEED = 200
-export var item_type = "<not set>"
+export var spawned_object_type = "<not set>"
+export var object_type = "<not set>"
+export var attack_power = 1
 
 var original_position: Vector2
 var direction: Vector2
@@ -21,8 +23,8 @@ func _get_configuration_warning():
 			return "Projectile must have a node named \"Sprite\""
 		elif get_node("Shadow") == null:
 			return "Projectile must have a node named \"Shadow\""
-		if item_type == "<not set>":
-			return "Item type must be set"
+		if spawned_object_type == "<not set>":
+			return "Spawned object type must be set"
 
 	return ""
 
@@ -50,9 +52,6 @@ func _ready():
 
 
 func launch_item(launch_origin, launch_direction):
-	print("launching a rock")
-	print(launch_origin)
-	print(launch_direction)
 	position = launch_origin
 	original_position = launch_origin
 	direction = launch_direction

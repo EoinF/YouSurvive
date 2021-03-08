@@ -11,6 +11,10 @@ var total_crabs = 0
 var is_objective_1_complete = false
 
 func _ready():
+	var props = get_owner().get_node("Objects/Props").get_children()
+	for prop in props:
+		if "object_type" in prop and prop.object_type == "crab":
+			total_crabs += 1
 	emit_signal("objectives_updated", _get_objectives())
 
 

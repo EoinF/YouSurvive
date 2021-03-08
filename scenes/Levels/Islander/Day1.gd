@@ -21,7 +21,8 @@ func _process(delta):
 				current_action = experiment_data[0]
 			else:
 				current_action = null
-		
+
+
 func set_experiment_data(_experiment_data):
 	experiment_data = _experiment_data
 	if len(experiment_data) > 0:

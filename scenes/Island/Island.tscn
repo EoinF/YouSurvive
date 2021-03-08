@@ -729,4 +729,3 @@ script = ExtResource( 15 )
 [connection signal="spawn_item" from="Objects/Projectiles" to="Objects/Props" method="_on_Projectiles_spawn_item"]
 [connection signal="throw_stone" from="Objects/Props/Islander" to="Objects/Projectiles" method="_on_Islander_throw_stone"]
 [connection signal="timeout" from="Objects/Props/Islander/StaminaTimer" to="Objects/Props/Islander" method="_on_StaminaTimer_timeout"]
-[connection signal="use_item" from="HUDLayer/HUD" to="Objects/Props/Islander" method="_on_HUD_use_item"]

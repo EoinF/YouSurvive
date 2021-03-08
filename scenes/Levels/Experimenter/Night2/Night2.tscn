@@ -24,8 +24,6 @@ color = Color( 0.996078, 0.403922, 0.403922, 1 )
 script = ExtResource( 2 )
 
 [node name="Particles2D" parent="." index="6"]
-emitting = true
-emission_sphere_radius = 10.0
 radial_accel_curve = SubResource( 1 )
 [connection signal="spawn_item" from="Objects/Props/Tree" to="." method="_on_Tree_spawn_item"]
 [connection signal="body_exited" from="Objects/StartingArea" to="." method="_on_StartingArea_body_exited"]

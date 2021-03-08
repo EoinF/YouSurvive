@@ -75,11 +75,12 @@ height = 3.34459
 "AI",
 ]]
 collision_layer = 16
-collision_mask = 31
+collision_mask = 63
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -121,6 +122,7 @@ shape = SubResource( 11 )
 disabled = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
 collision_mask = 0
 
 [node name="Shape" type="CollisionShape2D" parent="Hurtbox"]
