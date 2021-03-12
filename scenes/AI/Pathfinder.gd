@@ -100,8 +100,6 @@ func get_quickest_path_to(from, to):
 
 func get_path_in_direction_of(origin: Vector2, direction: Vector2, max_distance = 300):
 	var current = Vector2(origin)
-	var previous_tileX = floor(origin.x / 16)
-	var previous_tileY = floor(origin.y / 16)
 	var valid_destination = Vector2(origin)
 	
 	var direction_normalized = direction.normalized() * 16
@@ -179,7 +177,7 @@ func append_by_priority(priority_list: Array, new_node):
 func binary_search(list, target_cost):
 	var left_margin = 0
 	var right_margin = len(list)
-	var index: int = len(list) / 2
+	var index = int(len(list) / 2)
 	while(left_margin < right_margin and list[index].f_cost != target_cost):
 		if list[index].f_cost < target_cost:
 			left_margin = index + 1

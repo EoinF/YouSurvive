@@ -9,8 +9,8 @@ export var fall_duration_seconds = 0.8
 export var fall_sway = 1.0
 export var display_name = DEFAULT_DISPLAY_NAME
 
-var original_position = global_position
-var destination_position = global_position
+var original_position
+var destination_position
 var shadow_position
 var elapsed_fall_time = fall_duration_seconds
 
@@ -29,6 +29,7 @@ func _get_configuration_warning():
 			return "Object type must be set"
 
 	return ""
+
 
 func _process(delta):
 	if elapsed_fall_time < fall_duration_seconds:

@@ -84,7 +84,7 @@ script = ExtResource( 22 )
 [node name="Event4Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/EnableControls" index="0"]
 script = ExtResource( 19 )
 
-[node name="Segment5" parent="HUDLayer/HUD/MainDialogue1" index="8" instance=ExtResource( 15 )]
+[node name="Segment2" parent="HUDLayer/HUD/MainDialogue1" index="8" instance=ExtResource( 15 )]
 MESSAGE = "You've been given some branches. It's up to you where you put them."
 BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )

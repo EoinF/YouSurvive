@@ -26,5 +26,5 @@ func _get_objectives():
 	return [objective1]
 
 
-func _on_Islander_inventory_slot_change(inventory_slot):
+func _on_Islander_inventory_slot_change(_inventory_slot):
 	emit_signal("objectives_updated", _get_objectives())

@@ -86,7 +86,7 @@ func throw_stone(x, y):
 	_use_stone()
 
 
-func attack(x = 0, y = 0):
+func attack(_x = 0, _y = 0):
 	get_node("AttackPivotPoint/AttackAnimation/AttackArea/Shape").disabled = false
 	var attack_animation = get_node("AttackPivotPoint/AttackAnimation")
 	if(not attack_animation.is_playing()):

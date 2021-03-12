@@ -207,11 +207,11 @@ func _get_closest_enemy_in_path(target_type):
 	for node in objects_in_view[target_type].values():
 		if node.is_alive():
 			var enemy_position = node.global_position
-			var direction_to_enemy = (node.global_position - islander_position).normalized()
+			var direction_to_enemy = (enemy_position - islander_position).normalized()
 		
 			var angle_between_directions = acos(direction_to_enemy.dot(direction_to_target))
 			if angle_between_directions < PI / 4.0:
-				var distance_to_current = islander_position.distance_to(node.global_position)
+				var distance_to_current = islander_position.distance_to(enemy_position)
 				if distance_to_closest > distance_to_current:
 					closest_node = node
 					distance_to_closest = distance_to_current

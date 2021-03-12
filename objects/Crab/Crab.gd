@@ -94,9 +94,10 @@ func _on_Hurtbox_area_entered(area):
 func _die():
 	_death_cooldown = DEATH_COOLDOWN
 	_is_dying = true
+	
 	get_node("AnimatedSprite").stop()
 	get_node("AttackCooldown").stop()
 	get_node("AttackTimer").stop()
 	get_node("PreAttackTimer").stop()
-	get_node("AttackArea/Shape").disabled = true
+	get_node("AttackArea/Shape").set_deferred("disabled", true)
 	_attack_phase = AttackPhase.IDLE

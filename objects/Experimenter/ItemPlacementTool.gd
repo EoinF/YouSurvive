@@ -7,7 +7,7 @@ var placement_item_type
 var bodies_entered = {}
 var is_mouse_in_game_scene = false
 
-func _process(delta):
+func _process(_delta):
 	if placement_item_type != null and is_mouse_in_game_scene:
 		self.position = get_global_mouse_position()
 	
