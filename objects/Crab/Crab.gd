@@ -27,6 +27,9 @@ func get_resting_position():
 	return global_position
 	
 
+func is_alive():
+	return HEALTH > 0
+
 func move(x, y):
 	if not _is_dying and _attack_phase == AttackPhase.IDLE:
 		direction = Vector2(x, y).normalized()
@@ -55,7 +58,7 @@ func _process(delta):
 func _physics_process(delta):
 	if _attack_phase == AttackPhase.ATTACKING:
 		velocity = Vector2(direction.x * ATTACK_SPEED, direction.y * ATTACK_SPEED)
-		
+	
 	move_and_slide(velocity * delta)
 	
 	velocity = Vector2.ZERO

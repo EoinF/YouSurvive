@@ -61,6 +61,8 @@ func _process(_delta):
 	for goal in goals:
 		var next_priority = goal.get_priority(owner_context)
 		if next_priority > current_priority:
+			if current_goal.goal_type != goal.goal_type:
+				print(goal.goal_type, goal.target)
 			current_goal = goal
 			current_priority = next_priority
 	
@@ -75,7 +77,7 @@ func _process(_delta):
 		GoalTypes.COLLECT:
 			collect()
 
-	if current_goal.goal_type != GoalTypes.DODGE_ENEMY:
+	if current_goal.goal_type != GoalTypes.DODGE_ENEMY and current_goal.goal_type != GoalTypes.KILL_ENEMY:
 		current_enemy = null
 	
 	if current_direction.length() > 0:
@@ -135,7 +137,7 @@ func dodge_enemy():
 
 	var closest_enemy = _get_closest_enemy_in_path(current_goal.target)
 	
-	if current_enemy == null or closest_enemy.global_position.distance_to(islander_position) < 20:
+	if current_enemy == null or not current_enemy.is_alive() or closest_enemy.global_position.distance_to(islander_position) < 20:
 		current_enemy = closest_enemy
 		var direction_to_target = current_enemy.global_position - islander_position
 		var dodge_left = Vector2(-direction_to_target.y, direction_to_target.x)
@@ -145,6 +147,8 @@ func dodge_enemy():
 		var path_right: Array = _get_path_in_direction_of(dodge_right).slice(0, 8)
 
 		var chosen_path = path_left if len(path_left) > len(path_right) else path_right
+		if len(chosen_path) <= 2:
+			chosen_path = _get_path_in_direction_of(-direction_to_target).slice(0, 8)
 		var path_back_to_destination = _get_quickest_path_to(chosen_path.back() * 16, current_move_path.back() * 16)
 		current_move_path = chosen_path + path_back_to_destination
 		on_update_current_move_path()
@@ -161,11 +165,35 @@ func dodge_enemy():
 
 
 func kill_enemy():
-	if current_enemy == null:
-		current_enemy = _get_closest_target_of_type(current_goal.target)
 	var islander = get_parent().get_node("Objects/Props/Islander")
-	var direction_to_target = current_enemy.global_position - islander.global_position
-	islander.throw_stone(direction_to_target.x, direction_to_target.y)
+	var islander_position = islander.global_position
+	
+	if current_enemy == null or not current_enemy.is_alive():
+		current_enemy = _get_closest_target_of_type(current_goal.target)
+		current_move_path = _get_quickest_path_to(islander_position, current_enemy.global_position)
+		on_update_current_move_path()
+	else:
+		var direction_to_target = current_enemy.global_position - islander_position
+		if direction_to_target.length() < 100:
+			var straight_path_to_enemy = _get_path_in_direction_of(direction_to_target, current_enemy.global_position)
+			
+			if (straight_path_to_enemy.back() * 16).distance_to(current_enemy.global_position) <= 16:
+				islander.throw_stone(direction_to_target.x, direction_to_target.y)
+				return
+	
+	var current_tile = Vector2(floor(islander_position.x / 16), floor(islander_position.y / 16))
+
+	while len(current_move_path) != 0 and current_tile.distance_to(current_move_path[0]) <= 1.0:
+		current_move_path.pop_front()
+		
+	on_update_current_move_path()
+	if len(current_move_path) > 0:
+		var next_tile = current_move_path[0]
+		current_direction = (next_tile - current_tile).normalized()
+	else:
+		current_move_path = _get_quickest_path_to(islander_position, current_enemy.global_position)
+		on_update_current_move_path()
+		
 
 func _get_closest_enemy_in_path(target_type):
 	if len(current_move_path) == 0:
@@ -177,15 +205,16 @@ func _get_closest_enemy_in_path(target_type):
 	var closest_node = null
 	var distance_to_closest = INF
 	for node in objects_in_view[target_type].values():
-		var enemy_position = node.global_position
-		var direction_to_enemy = (node.global_position - islander_position).normalized()
-	
-		var angle_between_directions = acos(direction_to_enemy.dot(direction_to_target))
-		if angle_between_directions < PI / 4.0:
-			var distance_to_current = islander_position.distance_to(node.global_position)
-			if distance_to_closest > distance_to_current:
-				closest_node = node
-				distance_to_closest = distance_to_current
+		if node.is_alive():
+			var enemy_position = node.global_position
+			var direction_to_enemy = (node.global_position - islander_position).normalized()
+		
+			var angle_between_directions = acos(direction_to_enemy.dot(direction_to_target))
+			if angle_between_directions < PI / 4.0:
+				var distance_to_current = islander_position.distance_to(node.global_position)
+				if distance_to_closest > distance_to_current:
+					closest_node = node
+					distance_to_closest = distance_to_current
 	return closest_node
 
 
@@ -194,6 +223,10 @@ func _get_closest_target_of_type(target_type):
 	var closest_node = null
 	var distance_to_closest = INF
 	for node in objects_in_view[target_type].values():
+		# Skip dead targets
+		if node.has_method("is_alive") and not node.is_alive():
+			continue
+
 		var distance_to_current = islander_position.distance_to(node.global_position)
 		if distance_to_closest > distance_to_current:
 			closest_node = node
@@ -213,16 +246,19 @@ func _get_next_exploration_node():
 			best_h_score = h_score
 			best_node_index = index
 	
+	# Take the best node and move it to the back to deprioritize it
 	var best_node = exploration_nodes[best_node_index]
 	exploration_nodes.remove(best_node_index)
 	exploration_nodes.push_back(best_node)
 	return best_node
 
 
-func _get_path_in_direction_of(direction: Vector2):
+func _get_path_in_direction_of(direction: Vector2, destination = null):
 	var islander_position = get_owner().get_node("Objects/Props/Islander").global_position
 	var pathfinder = get_owner().get_node("Pathfinder")
-	return pathfinder.get_path_in_direction_of(islander_position, direction)
+	var max_distance = islander_position.distance_to(destination) if destination != null else 200
+	return pathfinder.get_path_in_direction_of(islander_position, direction, max_distance)
+
 
 func _get_quickest_path_to(from: Vector2, to: Vector2):
 	var pathfinder = get_owner().get_node("Pathfinder")

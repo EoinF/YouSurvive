@@ -91,38 +91,32 @@ func get_quickest_path_to(from, to):
 		elif (get_cell(tile_to.x, tile_to.y - 1) == 0):
 			tile_to.y -= 1
 	
-	print("Getting path from " + str(tile_from) + " to " + str(tile_to))
-	print(str(get_cellv(tile_from)) + " to " + str(get_cellv(tile_to)))
+	#print("Getting path from " + str(tile_from) + " to " + str(tile_to))
+	#print(str(get_cellv(tile_from)) + " to " + str(get_cellv(tile_to)))
 	
 	var start_node = { 'location': tile_from, 'g_cost': 0, 'f_cost': h(tile_from, tile_to), 'parent': null }
 	return a_star([start_node], tile_to)
 
 
-func get_path_in_direction_of(origin: Vector2, direction: Vector2, max_distance = 200):
+func get_path_in_direction_of(origin: Vector2, direction: Vector2, max_distance = 300):
 	var current = Vector2(origin)
 	var previous_tileX = floor(origin.x / 16)
 	var previous_tileY = floor(origin.y / 16)
 	var valid_destination = Vector2(origin)
 	
-	var is_blockedX = false
-	var is_blockedY = false
+	var direction_normalized = direction.normalized() * 16
+	current += direction_normalized
 	
-	while !is_blockedX and !is_blockedY and current.distance_to(origin) < max_distance:
+	while current.distance_to(origin) < max_distance:
 		var tileX = floor(current.x / 16)
 		var tileY = floor(current.y / 16)
 		if get_cell(tileX, tileY) == 0:
 			valid_destination = current
-			is_blockedX = false
-			is_blockedY = false
 		else:
-			if tileX != previous_tileX:
-				is_blockedX = true
-			if tileY != previous_tileY:
-				is_blockedY = true
-		current += direction
+			break
+		current += direction_normalized
 	return get_quickest_path_to(origin, valid_destination)
-	
-	
+
 
 func vector_hash(vec: Vector2):
 	return vec.x + (vec.y * get_used_rect().size.x)

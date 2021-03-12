@@ -57,6 +57,7 @@ class CollectGoal extends Goal:
 		else:
 			return -1
 
+
 class DodgeGoal extends Goal:
 	func _init(_target).(_target, 0):
 		self.goal_type = GoalTypes.DODGE_ENEMY
@@ -67,7 +68,8 @@ class DodgeGoal extends Goal:
 			var direction_to_target = (target_position - _owner_context.islander_position).normalized()
 	
 			for object in _owner_context.objects_in_view[target].values():
-				if object.global_position.distance_to(_owner_context.islander_position) < 70:
+				if object.has_method("is_alive") and object.is_alive() \
+				and object.global_position.distance_to(_owner_context.islander_position) < 70:
 					var direction_to_enemy = (object.global_position - _owner_context.islander_position).normalized()
 					
 					var angle_between_directions = acos(direction_to_enemy.dot(direction_to_target))
@@ -75,20 +77,16 @@ class DodgeGoal extends Goal:
 						return 3
 		
 		return -1
-		
-		
+
+
 class KillGoal extends Goal:
 	func _init(_target, _limit).(_target, _limit):
 		self.goal_type = GoalTypes.KILL_ENEMY
 	
 	func get_priority(_owner_context):
 		var has_weapon = "stone" in _owner_context.inventory and _owner_context.inventory["stone"].amount > 0
-		if has_weapon \
-			and target in _owner_context.objects_in_view \
-			and len(_owner_context.objects_in_view[target]) > 0:
+		if has_weapon and target in _owner_context.objects_in_view:
 			for object in _owner_context.objects_in_view[target].values():
-				if object.global_position.distance_to(_owner_context.islander_position) < 200:
-					return 6
-			return 1
-		else:
-			return -1
+				if object.has_method("is_alive") and object.is_alive():
+					return 5
+		return -1
