@@ -14,6 +14,16 @@ var destination_position
 var shadow_position
 var elapsed_fall_time = fall_duration_seconds
 
+var _owner_instance_id = null
+
+
+func get_owner_instance_id():
+	return _owner_instance_id
+	
+	
+func set_owner_instance_id(_instance_id):
+	_owner_instance_id = _instance_id
+
 
 func get_resting_position():
 	return destination_position

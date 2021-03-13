@@ -294,6 +294,11 @@ func _on_IslanderVisionSensor_area_exited(area):
 func _start_new_target_animation(target):
 	current_direction = Vector2.ZERO
 	var islander = get_owner().get_node("Objects/Props/Islander")
+	
+	# Skip the animation if the islander is the one that put the target there
+	if target.has_method("get_owner_instance_id") and target.get_owner_instance_id() == islander.get_instance_id():
+		return
+	
 	var current_position: Vector2 = islander.global_position
 	var target_position: Vector2 = target.global_position
 	var direction = (target_position - current_position).normalized()
@@ -302,6 +307,7 @@ func _start_new_target_animation(target):
 	if abs(direction.y) < 0.2:
 		direction.y = 0
 	islander.move(direction.x, direction.y)
+	
 	
 	is_paused = true
 	islander.start_target_spotted_emote(funcref(self, "_on_finish_animation"))

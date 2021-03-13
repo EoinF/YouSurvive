@@ -16,6 +16,16 @@ var elevation: float = 0
 var elapsed_time: float = 0
 var is_started = false
 
+var _owner_instance_id = null
+
+
+func get_owner_instance_id():
+	return _owner_instance_id
+
+
+func set_owner_instance_id(_instance_id):
+	_owner_instance_id = _instance_id
+
 
 func _get_configuration_warning():
 	if get_owner() != null:

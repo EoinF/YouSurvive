@@ -16,8 +16,10 @@ func _ready():
 			child.connect("spawn_item", self, "_spawn_item_falling")
 
 
-func _add_prop(prop, source_position):
+func _add_prop(prop, source_position, owner_instance_id):
 	prop.position = source_position
+	if prop.has_node("CollectableItem"):
+		prop.get_node("CollectableItem").set_owner_instance_id(owner_instance_id)
 	add_child(prop)
 	emit_signal("prop_added", prop)
 
@@ -40,14 +42,14 @@ func _spawn_item_falling(item_type, source_position):
 	_add_falling_prop(scene_instance, source_position)
 
 
-func _spawn_item(item_type, source_position):
+func _spawn_item(item_type, source_position, owner_instance_id = null):
 	var scene_instance = scene_map[item_type].instance()
-	_add_prop(scene_instance, source_position)
+	_add_prop(scene_instance, source_position, owner_instance_id)
 
 
 
-func _on_Projectiles_spawn_item(item_type, source_position):
-	_spawn_item(item_type, source_position)
+func _on_Projectiles_spawn_item(item_type, source_position, owner_instance_id):
+	_spawn_item(item_type, source_position, owner_instance_id)
 
 
 func _on_place_item(item_type, source_position):

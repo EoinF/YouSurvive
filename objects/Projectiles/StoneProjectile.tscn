@@ -13,7 +13,7 @@ region = Rect2( 212.21, 244.47, 10.7087, 10.2266 )
 [sub_resource type="CircleShape2D" id=2]
 radius = 4.79525
 
-[node name="RockProjectile" type="Node2D"]
+[node name="StoneProjectile" type="Node2D"]
 
 [node name="Projectile" parent="." instance=ExtResource( 1 )]
 duration = 0.3
@@ -24,11 +24,11 @@ attack_power = 0
 
 [node name="Shadow" type="Sprite" parent="Projectile"]
 position = Vector2( 0, 3.81079 )
-rotation = 29.1937
+rotation = 30.4908
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Projectile"]
-rotation = 29.1937
+rotation = 30.4908
 texture = SubResource( 1 )
 
 [node name="AttackArea" type="Area2D" parent="Projectile" groups=[
