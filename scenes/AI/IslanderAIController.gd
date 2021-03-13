@@ -177,6 +177,10 @@ func kill_enemy():
 		(current_enemy != closest_enemy and distance_to_closest_enemy < half_distance_along_path):
 		current_enemy = closest_enemy
 		current_move_path = _get_quickest_path_to(islander_position, current_enemy.global_position)
+		if current_move_path == null:
+#			locate()
+			print("move path empty")
+			return
 			
 		on_update_current_move_path()
 	else:

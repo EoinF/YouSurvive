@@ -214,7 +214,7 @@ position = Vector2( 1741.24, 493.692 )
 position = Vector2( 1724.23, 503.771 )
 
 [node name="Rock89" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
-position = Vector2( 1741.24, 547.868 )
+position = Vector2( 1725.53, 559.093 )
 
 [node name="Rock90" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
 position = Vector2( 1721.71, 480.462 )
@@ -226,10 +226,10 @@ position = Vector2( 1705.33, 467.863 )
 position = Vector2( 1690.21, 450.854 )
 
 [node name="Rock93" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
-position = Vector2( 1762.03, 459.044 )
+position = Vector2( 1773.8, 448.799 )
 
 [node name="Rock94" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
-position = Vector2( 1814.31, 496.841 )
+position = Vector2( 1796.91, 509.749 )
 
 [node name="Rock95" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
 position = Vector2( 1671.61, 469.49 )
@@ -655,16 +655,16 @@ position = Vector2( 2448.8, 675.604 )
 position = Vector2( 2305.71, 683.541 )
 
 [node name="Rock64" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
-position = Vector2( 2144.59, 685.922 )
+position = Vector2( 2136.27, 694.246 )
 
 [node name="Rock65" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
-position = Vector2( 2025.53, 672.429 )
+position = Vector2( 2024.94, 662.321 )
 
 [node name="Rock66" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
 position = Vector2( 2204.91, 716.877 )
 
 [node name="Rock67" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
-position = Vector2( 2318.41, 718.464 )
+position = Vector2( 2360.63, 730.951 )
 
 [node name="Rock68" parent="Objects/Props/Rocks" instance=ExtResource( 1 )]
 position = Vector2( 823.11, 347.897 )

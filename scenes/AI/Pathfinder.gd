@@ -93,7 +93,8 @@ func get_quickest_path_to(from, to):
 	
 	if (get_cellv(tile_to) == 1):
 		print("Undefined behaviour - our search doesnt handle pathing to a blocked tile")
-		return null
+		return []
+		
 	#print("Getting path from " + str(tile_from) + " to " + str(tile_to))
 	#print(str(get_cellv(tile_from)) + " to " + str(get_cellv(tile_to)))
 	
