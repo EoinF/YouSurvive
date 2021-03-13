@@ -177,6 +177,7 @@ func kill_enemy():
 		(current_enemy != closest_enemy and distance_to_closest_enemy < half_distance_along_path):
 		current_enemy = closest_enemy
 		current_move_path = _get_quickest_path_to(islander_position, current_enemy.global_position)
+			
 		on_update_current_move_path()
 	else:
 		var direction_to_target = current_enemy.global_position - islander_position

@@ -26,5 +26,15 @@ func _get_objectives():
 	return [objective1]
 
 
-func _on_Islander_inventory_slot_change(_inventory_slot):
+func _on_Props_prop_added(node):
+	if node.is_in_group("AI") and node.object_type == "crab":
+		total_crabs += 1
+		emit_signal("objectives_updated", _get_objectives())
+
+
+func _on_Props_crab_killed(node):
+	crabs_killed += 1
+	if crabs_killed == total_crabs:
+		is_objective_1_complete = true
 	emit_signal("objectives_updated", _get_objectives())
+

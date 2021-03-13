@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal dies(node)
+
 var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
 var _death_cooldown = -1
@@ -92,6 +94,7 @@ func _on_Hurtbox_area_entered(area):
 
 
 func _die():
+	emit_signal("dies", self)
 	_death_cooldown = DEATH_COOLDOWN
 	_is_dying = true
 	

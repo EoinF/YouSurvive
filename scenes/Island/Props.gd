@@ -1,6 +1,7 @@
 extends YSort
 
 signal prop_added(node)
+signal crab_killed(node)
 
 var scene_map = {
 	"branch": preload("res://objects/CollectableItems/Branch.tscn"),
@@ -14,6 +15,9 @@ func _ready():
 		# If it's an in-game tree, check if there are items to spawn
 		if child.is_in_group("Tree"):
 			child.connect("spawn_item", self, "_spawn_item_falling")
+		
+		if child.is_in_group("AI"):
+			child.connect("dies", self, "_on_crab_dies")
 
 
 func _add_prop(prop, source_position, owner_instance_id):
@@ -21,6 +25,10 @@ func _add_prop(prop, source_position, owner_instance_id):
 	if prop.has_node("CollectableItem"):
 		prop.get_node("CollectableItem").set_owner_instance_id(owner_instance_id)
 	add_child(prop)
+
+	if prop.is_in_group("AI"):
+		prop.connect("dies", self, "_on_crab_dies")
+
 	emit_signal("prop_added", prop)
 
 
@@ -47,10 +55,13 @@ func _spawn_item(item_type, source_position, owner_instance_id = null):
 	_add_prop(scene_instance, source_position, owner_instance_id)
 
 
-
 func _on_Projectiles_spawn_item(item_type, source_position, owner_instance_id):
 	_spawn_item(item_type, source_position, owner_instance_id)
 
 
 func _on_place_item(item_type, source_position):
 	_spawn_item(item_type, source_position)
+
+
+func _on_crab_dies(node):
+	emit_signal("crab_killed", node)
