@@ -168,8 +168,14 @@ func kill_enemy():
 	var islander = get_parent().get_node("Objects/Props/Islander")
 	var islander_position = islander.global_position
 	
-	if current_enemy == null or not current_enemy.is_alive():
-		current_enemy = _get_closest_target_of_type(current_goal.target)
+	var closest_enemy = _get_closest_target_of_type(current_goal.target)
+	var distance_to_closest_enemy = islander_position.distance_to(closest_enemy.global_position)
+	var half_distance_along_path = len(current_move_path) * 16 / 2.0
+	
+	if current_enemy == null or \
+		not current_enemy.is_alive() or \
+		(current_enemy != closest_enemy and distance_to_closest_enemy < half_distance_along_path):
+		current_enemy = closest_enemy
 		current_move_path = _get_quickest_path_to(islander_position, current_enemy.global_position)
 		on_update_current_move_path()
 	else:
