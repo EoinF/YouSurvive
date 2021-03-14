@@ -33,7 +33,6 @@ script = ExtResource( 3 )
 
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
 [connection signal="finish_scenes" from="IslanderScenes" to="." method="_on_IslanderScenes_finish_scenes"]
-[connection signal="finish_scene" from="IslanderScenes/Day1" to="IslanderScenes" method="_on_Day1_finish_scene"]
 [connection signal="finish_scenes" from="ExperimenterScenes" to="." method="_on_ExperimenterScenes_finish_scenes"]
 [connection signal="continue_game" from="MainMenu" to="." method="_on_MainMenu_continue_game"]
 [connection signal="start_intro" from="MainMenu" to="." method="_on_MainMenu_start_intro"]

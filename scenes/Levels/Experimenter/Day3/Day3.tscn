@@ -147,6 +147,8 @@ OBJECTS_NODE_PATH = "Objects/Props"
 [node name="ExperimenterController" type="Node" parent="." index="7"]
 script = ExtResource( 11 )
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
+[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day3Objectives" method="_on_Islander_inventory_slot_change"]
+[connection signal="stamina_change" from="Objects/Props/Islander" to="Day3Objectives" method="_on_Islander_stamina_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
 [connection signal="body_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_body_entered"]
@@ -154,5 +156,6 @@ script = ExtResource( 11 )
 [connection signal="mouse_entered" from="HUDLayer/HUD" to="Experimenter" method="_on_MainContainer_mouse_entered"]
 [connection signal="mouse_exited" from="HUDLayer/HUD" to="Experimenter" method="_on_MainContainer_mouse_exited"]
 [connection signal="use_item" from="HUDLayer/HUD" to="Experimenter" method="_on_HUD_use_item"]
+[connection signal="objectives_updated" from="Day3Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
