@@ -86,8 +86,6 @@ margin_right = -0.471924
 margin_bottom = 0.471924
 
 [node name="FadeInEvent" parent="HUDLayer/HUD/MainDialogue1" index="3" instance=ExtResource( 6 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event1Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/FadeInEvent" index="0"]
 script = ExtResource( 13 )
@@ -117,8 +115,6 @@ TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 Y_POSITION_PERCENT = 0.9
 
 [node name="GiftBranches" parent="HUDLayer/HUD/MainDialogue1" index="8" instance=ExtResource( 6 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event3Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/GiftBranches" index="0"]
 script = ExtResource( 17 )
@@ -130,15 +126,11 @@ TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 Y_POSITION_PERCENT = 0.9
 
 [node name="StopCameraFollow" parent="HUDLayer/HUD/MainDialogue1" index="10" instance=ExtResource( 6 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event2Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/StopCameraFollow" index="0"]
 script = ExtResource( 10 )
 
 [node name="EnableControls" parent="HUDLayer/HUD/MainDialogue1" index="11" instance=ExtResource( 6 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event4Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/EnableControls" index="0"]
 script = ExtResource( 16 )
@@ -211,8 +203,6 @@ margin_right = -0.471924
 margin_bottom = 0.471924
 
 [node name="DisableControls" parent="HUDLayer/HUD/ObjectivesSlow" index="3" instance=ExtResource( 6 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event6Script" type="Node" parent="HUDLayer/HUD/ObjectivesSlow/DisableControls" index="0"]
 script = ExtResource( 19 )
@@ -242,8 +232,6 @@ margin_right = -0.471924
 margin_bottom = 0.471924
 
 [node name="DisableControls" parent="HUDLayer/HUD/ObjectivesFast" index="3" instance=ExtResource( 6 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event5Script" type="Node" parent="HUDLayer/HUD/ObjectivesFast/DisableControls" index="0"]
 script = ExtResource( 20 )
