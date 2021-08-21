@@ -80,8 +80,8 @@ func _on_PlayerInteraction_area_exited(area):
 	if nearby_interaction_items.size() > 0:
 		print(nearby_interaction_items)
 		current_interaction_item = nearby_interaction_items.back()
-		var x = tooltip_container.position.x
-		var y = tooltip_container.position.y
+		var x = tooltip_container.rect_position.x
+		var y = tooltip_container.rect_position.y
 		_show_interaction_item_tooltip(current_interaction_item, x, y)
 	else:
 		current_interaction_item = null

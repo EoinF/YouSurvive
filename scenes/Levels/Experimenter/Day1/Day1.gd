@@ -27,6 +27,7 @@ func _on_ObjectivesSlow_finish_dialogue():
 
 
 func _on_MainDialogue2_finish_dialogue():
+	print("main dialogue 2 finish dialogue")
 	var experiment_data = get_node("Experimenter").get_experiment_data()
 	emit_signal("finish_scene", experiment_data)
 	queue_free()

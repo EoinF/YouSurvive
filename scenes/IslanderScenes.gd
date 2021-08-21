@@ -22,5 +22,5 @@ func load_scene(scene_name, _save_data = null):
 
 	var scene_placeholder = get_node(scene_name)
 	scene_placeholder.replace_by_instance()
-	get_node(scene_name).connect("finish_scene", self, "_on_" + scene_name + "finish_scene")
+	get_node(scene_name).connect("finish_scene", self, "_on_" + scene_name + "_finish_scene")
 	get_node(scene_name).set_experiment_data(save_data[scene_name])

@@ -6,7 +6,8 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 192.912, 180.611, 30.8089, 23.7668 )
+region = Rect2( 193, 180, 30, 24 )
+filter_clip = true
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 7.85771
@@ -28,6 +29,6 @@ texture = ExtResource( 1 )
 texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 7.62939e-06, 3.41897 )
+position = Vector2( 7.62939e-06, 3.62919 )
 rotation = 1.5708
 shape = SubResource( 2 )

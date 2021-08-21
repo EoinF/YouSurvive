@@ -32,8 +32,10 @@ func load_scene(scene_name, _save_data = null):
 
 	var scene_placeholder = get_node(scene_name)
 	scene_placeholder.replace_by_instance()
+	
 	get_node(scene_name).set_player_name(save_data.player_name)
-	get_node(scene_name).connect("finish_scene", self, "_on_" + scene_name + "finish_scene")
+	print("starting experimenter scene " + "_on_" + scene_name + "finish_scene")
+	get_node(scene_name).connect("finish_scene", self, "_on_" + scene_name + "_finish_scene")
 
 func load_intro():
 	print("loading intro scene")
@@ -50,6 +52,7 @@ func _on_Intro_finish_scene(_player_name):
 
 
 func _on_Day1_finish_scene(experiment_data):
+	print("finished day 1 experimenter")
 	var save_file = File.new()
 	save_file.open(constants.SAVE_FILE_LOCATION, File.WRITE)
 	
@@ -59,15 +62,16 @@ func _on_Day1_finish_scene(experiment_data):
 	save_data["Day1"] = experiment_data
 	
 	save_file.store_string(to_json(save_data))
+	print("Finishing experimenter scenes")
 	emit_signal("finish_scenes", save_data)
 	
-#	load_scene("Night1")
 	#save_game("Night1", "Day1", experiment_data)
+	#load_scene("Night1")
 
 
 func _on_Night1_finish_scene():
 	print("night 1 finished")
-	save_game("Day1")
+	save_game("Day2")
 	load_scene("Day2")
 	
 	
