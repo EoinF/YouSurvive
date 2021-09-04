@@ -17,9 +17,7 @@ current = true
 [node name="IslanderInput" type="Node" parent="." index="5"]
 script = ExtResource( 2 )
 [connection signal="place_item" from="." to="Objects/Props" method="_on_place_item"]
-[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="IslanderInput" method="_on_PlayerInteraction_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/PlayerInteraction" to="IslanderInput" method="_on_PlayerInteraction_area_exited"]
 [connection signal="use_item" from="HUDLayer/HUD" to="Objects/Props/Islander" method="_on_HUD_use_item"]
-[connection signal="objectives_updated" from="Day1Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
 [connection signal="objectives_updated" from="Day1Objectives" to="." method="_on_Day1Objectives_objectives_updated"]

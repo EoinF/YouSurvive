@@ -59,7 +59,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=10]
 radius = 6.74294
 
 [sub_resource type="CapsuleShape2D" id=11]
@@ -79,10 +79,11 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 13 )
+shape = SubResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 7.13524 )

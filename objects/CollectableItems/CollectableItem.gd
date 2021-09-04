@@ -13,6 +13,7 @@ var original_position
 var destination_position
 var shadow_position
 var elapsed_fall_time = fall_duration_seconds
+var is_falling = false
 
 var _owner_instance_id = null
 
@@ -42,12 +43,16 @@ func _get_configuration_warning():
 
 
 func _process(delta):
-	if elapsed_fall_time < fall_duration_seconds:
+	if is_falling:
 		elapsed_fall_time += delta
+		
 		var t = elapsed_fall_time / fall_duration_seconds
 		position = original_position.linear_interpolate(destination_position, t)
 		position.x += fall_sway * (3.0 + (100.0 / (1.0 + destination_position.y - original_position.y))) * sin(t * 5)
 		get_node("Shadow").position = shadow_position + Vector2(0, destination_position.y - position.y)
+		
+		if elapsed_fall_time >= fall_duration_seconds:
+			is_falling = false
 
 func drop_item(from, to):
 	original_position = from
@@ -58,6 +63,7 @@ func drop_item(from, to):
 	shadow_position = shadow.position
 	shadow.position.y += to.y - from.y
 	elapsed_fall_time = 0
+	is_falling = true
 
 func interact():
 	var parent = get_parent()
@@ -68,8 +74,10 @@ func interact():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	destination_position = global_position
-	original_position = global_position
+	if (destination_position == null):
+		destination_position = global_position
+	if (original_position == null):
+		original_position = global_position
 	var rotation = randf() * PI
 	get_node("Sprite").rotate(rotation)
 	get_node("Shadow").rotate(rotation)

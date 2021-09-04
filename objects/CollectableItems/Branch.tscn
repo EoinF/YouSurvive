@@ -14,10 +14,10 @@ display_name = "Branch"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 1.63412, 1.92028 )
-rotation = 30.0877
+rotation = 34.6594
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 28.5347
+rotation = 33.1064
 texture = ExtResource( 2 )

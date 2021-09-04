@@ -151,7 +151,7 @@ func set_stamina(new_stamina):
 	else:
 		get_node("AttackPivotPoint/AttackAnimation").scale.x = 1.0
 		get_node("AttackPivotPoint/AttackAnimation").scale.y = 1.0
-		get_node("AttackPivotPoint/AttackAnimation/AttackArea").attack_power = 1
+		get_node("AttackPivotPoint/AttackAnimation/AttackArea").attack_power = 2
 
 
 func _on_StaminaTimer_timeout():

@@ -19,9 +19,9 @@ display_name = "Rock"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 2.34147, 3.68658 )
-rotation = 5.98561
+rotation = 11.6206
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 6.67369
+rotation = 12.3086
 texture = SubResource( 1 )
