@@ -7,6 +7,7 @@ var is_tree_shown = false
 var is_crab_shown = false
 
 var crab_spawn_position: Vector2
+var items_spawned = 0
 
 func _ready():
 	var crab = get_node("Objects/Props/Crab")
@@ -30,9 +31,11 @@ func _on_TreeArea_body_entered(body):
 
 
 func _on_Tree_spawn_item(item_type, source_position):
-	get_node("AnimationPlayer").queue("RainCoconuts")
-	get_node("IslanderController").disable_controls()
-	get_node("AIController").disable_ai()
+	items_spawned += 1
+	if items_spawned == 3:
+		get_node("AnimationPlayer").queue("RainCoconuts")
+		get_node("IslanderController").disable_controls()
+		get_node("AIController").disable_ai()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -42,4 +45,3 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "RainCoconuts":
 		emit_signal("finish_scene")
 		queue_free()
-

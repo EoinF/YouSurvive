@@ -11,7 +11,7 @@ _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 script = ExtResource( 3 )
 
 [node name="Tree" parent="Objects/Props" index="2"]
-COCONUT_DROPS = 1
+COCONUT_DROPS = 3
 BRANCH_DROPS = 0
 
 [node name="Light2D" parent="Objects/Props/Tree" index="6"]
@@ -24,6 +24,7 @@ color = Color( 0.996078, 0.403922, 0.403922, 1 )
 script = ExtResource( 2 )
 
 [node name="Particles2D" parent="." index="6"]
+emitting = false
 radial_accel_curve = SubResource( 1 )
 [connection signal="spawn_item" from="Objects/Props/Tree" to="." method="_on_Tree_spawn_item"]
 [connection signal="body_exited" from="Objects/StartingArea" to="." method="_on_StartingArea_body_exited"]
