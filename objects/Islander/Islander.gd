@@ -3,6 +3,7 @@ extends KinematicBody2D
 signal use_coconut_without_rock
 signal inventory_slot_change(inventory_slot)
 signal stamina_change(stamina)
+signal health_change(health)
 signal throw_stone(position, direction)
 
 export var SPEED = 8 * 1000
@@ -21,6 +22,7 @@ var attack_direction = Vector2.DOWN
 var active_sprite_state = "Stand"
 var active_sprite_direction = "Down"
 var _is_hurting = false
+var health = 1000
 
 
 class InventorySlot:
@@ -154,6 +156,11 @@ func set_stamina(new_stamina):
 		get_node("AttackPivotPoint/AttackAnimation/AttackArea").attack_power = 2
 
 
+func set_health(new_health):
+	health = new_health
+	emit_signal("health_change", health)
+
+
 func _on_StaminaTimer_timeout():
 	set_stamina(stamina - 1)
 
@@ -184,7 +191,7 @@ func _on_Hurtbox_area_entered(area):
 	if not _is_hurting and area.is_in_group("Attack") \
 	and not area.is_in_group("Islander") \
 	and not area.is_in_group("Stone"):
-		set_stamina(stamina - 10)
+		set_health(health - 100)
 		self.modulate = Color.lightpink
 		_is_hurting = true
 		get_node("HurtCooldown").start()

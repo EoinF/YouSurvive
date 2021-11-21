@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Island/HealthBar.gd" type="Script" id=1]
+
+[node name="HealthBar" type="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -105.0
+margin_top = 7.0
+margin_right = -8.0
+margin_bottom = 30.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.113725, 0.113725, 0.113725, 0.584314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthSegmentBackground" type="ColorRect" parent="Background"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -38.5
+margin_top = -7.0
+margin_right = 37.5
+margin_bottom = -3.0
+rect_pivot_offset = Vector2( 19, -1.8674 )
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthSegment" type="ColorRect" parent="Background/HealthSegmentBackground"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.160784, 0.729412, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Background"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -28.0
+margin_top = 1.78381
+margin_right = 28.0
+margin_bottom = 15.7838
+text = "life"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}

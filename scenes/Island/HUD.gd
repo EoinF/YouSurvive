@@ -38,3 +38,7 @@ func _on_objectives_updated(objectives):
 
 func _on_Inventory_use_item(item_type):
 	emit_signal("use_item", item_type)
+
+
+func _on_Islander_health_change(health):
+	get_node("HealthBar").set_health(health)
