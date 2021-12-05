@@ -7,6 +7,15 @@
 [node name="Night1" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
+[node name="Islander" parent="Objects/Props" index="0"]
+modulate = Color( 1, 1, 1, 1 )
+
+[node name="HUD" parent="HUDLayer" index="0"]
+visible = false
+
 [node name="IslanderController" type="Node" parent="." index="3"]
 script = ExtResource( 2 )
+[connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="IslanderController" method="_on_PlayerInteraction_area_entered"]
+[connection signal="area_exited" from="Objects/Props/Islander/PlayerInteraction" to="IslanderController" method="_on_PlayerInteraction_area_exited"]
+[connection signal="body_exited" from="Objects/StartingArea" to="." method="_on_StartingArea_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

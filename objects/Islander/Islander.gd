@@ -9,6 +9,7 @@ signal throw_stone(position, direction)
 export var SPEED = 8 * 1000
 export var STAMINA = 25
 export var SPEED_WHILE_TIRED = 8 * 1000
+export var IS_IMMUNE_TO_STONE = true
 
 var object_type = "islander"
 
@@ -23,6 +24,7 @@ var active_sprite_state = "Stand"
 var active_sprite_direction = "Down"
 var _is_hurting = false
 var health = 1000
+var initial_modulate = self.modulate
 
 
 class InventorySlot:
@@ -36,13 +38,26 @@ var stamina: int
 
 var on_finished_emote_ref: FuncRef
 
+var is_colliding = false
 
 func is_colliding():
-	return test_move(transform, velocity.normalized())
+	var return_value = is_colliding
+	is_colliding = false
+	return return_value
 
+
+func will_collide():
+	return test_move(transform, Vector2.ZERO)
+#		for i in get_slide_count():
+#			get_slide_collision(i)
+#		return true
+#	else:
+#		return false
+	
 
 func _ready():
 	set_stamina(STAMINA)
+
 
 func _process(_delta):
 	if (active_sprite_state == "Run"):
@@ -132,6 +147,7 @@ func _update_active_sprite(new_sprite_state, new_sprite_direction):
 
 func _physics_process(delta):
 	move_and_slide(velocity * delta)
+	is_colliding = get_slide_count() > 0
 	velocity = Vector2.ZERO
 
 
@@ -190,15 +206,18 @@ func _use_stone():
 func _on_Hurtbox_area_entered(area):
 	if not _is_hurting and area.is_in_group("Attack") \
 	and not area.is_in_group("Islander") \
-	and not area.is_in_group("Stone"):
+	and (not IS_IMMUNE_TO_STONE or not area.is_in_group("Stone")):
 		set_health(health - 100)
-		self.modulate = Color.lightpink
+		initial_modulate = self.modulate
+		self.modulate.r = 1
+		self.modulate.g = 0.1
+		self.modulate.b = 0.1
 		_is_hurting = true
 		get_node("HurtCooldown").start()
 
 
 func _on_HurtTimer_timeout():
-	self.modulate = Color.white
+	self.modulate = initial_modulate
 	_is_hurting = false
 
 

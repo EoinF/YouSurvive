@@ -2,6 +2,7 @@ extends StaticBody2D
 
 export var COCONUT_DROPS = 0
 export var BRANCH_DROPS = 1
+export var STONE_DROPS = 0
 
 var object_type = "tree"
 
@@ -15,6 +16,8 @@ func _ready():
 		item_drops.append("coconut")
 	for _i in range(0, BRANCH_DROPS):
 		item_drops.append("branch")
+	for _i in range(0, STONE_DROPS):
+		item_drops.append("stone")
 
 
 func hit():

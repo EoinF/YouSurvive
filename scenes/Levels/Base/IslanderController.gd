@@ -41,6 +41,7 @@ func _process_movement_input(delta):
 		var deltaVector = Vector2(x, y).normalized() * delta
 		islander.move(deltaVector.x, deltaVector.y)
 
+
 func _process_interaction_input(_delta):
 	if current_interaction_item != null \
 	and Input.is_action_just_released('interact') \
@@ -65,6 +66,9 @@ func _process_inventory_item_input():
 func _on_PlayerInteraction_area_entered(area):
 	var interaction_item = area.get_parent()
 	if (interaction_item.is_in_group("Collectable")):
+		print(
+			"found collectable"
+		)
 		var screen_position = area.get_global_transform_with_canvas().get_origin()
 		var x = screen_position.x + area.get_child(0).shape.radius / 2
 		var y = screen_position.y + 20
@@ -74,7 +78,7 @@ func _on_PlayerInteraction_area_entered(area):
 
 func _on_PlayerInteraction_area_exited(area):
 	var interaction_item = area.get_parent()
-	var tooltip_container = get_owner().get_node("HUDLayer/HUD/TooltipContainer")
+	var tooltip_container = get_owner().get_node("HUDLayer/TooltipContainer")
 	var interaction_item_index = nearby_interaction_items.find(interaction_item)
 	nearby_interaction_items.remove(interaction_item_index)
 	if nearby_interaction_items.size() > 0:
@@ -88,7 +92,7 @@ func _on_PlayerInteraction_area_exited(area):
 		tooltip_container.visible = false
 
 func _show_interaction_item_tooltip(interaction_item, x, y):
-	var tooltip_container = get_owner().get_node("HUDLayer/HUD/TooltipContainer")
+	var tooltip_container = get_owner().get_node("HUDLayer/TooltipContainer")
 	if (interaction_item.is_in_group("Collectable")):
 		tooltip_container.activate("Press 'E' to pick up the " + interaction_item.display_name, x, y)
 	else:

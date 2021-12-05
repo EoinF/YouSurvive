@@ -7,7 +7,6 @@ var _message_use_coconut_without_rock = "You need a rock to break open the cocon
 
 export var INVENTORY_TYPE = "Islander"
 
-
 func _ready():
 	if INVENTORY_TYPE == "Islander":
 		get_node("Inventory").visible = true

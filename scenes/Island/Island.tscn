@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://objects/Rock/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Islander/Islander.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Island/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/Tree/Tree.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Island/TooltipContainer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Island/Props.gd" type="Script" id=9]
 [ext_resource path="res://scenes/Island/Projectiles.gd" type="Script" id=13]
 [ext_resource path="res://scenes/Island/AIController.gd" type="Script" id=15]
@@ -726,6 +727,8 @@ script = ExtResource( 15 )
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="HUDLayer" instance=ExtResource( 3 )]
+
+[node name="TooltipContainer" parent="HUDLayer" instance=ExtResource( 5 )]
 [connection signal="spawn_item" from="Objects/Projectiles" to="Objects/Props" method="_on_Projectiles_spawn_item"]
 [connection signal="health_change" from="Objects/Props/Islander" to="HUDLayer/HUD" method="_on_Islander_health_change"]
 [connection signal="throw_stone" from="Objects/Props/Islander" to="Objects/Projectiles" method="_on_Islander_throw_stone"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Island/TooltipContainer.gd" type="Script" id=1]
+
+[node name="TooltipContainer" type="Control"]
+visible = false
+self_modulate = Color( 0.415686, 0.129412, 0.129412, 0.0862745 )
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -10.0
+margin_right = 50.0
+margin_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color( 0.113725, 0.113725, 0.113725, 0.584314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tooltip" type="Label" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Hello world"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -86,6 +86,8 @@ margin_right = -0.471924
 margin_bottom = 0.471924
 
 [node name="FadeInEvent" parent="HUDLayer/HUD/MainDialogue1" index="3" instance=ExtResource( 6 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event1Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/FadeInEvent" index="0"]
 script = ExtResource( 13 )
@@ -115,6 +117,8 @@ TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 Y_POSITION_PERCENT = 0.9
 
 [node name="GiftBranches" parent="HUDLayer/HUD/MainDialogue1" index="8" instance=ExtResource( 6 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event3Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/GiftBranches" index="0"]
 script = ExtResource( 17 )
@@ -126,11 +130,15 @@ TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 Y_POSITION_PERCENT = 0.9
 
 [node name="StopCameraFollow" parent="HUDLayer/HUD/MainDialogue1" index="10" instance=ExtResource( 6 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event2Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/StopCameraFollow" index="0"]
 script = ExtResource( 10 )
 
 [node name="EnableControls" parent="HUDLayer/HUD/MainDialogue1" index="11" instance=ExtResource( 6 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event4Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/EnableControls" index="0"]
 script = ExtResource( 16 )
@@ -203,6 +211,8 @@ margin_right = -0.471924
 margin_bottom = 0.471924
 
 [node name="DisableControls" parent="HUDLayer/HUD/ObjectivesSlow" index="3" instance=ExtResource( 6 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event6Script" type="Node" parent="HUDLayer/HUD/ObjectivesSlow/DisableControls" index="0"]
 script = ExtResource( 19 )
@@ -232,6 +242,8 @@ margin_right = -0.471924
 margin_bottom = 0.471924
 
 [node name="DisableControls" parent="HUDLayer/HUD/ObjectivesFast" index="3" instance=ExtResource( 6 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event5Script" type="Node" parent="HUDLayer/HUD/ObjectivesFast/DisableControls" index="0"]
 script = ExtResource( 20 )
@@ -337,7 +349,6 @@ wait_time = 50.0
 one_shot = true
 autostart = true
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
-[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
 [connection signal="body_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_body_entered"]
@@ -352,4 +363,3 @@ autostart = true
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 [connection signal="objectives_updated" from="Day1Objectives" to="." method="_on_Day1Objectives_objectives_updated"]
-[connection signal="objectives_updated" from="Day1Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]

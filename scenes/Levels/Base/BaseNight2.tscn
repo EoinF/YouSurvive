@@ -6,14 +6,13 @@
 [ext_resource path="res://assets/coconut.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Levels/Base/Night2Objectives.gd" type="Script" id=5]
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=1]
 radius = 7.47797
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=2]
 radius = 57.5965
 
-[sub_resource type="Animation" id=1]
-resource_name = "RainCoconuts"
+[sub_resource type="Animation" id=3]
 length = 10.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Particles2D:emitting")
@@ -136,7 +135,7 @@ tracks/9/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Objects/Props/Islander/Light2D:energy")
@@ -151,7 +150,7 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Objects/Props/Tree/Light2D:energy")
@@ -166,7 +165,7 @@ tracks/0/keys = {
 "values": [ 0.0, 0.8 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Objects/Props/Crab:visible")
@@ -198,12 +197,15 @@ tracks/1/keys = {
 [node name="Objects" parent="." index="0"]
 color = Color( 0.0431373, 0.0392157, 0.0941176, 1 )
 
+[node name="Islander" parent="Objects/Props" index="0"]
+modulate = Color( 1, 1, 1, 0.666667 )
+
 [node name="Light2D" type="Light2D" parent="Objects/Props/Islander" index="11"]
 position = Vector2( 0, -12.2704 )
 texture = ExtResource( 3 )
 texture_scale = 0.5
 color = Color( 0.501961, 0.780392, 1, 1 )
-energy = 0.0
+energy = 0.666667
 
 [node name="Light2D" type="Light2D" parent="Objects/Props/Tree" index="6"]
 position = Vector2( 0, -4.48007 )
@@ -214,42 +216,43 @@ energy = 0.0
 
 [node name="Crab" parent="Objects/Props" index="3" instance=ExtResource( 2 )]
 visible = false
+modulate = Color( 1, 1, 1, 0.666667 )
 position = Vector2( 666.55, 484.007 )
 
 [node name="Light2D" type="Light2D" parent="Objects/Props/Crab" index="8"]
 texture = ExtResource( 3 )
 texture_scale = 0.3
 color = Color( 0.862745, 0.172549, 0.172549, 1 )
-energy = 0.0
+energy = 0.666667
 
 [node name="StartingArea" type="Area2D" parent="Objects" index="3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/StartingArea" index="0"]
 position = Vector2( 754.532, 266.363 )
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 
 [node name="TreeArea" type="Area2D" parent="Objects" index="4"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/TreeArea" index="0"]
 position = Vector2( 458.813, 246.333 )
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 
 [node name="Night2Objectives" type="Node" parent="." index="3"]
 script = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
-anims/RainCoconuts = SubResource( 1 )
-anims/ShowIslander = SubResource( 2 )
-anims/ShowTree = SubResource( 3 )
-anims/SpawnAndShowCrab = SubResource( 4 )
+anims/RainCoconuts = SubResource( 3 )
+anims/ShowIslander = SubResource( 4 )
+anims/ShowTree = SubResource( 5 )
+anims/SpawnAndShowCrab = SubResource( 6 )
 
 [node name="Particles2D" type="CPUParticles2D" parent="." index="5"]
-position = Vector2( 455.549, 215.014 )
+position = Vector2( 455.549, 237.507 )
 amount = 50
 local_coords = false
 texture = ExtResource( 4 )
 emission_shape = 1
-emission_sphere_radius = 10.0
+emission_sphere_radius = 30.0
 direction = Vector2( 0, -1 )
 spread = 77.28
 initial_velocity = 12.74
