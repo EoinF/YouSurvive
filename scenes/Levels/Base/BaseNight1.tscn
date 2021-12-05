@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Island/DreamIsland.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Islander/Islander.tscn" type="PackedScene" id=2]
@@ -6,6 +6,22 @@
 [ext_resource path="res://scenes/Levels/Base/Night1Objectives.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="Animation" id=8]
+resource_name = "FadeOut"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Objects:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0431373, 0.0392157, 0.0941176, 1 ), Color( 0, 0, 0, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "HighlightRock"
@@ -180,7 +196,7 @@ tracks/0/keys = {
 resource_name = "SpawnAndActivateGhost"
 length = 3.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Objects/Props/Ghost2:visible")
+tracks/0/path = NodePath("Objects/Props/Ghost:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -257,7 +273,7 @@ texture_scale = 0.6
 color = Color( 0.235294, 0.537255, 0.717647, 1 )
 energy = 0.0
 
-[node name="Ghost2" parent="Objects/Props" index="3" groups=[
+[node name="Ghost" parent="Objects/Props" index="3" groups=[
 "Ghost",
 ] instance=ExtResource( 2 )]
 modulate = Color( 0.0117647, 0.0117647, 0.0313726, 0.556863 )
@@ -275,6 +291,7 @@ shape = SubResource( 1 )
 visible = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+anims/FadeOut = SubResource( 8 )
 anims/HighlightRock = SubResource( 2 )
 anims/RainCoconuts = SubResource( 3 )
 anims/ShowIslander = SubResource( 4 )
@@ -285,5 +302,6 @@ anims/SpawnAndShowCrab = SubResource( 7 )
 [node name="Night1Objectives" type="Node" parent="." index="5"]
 script = ExtResource( 4 )
 [connection signal="inventory_slot_change" from="Objects/Props/Islander" to="HUDLayer/HUD" method="_on_Islander_inventory_slot_change"]
+[connection signal="health_change" from="Objects/Props/Ghost" to="HUDLayer/Overlay" method="_on_Ghost_health_change"]
 [connection signal="use_item" from="HUDLayer/HUD" to="Objects/Props/Islander" method="_on_HUD_use_item"]
 [connection signal="objectives_updated" from="Night1Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]

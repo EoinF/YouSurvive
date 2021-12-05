@@ -10,6 +10,7 @@ export var SPEED = 8 * 1000
 export var STAMINA = 25
 export var SPEED_WHILE_TIRED = 8 * 1000
 export var IS_IMMUNE_TO_STONE = true
+export var MAX_HEALTH = 1000
 
 var object_type = "islander"
 
@@ -23,8 +24,8 @@ var attack_direction = Vector2.DOWN
 var active_sprite_state = "Stand"
 var active_sprite_direction = "Down"
 var _is_hurting = false
-var health = 1000
 var initial_modulate = self.modulate
+var health
 
 
 class InventorySlot:
@@ -57,6 +58,7 @@ func will_collide():
 
 func _ready():
 	set_stamina(STAMINA)
+	set_health(MAX_HEALTH)
 
 
 func _process(_delta):

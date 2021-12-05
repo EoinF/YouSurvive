@@ -11,3 +11,11 @@ func set_intensity(new_intensity):
 
 func _enter_tree():
 	set_intensity(INTENSITY)
+
+
+func _on_Ghost_health_change(health):
+	print(health)
+	if health > 300:
+		set_intensity(0)
+	else:
+		set_intensity(0.2 + 0.3 * max(0, (350 - health) / 350.0))

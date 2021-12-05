@@ -10,6 +10,9 @@ script = ExtResource( 3 )
 [node name="Islander" parent="Objects/Props" index="0"]
 modulate = Color( 1, 1, 1, 1 )
 
+[node name="Ghost" parent="Objects/Props" index="3"]
+MAX_HEALTH = 400
+
 [node name="HUD" parent="HUDLayer" index="0"]
 visible = false
 
@@ -17,5 +20,6 @@ visible = false
 script = ExtResource( 2 )
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="IslanderController" method="_on_PlayerInteraction_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/PlayerInteraction" to="IslanderController" method="_on_PlayerInteraction_area_exited"]
+[connection signal="health_change" from="Objects/Props/Ghost" to="." method="_on_Ghost_health_change"]
 [connection signal="body_exited" from="Objects/StartingArea" to="." method="_on_StartingArea_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

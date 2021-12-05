@@ -21,3 +21,11 @@ func _on_StartingArea_body_exited(body):
 	if not is_ghost_shown and body.is_in_group("Islander"):
 		is_ghost_shown = true
 		get_node("AnimationPlayer").play("SpawnAndActivateGhost")
+
+
+func _on_Ghost_health_change(health):
+	if health <= 0:
+		get_node("AnimationPlayer").play("FadeOut")
+
+func _onFadeOutFinish():
+	emit_signal("finish_scene")
