@@ -30,7 +30,6 @@ script = ExtResource( 9 )
 
 [node name="Islander" parent="Objects/Props" instance=ExtResource( 2 )]
 position = Vector2( 395, 360 )
-collision_mask = 22
 
 [node name="PlayerInteraction" type="Area2D" parent="Objects/Props/Islander"]
 collision_layer = 0

@@ -29,6 +29,6 @@ margin_left = 75.0
 margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
-[connection signal="use_item" from="1" to="." method="_on_use_item_1"]
-[connection signal="use_item" from="2" to="." method="_on_use_item_2"]
-[connection signal="use_item" from="3" to="." method="_on_use_item_3"]
+[connection signal="click_item" from="1" to="." method="_on_click_item" binds= [ "1" ]]
+[connection signal="click_item" from="2" to="." method="_on_click_item" binds= [ "2" ]]
+[connection signal="click_item" from="3" to="." method="_on_click_item" binds= [ "3" ]]

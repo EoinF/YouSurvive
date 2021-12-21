@@ -48,20 +48,23 @@ func _process_interaction_input(_delta):
 	and current_interaction_item.is_usable:
 		current_interaction_item.interact()
 		get_owner().get_node("Objects/Props/Islander").pick_up_item(current_interaction_item.object_type)
-	
+
+
 func _process_attack_input(_delta):
 	var islander = get_owner().get_node("Objects/Props/Islander")
 	if Input.is_action_just_released('attack') and not islander.is_attacking():
 		islander.attack()
-		
+
 
 func _process_inventory_item_input():
 	if Input.is_action_just_released('use_item_1'):
-		get_owner().get_node("HUDLayer/HUD/Inventory").use_item_x("1")
+		get_owner().get_node("HUDLayer/HUD/Inventory").set_active_item_slot("1")
 	elif Input.is_action_just_released('use_item_2'):
-		get_owner().get_node("HUDLayer/HUD/Inventory").use_item_x("2")
+		get_owner().get_node("HUDLayer/HUD/Inventory").set_active_item_slot("2")
 	elif Input.is_action_just_released('use_item_3'):
-		get_owner().get_node("HUDLayer/HUD/Inventory").use_item_x("3")
+		get_owner().get_node("HUDLayer/HUD/Inventory").set_active_item_slot("3")
+	elif Input.is_action_just_released('use_item'):
+		get_owner().get_node("HUDLayer/HUD/Inventory").use_active_item()
 
 func _on_PlayerInteraction_area_entered(area):
 	var interaction_item = area.get_parent()

@@ -15,8 +15,11 @@ export var MAX_HEALTH = 1000
 var object_type = "islander"
 
 var walking_timeout = 0
+
+
 func is_attacking():
 	return get_node("AttackPivotPoint/AttackAnimation").is_playing()
+
 
 var velocity = Vector2.ZERO
 var direction = Vector2.DOWN

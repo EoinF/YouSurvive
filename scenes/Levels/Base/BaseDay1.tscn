@@ -68,6 +68,6 @@ anims/fade = SubResource( 1 )
 
 [node name="Day1Objectives" type="Node" parent="." index="4"]
 script = ExtResource( 2 )
-[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="HUDLayer/HUD" method="_on_Islander_inventory_slot_change"]
 [connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
+[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="HUDLayer/HUD" method="_on_Islander_inventory_slot_change"]
 [connection signal="objectives_updated" from="Day1Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]

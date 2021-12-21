@@ -1,8 +1,9 @@
 extends Control
 
-signal use_item
+signal click_item
 
 var item_type = "<empty>"
+var is_active = false
 
 
 func set_amount(amount):
@@ -17,5 +18,13 @@ func set_item_type(new_item_type):
 	get_node("SpriteContainer/" + item_type).visible = true
 
 
+func set_active(_is_active):
+	is_active = _is_active
+	if is_active:
+		self.modulate = Color.yellow
+	else:
+		self.modulate = Color.white
+
+
 func _on_Button_pressed():
-	emit_signal("use_item")
+	emit_signal("click_item")
