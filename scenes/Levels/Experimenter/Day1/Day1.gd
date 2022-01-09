@@ -45,3 +45,12 @@ func _on_Day1Objectives_objectives_updated(objectives):
 			get_node("HUDLayer/HUD/ObjectivesFast").start()
 		else:
 			get_node("HUDLayer/HUD/ObjectivesSlow").start()
+
+
+func _on_Islander_die():
+	get_node("HUDLayer/HUD/Experimenter game over").start()
+
+
+func _on_Experimenter_game_over_finish_dialogue():
+	get_tree().reload_current_scene()
+

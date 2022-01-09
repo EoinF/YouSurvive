@@ -4,6 +4,7 @@ signal use_coconut_without_rock
 signal inventory_slot_change(inventory_slot)
 signal stamina_change(stamina)
 signal health_change(health)
+signal die
 signal throw_stone(position, direction)
 
 export var SPEED = 8 * 1000
@@ -28,7 +29,8 @@ var active_sprite_state = "Stand"
 var active_sprite_direction = "Down"
 var _is_hurting = false
 var initial_modulate = self.modulate
-var health
+var health = MAX_HEALTH
+var is_alive = true
 
 
 class InventorySlot:
@@ -62,6 +64,7 @@ func will_collide():
 func _ready():
 	set_stamina(STAMINA)
 	set_health(MAX_HEALTH)
+	is_alive = true
 
 
 func _process(_delta):
@@ -178,7 +181,13 @@ func set_stamina(new_stamina):
 
 
 func set_health(new_health):
+	if not is_alive:
+		return
 	health = new_health
+	if health <= 0:
+		is_alive = false
+		health = 0
+		emit_signal("die")
 	emit_signal("health_change", health)
 
 

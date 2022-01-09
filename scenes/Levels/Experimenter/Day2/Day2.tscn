@@ -59,6 +59,8 @@ margin_right = -0.471924
 margin_bottom = 0.471924
 
 [node name="FadeInEvent" parent="HUDLayer/HUD/MainDialogue1" index="3" instance=ExtResource( 17 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event1Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/FadeInEvent" index="0"]
 script = ExtResource( 18 )
@@ -70,16 +72,22 @@ TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 Y_POSITION_PERCENT = 0.9
 
 [node name="GiftCrabsAndStones" parent="HUDLayer/HUD/MainDialogue1" index="5" instance=ExtResource( 17 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event2Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/GiftCrabsAndStones" index="0"]
 script = ExtResource( 21 )
 
 [node name="StopCameraFollow" parent="HUDLayer/HUD/MainDialogue1" index="6" instance=ExtResource( 17 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event3Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/StopCameraFollow" index="0"]
 script = ExtResource( 22 )
 
 [node name="EnableControls" parent="HUDLayer/HUD/MainDialogue1" index="7" instance=ExtResource( 17 )]
+NEXT_NODE_DELAY = 0
+DISABLED = false
 
 [node name="Event4Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/EnableControls" index="0"]
 script = ExtResource( 19 )
