@@ -78,11 +78,9 @@ func pick_up_item(_item_type, _amount):
 		
 	emit_signal("inventory_slot_change", item_type_to_slot[_item_type])
 
-
-func use_item(_item_type):
-	print("using experimenter item: ", _item_type, is_controls_enabled, item_type_to_slot[_item_type].amount)
-	if is_controls_enabled and item_type_to_slot[_item_type].amount > 0:
+	if not is_controls_enabled:
 		get_node("ItemPlacementTool").toggle_item_placement(_item_type)
+		enable_controls()
 
 
 func _process(delta):
@@ -114,6 +112,3 @@ func _on_MainContainer_mouse_entered():
 func _on_MainContainer_mouse_exited():
 	get_node("ItemPlacementTool")._on_MainContainer_mouse_exited()
 
-
-func _on_HUD_use_item(_item_type):
-	use_item(_item_type)
