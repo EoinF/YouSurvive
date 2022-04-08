@@ -37,16 +37,16 @@ tracks/1/keys = {
 color = Color( 0.823529, 0.647059, 0.529412, 1 )
 
 [node name="Branch" parent="Objects/Props" index="13" instance=ExtResource( 8 )]
-position = Vector2( 2006.35, 907.949 )
+position = Vector2( 2006, 908 )
 
 [node name="Branch2" parent="Objects/Props" index="14" instance=ExtResource( 8 )]
-position = Vector2( 830.968, 440.548 )
+position = Vector2( 831, 441 )
 
 [node name="Branch3" parent="Objects/Props" index="15" instance=ExtResource( 8 )]
-position = Vector2( 2133.13, 2.94914 )
+position = Vector2( 2133, 3 )
 
 [node name="Branch5" parent="Objects/Props" index="16" instance=ExtResource( 8 )]
-position = Vector2( 1378.71, 736.539 )
+position = Vector2( 1379, 737 )
 
 [node name="Day1Label" type="Label" parent="HUDLayer/HUD" index="1"]
 self_modulate = Color( 1, 1, 1, 0 )
