@@ -9,7 +9,7 @@ var current_move_path = []
 var current_target: Node = null
 var current_enemy: Node = null
 var objects_in_view = {}
-var is_paused = false
+var is_paused = true
 
 
 func _ready():

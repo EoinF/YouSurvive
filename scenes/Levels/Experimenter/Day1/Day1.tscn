@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://objects/Experimenter/Experimenter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Base/BaseDay1.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/Levels/Experimenter/Day1/Day1.gd" type="Script" id=9]
 [ext_resource path="res://scenes/Levels/Experimenter/Day1/Event2Script.gd" type="Script" id=10]
 [ext_resource path="res://dialogue/Experimenter game over.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Levels/Experimenter/Day1/StartCameraFollow.gd" type="Script" id=12]
 [ext_resource path="res://scenes/Levels/Experimenter/Day1/Event1Script.gd" type="Script" id=13]
 [ext_resource path="res://assets/PathfinderTileset.png" type="Texture" id=14]
 [ext_resource path="res://scenes/Levels/Experimenter/Day1/Event4Script.gd" type="Script" id=16]
@@ -80,18 +81,28 @@ collision_mask = 15
 [node name="HUD" parent="HUDLayer" index="0"]
 INVENTORY_TYPE = "Experimenter"
 
-[node name="MainDialogue1" parent="HUDLayer/HUD" index="7" instance=ExtResource( 3 )]
+[node name="Intro" parent="HUDLayer/HUD" index="7" instance=ExtResource( 3 )]
+
+[node name="FadeInEvent" parent="HUDLayer/HUD/Intro" index="3" instance=ExtResource( 6 )]
+
+[node name="Event1Script" type="Node" parent="HUDLayer/HUD/Intro/FadeInEvent" index="0"]
+script = ExtResource( 13 )
+
+[node name="EnableControls" parent="HUDLayer/HUD/Intro" index="4" instance=ExtResource( 6 )]
+
+[node name="Event4Script" type="Node" parent="HUDLayer/HUD/Intro/EnableControls" index="0"]
+script = ExtResource( 16 )
+
+[node name="MainDialogue1" parent="HUDLayer/HUD" index="8" instance=ExtResource( 3 )]
 margin_left = -0.471924
 margin_top = 0.471947
 margin_right = -0.471924
 margin_bottom = 0.471924
 
-[node name="FadeInEvent" parent="HUDLayer/HUD/MainDialogue1" index="3" instance=ExtResource( 6 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
+[node name="StartCameraFollow" parent="HUDLayer/HUD/MainDialogue1" index="3" instance=ExtResource( 6 )]
 
-[node name="Event1Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/FadeInEvent" index="0"]
-script = ExtResource( 13 )
+[node name="EventScript" type="Node" parent="HUDLayer/HUD/MainDialogue1/StartCameraFollow" index="0"]
+script = ExtResource( 12 )
 
 [node name="Segment1" parent="HUDLayer/HUD/MainDialogue1" index="4" instance=ExtResource( 4 )]
 MESSAGE = "Okay {player_name}, here is our fresh test subject."
@@ -118,8 +129,6 @@ TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 Y_POSITION_PERCENT = 0.9
 
 [node name="GiftBranches" parent="HUDLayer/HUD/MainDialogue1" index="8" instance=ExtResource( 6 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event3Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/GiftBranches" index="0"]
 script = ExtResource( 17 )
@@ -131,15 +140,11 @@ TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 Y_POSITION_PERCENT = 0.9
 
 [node name="StopCameraFollow" parent="HUDLayer/HUD/MainDialogue1" index="10" instance=ExtResource( 6 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event2Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/StopCameraFollow" index="0"]
 script = ExtResource( 10 )
 
 [node name="EnableControls" parent="HUDLayer/HUD/MainDialogue1" index="11" instance=ExtResource( 6 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event4Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/EnableControls" index="0"]
 script = ExtResource( 16 )
@@ -165,7 +170,7 @@ TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 NEXT_NODE_DELAY = 3.0
 Y_POSITION_PERCENT = 0.9
 
-[node name="MainDialogue2" parent="HUDLayer/HUD" index="8" instance=ExtResource( 3 )]
+[node name="MainDialogue2" parent="HUDLayer/HUD" index="9" instance=ExtResource( 3 )]
 margin_left = -0.471924
 margin_top = 0.471947
 margin_right = -0.471924
@@ -205,15 +210,13 @@ BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 Y_POSITION_PERCENT = 0.9
 
-[node name="ObjectivesSlow" parent="HUDLayer/HUD" index="9" instance=ExtResource( 3 )]
+[node name="ObjectivesSlow" parent="HUDLayer/HUD" index="10" instance=ExtResource( 3 )]
 margin_left = -0.471924
 margin_top = 0.471947
 margin_right = -0.471924
 margin_bottom = 0.471924
 
 [node name="DisableControls" parent="HUDLayer/HUD/ObjectivesSlow" index="3" instance=ExtResource( 6 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event6Script" type="Node" parent="HUDLayer/HUD/ObjectivesSlow/DisableControls" index="0"]
 script = ExtResource( 19 )
@@ -236,15 +239,13 @@ BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 Y_POSITION_PERCENT = 0.9
 
-[node name="ObjectivesFast" parent="HUDLayer/HUD" index="10" instance=ExtResource( 3 )]
+[node name="ObjectivesFast" parent="HUDLayer/HUD" index="11" instance=ExtResource( 3 )]
 margin_left = -0.471924
 margin_top = 0.471947
 margin_right = -0.471924
 margin_bottom = 0.471924
 
 [node name="DisableControls" parent="HUDLayer/HUD/ObjectivesFast" index="3" instance=ExtResource( 6 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event5Script" type="Node" parent="HUDLayer/HUD/ObjectivesFast/DisableControls" index="0"]
 script = ExtResource( 20 )
@@ -267,7 +268,7 @@ BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
 TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 Y_POSITION_PERCENT = 0.9
 
-[node name="Experimenter game over" parent="HUDLayer/HUD" index="11" instance=ExtResource( 11 )]
+[node name="Experimenter game over" parent="HUDLayer/HUD" index="12" instance=ExtResource( 11 )]
 
 [node name="IslanderAIController" parent="." index="3" instance=ExtResource( 7 )]
 
@@ -341,6 +342,9 @@ OBJECTS_NODE_PATH = "Objects/Props"
 
 [node name="Experimenter" parent="." index="5" instance=ExtResource( 1 )]
 
+[node name="Camera" parent="Experimenter" index="0"]
+position = Vector2( 2080.58, 767.181 )
+
 [node name="AnimationPlayer" parent="." index="6"]
 anims/highlight_inventory = SubResource( 2 )
 
@@ -353,6 +357,7 @@ one_shot = true
 autostart = true
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="die" from="Objects/Props/Islander" to="." method="_on_Islander_die"]
+[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
 [connection signal="body_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_body_entered"]
@@ -367,4 +372,8 @@ autostart = true
 [connection signal="finish_dialogue" from="HUDLayer/HUD/Experimenter game over" to="." method="_on_Experimenter_game_over_finish_dialogue"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
+[connection signal="sees_islander" from="Experimenter" to="." method="_on_Experimenter_sees_islander"]
+[connection signal="objectives_updated" from="Day1Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
 [connection signal="objectives_updated" from="Day1Objectives" to="." method="_on_Day1Objectives_objectives_updated"]
+
+[editable path="Experimenter"]

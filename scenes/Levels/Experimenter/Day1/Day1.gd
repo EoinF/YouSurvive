@@ -15,7 +15,7 @@ func set_player_name(name: String):
 
 
 func _ready():
-	get_node("HUDLayer/HUD/MainDialogue1").start()
+	get_node("HUDLayer/HUD/Intro").start()
 
 
 func _on_ObjectivesFast_finish_dialogue():
@@ -54,3 +54,7 @@ func _on_Islander_die():
 func _on_Experimenter_game_over_finish_dialogue():
 	get_tree().reload_current_scene()
 
+
+
+func _on_Experimenter_sees_islander():
+	get_node("HUDLayer/HUD/MainDialogue1").start()

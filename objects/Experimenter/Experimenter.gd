@@ -1,5 +1,6 @@
 extends Node2D
 
+signal sees_islander
 signal inventory_slot_change(inventory_slot)
 signal place_item(item_type, source_location)
 
@@ -112,3 +113,8 @@ func _on_MainContainer_mouse_entered():
 func _on_MainContainer_mouse_exited():
 	get_node("ItemPlacementTool")._on_MainContainer_mouse_exited()
 
+
+
+func _on_VisionDetectionArea_body_entered(body):
+	if body.is_in_group("Islander"):
+		emit_signal("sees_islander")
