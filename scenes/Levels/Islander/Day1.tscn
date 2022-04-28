@@ -16,11 +16,12 @@ SPEED_WHILE_TIRED = 9000
 
 [node name="Camera2D" type="Camera2D" parent="Objects/Props/Islander" index="9"]
 current = true
+zoom = Vector2( 0.5, 0.5 )
 
 [node name="Crab" parent="Objects/Props" index="36" instance=ExtResource( 4 )]
 position = Vector2( 512.431, 349.357 )
 
-[node name="Stone" parent="Objects" index="3" instance=ExtResource( 5 )]
+[node name="Stone" parent="Objects/Props" index="38" instance=ExtResource( 5 )]
 position = Vector2( 447.357, 375.04 )
 
 [node name="IslanderInput" type="Node" parent="." index="5"]

@@ -8,12 +8,11 @@ var rock_scene = preload("res://objects/Projectiles/StoneProjectile.tscn")
 func _on_Islander_throw_stone(position, direction):
 	var islander = get_owner().get_node("Objects/Props/Islander")
 	var rock_prop = rock_scene.instance()
-	var projectile = rock_prop.get_node("Projectile")
-	projectile.set_owner_instance_id(islander.get_instance_id())
-	projectile.launch_item(position + (projectile.direction * 20), direction.normalized())
+	rock_prop.set_owner_instance_id(islander.get_instance_id())
+	rock_prop.launch_item(position + (rock_prop.direction * 20), direction.normalized())
 	add_child(rock_prop)
 	
-	projectile.connect("finish_launching", self, "_finish_launching")
+	rock_prop.connect("finish_launching", self, "_finish_launching")
 
 
 func _finish_launching(node):

@@ -6,33 +6,28 @@
 [ext_resource path="res://objects/Projectiles/AttackArea.gd" type="Script" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 212.21, 244.47, 10.7087, 10.2266 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 4.79525
 
-[node name="StoneProjectile" type="Node2D"]
-
-[node name="Projectile" parent="." instance=ExtResource( 1 )]
+[node name="Projectile" instance=ExtResource( 1 )]
 collision_mask = 6
 duration = 0.3
 MOVE_SPEED = 300
 spawned_object_type = "stone"
-object_type = "p_stone"
-attack_power = 0
+object_type = "stone"
 
-[node name="Shadow" type="Sprite" parent="Projectile"]
-position = Vector2( 0, 3.81079 )
-rotation = 31.3496
+[node name="Shadow" type="Sprite" parent="." index="1"]
+position = Vector2( 0, 4 )
 texture = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="Projectile"]
-rotation = 31.3496
+[node name="Sprite" type="Sprite" parent="." index="2"]
 texture = SubResource( 1 )
+offset = Vector2( 0, -10 )
 
-[node name="AttackArea" type="Area2D" parent="Projectile" groups=[
+[node name="AttackArea" type="Area2D" parent="." index="3" groups=[
 "Attack",
 "Stone",
 ]]
@@ -40,5 +35,5 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource( 4 )
 
-[node name="Shape" type="CollisionShape2D" parent="Projectile/AttackArea"]
+[node name="Shape" type="CollisionShape2D" parent="AttackArea" index="0"]
 shape = SubResource( 2 )
