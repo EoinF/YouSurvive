@@ -10,6 +10,12 @@ var children
 var node_index
 
 var variables: Dictionary
+var is_playing = true
+var is_started = false
+
+func _process(delta):
+	if is_started and Input.is_action_just_released("skip_dialogue"):
+		_on_Button_pressed()
 
 
 func start():
@@ -17,6 +23,8 @@ func start():
 	current_length = 0
 	final_text = ""
 	node_index = -1
+	is_playing = true
+	is_started = true
 	_next_node()
 
 
@@ -54,7 +62,6 @@ func _next_node():
 			next_wait_time = current_node.NEXT_NODE_DELAY
 			
 			var label = get_node("Button/LabelContainer/Label")
-			label.text = ""
 			label.modulate = current_node.TEXT_COLOUR
 			var text_area = label.get_font("normal_font").get_string_size(final_text)
 			var background = get_node("Button/LabelContainer")
@@ -66,9 +73,13 @@ func _next_node():
 			button.rect_position.y = (rect_size.y - background.rect_size.y) * current_node.Y_POSITION_PERCENT
 			
 			visible = true
-			var letter_timer = get_node("LetterTimer")
-			letter_timer.set_wait_time(current_node.NEXT_LETTER_DELAY)
-			letter_timer.start()
+			if is_playing:
+				label.text = ""
+				var letter_timer = get_node("LetterTimer")
+				letter_timer.set_wait_time(current_node.NEXT_LETTER_DELAY)
+				letter_timer.start()
+			else:
+				label.text = final_text
 		else:
 			current_node.connect("finish_event", self, "_on_event_complete")
 			next_wait_time = current_node.NEXT_NODE_DELAY
@@ -85,7 +96,6 @@ func _on_LetterTimer_timeout():
 
 
 func _on_event_complete():
-	print("complete event")
 	children[node_index].disconnect("finish_event", self, "_on_event_complete")
 	_start_next_node_timer()
 
@@ -104,7 +114,11 @@ func _on_NextNodeTimer_timeout():
 
 
 func _on_Button_pressed():
-	print("button was pressed")
 	if visible:
 		get_node("NextNodeTimer").stop()
-		_next_node()
+		get_node("LetterTimer").stop()
+		if is_playing:
+			is_playing = false
+			get_node("Button/LabelContainer/Label").text = final_text
+		else:
+			_next_node()

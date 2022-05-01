@@ -55,6 +55,9 @@ func _on_Experimenter_game_over_finish_dialogue():
 	get_tree().reload_current_scene()
 
 
+var is_first_time_seeing_islander = true
 
 func _on_Experimenter_sees_islander():
-	get_node("HUDLayer/HUD/MainDialogue1").start()
+	if is_first_time_seeing_islander:
+		get_node("HUDLayer/HUD/MainDialogue1").start()
+		is_first_time_seeing_islander = false

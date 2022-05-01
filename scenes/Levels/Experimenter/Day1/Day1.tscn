@@ -357,7 +357,6 @@ one_shot = true
 autostart = true
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="die" from="Objects/Props/Islander" to="." method="_on_Islander_die"]
-[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
 [connection signal="body_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_body_entered"]
@@ -373,7 +372,6 @@ autostart = true
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 [connection signal="sees_islander" from="Experimenter" to="." method="_on_Experimenter_sees_islander"]
-[connection signal="objectives_updated" from="Day1Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
 [connection signal="objectives_updated" from="Day1Objectives" to="." method="_on_Day1Objectives_objectives_updated"]
 
 [editable path="Experimenter"]
