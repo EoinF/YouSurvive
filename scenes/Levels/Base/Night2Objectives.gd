@@ -21,4 +21,5 @@ func _get_objectives():
 	objective1["description"] = OBJECTIVE_RELEASE_COCONUTS_TEMPLATE
 	objective1["key"] = OBJECTIVE_RELEASE_COCONUTS_KEY
 	objective1["is_complete"] = is_objective_1_complete
+	objective1["is_visible"] = true
 	return [objective1]

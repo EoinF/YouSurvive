@@ -198,14 +198,14 @@ tracks/1/keys = {
 color = Color( 0.0431373, 0.0392157, 0.0941176, 1 )
 
 [node name="Islander" parent="Objects/Props" index="0"]
-modulate = Color( 1, 1, 1, 0.666667 )
+modulate = Color( 1, 1, 1, 0.933333 )
 
 [node name="Light2D" type="Light2D" parent="Objects/Props/Islander" index="11"]
 position = Vector2( 0, -12.2704 )
 texture = ExtResource( 3 )
 texture_scale = 0.5
 color = Color( 0.501961, 0.780392, 1, 1 )
-energy = 0.666667
+energy = 0.0
 
 [node name="Light2D" type="Light2D" parent="Objects/Props/Tree" index="6"]
 position = Vector2( 0, -4.48007 )
@@ -216,14 +216,14 @@ energy = 0.0
 
 [node name="Crab" parent="Objects/Props" index="3" instance=ExtResource( 2 )]
 visible = false
-modulate = Color( 1, 1, 1, 0.666667 )
+modulate = Color( 1, 1, 1, 0.933333 )
 position = Vector2( 666.55, 484.007 )
 
 [node name="Light2D" type="Light2D" parent="Objects/Props/Crab" index="8"]
 texture = ExtResource( 3 )
 texture_scale = 0.3
 color = Color( 0.862745, 0.172549, 0.172549, 1 )
-energy = 0.666667
+energy = 0.933333
 
 [node name="StartingArea" type="Area2D" parent="Objects" index="3"]
 
@@ -247,12 +247,13 @@ anims/ShowTree = SubResource( 5 )
 anims/SpawnAndShowCrab = SubResource( 6 )
 
 [node name="Particles2D" type="CPUParticles2D" parent="." index="5"]
-position = Vector2( 455.549, 237.507 )
+position = Vector2( 455.549, 215.014 )
+emitting = false
 amount = 50
 local_coords = false
 texture = ExtResource( 4 )
 emission_shape = 1
-emission_sphere_radius = 30.0
+emission_sphere_radius = 10.0
 direction = Vector2( 0, -1 )
 spread = 77.28
 initial_velocity = 12.74

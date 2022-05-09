@@ -7,7 +7,7 @@
 
 [sub_resource type="CircleShape2D" id=1]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=2]
 resource_name = "FadeOut"
 length = 6.0
 tracks/0/type = "value"
@@ -23,8 +23,7 @@ tracks/0/keys = {
 "values": [ Color( 0.0431373, 0.0392157, 0.0941176, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "HighlightRock"
+[sub_resource type="Animation" id=3]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Objects/Props/Tree/Light2D:energy")
@@ -39,7 +38,7 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0, 0.2, 1.0, 0.2, 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 10.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Particles2D:emitting")
@@ -162,7 +161,7 @@ tracks/9/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Objects/Props/Islander/Light2D:energy")
@@ -177,7 +176,7 @@ tracks/0/keys = {
 "values": [ 0.0, 0.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Objects/Props/Tree/Light2D:energy")
@@ -192,8 +191,7 @@ tracks/0/keys = {
 "values": [ 0.0, 0.8 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "SpawnAndActivateGhost"
+[sub_resource type="Animation" id=7]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Objects/Props/Ghost:visible")
@@ -222,7 +220,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Objects/Props/Crab:visible")
@@ -291,13 +289,13 @@ shape = SubResource( 1 )
 visible = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
-anims/FadeOut = SubResource( 8 )
-anims/HighlightRock = SubResource( 2 )
-anims/RainCoconuts = SubResource( 3 )
-anims/ShowIslander = SubResource( 4 )
-anims/ShowTree = SubResource( 5 )
-anims/SpawnAndActivateGhost = SubResource( 6 )
-anims/SpawnAndShowCrab = SubResource( 7 )
+anims/FadeOut = SubResource( 2 )
+anims/HighlightRock = SubResource( 3 )
+anims/RainCoconuts = SubResource( 4 )
+anims/ShowIslander = SubResource( 5 )
+anims/ShowTree = SubResource( 6 )
+anims/SpawnAndActivateGhost = SubResource( 7 )
+anims/SpawnAndShowCrab = SubResource( 8 )
 
 [node name="Night1Objectives" type="Node" parent="." index="5"]
 script = ExtResource( 4 )

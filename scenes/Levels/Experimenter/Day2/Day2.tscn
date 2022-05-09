@@ -59,8 +59,6 @@ margin_right = -0.471924
 margin_bottom = 0.471924
 
 [node name="FadeInEvent" parent="HUDLayer/HUD/MainDialogue1" index="3" instance=ExtResource( 17 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event1Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/FadeInEvent" index="0"]
 script = ExtResource( 18 )
@@ -72,22 +70,16 @@ TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
 Y_POSITION_PERCENT = 0.9
 
 [node name="GiftCrabsAndStones" parent="HUDLayer/HUD/MainDialogue1" index="5" instance=ExtResource( 17 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event2Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/GiftCrabsAndStones" index="0"]
 script = ExtResource( 21 )
 
 [node name="StopCameraFollow" parent="HUDLayer/HUD/MainDialogue1" index="6" instance=ExtResource( 17 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event3Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/StopCameraFollow" index="0"]
 script = ExtResource( 22 )
 
 [node name="EnableControls" parent="HUDLayer/HUD/MainDialogue1" index="7" instance=ExtResource( 17 )]
-NEXT_NODE_DELAY = 0
-DISABLED = false
 
 [node name="Event4Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/EnableControls" index="0"]
 script = ExtResource( 19 )
@@ -160,7 +152,12 @@ OBJECTS_NODE_PATH = "Objects/Props"
 script = ExtResource( 10 )
 
 [node name="Experimenter" parent="." index="8" instance=ExtResource( 7 )]
+
+[node name="Camera" parent="Experimenter" index="0"]
+position = Vector2( 394.817, 366.276 )
+[connection signal="crab_killed" from="Objects/Props" to="Day2Objectives" method="_on_Props_crab_killed"]
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
+[connection signal="prop_added" from="Objects/Props" to="Day2Objectives" method="_on_Props_prop_added"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
 [connection signal="body_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_body_entered"]
@@ -168,5 +165,8 @@ script = ExtResource( 10 )
 [connection signal="mouse_entered" from="HUDLayer/HUD" to="Experimenter" method="_on_MainContainer_mouse_entered"]
 [connection signal="mouse_exited" from="HUDLayer/HUD" to="Experimenter" method="_on_MainContainer_mouse_exited"]
 [connection signal="use_item" from="HUDLayer/HUD" to="Experimenter" method="_on_HUD_use_item"]
+[connection signal="objectives_updated" from="Day2Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
+
+[editable path="Experimenter"]

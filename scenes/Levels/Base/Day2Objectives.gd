@@ -23,6 +23,7 @@ func _get_objectives():
 	objective1["description"] = OBJECTIVE_KILL_CRABS_TEMPLATE % [crabs_killed, total_crabs]
 	objective1["key"] = OBJECTIVE_KILL_CRABS_KEY
 	objective1["is_complete"] = is_objective_1_complete
+	objective1["is_visible"] = true
 	return [objective1]
 
 

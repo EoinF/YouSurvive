@@ -15,8 +15,10 @@ func _ready():
 
 
 func _get_objectives():
-	var objective1 = {}
-	objective1["description"] = OBJECTIVE_RELEASE_COCONUTS_TEMPLATE
-	objective1["key"] = OBJECTIVE_RELEASE_COCONUTS_KEY
-	objective1["is_complete"] = is_objective_1_complete
+	var objective1 = {
+		"description": OBJECTIVE_RELEASE_COCONUTS_TEMPLATE, 
+		"key": OBJECTIVE_RELEASE_COCONUTS_KEY,
+		"is_complete": is_objective_1_complete,
+		"is_visible": true
+	}
 	return [objective1]
