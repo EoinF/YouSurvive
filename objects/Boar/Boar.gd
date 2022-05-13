@@ -36,8 +36,13 @@ export var ATTACK_SPEED = 18 * 1000
 export var DEATH_COOLDOWN = 1.0
 export var HEALTH = 3
 
-func get_resting_position():
+
+func get_position():
 	return global_position
+
+
+func get_resting_position():
+	return get_position()
 
 
 func is_alive():
@@ -159,7 +164,7 @@ func _on_Hurtbox_area_entered(area):
 	if not _state in [State.DYING, State.DEAD, State.HURTING] and not area.is_in_group("AI") and area.is_in_group("Attack"):
 		HEALTH -= area.attack_power
 		
-		if (HEALTH <= 0):
+		if HEALTH <= 0:
 			_die()
 		else:
 			get_node("AnimatedSprite").animation = "hurting"
@@ -175,8 +180,6 @@ func _on_HurtCooldown_timeout():
 
 
 func _die():
-	emit_signal("dies", self)
-	
 	get_node("AnimatedSprite").animation = "death"
 	get_node("AnimatedSprite").play()
 	get_node("AttackCooldown").stop()
@@ -195,4 +198,6 @@ func _on_AnimatedSprite_animation_finished():
 	if animated_sprite.animation == "death":
 		_death_cooldown = DEATH_COOLDOWN
 		_state = State.DEAD
+		emit_signal("dies", self)
+	
 

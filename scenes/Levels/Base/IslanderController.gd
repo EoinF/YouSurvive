@@ -83,7 +83,8 @@ func _on_PlayerInteraction_area_exited(area):
 	var interaction_item = area.get_parent()
 	var tooltip_container = get_owner().get_node("HUDLayer/TooltipContainer")
 	var interaction_item_index = nearby_interaction_items.find(interaction_item)
-	nearby_interaction_items.remove(interaction_item_index)
+	if interaction_item_index != -1:
+		nearby_interaction_items.remove(interaction_item_index)
 	if nearby_interaction_items.size() > 0:
 		print(nearby_interaction_items)
 		current_interaction_item = nearby_interaction_items.back()

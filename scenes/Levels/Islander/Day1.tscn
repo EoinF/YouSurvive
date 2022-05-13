@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/Levels/Base/BaseDay1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Base/IslanderController.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Levels/Islander/Day1.gd" type="Script" id=3]
-[ext_resource path="res://objects/Boar/Boar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/Porcupine/Porcupine.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/CollectableItems/Stone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Levels/Islander/test.gd" type="Script" id=6]
 
@@ -18,7 +18,7 @@ SPEED_WHILE_TIRED = 9000
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
-[node name="Boar" parent="Objects/Props" index="37" instance=ExtResource( 4 )]
+[node name="Porcupine" parent="Objects/Props" index="37" instance=ExtResource( 4 )]
 position = Vector2( 561.779, 330.013 )
 
 [node name="Stone" parent="Objects/Props" index="38" instance=ExtResource( 5 )]

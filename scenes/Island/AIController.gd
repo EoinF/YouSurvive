@@ -57,7 +57,7 @@ func _process(delta):
 			ai_nodes.remove(i)
 		else:
 			var islander_position = get_owner().get_node("Objects/Props/Islander").global_position
-			var direction_to_player = islander_position - ai_node.node.global_position
+			var direction_to_player = islander_position - ai_node.node.get_position()
 			
 			if direction_to_player.length() < 200:
 				ai_node.set_state(AIState.CHASE)
@@ -72,11 +72,11 @@ func _process(delta):
 						ai_node.target = ai_node.node.get_wander_target()
 						ai_node.set_state(AIState.WANDER)
 				AIState.WANDER:
-					if (ai_node.state_timeout < 0) or ai_node.target.distance_to(ai_node.node.global_position) < 2:
+					if (ai_node.state_timeout < 0) or ai_node.target.distance_to(ai_node.node.get_position()) < 2:
 							ai_node.set_state(AIState.IDLE)
 					else:
 						ai_node.state_timeout -= delta
-						var diff = ai_node.target - ai_node.node.global_position
+						var diff = ai_node.target - ai_node.node.get_position()
 						ai_node.node.move(diff.x, diff.y)
 				AIState.CHASE:
 					if direction_to_player.length() < 70:

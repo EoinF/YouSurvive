@@ -42,7 +42,7 @@ func _add_falling_prop(prop, source_position):
 	var from = Vector2(to.x, source_position.y - 30)
 	var collectable = prop.get_node("CollectableItem")
 	collectable.drop_item(from, to)
-	add_child(prop)
+	call_deferred("add_child", prop)
 	emit_signal("prop_added", prop)
 
 

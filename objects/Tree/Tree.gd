@@ -44,5 +44,5 @@ func _on_InteractionCooldown_timeout():
 
 
 func _on_InteractionArea_area_entered(area):
-	if area.is_in_group("Attack") and area.attack_power > 1:
+	if area.is_in_group("Attack") and area.can_knock_coconuts_from_trees:
 		hit()

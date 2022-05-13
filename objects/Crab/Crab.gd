@@ -28,8 +28,13 @@ export var ATTACK_SPEED = 12 * 1000
 export var DEATH_COOLDOWN = 1.0
 export var HEALTH = 1
 
-func get_resting_position():
+
+func get_position():
 	return global_position
+
+
+func get_resting_position():
+	return get_position()
 
 
 func is_alive():
@@ -105,7 +110,7 @@ func _on_AttackCooldown_timeout():
 
 
 func _on_Hurtbox_area_entered(area):
-	if not _is_dying and not area.is_in_group("Crab") and area.is_in_group("Attack"):
+	if not _is_dying and not area.is_in_group("AI") and area.is_in_group("Attack"):
 		HEALTH -= area.attack_power
 		if (HEALTH == 0):
 			_die()
