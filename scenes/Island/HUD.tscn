@@ -84,4 +84,5 @@ __meta__ = {
 
 [node name="HealthBar" parent="." instance=ExtResource( 6 )]
 [connection signal="use_item" from="Inventory" to="." method="_on_Inventory_use_item"]
+[connection signal="set_active_item" from="ExperimenterInventory" to="." method="_on_ExperimenterInventory_set_active_item"]
 [connection signal="use_item" from="ExperimenterInventory" to="." method="_on_Inventory_use_item"]

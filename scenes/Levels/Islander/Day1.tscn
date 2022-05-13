@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/Levels/Base/BaseDay1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Base/IslanderController.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Levels/Islander/Day1.gd" type="Script" id=3]
-[ext_resource path="res://objects/Crab/Crab.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/Boar/Boar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/CollectableItems/Stone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Levels/Islander/test.gd" type="Script" id=6]
 
@@ -18,8 +18,8 @@ SPEED_WHILE_TIRED = 9000
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
-[node name="Crab" parent="Objects/Props" index="36" instance=ExtResource( 4 )]
-position = Vector2( 512.431, 349.357 )
+[node name="Boar" parent="Objects/Props" index="37" instance=ExtResource( 4 )]
+position = Vector2( 561.779, 330.013 )
 
 [node name="Stone" parent="Objects/Props" index="38" instance=ExtResource( 5 )]
 position = Vector2( 447.357, 375.04 )
@@ -27,7 +27,7 @@ position = Vector2( 447.357, 375.04 )
 [node name="IslanderInput" type="Node" parent="." index="5"]
 script = ExtResource( 2 )
 
-[node name="Node" type="Node" parent="." index="6"]
+[node name="FPS counter" type="Node" parent="." index="6"]
 script = ExtResource( 6 )
 [connection signal="place_item" from="." to="Objects/Props" method="_on_place_item"]
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="IslanderInput" method="_on_PlayerInteraction_area_entered"]

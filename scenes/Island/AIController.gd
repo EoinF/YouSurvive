@@ -21,7 +21,7 @@ class AINode:
 	func set_state(next_state):
 		match(next_state):
 			AIState.IDLE:
-				state_timeout = 0.2 + randf() * 3.5
+				state_timeout = node.min_idle_time + randf() * node.scale_idle_time
 			AIState.WANDER:
 				state_timeout = 1.0
 			_:
@@ -67,14 +67,9 @@ func _process(delta):
 				AIState.IDLE:
 					if (ai_node.state_timeout > 0):
 						ai_node.state_timeout -= delta
+						ai_node.node.idle()
 					else:
-						var rand_sign = ((randi() % 2) * 2) - 1
-						var rand_x = 2 * randf()
-						var rand_y = 2 * randf() - 1
-						var scale = 5000
-						var x = rand_sign * scale / (rand_x * rand_x)
-						var y = rand_sign * scale / (rand_y * rand_y)
-						ai_node.target = ai_node.node.global_position + Vector2(x, y)
+						ai_node.target = ai_node.node.get_wander_target()
 						ai_node.set_state(AIState.WANDER)
 				AIState.WANDER:
 					if (ai_node.state_timeout < 0) or ai_node.target.distance_to(ai_node.node.global_position) < 2:

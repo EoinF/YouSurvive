@@ -80,7 +80,7 @@ func pick_up_item(_item_type, _amount):
 	emit_signal("inventory_slot_change", item_type_to_slot[_item_type])
 
 	if not is_controls_enabled:
-		get_node("ItemPlacementTool").toggle_item_placement(_item_type)
+		get_node("ItemPlacementTool").enable_item_placement(_item_type)
 		enable_controls()
 
 
@@ -118,3 +118,9 @@ func _on_MainContainer_mouse_exited():
 func _on_VisionDetectionArea_body_entered(body):
 	if body.is_in_group("Islander"):
 		emit_signal("sees_islander")
+
+
+
+func _on_HUD_set_active_item(item_type):
+	get_node("ItemPlacementTool").enable_item_placement(item_type)
+

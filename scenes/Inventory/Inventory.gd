@@ -1,6 +1,7 @@
 extends Control
 
 signal use_item(item_type)
+signal set_active_item(item_type)
 
 var active_slot = "1"
 
@@ -18,6 +19,7 @@ func set_active_item_slot(node_key):
 	get_node(active_slot).set_active(false)
 	get_node(node_key).set_active(true)
 	active_slot = node_key
+	emit_signal("set_active_item", get_node(active_slot).item_type)
 
 
 func use_active_item():

@@ -2,13 +2,12 @@ extends Node
 
 signal objectives_updated(objectives)
 
-var OBJECTIVE_KILL_CRABS_KEY = "OBJECTIVE_KILL_CRABS"
-var OBJECTIVE_KILL_CRABS_TEMPLATE = "Eliminate the crabs (%d/%d)"
-
 var crabs_killed = 0
 var total_crabs = 0
 
 var is_objective_1_complete = false
+
+var selected_enemy_type = "crab"
 
 func _ready():
 	var props = get_owner().get_node("Objects/Props").get_children()
@@ -19,12 +18,18 @@ func _ready():
 
 
 func _get_objectives():
-	var objective1 = {}
-	objective1["description"] = OBJECTIVE_KILL_CRABS_TEMPLATE % [crabs_killed, total_crabs]
-	objective1["key"] = OBJECTIVE_KILL_CRABS_KEY
-	objective1["is_complete"] = is_objective_1_complete
-	objective1["is_visible"] = true
-	return [objective1]
+	return [
+		{
+		"description": "Place %ss (%d/%d)" % [selected_enemy_type, crabs_killed, total_crabs],
+		"is_complete": crabs_killed == total_crabs,
+		"is_visible": false
+		},
+		{
+		"description": "Eliminate the %ss (%d/%d)" % [selected_enemy_type, crabs_killed, total_crabs],
+		"is_complete": crabs_killed == total_crabs,
+		"is_visible": false
+		}
+	]
 
 
 func _on_Props_prop_added(node):

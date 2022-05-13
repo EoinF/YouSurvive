@@ -15,12 +15,11 @@ func _process(_delta):
 			emit_signal("place_item", placement_item_type, position)
 
 
-func toggle_item_placement(item_type):
-	if item_type == placement_item_type:
-		disable_item_placement()
-	else:
-		placement_item_type = item_type
-		get_node("Sprites/" + item_type).visible = true
+func enable_item_placement(item_type):
+	if placement_item_type != null:
+		get_node("Sprites/" + placement_item_type).visible = false
+	placement_item_type = item_type
+	get_node("Sprites/" + item_type).visible = true
 
 
 func disable_item_placement():

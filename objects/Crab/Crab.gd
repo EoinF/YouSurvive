@@ -6,6 +6,9 @@ var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
 var _death_cooldown = -1
 var _is_dying = false
+var min_idle_time = 0.2
+var scale_idle_time = 3.5
+var wandering_scale = 4000
 
 var object_type = "crab"
 
@@ -27,10 +30,25 @@ export var HEALTH = 1
 
 func get_resting_position():
 	return global_position
-	
+
 
 func is_alive():
 	return HEALTH > 0
+
+
+func idle():
+	pass
+	
+
+func get_wander_target():
+	var rand_sign = ((randi() % 2) * 2) - 1
+	var rand_x = 2 * randf() - 1
+	var rand_y = 2 * randf() - 1
+	var scale = 4000
+	var x = rand_sign * scale / (rand_x * rand_x)
+	var y = rand_sign * scale / (rand_y * rand_y)
+	return global_position + Vector2(x, y)
+
 
 func move(x, y):
 	if not _is_dying and _attack_phase == AttackPhase.IDLE:

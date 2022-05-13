@@ -1,6 +1,7 @@
 extends Control
 
 signal use_item(item_type)
+signal set_active_item(item_type)
 
 var _message_use_coconut_without_rock = "You need a rock to break open the coconut"
 
@@ -43,3 +44,7 @@ func _on_Inventory_use_item(item_type):
 
 func _on_Islander_health_change(health):
 	get_node("HealthBar").set_health(health)
+
+
+func _on_ExperimenterInventory_set_active_item(item_type):
+	emit_signal("set_active_item", item_type)

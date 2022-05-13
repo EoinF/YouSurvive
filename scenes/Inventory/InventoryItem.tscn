@@ -1,20 +1,23 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/Inventory/InventoryItem.gd" type="Script" id=1]
 [ext_resource path="res://assets/coconut.png" type="Texture" id=2]
 [ext_resource path="res://assets/beach_tileset.png" type="Texture" id=3]
 [ext_resource path="res://assets/Branch.tres" type="Texture" id=4]
 [ext_resource path="res://assets/Crab/moving.png" type="Texture" id=5]
+[ext_resource path="res://assets/Boar - Sprite Sheet.png" type="Texture" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 212, 244, 11, 11 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 10, 32, 22 )
 
 [node name="InventoryItem" type="Control"]
 anchor_right = 1.0
@@ -73,6 +76,10 @@ texture = ExtResource( 4 )
 [node name="crab" type="Sprite" parent="SpriteContainer"]
 visible = false
 texture = SubResource( 2 )
+
+[node name="boar" type="Sprite" parent="SpriteContainer"]
+visible = false
+texture = SubResource( 3 )
 
 [node name="Amount" type="Label" parent="."]
 anchor_left = 1.0
