@@ -115,7 +115,7 @@ position = Vector2( 1873.96, 968.484 )
 position = Vector2( 2106.6, 688.469 )
 
 [node name="ExplorationNode7" parent="IslanderAIController/ExplorationNodes" index="9" instance=ExtResource( 5 )]
-position = Vector2( 2207.72, 950.806 )
+position = Vector2( 2190.77, 887.503 )
 
 [node name="ExplorationNode8" parent="IslanderAIController/ExplorationNodes" index="10" instance=ExtResource( 5 )]
 position = Vector2( 2426.92, 834.84 )

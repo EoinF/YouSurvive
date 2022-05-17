@@ -7,8 +7,10 @@ var scene_map = {
 	"branch": preload("res://objects/CollectableItems/Branch.tscn"),
 	"coconut": preload("res://objects/CollectableItems/Coconut.tscn"),
 	"stone": preload("res://objects/CollectableItems/Stone.tscn"),
+	"stick": preload("res://objects/CollectableItems/Stick.tscn"),
 	"crab": preload("res://objects/Crab/Crab.tscn"),
-	"boar": preload("res://objects/Boar/Boar.tscn")
+	"boar": preload("res://objects/Boar/Boar.tscn"),
+	"porcupine": preload("res://objects/Porcupine/Porcupine.tscn")
 }
 
 func _ready():

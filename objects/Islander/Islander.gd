@@ -244,5 +244,5 @@ func _on_HUD_use_item(item_type):
 	match item_type:
 		"stone":
 			_use_stone()
-		"coconut":
-			_use_coconut()
+		"stick":
+			attack()
