@@ -1,0 +1,39 @@
+<root>
+    <Intro>
+        <segment>Welcome back {player_name}.</segment>
+        <segment>Today we want to create conflict for our test subject.</segment>
+        <segment>By scattering predators throughout the island, we force the test subject to confront the "other"</segment>
+        <segment>Place 15 predators and then we can begin.</segment>
+        <segment>Here are the options:</segment>
+        <segment>The meek crab barely presents a challenge.</segment>
+        <segment>The porcupine is tougher, with its lacerating quills.</segment>
+        <segment>But for a formidable foe, the wild boar will suffice.</segment>
+        <segment>Feel free to mix and match however it may please.</segment>
+    </Intro>
+    <Main1>
+        <!-- After 15 placed!-->
+        <segment>Good.</segment>
+        <segment>Now the test subject must defend themself.</segment>
+        <segment>Place either a rock or a stick.</segment>
+        <segment>Leave it further from the test subject to give an extra challenge.</segment>
+        <segment>Or closer to make things easy.</segment>
+    </Main1>
+    <Main2>
+        <!-- After weapon placed -->
+        <segment>Good.</segment>
+        <segment>Now... commence!</segment>
+    </Main2>
+    <Complete_Easy>
+        <segment>A bit too easy for the test subject I see.</segment>
+        <segment>A lack of conflict implies a lack of purpose.</segment>
+    </Complete_Easy>
+    <Complete_Hard>
+        <segment>A tough challenge for the test subject I see.</segment>
+        <segment>Take care to create disorder, but not abject chaos.</segment>
+    </Complete_Hard>
+    <Outro>
+        <segment>So we see, conflict brings about a further separation of one from the "other"</segment>
+        <segment>Friends draw closer together. But enemies push each other apart.</segment>
+        <segment>Without looking too closely, the test subject will take this to heart.</segment>
+    </Outro>
+</root>

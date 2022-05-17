@@ -1,0 +1,32 @@
+<root>
+    <Main1>
+        <segment>Hello?</segment>
+        <segment>Are you awake yet?</segment>
+        <segment>Wake up.......</segment>
+        <segment>Ah, so you are listening.</segment>
+        <segment>Welcome back.......</segment>
+        <segment>Let me ask again - what is your name?</segment>
+    </Main1>
+    <Nameless>
+        <segment>Hm. So you don't have a name then?</segment>
+        <segment>Very well.......</segment>
+        <segment>I shall call you "nameless one"</segment>
+    </Nameless>
+    <Named>
+        <segment>Ah, {player_name}.......</segment>
+        <segment>So you don't remember? No matter.</segment>
+    </Named>
+    <Remembered>
+        <segment>Ah, {player_name}.......</segment>
+        <segment>So you remembered.</segment>
+        <segment>But remember, there's no real you.</segment>
+        <segment>It's just atoms arranged in a pattern.</segment>
+        <segment>Not that this really changes anything.</segment>
+        <segment>But just don't get too attached to the patterns.</segment>
+    </Remembered>
+    <!-- ... continue to crab closing level -->
+    <Outro>
+        <segment>I hope you're ready to get to work.</segment>
+        <segment>I'll pass along your name.</segment>
+    </Outro>
+</root>

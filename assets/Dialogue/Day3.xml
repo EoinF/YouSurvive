@@ -1,0 +1,23 @@
+<root>
+    <Intro>
+        <segment>A new day, {player_name}.</segment>
+        <segment>Today we combine our previous ideas.</segment>
+        <segment>We provide a personal goal and mix in some conflict to spice things up.</segment>
+        <segment>The test subject needs more branches for shelter. And coconuts for food.</segment>
+        <segment>We want to make this challenging by interposing some predators.</segment>
+        <segment>Put them to work.</segment>
+    </Intro>
+    <Complete_Slow>
+        <segment>Well that was a rough time for our test subject.</segment>
+        <segment>But effective nonetheless</segment>
+    </Complete_Slow>
+    <Complete_Fast>
+        <segment>Quick and easy for the test subject.</segment>
+        <segment>But effective nonetheless</segment>
+    </Complete_Fast>
+    <Outro>
+        <segment>Through combining goals and conflict, we instilled</segment>
+        <segment>a feeling of separation for the test subject.</segment>
+        <segment>They had to fend for themselves and fight of the others</segment>
+    </Outro>
+</root>
