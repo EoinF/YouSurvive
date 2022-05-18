@@ -5,6 +5,7 @@ signal finish_scene(experiment_data)
 var player_name: String
 
 var is_level_complete = false
+var is_first_time_seeing_islander = true
 
 
 func set_player_name(name: String):
@@ -37,9 +38,6 @@ func _on_Day1Objectives_objectives_updated(objectives):
 			get_node("HUDLayer/HUD/DialogueManager").start_section("Complete - Fast")
 		else:
 			get_node("HUDLayer/HUD/DialogueManager").start_section("Complete - Slow")
-
-
-var is_first_time_seeing_islander = true
 
 
 func _on_Experimenter_sees_islander():

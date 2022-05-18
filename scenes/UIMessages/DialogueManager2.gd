@@ -56,6 +56,7 @@ func start_section(section_name):
 	node_index = -1
 	is_playing = true
 	is_started = true
+	visible = true
 	_next_node()
 
 
@@ -70,9 +71,8 @@ func _apply_variables(text):
 func _next_node():
 	node_index += 1
 		
-	visible = false
-		
 	if node_index >= len(data[section_name]):
+		visible = false
 		emit_signal("finish_dialogue", section_name)
 	else:
 		var current_node = data[section_name][node_index]
@@ -108,20 +108,16 @@ func _next_node():
 			button.rect_position.x = (rect_size.x - background.rect_size.x) * config["x_pct"]
 			button.rect_position.y = (rect_size.y - background.rect_size.y) * config["y_pct"]
 			
-			visible = true
-			if is_playing:
-				label.text = ""
-				var letter_timer = get_node("LetterTimer")
-				letter_timer.start()
-			else:
-				label.text = final_text
+			label.text = ""
+			var letter_timer = get_node("LetterTimer")
+			letter_timer.start()
 		elif current_node["type"] == "link_to":
 			start_section(current_node["section_name"])
 		elif current_node["type"] == "event":
 			emit_signal("trigger_event", current_node["event_name"])
 			_next_node()
 		else:
-			printerr("Unknown node type", current_node["type"])
+			push_error("Unknown node type %s" % [current_node["type"]])
 
 
 func _on_LetterTimer_timeout():
@@ -135,8 +131,8 @@ func _on_LetterTimer_timeout():
 func _on_Button_pressed():
 	if visible:
 		get_node("LetterTimer").stop()
-		if is_playing:
-			is_playing = false
+		if current_length < len(final_text):
+			current_length = len(final_text)
 			get_node("Button/LabelContainer/Label").text = final_text
 		else:
 			_next_node()
