@@ -22,12 +22,13 @@ var is_playing = true
 var is_started = false
 
 var FOREGROUND_MAP = {
-	"default": Color.white,
-	"pink": Color("da2c6d")
+	"default": Color("#09c691"),
+	"pink": Color("#da2c6d")
 }
 
 var BACKGROUND_MAP = {
-	"default": Color.black
+	"default": Color("#e31d1d1d"),
+	"black": Color.black
 }
 
 export(String, FILE, "*.json") var DIALOGUE_FILE
@@ -35,10 +36,12 @@ var data
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if DIALOGUE_FILE != null:
+	if DIALOGUE_FILE != "":
 		var file = File.new()
 		file.open(DIALOGUE_FILE, File.READ)
 		data = parse_json(file.get_as_text())
+	else:
+		push_error("Error. No dialogue file selected!")
 
 
 func _process(delta):
@@ -114,9 +117,11 @@ func _next_node():
 				label.text = final_text
 		elif current_node["type"] == "link_to":
 			start_section(current_node["section_name"])
-		else:
+		elif current_node["type"] == "event":
 			emit_signal("trigger_event", current_node["event_name"])
 			_next_node()
+		else:
+			printerr("Unknown node type", current_node["type"])
 
 
 func _on_LetterTimer_timeout():

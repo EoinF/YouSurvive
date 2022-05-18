@@ -3,7 +3,7 @@
     { "type": "text", "content": "Welcome back {player_name}." },
     {
       "type": "text",
-      "content": "Today we want to create conflict for our test subject."
+      "content": "Today we want to create some conflict for our test subject."
     },
     {
       "type": "text",
@@ -15,16 +15,32 @@
     },
     { "type": "text", "content": "Here are the options:" },
     {
+      "type": "event",
+      "event_name": "gift_crabs"
+    },
+    {
       "type": "text",
-      "content": "The meek crab barely presents a challenge."
+      "content": "The meek crab barely presents a small challenge."
+    },
+    {
+      "type": "event",
+      "event_name": "gift_porcupines"
     },
     {
       "type": "text",
       "content": "The porcupine is tougher, with its lacerating quills."
     },
     {
+      "type": "event",
+      "event_name": "gift_boars"
+    },
+    {
       "type": "text",
-      "content": "But for a formidable foe, the wild boar will suffice."
+      "content": "But for a formidable foe, the wild boar will do the trick."
+    },
+    {
+      "type": "event",
+      "event_name": "enable_controls"
     },
     {
       "type": "text",
@@ -37,6 +53,14 @@
       "type": "text",
       "content": "Now the test subject must defend themself."
     },
+    {
+      "type": "event",
+      "event_name": "gift_stick"
+    },
+    {
+      "type": "event",
+      "event_name": "gift_rock"
+    },
     { "type": "text", "content": "Place either a rock or a stick." },
     {
       "type": "text",
@@ -46,7 +70,8 @@
   ],
   "Main2 (After weapon placed)": [
     { "type": "text", "content": "Good." },
-    { "type": "text", "content": "Now... commence!" }
+    { "type": "event", "event_name": "enable_ai" },
+    { "type": "text", "content": "Now... let the struggle commence!" }
   ],
   "Complete - Easy": [
     {

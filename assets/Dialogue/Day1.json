@@ -1,5 +1,6 @@
 {
   "Intro": [
+    { "type": "config", "letter_delay": 0.06, "y": 0.9 },
     { "type": "text", "content": "Hello again {player_name}." },
     {
       "type": "text",
@@ -18,22 +19,30 @@
       "type": "text",
       "content": "First, locate the test subject and we'll take it from there."
     },
+    { "type": "event", "event_name": "enable_controls" },
     {
       "type": "text",
       "content": "They should be somewhere on the west side of this island."
     }
   ],
   "Main1": [
+    { "type": "event", "event_name": "start_camera_follow" },
     { "type": "text", "content": "Perfect." },
     {
       "type": "text",
-      "content": "Now, we have some branches to place for our test subject."
+      "content": "They've already started their search for branches."
+    },
+    { "type": "event", "event_name": "gift_branches" },
+    {
+      "type": "text",
+      "content": "We just need to add some more for our test subject."
     },
     {
       "type": "text",
-      "content": "We should try to make it at least a little challenging"
+      "content": "But try to make it at least a little challenging"
     },
-    { "type": "text", "content": "and scatter them reasonably well." }
+    { "type": "text", "content": "and scatter them reasonably well." },
+    { "type": "event", "event_name": "stop_camera_follow" }
   ],
   "Complete - Slow": [
     { "type": "text", "content": "Finally done?" },

@@ -1,6 +1,11 @@
 {
   "Main1": [
-    { "type": "config", "letter_delay": 0.08, "foreground": "pink" },
+    {
+      "type": "config",
+      "letter_delay": 0.08,
+      "foreground": "pink",
+      "background": "black"
+    },
     { "type": "text", "content": "Hello?" },
     { "type": "text", "content": "Are you awake yet?" },
     { "type": "text", "content": "Wake up......." },
@@ -22,12 +27,15 @@
   "Remembered": [
     { "type": "text", "content": "Ah, {player_name}......." },
     { "type": "text", "content": "So you remembered." },
-    { "type": "text", "content": "But remember, there's no real you." },
+    {
+      "type": "text",
+      "content": "The point here is that there is no real you."
+    },
     { "type": "text", "content": "It's just atoms arranged in a pattern." },
     { "type": "text", "content": "Not that this really changes anything." },
     {
       "type": "text",
-      "content": "But just don't get too attached to the patterns."
+      "content": "But just don't get too attached to those patterns."
     },
     { "type": "text", "content": "[... continue to crab closing level]" }
   ],

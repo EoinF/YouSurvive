@@ -1,19 +1,15 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Levels/Base/BaseDay2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Levels/Experimenter/Day2/Events.gd" type="Script" id=2]
+[ext_resource path="res://scenes/UIMessages/DialogueManager2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/ExplorationNode.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/AI/Pathfinder.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/Experimenter/Experimenter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/AI/IslanderAIController.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Levels/Base/ExperimenterController.gd" type="Script" id=10]
 [ext_resource path="res://assets/PathfinderTileset.png" type="Texture" id=11]
-[ext_resource path="res://scenes/UIMessages/DialogueSegment.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/UIMessages/DialogueManager.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/UIMessages/Event.tscn" type="PackedScene" id=17]
-[ext_resource path="res://scenes/Levels/Experimenter/Day2/Event1Script.gd" type="Script" id=18]
-[ext_resource path="res://scenes/Levels/Experimenter/Day2/Event4Script.gd" type="Script" id=19]
 [ext_resource path="res://scenes/Levels/Experimenter/Day2/Day2.gd" type="Script" id=20]
-[ext_resource path="res://scenes/Levels/Experimenter/Day2/Event2Script.gd" type="Script" id=21]
 
 [sub_resource type="TileSet" id=1]
 0/name = "open"
@@ -51,38 +47,10 @@ script = ExtResource( 20 )
 [node name="HUD" parent="HUDLayer" index="0"]
 INVENTORY_TYPE = "Experimenter"
 
-[node name="MainDialogue1" parent="HUDLayer/HUD" index="7" instance=ExtResource( 16 )]
-margin_left = -0.471924
-margin_top = 0.471947
-margin_right = -0.471924
-margin_bottom = 0.471924
+[node name="Events" type="Node" parent="HUDLayer/HUD" index="7"]
+script = ExtResource( 2 )
 
-[node name="FadeInEvent" parent="HUDLayer/HUD/MainDialogue1" index="3" instance=ExtResource( 17 )]
-
-[node name="Event1Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/FadeInEvent" index="0"]
-script = ExtResource( 18 )
-
-[node name="Segment1" parent="HUDLayer/HUD/MainDialogue1" index="4" instance=ExtResource( 15 )]
-MESSAGE = "Okay {player_name}, here is our fresh test subject."
-BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
-TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
-Y_POSITION_PERCENT = 0.9
-
-[node name="GiftPredators" parent="HUDLayer/HUD/MainDialogue1" index="5" instance=ExtResource( 17 )]
-
-[node name="Event2Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/GiftPredators" index="0"]
-script = ExtResource( 21 )
-
-[node name="EnableControls" parent="HUDLayer/HUD/MainDialogue1" index="6" instance=ExtResource( 17 )]
-
-[node name="Event4Script" type="Node" parent="HUDLayer/HUD/MainDialogue1/EnableControls" index="0"]
-script = ExtResource( 19 )
-
-[node name="Segment2" parent="HUDLayer/HUD/MainDialogue1" index="7" instance=ExtResource( 15 )]
-MESSAGE = "You've been given some branches. It's up to you where you put them."
-BACKGROUND_COLOUR = Color( 0.113725, 0.113725, 0.113725, 0.890196 )
-TEXT_COLOUR = Color( 0.0352941, 0.776471, 0.568627, 1 )
-Y_POSITION_PERCENT = 0.9
+[node name="DialogueManager" parent="HUDLayer/HUD" index="8" instance=ExtResource( 3 )]
 
 [node name="IslanderAIController" parent="." index="5" instance=ExtResource( 8 )]
 
@@ -158,6 +126,9 @@ position = Vector2( 394.817, 366.276 )
 [connection signal="mouse_exited" from="HUDLayer/HUD" to="Experimenter" method="_on_MainContainer_mouse_exited"]
 [connection signal="set_active_item" from="HUDLayer/HUD" to="Experimenter" method="_on_HUD_set_active_item"]
 [connection signal="use_item" from="HUDLayer/HUD" to="Experimenter" method="_on_HUD_use_item"]
+[connection signal="finish_dialogue" from="HUDLayer/HUD/DialogueManager" to="." method="_on_DialogueManager_finish_dialogue"]
+[connection signal="trigger_event" from="HUDLayer/HUD/DialogueManager" to="HUDLayer/HUD/Events" method="_on_DialogueManager_trigger_event"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 
