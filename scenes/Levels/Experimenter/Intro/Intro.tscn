@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/UIMessages/DialogueManager.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/UIMessages/DialogueSegment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/TextEntry/TextEntry.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Levels/Experimenter/Intro/Intro.gd" type="Script" id=4]
+[ext_resource path="res://scenes/UIMessages/DialogueManager2.tscn" type="PackedScene" id=5]
 
 [node name="Intro" type="Control"]
 anchor_right = 1.0
@@ -23,97 +22,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainDialogue1" parent="." instance=ExtResource( 1 )]
-
-[node name="segment1" parent="MainDialogue1" instance=ExtResource( 2 )]
-MESSAGE = "Hello?"
-TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
-NEXT_NODE_DELAY = 0.6
-NEXT_LETTER_DELAY = 0.08
-
-[node name="segment6" parent="MainDialogue1" instance=ExtResource( 2 )]
-MESSAGE = "Are you awake yet?"
-TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
-NEXT_NODE_DELAY = 0.6
-NEXT_LETTER_DELAY = 0.08
-
-[node name="segment2" parent="MainDialogue1" instance=ExtResource( 2 )]
-MESSAGE = "Wake up......."
-TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
-NEXT_NODE_DELAY = 2.0
-NEXT_LETTER_DELAY = 0.08
-
-[node name="segment3" parent="MainDialogue1" instance=ExtResource( 2 )]
-MESSAGE = "Ah, so you are listening."
-TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
-NEXT_NODE_DELAY = 0.6
-NEXT_LETTER_DELAY = 0.08
-
-[node name="segment4" parent="MainDialogue1" instance=ExtResource( 2 )]
-MESSAGE = "Welcome back......."
-TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
-NEXT_NODE_DELAY = 2.0
-NEXT_LETTER_DELAY = 0.08
-
-[node name="segment5" parent="MainDialogue1" instance=ExtResource( 2 )]
-MESSAGE = "Let me ask - what is your name?"
-TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
-NEXT_NODE_DELAY = 2.0
-NEXT_LETTER_DELAY = 0.08
-
-[node name="NamelessDialogue" parent="." instance=ExtResource( 1 )]
-
-[node name="segment1" parent="NamelessDialogue" instance=ExtResource( 2 )]
-MESSAGE = "Hm. So you don't have a name then?"
-TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
-NEXT_NODE_DELAY = 0.6
-NEXT_LETTER_DELAY = 0.08
-
-[node name="segment2" parent="NamelessDialogue" instance=ExtResource( 2 )]
-MESSAGE = "Very well......."
-TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
-NEXT_NODE_DELAY = 2.0
-NEXT_LETTER_DELAY = 0.08
-
-[node name="segment3" parent="NamelessDialogue" instance=ExtResource( 2 )]
-MESSAGE = "I shall call you \"nameless one\""
-TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
-NEXT_NODE_DELAY = 0.6
-NEXT_LETTER_DELAY = 0.08
-
-[node name="NamedDialogue" parent="." instance=ExtResource( 1 )]
-
-[node name="segment1" parent="NamedDialogue" instance=ExtResource( 2 )]
-MESSAGE = "Ah, {player_name}......."
-TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
-NEXT_NODE_DELAY = 2.0
-NEXT_LETTER_DELAY = 0.08
-
-[node name="segment2" parent="NamedDialogue" instance=ExtResource( 2 )]
-MESSAGE = "So you don't remember? No matter."
-TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
-NEXT_NODE_DELAY = 0.6
-NEXT_LETTER_DELAY = 0.08
-
-[node name="MainDialogue2" parent="." instance=ExtResource( 1 )]
-
-[node name="segment1" parent="MainDialogue2" instance=ExtResource( 2 )]
-MESSAGE = "I hope you're ready to get to work."
-TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
-NEXT_NODE_DELAY = 0.6
-NEXT_LETTER_DELAY = 0.08
-
-[node name="segment2" parent="MainDialogue2" instance=ExtResource( 2 )]
-MESSAGE = "We'll be going back to the island again. Let's go......."
-TEXT_COLOUR = Color( 0.854902, 0.172549, 0.427451, 1 )
-NEXT_NODE_DELAY = 3.0
-NEXT_LETTER_DELAY = 0.08
-
 [node name="Name Entry" parent="." instance=ExtResource( 3 )]
 visible = false
 LABEL_TEXT = "Enter your name"
-[connection signal="finish_dialogue" from="MainDialogue1" to="." method="_on_MainDialogue1_finish_dialogue"]
-[connection signal="finish_dialogue" from="NamelessDialogue" to="." method="_on_NamelessDialogue_finish_dialogue"]
-[connection signal="finish_dialogue" from="NamedDialogue" to="." method="_on_NamedDialogue_finish_dialogue"]
-[connection signal="finish_dialogue" from="MainDialogue2" to="." method="_on_MainDialogue2_finish_dialogue"]
+
+[node name="DialogueManager" parent="." instance=ExtResource( 5 )]
+DIALOGUE_FILE = "res://assets/Dialogue/Intro.json"
 [connection signal="text_entered" from="Name Entry" to="." method="_on_Name_Entry_text_entered"]
+[connection signal="finish_dialogue" from="DialogueManager" to="." method="_on_DialogueManager_finish_dialogue"]

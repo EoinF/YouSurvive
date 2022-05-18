@@ -1,0 +1,10 @@
+{
+  "Main": [
+    {
+      "type": "text",
+      "content": "The test subject is starting to realise their individuality."
+    },
+    { "type": "text", "content": "We just had to help them along." },
+    { "type": "text", "content": "Now we repeat the process." }
+  ]
+}

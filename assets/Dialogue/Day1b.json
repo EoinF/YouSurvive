@@ -1,0 +1,10 @@
+{
+  "Main": [
+    { "type": "text", "content": "Hey you......." },
+    { "type": "text", "content": "Over here......." },
+    { "type": "text", "content": "My name is (...)" },
+    { "type": "text", "content": "There's something you should know." },
+    { "type": "text", "content": "Everything is not what it seems." },
+    { "type": "text", "content": "This is all a trick." }
+  ]
+}

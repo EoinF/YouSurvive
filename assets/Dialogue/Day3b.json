@@ -1,0 +1,10 @@
+{
+  "Day 3": [
+    { "type": "text", "content": "One last thing." },
+    { "type": "text", "content": "You and I, we're one in the same." },
+    {
+      "type": "text",
+      "content": "So when we meet again, remember to call yourself (...)"
+    }
+  ]
+}

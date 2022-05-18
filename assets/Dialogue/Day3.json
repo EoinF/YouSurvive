@@ -1,0 +1,44 @@
+{
+  "Intro": [
+    { "type": "text", "content": "A new day, {player_name}." },
+    { "type": "text", "content": "Today we combine our previous ideas." },
+    {
+      "type": "text",
+      "content": "We provide a personal goal and mix in some conflict to spice things up."
+    },
+    {
+      "type": "text",
+      "content": "The test subject needs more branches for shelter. And coconuts for food."
+    },
+    {
+      "type": "text",
+      "content": "We want to make this challenging by interposing some predators."
+    },
+    { "type": "text", "content": "Put them to work." }
+  ],
+  "Complete - Slow": [
+    {
+      "type": "text",
+      "content": "Well that was a rough time for our test subject."
+    },
+    { "type": "text", "content": "But effective nonetheless" }
+  ],
+  "Complete - Fast": [
+    { "type": "text", "content": "Quick and easy for the test subject." },
+    { "type": "text", "content": "But effective nonetheless" }
+  ],
+  "Outro": [
+    {
+      "type": "text",
+      "content": "Through combining goals and conflict, we instilled"
+    },
+    {
+      "type": "text",
+      "content": "a feeling of separation for the test subject."
+    },
+    {
+      "type": "text",
+      "content": "They had to fend for themselves and fight of the others"
+    }
+  ]
+}

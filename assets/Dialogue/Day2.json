@@ -1,0 +1,85 @@
+{
+  "Intro": [
+    { "type": "text", "content": "Welcome back {player_name}." },
+    {
+      "type": "text",
+      "content": "Today we want to create conflict for our test subject."
+    },
+    {
+      "type": "text",
+      "content": "By scattering predators throughout the island, we force the test subject to confront the \"other\""
+    },
+    {
+      "type": "text",
+      "content": "Place 15 predators and then we can begin."
+    },
+    { "type": "text", "content": "Here are the options:" },
+    {
+      "type": "text",
+      "content": "The meek crab barely presents a challenge."
+    },
+    {
+      "type": "text",
+      "content": "The porcupine is tougher, with its lacerating quills."
+    },
+    {
+      "type": "text",
+      "content": "But for a formidable foe, the wild boar will suffice."
+    },
+    {
+      "type": "text",
+      "content": "Feel free to mix and match however it may please."
+    }
+  ],
+  "Main1 (After 15 placed)": [
+    { "type": "text", "content": "Good." },
+    {
+      "type": "text",
+      "content": "Now the test subject must defend themself."
+    },
+    { "type": "text", "content": "Place either a rock or a stick." },
+    {
+      "type": "text",
+      "content": "Leave it further from the test subject to give an extra challenge."
+    },
+    { "type": "text", "content": "Or closer to make things easy." }
+  ],
+  "Main2 (After weapon placed)": [
+    { "type": "text", "content": "Good." },
+    { "type": "text", "content": "Now... commence!" }
+  ],
+  "Complete - Easy": [
+    {
+      "type": "text",
+      "content": "A bit too easy for the test subject I see."
+    },
+    {
+      "type": "text",
+      "content": "A lack of conflict implies a lack of purpose."
+    }
+  ],
+  "Complete - Hard": [
+    {
+      "type": "text",
+      "content": "A tough challenge for the test subject I see."
+    },
+    {
+      "type": "text",
+      "content": "Take care to create disorder, but not abject chaos."
+    }
+  ],
+  "Outro": [
+    {
+      "type": "text",
+      "content": "So we see, conflict brings about a further separation of one from the \"other\""
+    },
+    {
+      "type": "text",
+      "content": "Friends draw closer together. But enemies push each other apart."
+    },
+    {
+      "type": "text",
+      "content": "Without looking too closely, the test subject will take this to heart."
+    }
+  ]
+}

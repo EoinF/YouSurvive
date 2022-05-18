@@ -1,0 +1,70 @@
+{
+  "Intro": [
+    { "type": "text", "content": "Hello again {player_name}." },
+    {
+      "type": "text",
+      "content": "We've procured a fresh test subject for the experiment."
+    },
+    {
+      "type": "text",
+      "content": "Our task is to give them a sense of self."
+    },
+    { "type": "text", "content": "To do this, we must give them a goal." },
+    {
+      "type": "text",
+      "content": "Collecting some branches for a shelter should do the trick."
+    },
+    {
+      "type": "text",
+      "content": "First, locate the test subject and we'll take it from there."
+    },
+    {
+      "type": "text",
+      "content": "They should be somewhere on the west side of this island."
+    }
+  ],
+  "Main1": [
+    { "type": "text", "content": "Perfect." },
+    {
+      "type": "text",
+      "content": "Now, we have some branches to place for our test subject."
+    },
+    {
+      "type": "text",
+      "content": "We should try to make it at least a little challenging"
+    },
+    { "type": "text", "content": "and scatter them reasonably well." }
+  ],
+  "Complete - Slow": [
+    { "type": "text", "content": "Finally done?" },
+    {
+      "type": "text",
+      "content": "We wanted to evoke a sense of purpose, not hopelessness."
+    },
+    {
+      "type": "text",
+      "content": "If the task is out of reach, then so is the meaning behind it."
+    }
+  ],
+  "Complete - Fast": [
+    { "type": "text", "content": "Done already?" },
+    {
+      "type": "text",
+      "content": "We're trying to evoke a sense of purpose here."
+    },
+    {
+      "type": "text",
+      "content": "There's no meaning to be found in trivial tasks."
+    }
+  ],
+  "Outro": [
+    {
+      "type": "text",
+      "content": "So we see, by providing a personal goal for the test subject,"
+    },
+    {
+      "type": "text",
+      "content": "for which their own needs come first, the test subject will become aware of their individuality"
+    }
+  ]
+}
