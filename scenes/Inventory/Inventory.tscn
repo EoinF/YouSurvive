@@ -3,32 +3,31 @@
 [ext_resource path="res://scenes/Inventory/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Inventory/InventoryItem.tscn" type="PackedScene" id=2]
 
-[node name="Inventory" type="Panel"]
+[node name="Inventory" type="PanelContainer"]
 self_modulate = Color( 1, 0.843137, 0, 1 )
-margin_right = 110.0
+margin_right = 14.0
 margin_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="1" parent="." instance=ExtResource( 2 )]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -75.0
-margin_bottom = -5.0
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 37.0
+margin_bottom = 37.0
+size_flags_horizontal = 0
+custom_constants/hseparation = 5
+columns = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="2" parent="." instance=ExtResource( 2 )]
-margin_left = 40.0
-margin_top = 5.0
-margin_right = -40.0
-margin_bottom = -5.0
-
-[node name="3" parent="." instance=ExtResource( 2 )]
-margin_left = 75.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
-[connection signal="click_item" from="1" to="." method="_on_click_item" binds= [ "1" ]]
-[connection signal="click_item" from="2" to="." method="_on_click_item" binds= [ "2" ]]
-[connection signal="click_item" from="3" to="." method="_on_click_item" binds= [ "3" ]]
+[node name="1" parent="GridContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 30.0
+margin_bottom = 30.0
