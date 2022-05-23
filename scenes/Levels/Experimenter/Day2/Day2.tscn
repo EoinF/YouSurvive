@@ -51,6 +51,7 @@ INVENTORY_TYPE = "Experimenter"
 script = ExtResource( 2 )
 
 [node name="DialogueManager" parent="HUDLayer/HUD" index="8" instance=ExtResource( 3 )]
+DIALOGUE_FILE = "res://assets/Dialogue/Day2.json"
 
 [node name="IslanderAIController" parent="." index="5" instance=ExtResource( 8 )]
 
@@ -117,6 +118,12 @@ script = ExtResource( 10 )
 
 [node name="Camera" parent="Experimenter" index="0"]
 position = Vector2( 394.817, 366.276 )
+
+[node name="VisionDetectionArea" parent="Experimenter/Camera" index="0"]
+visible = false
+
+[node name="PlacementSensor" parent="Experimenter/ItemPlacementTool" index="0"]
+visible = false
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]

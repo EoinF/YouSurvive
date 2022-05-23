@@ -3,6 +3,7 @@ extends Node
 
 func _process(delta):
 	_process_movement_input(delta)
+	_process_inventory_item_input()
 
 
 func _process_movement_input(delta):
@@ -27,3 +28,12 @@ func _process_movement_input(delta):
 		var deltaVector = Vector2(x, y).normalized() * delta
 		
 		experimenter.move(deltaVector)
+
+func _process_inventory_item_input():
+	var inventory = get_owner().get_node("HUDLayer/HUD/ExperimenterInventory")
+	if Input.is_action_just_released('use_item_1'):
+		inventory.set_active_item_slot("1")
+	elif Input.is_action_just_released('use_item_2'):
+		inventory.set_active_item_slot("2")
+	elif Input.is_action_just_released('use_item_3'):
+		inventory.set_active_item_slot("3")

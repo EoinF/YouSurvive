@@ -9,7 +9,8 @@ func set_player_name(player_name):
 
 func _ready():
 	get_node("AIController").disable_ai()
-	_fade_in()
+	get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
+#	_fade_in()
 
 
 func _fade_in():

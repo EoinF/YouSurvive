@@ -1,5 +1,6 @@
 {
   "Intro": [
+    { "type": "config", "letter_delay": 0.06, "y": 0.9 },
     { "type": "text", "content": "Welcome back {player_name}." },
     {
       "type": "text",
@@ -20,7 +21,7 @@
     },
     {
       "type": "text",
-      "content": "The meek crab barely presents a small challenge."
+      "content": "The meek crab barely presents a challenge."
     },
     {
       "type": "event",
@@ -28,7 +29,7 @@
     },
     {
       "type": "text",
-      "content": "The porcupine is tougher, with its lacerating quills."
+      "content": "The porcupine is tougher still."
     },
     {
       "type": "event",
@@ -36,11 +37,15 @@
     },
     {
       "type": "text",
-      "content": "But for a formidable foe, the wild boar will do the trick."
+      "content": "But for a formidable foe, the wild boar will suffice."
     },
     {
       "type": "event",
       "event_name": "enable_controls"
+    },
+    {
+      "type": "text",
+      "content": "Now place 15 of these."
     },
     {
       "type": "text",

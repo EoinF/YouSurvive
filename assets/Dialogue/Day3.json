@@ -1,5 +1,6 @@
 {
   "Intro": [
+    { "type": "config", "letter_delay": 0.06, "y": 0.9 },
     { "type": "text", "content": "A new day, {player_name}." },
     { "type": "text", "content": "Today we combine our previous ideas." },
     {

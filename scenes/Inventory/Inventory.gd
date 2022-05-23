@@ -5,7 +5,7 @@ signal set_active_item(item_type)
 
 var inventory_item_scene = preload("res://scenes/Inventory/InventoryItem.tscn")
 
-var active_slot = "1"
+var active_slot = null
 
 
 func update_inventory_slot(inventory_slot):
@@ -19,6 +19,8 @@ func update_inventory_slot(inventory_slot):
 			item_node.set_active(true)
 		item_node.set_name(inventory_slot.node_key)
 		item_node.connect("click_item", self, "_on_click_item", [inventory_slot.node_key])
+		if active_slot == null:
+			set_active_item_slot(inventory_slot.node_key)
 	else:
 		item_node = grid.get_node(inventory_slot.node_key)
 
@@ -28,17 +30,22 @@ func update_inventory_slot(inventory_slot):
 
 func set_active_item_slot(node_key):
 	var grid = get_node("GridContainer")
-	grid.get_node(active_slot).set_active(false)
-	grid.get_node(str(node_key)).set_active(true)
-	active_slot = str(node_key)
-	emit_signal("set_active_item", grid.get_node(active_slot).item_type)
+	if active_slot != null:
+		grid.get_node(active_slot).set_active(false)
+	
+	var item_type = grid.get_node(node_key).item_type
+	if item_type != "<empty>":
+		grid.get_node(node_key).set_active(true)
+		active_slot = node_key
+		emit_signal("set_active_item", item_type)
+	
 
 
 func use_active_item():
 	var grid = get_node("GridContainer")
 	var item_type = grid.get_node(active_slot).item_type
-	emit_signal("use_item", item_type)
-
+	if item_type != "<empty>":
+		emit_signal("use_item", item_type)
 
 
 func _on_click_item(node_key):

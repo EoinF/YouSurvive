@@ -39,102 +39,91 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 37.0
-margin_bottom = 37.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 30, 30 )
-size_flags_horizontal = 2
-size_flags_vertical = 2
-color = Color( 0.345098, 0.34902, 0.32549, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Button" type="Button" parent="."]
-visible = false
 margin_right = 30.0
 margin_bottom = 30.0
 focus_mode = 0
+mouse_default_cursor_shape = 2
 enabled_focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpriteContainer" type="CenterContainer" parent="."]
+[node name="SpriteContainer" type="CenterContainer" parent="Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 30, 30 )
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="coconut" type="TextureRect" parent="SpriteContainer"]
+[node name="coconut" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
 margin_left = 11.0
-margin_top = 12.0
+margin_top = 11.0
 margin_right = 21.0
-margin_bottom = 20.0
+margin_bottom = 19.0
 texture = ExtResource( 2 )
 
-[node name="stone" type="TextureRect" parent="SpriteContainer"]
+[node name="stone" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
 margin_left = 10.0
-margin_top = 10.0
+margin_top = 9.0
 margin_right = 21.0
-margin_bottom = 21.0
+margin_bottom = 20.0
 texture = SubResource( 1 )
 
-[node name="branch" type="TextureRect" parent="SpriteContainer"]
+[node name="branch" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
 margin_left = 13.0
-margin_top = 9.0
+margin_top = 8.0
 margin_right = 19.0
-margin_bottom = 22.0
+margin_bottom = 21.0
 texture = ExtResource( 4 )
 
-[node name="crab" type="TextureRect" parent="SpriteContainer"]
+[node name="crab" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
 margin_left = 6.0
-margin_top = 6.0
+margin_top = 5.0
 margin_right = 26.0
-margin_bottom = 26.0
+margin_bottom = 25.0
 texture = SubResource( 2 )
 
-[node name="boar" type="TextureRect" parent="SpriteContainer"]
+[node name="boar" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
-margin_top = 5.0
+margin_top = 4.0
 margin_right = 32.0
-margin_bottom = 27.0
+margin_bottom = 26.0
 texture = SubResource( 3 )
 
-[node name="porcupine" type="TextureRect" parent="SpriteContainer"]
+[node name="porcupine" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
 margin_left = 3.0
-margin_top = 7.0
+margin_top = 6.0
 margin_right = 29.0
-margin_bottom = 25.0
+margin_bottom = 24.0
 texture = SubResource( 4 )
 
-[node name="stick" type="TextureRect" parent="SpriteContainer"]
+[node name="stick" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
+margin_top = -1.0
 margin_right = 32.0
-margin_bottom = 32.0
+margin_bottom = 31.0
 texture = ExtResource( 8 )
 
-[node name="Amount" type="Label" parent="."]
+[node name="Amount" type="Label" parent="Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -0.222725
 margin_bottom = -0.222725
+mouse_filter = 1
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "0"

@@ -36,12 +36,13 @@ var data
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if DIALOGUE_FILE != "":
-		var file = File.new()
-		file.open(DIALOGUE_FILE, File.READ)
-		data = parse_json(file.get_as_text())
-	else:
-		push_error("Error. No dialogue file selected!")
+	assert(DIALOGUE_FILE != "", "Error: No dialogue file selected!")
+		
+	var file = File.new()
+	file.open(DIALOGUE_FILE, File.READ)
+	data = parse_json(file.get_as_text())
+	
+		
 
 
 func _process(delta):
