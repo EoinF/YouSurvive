@@ -16,6 +16,8 @@ func _ready():
 	exploration_nodes = get_node("ExplorationNodes").get_children()
 	exploration_nodes.shuffle()
 	goals.push_back(IdleGoal.new())
+	goals.push_back(DodgeGoal.new("boar"))
+	goals.push_back(DodgeGoal.new("porcupine"))
 	goals.push_back(DodgeGoal.new("crab"))
 	current_goal = goals[0]
 

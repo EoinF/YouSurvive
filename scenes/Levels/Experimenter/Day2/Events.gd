@@ -15,6 +15,7 @@ func gift_stone():
 
 func gift_stick():
 	get_owner().get_node("Experimenter").pick_up_item("stick", 1)
+	get_owner().get_node("Day2Objectives").add_objective("place_weapon")
 
 
 func gift_crabs():
@@ -27,11 +28,15 @@ func gift_porcupines():
 
 func gift_boars():
 	get_owner().get_node("Experimenter").pick_up_item("boar", 25)
+	get_owner().get_node("Day2Objectives").add_objective("place_predators")
 
 
 func enable_ai():
 	var ai_controller = get_owner().get_node("IslanderAIController")
 	ai_controller.add_collection_goal("stone", 1)
 	ai_controller.add_kill_goal("crab", 99999)
+	ai_controller.add_kill_goal("porcupine", 99999)
+	ai_controller.add_kill_goal("boar", 99999)
 	ai_controller.is_paused = false
-	get_node("AIController").enable_ai()
+	get_owner().get_node("Day2Objectives").add_objective("kill_predators")
+	get_owner().get_node("AIController").enable_ai()

@@ -64,9 +64,9 @@
     },
     {
       "type": "event",
-      "event_name": "gift_rock"
+      "event_name": "gift_stone"
     },
-    { "type": "text", "content": "Place either a rock or a stick." },
+    { "type": "text", "content": "Place either a stone or a stick." },
     {
       "type": "text",
       "content": "Leave it further from the test subject to give an extra challenge."
@@ -86,7 +86,8 @@
     {
       "type": "text",
       "content": "A lack of conflict implies a lack of purpose."
-    }
+    },
+    { "type": "link_to", "section_name": "Outro" }
   ],
   "Complete - Hard": [
     {
@@ -96,7 +97,8 @@
     {
       "type": "text",
       "content": "Take care to create disorder, but not abject chaos."
-    }
+    },
+    { "type": "link_to", "section_name": "Outro" }
   ],
   "Outro": [
     {

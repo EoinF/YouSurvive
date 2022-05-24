@@ -16,7 +16,6 @@ class InventorySlot:
 
 
 var item_type_to_slot = {}
-var unused_keys = ["1", "2", "3"]
 
 var is_controls_enabled = false
 
@@ -71,7 +70,7 @@ func pick_up_item(_item_type, _amount):
 	if _item_type in item_type_to_slot:
 		item_type_to_slot[_item_type].amount += _amount
 	else:
-		var node_key = unused_keys.pop_front()
+		var node_key = str(item_type_to_slot.size() + 1)
 		item_type_to_slot[_item_type] = InventorySlot.new()
 		item_type_to_slot[_item_type].node_key = node_key
 		item_type_to_slot[_item_type].amount = _amount

@@ -53,7 +53,8 @@
     {
       "type": "text",
       "content": "If the task is out of reach, then so is the meaning behind it."
-    }
+    },
+    { "type": "link_to", "section_name": "Outro" }
   ],
   "Complete - Fast": [
     { "type": "text", "content": "Done already?" },
@@ -64,7 +65,8 @@
     {
       "type": "text",
       "content": "There's no meaning to be found in trivial tasks."
-    }
+    },
+    { "type": "link_to", "section_name": "Outro" }
   ],
   "Outro": [
     {

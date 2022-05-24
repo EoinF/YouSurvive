@@ -14,18 +14,15 @@ func update_inventory_slot(inventory_slot):
 	if not grid.has_node(inventory_slot.node_key):
 		item_node = inventory_item_scene.instance()
 		grid.call_deferred("add_child", item_node)
-		if grid.get_child_count() == 0:
-			active_slot = inventory_slot.node_key
-			item_node.set_active(true)
 		item_node.set_name(inventory_slot.node_key)
 		item_node.connect("click_item", self, "_on_click_item", [inventory_slot.node_key])
-		if active_slot == null:
-			set_active_item_slot(inventory_slot.node_key)
 	else:
 		item_node = grid.get_node(inventory_slot.node_key)
 
 	item_node.set_item_type(inventory_slot.item_type)
 	item_node.set_amount(inventory_slot.amount)
+	if active_slot == null:
+		set_active_item_slot(inventory_slot.node_key)
 
 
 func set_active_item_slot(node_key):
