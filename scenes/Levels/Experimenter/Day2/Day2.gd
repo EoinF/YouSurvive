@@ -63,6 +63,7 @@ func _on_Day2Objectives_objectives_updated(objectives):
 	and objectives[2].is_complete and objectives[2].is_visible \
 	and objectives[3].is_complete and objectives[3].is_visible \
 	and objectives[4].is_complete and objectives[4].is_visible:
+		get_node("Experimenter").disable_placement()
 		if enemies_score < SCORE_THRESHOLD:
 			dialogue_manager.start_section("Complete - Easy")
 		else:

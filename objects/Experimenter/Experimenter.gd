@@ -29,9 +29,11 @@ func enable_controls():
 	
 
 func disable_controls():
-	get_node("ItemPlacementTool").disable_item_placement()
+	disable_placement()
 	is_controls_enabled = false
-
+	
+func disable_placement():
+	get_node("ItemPlacementTool").disable_item_placement()
 
 func move(deltaVector: Vector2):
 	if is_controls_enabled:

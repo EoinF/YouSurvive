@@ -1,7 +1,7 @@
 extends YSort
 
 signal prop_added(node)
-signal crab_killed(node)
+signal enemy_killed(node)
 
 var scene_map = {
 	"branch": preload("res://objects/CollectableItems/Branch.tscn"),
@@ -20,7 +20,7 @@ func _ready():
 			child.connect("spawn_item", self, "_spawn_item_falling")
 		
 		if child.is_in_group("AI"):
-			child.connect("dies", self, "_on_crab_dies")
+			child.connect("dies", self, "_on_enemy_dies")
 
 
 func _add_prop(prop, source_position, owner_instance_id):
@@ -30,7 +30,7 @@ func _add_prop(prop, source_position, owner_instance_id):
 	add_child(prop)
 
 	if prop.is_in_group("AI"):
-		prop.connect("dies", self, "_on_crab_dies")
+		prop.connect("dies", self, "_on_enemy_dies")
 
 	emit_signal("prop_added", prop)
 
@@ -66,5 +66,5 @@ func _on_place_item(item_type, source_position):
 	_spawn_item(item_type, source_position)
 
 
-func _on_crab_dies(node):
-	emit_signal("crab_killed", node)
+func _on_enemy_dies(node):
+	emit_signal("enemy_killed", node)

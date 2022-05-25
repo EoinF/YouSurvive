@@ -34,6 +34,7 @@ func gift_boars():
 func enable_ai():
 	var ai_controller = get_owner().get_node("IslanderAIController")
 	ai_controller.add_collection_goal("stone", 1)
+	ai_controller.add_collection_goal("stick", 1)
 	ai_controller.add_kill_goal("crab", 99999)
 	ai_controller.add_kill_goal("porcupine", 99999)
 	ai_controller.add_kill_goal("boar", 99999)

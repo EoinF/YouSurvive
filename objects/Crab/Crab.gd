@@ -112,7 +112,7 @@ func _on_AttackCooldown_timeout():
 func _on_Hurtbox_area_entered(area):
 	if not _is_dying and not area.is_in_group("AI") and area.is_in_group("Attack"):
 		HEALTH -= area.attack_power
-		if (HEALTH == 0):
+		if (HEALTH <= 0):
 			_die()
 
 

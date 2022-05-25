@@ -84,7 +84,12 @@ class KillGoal extends Goal:
 		self.goal_type = GoalTypes.KILL_ENEMY
 	
 	func get_priority(_owner_context):
-		var has_weapon = "stone" in _owner_context.inventory and _owner_context.inventory["stone"].amount > 0
+		var has_stone = "stone" in _owner_context.inventory \
+			and _owner_context.inventory["stone"].amount > 0
+		var has_stick = "stick" in _owner_context.inventory \
+			and _owner_context.inventory["stick"].amount > 0
+			
+		var has_weapon = has_stone or has_stick
 		if has_weapon and target in _owner_context.objects_in_view:
 			for object in _owner_context.objects_in_view[target].values():
 				if object.has_method("is_alive") and object.is_alive():

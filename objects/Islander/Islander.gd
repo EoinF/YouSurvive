@@ -2,14 +2,11 @@ extends KinematicBody2D
 
 signal use_coconut_without_rock
 signal inventory_slot_change(inventory_slot)
-signal stamina_change(stamina)
 signal health_change(health)
 signal die
 signal throw_stone(position, direction)
 
 export var SPEED = 8 * 1000
-export var STAMINA = 25
-export var SPEED_WHILE_TIRED = 8 * 1000
 export var IS_IMMUNE_TO_STONE = true
 export var MAX_HEALTH = 1000
 
@@ -40,29 +37,22 @@ class InventorySlot:
 
 var item_type_to_slot = {}
 var unused_keys = ["1", "2", "3"]
-var stamina: int
 
 var on_finished_emote_ref: FuncRef
 
-var is_colliding = false
+var _is_colliding = false
 
 func is_colliding():
-	var return_value = is_colliding
-	is_colliding = false
+	var return_value = _is_colliding
+	_is_colliding = false
 	return return_value
 
 
 func will_collide():
 	return test_move(transform, Vector2.ZERO)
-#		for i in get_slide_count():
-#			get_slide_collision(i)
-#		return true
-#	else:
-#		return false
 	
 
 func _ready():
-	set_stamina(STAMINA)
 	set_health(MAX_HEALTH)
 	is_alive = true
 
@@ -84,12 +74,8 @@ func move(x, y):
 	walking_timeout = 10
 	direction = Vector2(x, y).normalized()
 	
-	if (stamina <= 25):
-		velocity.x = direction.x * SPEED_WHILE_TIRED
-		velocity.y = direction.y * SPEED_WHILE_TIRED
-	else:
-		velocity.x = direction.x * SPEED
-		velocity.y = direction.y * SPEED
+	velocity.x = direction.x * SPEED
+	velocity.y = direction.y * SPEED
 	
 	var directionVertical = ""
 	var directionHorizontal = ""
@@ -155,7 +141,7 @@ func _update_active_sprite(new_sprite_state, new_sprite_direction):
 
 func _physics_process(delta):
 	move_and_slide(velocity * delta)
-	is_colliding = get_slide_count() > 0
+	_is_colliding = get_slide_count() > 0
 	velocity = Vector2.ZERO
 
 
@@ -166,24 +152,10 @@ func _on_AttackAnimation_animation_finished():
 	attack_animation.stop()
 
 
-func set_stamina(new_stamina):
-	stamina = new_stamina
-	emit_signal("stamina_change", stamina)
-	
-	if stamina <= 50:
-		get_node("AttackPivotPoint/AttackAnimation").scale.x = 0.5
-		get_node("AttackPivotPoint/AttackAnimation").scale.y = 0.5
-		get_node("AttackPivotPoint/AttackAnimation/AttackArea").attack_power = 0
-	else:
-		get_node("AttackPivotPoint/AttackAnimation").scale.x = 1.0
-		get_node("AttackPivotPoint/AttackAnimation").scale.y = 1.0
-		get_node("AttackPivotPoint/AttackAnimation/AttackArea").attack_power = 2
-
-
 func set_health(new_health):
 	if not is_alive:
 		return
-	health = new_health
+	health = min(new_health, MAX_HEALTH)
 	if health <= 0:
 		is_alive = false
 		health = 0
@@ -191,14 +163,10 @@ func set_health(new_health):
 	emit_signal("health_change", health)
 
 
-func _on_StaminaTimer_timeout():
-	set_stamina(stamina - 1)
-
-
 func _use_coconut():
 	for item_type in item_type_to_slot.keys():
 		if item_type == "rock" and item_type_to_slot[item_type].amount > 0:
-			set_stamina(stamina + 20)
+			set_health(health + 3)
 			var inventory_slot = item_type_to_slot["coconut"]
 			inventory_slot.amount -= 1
 			
@@ -215,6 +183,10 @@ func _use_stone():
 		
 		emit_signal("inventory_slot_change", inventory_slot)
 		emit_signal("throw_stone", position, direction)
+
+
+func has_item(item_type):
+	return item_type_to_slot.has(item_type)
 
 
 func _on_Hurtbox_area_entered(area):
@@ -244,5 +216,7 @@ func _on_HUD_use_item(item_type):
 	match item_type:
 		"stone":
 			_use_stone()
+		"coconut":
+			_use_coconut()
 		"stick":
 			attack()

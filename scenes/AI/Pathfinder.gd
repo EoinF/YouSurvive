@@ -94,9 +94,6 @@ func get_quickest_path_to(from, to):
 	if (get_cellv(tile_to) == 1):
 		print("Undefined behaviour - our search doesnt handle pathing to a blocked tile")
 		return []
-		
-	#print("Getting path from " + str(tile_from) + " to " + str(tile_to))
-	#print(str(get_cellv(tile_from)) + " to " + str(get_cellv(tile_to)))
 	
 	var start_node = { 'location': tile_from, 'g_cost': 0, 'f_cost': h(tile_from, tile_to), 'parent': null }
 	return a_star([start_node], tile_to)

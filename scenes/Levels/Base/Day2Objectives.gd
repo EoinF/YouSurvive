@@ -37,6 +37,7 @@ func add_objective(type):
 		is_kill_mode_active = true
 	emit_signal("objectives_updated", _get_objectives())
 
+
 func _get_objectives():
 	return [
 		{
@@ -67,10 +68,14 @@ func _get_objectives():
 	]
 
 
-func _on_Props_crab_killed(node):
-	num_crabs_killed += 1
+func _on_Props_enemy_killed(node):
+	if node.is_in_group("crab"):
+		num_crabs_killed += 1
+	elif node.is_in_group("porcupine"):
+		num_porcupines_killed += 1
+	elif node.is_in_group("boar"):
+		num_boars_killed += 1
 	emit_signal("objectives_updated", _get_objectives())
-
 
 
 func _on_Experimenter_place_item(item_type, source_location):
@@ -83,3 +88,4 @@ func _on_Experimenter_place_item(item_type, source_location):
 	elif item_type in ["stick", "stone"]:
 		num_weapons_placed += 1
 	emit_signal("objectives_updated", _get_objectives())
+

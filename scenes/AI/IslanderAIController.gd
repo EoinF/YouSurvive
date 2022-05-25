@@ -167,7 +167,9 @@ func dodge_enemy():
 
 
 func kill_enemy():
-	var islander = get_parent().get_node("Objects/Props/Islander")
+	var islander = get_owner().get_node("Objects/Props/Islander")
+	if islander.is_attacking():
+		return
 	var islander_position = islander.global_position
 	
 	var closest_enemy = _get_closest_target_of_type(current_goal.target)
@@ -180,19 +182,23 @@ func kill_enemy():
 		current_enemy = closest_enemy
 		current_move_path = _get_quickest_path_to(islander_position, current_enemy.global_position)
 		if current_move_path == null:
-#			locate()
-			print("move path empty")
 			return
 			
 		on_update_current_move_path()
 	else:
 		var direction_to_target = current_enemy.global_position - islander_position
 		if direction_to_target.length() < 100:
-			var straight_path_to_enemy = _get_path_in_direction_of(direction_to_target, current_enemy.global_position)
-			
-			if (straight_path_to_enemy.back() * 16).distance_to(current_enemy.global_position) <= 16:
-				islander.throw_stone(direction_to_target.x, direction_to_target.y)
+			if islander.has_item("stick") and direction_to_target.length() < 25:
+				islander.attack(direction_to_target.x, direction_to_target.y)
 				return
+			if islander.has_item("stone"):
+				# ensure there is a clear path to the enemy with nothing blocking it
+				# so the stone will actually reach it
+				var straight_path_to_enemy = _get_path_in_direction_of(direction_to_target, current_enemy.global_position)
+				
+				if (straight_path_to_enemy.back() * 16).distance_to(current_enemy.global_position) <= 16:
+					islander.throw_stone(direction_to_target.x, direction_to_target.y)
+					return
 	
 	var current_tile = Vector2(floor(islander_position.x / 16), floor(islander_position.y / 16))
 

@@ -1,21 +1,8 @@
 extends TileMap
 
-var directions = [
-	Vector2(0, -1),
-	Vector2(1, -1),
-	Vector2(1, 0),
-	Vector2(1, 1),
-	Vector2(0, 1),
-	Vector2(-1, 1),
-	Vector2(-1, 0),
-	Vector2(-1, -1)
-]
-
 
 func _ready():
 	if get_owner() == null:
-		for d in directions:
-			print(atan2(d.y, d.x))
 		set_path([
 			Vector2(10, 10),
 			Vector2(10, 11),
@@ -44,6 +31,7 @@ func _ready():
 			Vector2(9, 6),
 		])
 
+
 func set_path(path):
 	clear()
 	var direction = 0
@@ -56,6 +44,7 @@ func set_path(path):
 		set_cellv(current, direction)
 	if len(path) > 0:
 		set_cellv(path.back(), direction)
+
 
 func get_direction_tile_index(from: Vector2, to: Vector2):
 	var x = to.x - from.x
