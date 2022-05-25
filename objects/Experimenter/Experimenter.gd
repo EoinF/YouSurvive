@@ -25,13 +25,15 @@ func get_experiment_data():
 
 
 func enable_controls():
+	get_node("ItemPlacementTool").enable_item_placement()
 	is_controls_enabled = true
 	
 
 func disable_controls():
 	disable_placement()
 	is_controls_enabled = false
-	
+
+
 func disable_placement():
 	get_node("ItemPlacementTool").disable_item_placement()
 
@@ -80,9 +82,9 @@ func pick_up_item(_item_type, _amount):
 		
 	emit_signal("inventory_slot_change", item_type_to_slot[_item_type])
 
-	if not is_controls_enabled:
-		get_node("ItemPlacementTool").enable_item_placement(_item_type)
-		enable_controls()
+	var placement_tool = get_node("ItemPlacementTool")
+	if placement_tool.selected_item_type == null:
+		placement_tool.set_item_type(_item_type)
 
 
 func _process(delta):
@@ -93,7 +95,7 @@ func _on_ItemPlacementTool_place_item(_item_type, _location):
 	if item_type_to_slot[_item_type].amount > 0:
 		item_type_to_slot[_item_type].amount -= 1
 		if item_type_to_slot[_item_type].amount == 0:
-			get_node("ItemPlacementTool").disable_item_placement()
+			get_node("ItemPlacementTool").set_item_type(null)
 		emit_signal("inventory_slot_change", item_type_to_slot[_item_type])
 		emit_signal("place_item", _item_type,_location)
 		
@@ -123,5 +125,5 @@ func _on_VisionDetectionArea_body_entered(body):
 
 
 func _on_HUD_set_active_item(item_type):
-	get_node("ItemPlacementTool").enable_item_placement(item_type)
+	get_node("ItemPlacementTool").set_item_type(item_type)
 

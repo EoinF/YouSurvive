@@ -23,16 +23,16 @@ func _ready():
 
 func _get_objectives():
 	var objective1 = {
-	"description": OBJECTIVE_COLLECT_BRANCHES_TEMPLATE % [branches_collected, branches_required],
-	"key": OBJECTIVE_COLLECT_BRANCHES_KEY,
-	"is_complete": is_objective_1_complete,
-	"is_visible": true
+		"description": OBJECTIVE_COLLECT_BRANCHES_TEMPLATE % [branches_collected, branches_required],
+		"key": OBJECTIVE_COLLECT_BRANCHES_KEY,
+		"is_complete": is_objective_1_complete,
+		"is_visible": true
 	}
 	var objective2 = {
-	"description": OBJECTIVE_COLLECT_COCONUTS_TEMPLATE % [current_coconuts, required_coconuts],
-	"key": OBJECTIVE_COLLECT_COCONUTS_KEY,
-	"is_complete": is_objective_2_complete,
-	"is_visible": true
+		"description": OBJECTIVE_COLLECT_COCONUTS_TEMPLATE % [current_coconuts, required_coconuts],
+		"key": OBJECTIVE_COLLECT_COCONUTS_KEY,
+		"is_complete": is_objective_2_complete,
+		"is_visible": true
 	}
 	return [objective1, objective2]
 	

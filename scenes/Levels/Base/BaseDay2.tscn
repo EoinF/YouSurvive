@@ -53,5 +53,4 @@ script = ExtResource( 2 )
 root_node = NodePath("../Objects")
 anims/fade = SubResource( 1 )
 [connection signal="enemy_killed" from="Objects/Props" to="Day2Objectives" method="_on_Props_enemy_killed"]
-[connection signal="prop_added" from="Objects/Props" to="Day2Objectives" method="_on_Props_prop_added"]
 [connection signal="objectives_updated" from="Day2Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]

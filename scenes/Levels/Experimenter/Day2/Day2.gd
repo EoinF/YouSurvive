@@ -1,5 +1,7 @@
 extends Node2D
 
+signal finish_scene(experimenter_data)
+
 
 func set_player_name(player_name):
 	get_node("HUDLayer/HUD/DialogueManager").set_variables({
@@ -9,8 +11,7 @@ func set_player_name(player_name):
 
 func _ready():
 	get_node("AIController").disable_ai()
-	get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
-#	_fade_in()
+	_fade_in()
 
 
 func _fade_in():
@@ -49,20 +50,16 @@ var is_kill_predators_complete = false
 func _on_Day2Objectives_objectives_updated(objectives):
 	var dialogue_manager = get_node("HUDLayer/HUD/DialogueManager")
 	
-	if not is_predator_placement_complete \
-	and objectives[0].is_complete and objectives[0].is_visible:
+	if not is_predator_placement_complete and objectives[0].is_complete :
 		dialogue_manager.start_section("Main1 (After 15 placed)")
 		is_predator_placement_complete = true
 
-	if not is_weapon_placement_complete \
-	and objectives[1].is_complete and objectives[1].is_visible:
+	if not is_weapon_placement_complete and objectives[1].is_complete:
 		dialogue_manager.start_section("Main2 (After weapon placed)")
 		is_weapon_placement_complete = true
 
-	if not is_kill_predators_complete \
-	and objectives[2].is_complete and objectives[2].is_visible \
-	and objectives[3].is_complete and objectives[3].is_visible \
-	and objectives[4].is_complete and objectives[4].is_visible:
+	if not is_kill_predators_complete and objectives[2].is_complete \
+	and objectives[3].is_complete and objectives[4].is_complete:
 		get_node("Experimenter").disable_placement()
 		if enemies_score < SCORE_THRESHOLD:
 			dialogue_manager.start_section("Complete - Easy")

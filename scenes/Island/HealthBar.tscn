@@ -46,13 +46,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Background"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -28.0
-margin_top = 1.78381
-margin_right = 28.0
-margin_bottom = 15.7838
-text = "life"
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+text = "Test subject"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false,
