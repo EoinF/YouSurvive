@@ -26,7 +26,7 @@ func _ready():
 	emit_signal("objectives_updated", _get_objectives())
 
 
-func set_objective_active(type, is_active):
+func set_objective_active(type, is_active = true):
 	if type == "place_predators":
 		is_predator_placement_active = is_active
 	if type == "place_weapon":
