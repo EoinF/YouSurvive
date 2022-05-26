@@ -14,6 +14,7 @@ func _ready():
 	if save_file.file_exists(constants.SAVE_FILE_LOCATION):
 		save_file.open(constants.SAVE_FILE_LOCATION, File.READ)
 		save_data = parse_json(save_file.get_as_text())
+		save_file.close()
 	
 	get_node("HintLabel").modulate.a = 0
 

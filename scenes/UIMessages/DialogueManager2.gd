@@ -60,6 +60,13 @@ func start_section(section_name):
 	visible = true
 	_next_node()
 
+func stop():
+	visible = false
+	is_playing = false
+	is_started = false
+	get_node("LetterTimer").stop()
+	
+	
 
 func set_variables(_variables: Dictionary):
 	variables = _variables

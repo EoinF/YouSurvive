@@ -9,6 +9,7 @@ func enable_controls():
 	var owner = get_owner()
 	owner.get_node("Experimenter").enable_controls()
 
+
 func start_camera_follow():
 	var experimenter = owner.get_node("Experimenter")
 	var islander = owner.get_node("Objects/Props/Islander")
@@ -17,10 +18,12 @@ func start_camera_follow():
 	ai_controller.add_collection_goal("branch", 10)
 	ai_controller.is_paused = false
 
+
 func gift_branches():
 	var owner = get_owner()
 	owner.get_node("Experimenter").pick_up_item("branch", 10)
 	owner.get_node("AnimationPlayer").play("highlight_inventory")
+
 
 func stop_camera_follow():
 	var experimenter = get_owner().get_node("Experimenter")

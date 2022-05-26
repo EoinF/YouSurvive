@@ -78,7 +78,7 @@ func _on_Props_enemy_killed(node):
 	emit_signal("objectives_updated", _get_objectives())
 
 
-func _on_Experimenter_place_item(item_type, source_location):
+func _on_Experimenter_place_item(item_type, _source_location):
 	if item_type == "crab":
 		num_crabs_placed += 1
 	elif item_type == "porcupine":

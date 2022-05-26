@@ -8,6 +8,16 @@ var experiment_data
 var current_time = 0.0
 var current_action = null
 
+func _ready():
+	# Run this only if scene is run standalone
+	if get_owner() == null:
+		var test_file = File.new()
+		
+		test_file.open("utils/test_data.json", File.READ)
+		var test_data = parse_json(test_file.get_as_text())
+		test_file.close()
+		set_experiment_data(test_data["Day1"])
+
 func _process(delta):
 	current_time += delta
 	

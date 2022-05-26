@@ -4,8 +4,8 @@ signal finish_scene(experiment_data)
 
 var player_name: String
 
-var is_level_complete = false
-var is_first_time_seeing_islander = true
+var is_find_test_subject_complete = false
+var is_collect_branches_complete = false
 
 
 func set_player_name(name: String):
@@ -27,23 +27,17 @@ func _on_DialogueManager_finish_dialogue(section_name):
 
 
 func _on_Day1Objectives_objectives_updated(objectives):
-	if not is_level_complete:
-		for objective in objectives:
-			if not objective["is_complete"]:
-				return
+	if not is_find_test_subject_complete and objectives[0]["is_complete"]:
+		get_node("HUDLayer/HUD/DialogueManager").start_section("Main1")
+		is_find_test_subject_complete = true
 		
-		is_level_complete = true
+	if not is_collect_branches_complete and objectives[1]["is_complete"]:
+		is_collect_branches_complete = true
 		var timer: Timer = get_node("Day1Objectives/SlowCompletionTimer")
 		if timer.time_left > 0:
 			get_node("HUDLayer/HUD/DialogueManager").start_section("Complete - Fast")
 		else:
 			get_node("HUDLayer/HUD/DialogueManager").start_section("Complete - Slow")
-
-
-func _on_Experimenter_sees_islander():
-	if is_first_time_seeing_islander:
-		get_node("HUDLayer/HUD/DialogueManager").start_section("Main1")
-		is_first_time_seeing_islander = false
 
 
 func _fade_in():
@@ -57,6 +51,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_Islander_die():
+	get_node("HUDLayer/HUD/DialogueManager").stop()
 	get_node("HUDLayer/HUD/GameOver").start()
 
 
