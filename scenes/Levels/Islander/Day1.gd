@@ -11,6 +11,8 @@ var current_action = null
 var is_collect_branches_complete = false
 
 func _ready():
+	get_node("Day1Objectives").set_objective_active("collect_branches", true)
+	
 	# Run this only if scene is run standalone
 	if get_owner() == null:
 		var test_file = File.new()
@@ -51,6 +53,7 @@ func _on_Day1Objectives_objectives_updated(objectives):
 func _on_DialogueManager_finish_dialogue(section_name):
 	if section_name == "Main":
 		emit_signal("finish_scene")
+		get_node("IslanderInput").queue_free()
 		queue_free()
 
 

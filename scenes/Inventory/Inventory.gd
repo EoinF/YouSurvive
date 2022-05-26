@@ -27,6 +27,9 @@ func update_inventory_slot(inventory_slot):
 
 func set_active_item_slot(node_key):
 	var grid = get_node("GridContainer")
+	if not grid.has_node(node_key):
+		return
+	
 	if active_slot != null:
 		grid.get_node(active_slot).set_active(false)
 	
