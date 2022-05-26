@@ -48,6 +48,8 @@ func _fade_in():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "fade":
 		get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
+	if anim_name == "fade_out":
+		get_tree().reload_current_scene()
 
 
 func _on_Islander_die():
@@ -56,4 +58,4 @@ func _on_Islander_die():
 
 
 func _on_GameOver_finish():
-	get_tree().reload_current_scene()
+	get_node("AnimationPlayer").play("fade_out")

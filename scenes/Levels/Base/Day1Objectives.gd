@@ -17,7 +17,7 @@ func _get_objectives():
 		},
 		{
 			"description": OBJECTIVE_COLLECT_BRANCHES_TEMPLATE % [branches_collected, branches_required],
-			"is_visible": false,
+			"is_visible": is_islander_found,
 			"is_complete": branches_collected >= branches_required
 		}
 	]

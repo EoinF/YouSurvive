@@ -8,7 +8,11 @@ var experiment_data
 var current_time = 0.0
 var current_action = null
 
+var is_collect_branches_complete = false
+
 func _ready():
+	get_node("Day1Objectives")._on_Experimenter_sees_islander()
+	
 	# Run this only if scene is run standalone
 	if get_owner() == null:
 		var test_file = File.new()
@@ -17,6 +21,7 @@ func _ready():
 		var test_data = parse_json(test_file.get_as_text())
 		test_file.close()
 		set_experiment_data(test_data["Day1"])
+
 
 func _process(delta):
 	current_time += delta
@@ -40,12 +45,22 @@ func set_experiment_data(_experiment_data):
 
 
 func _on_Day1Objectives_objectives_updated(objectives):
-	var is_complete = true
-	for objective in objectives:
-		if not objective["is_complete"]:
-			is_complete = false
-			break
-	
-	if is_complete:
+	if not is_collect_branches_complete and objectives[1]["is_complete"]:
+		is_collect_branches_complete = true
+		get_node("HUDLayer/HUD/DialogueManager").start_section("Main")
+
+
+func _on_DialogueManager_finish_dialogue(section_name):
+	if section_name == "Main":
 		emit_signal("finish_scene")
 		queue_free()
+
+
+func _on_Islander_die():
+	get_node("AnimationPlayer").play("fade_out")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "fade_out":
+		get_node("IslanderInput").free()
+		get_tree().reload_current_scene()

@@ -66,6 +66,7 @@ func _process_inventory_item_input():
 	elif Input.is_action_just_released('use_item'):
 		get_owner().get_node("HUDLayer/HUD/Inventory").use_active_item()
 
+
 func _on_PlayerInteraction_area_entered(area):
 	var interaction_item = area.get_parent()
 	if (interaction_item.is_in_group("Collectable")):
@@ -78,6 +79,7 @@ func _on_PlayerInteraction_area_entered(area):
 		nearby_interaction_items.append(interaction_item)
 		current_interaction_item = interaction_item
 		_show_interaction_item_tooltip(current_interaction_item, x, y)
+
 
 func _on_PlayerInteraction_area_exited(area):
 	var interaction_item = area.get_parent()
@@ -94,6 +96,7 @@ func _on_PlayerInteraction_area_exited(area):
 	else:
 		current_interaction_item = null
 		tooltip_container.visible = false
+
 
 func _show_interaction_item_tooltip(interaction_item, x, y):
 	var tooltip_container = get_owner().get_node("HUDLayer/TooltipContainer")

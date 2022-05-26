@@ -193,7 +193,7 @@ func _on_Hurtbox_area_entered(area):
 	if not _is_hurting and area.is_in_group("Attack") \
 	and not area.is_in_group("Islander") \
 	and (not IS_IMMUNE_TO_STONE or not area.is_in_group("Stone")):
-		set_health(health - 100)
+		set_health(health - 100 * area.attack_power)
 		initial_modulate = self.modulate
 		self.modulate.r = 1
 		self.modulate.g = 0.1

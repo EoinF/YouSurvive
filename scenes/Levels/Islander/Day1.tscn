@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Levels/Base/BaseDay1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Base/IslanderController.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Levels/Islander/Day1.gd" type="Script" id=3]
+[ext_resource path="res://scenes/UIMessages/DialogueManager2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Levels/Islander/test.gd" type="Script" id=6]
 
 [node name="IslanderDay1" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+
+[node name="Objects" parent="." index="0"]
+color = Color( 0.823529, 0.647059, 0.529412, 1 )
 
 [node name="Camera2D" type="Camera2D" parent="Objects/Props/Islander" index="9"]
 current = true
@@ -19,10 +23,14 @@ margin_right = 4.625
 margin_bottom = 0.840881
 
 [node name="Day1Label" parent="HUDLayer/HUD" index="1"]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = -18.0
 margin_top = -7.00003
 margin_right = 18.0
 margin_bottom = 6.99997
+
+[node name="DialogueManager" parent="HUDLayer/HUD" index="7" instance=ExtResource( 5 )]
+DIALOGUE_FILE = "res://assets/Dialogue/Day1b.json"
 
 [node name="IslanderInput" type="Node" parent="." index="5"]
 script = ExtResource( 2 )
@@ -30,7 +38,12 @@ script = ExtResource( 2 )
 [node name="FPS counter" type="Node" parent="." index="6"]
 script = ExtResource( 6 )
 [connection signal="place_item" from="." to="Objects/Props" method="_on_place_item"]
+[connection signal="die" from="Objects/Props/Islander" to="." method="_on_Islander_die"]
+[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="IslanderInput" method="_on_PlayerInteraction_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/PlayerInteraction" to="IslanderInput" method="_on_PlayerInteraction_area_exited"]
 [connection signal="use_item" from="HUDLayer/HUD" to="Objects/Props/Islander" method="_on_HUD_use_item"]
+[connection signal="finish_dialogue" from="HUDLayer/HUD/DialogueManager" to="." method="_on_DialogueManager_finish_dialogue"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="objectives_updated" from="Day1Objectives" to="." method="_on_Day1Objectives_objectives_updated"]
+[connection signal="objectives_updated" from="Day1Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
