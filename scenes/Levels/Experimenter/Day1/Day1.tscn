@@ -190,7 +190,7 @@ autostart = true
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 [connection signal="sees_islander" from="Experimenter" to="Day1Objectives" method="_on_Experimenter_sees_islander"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="objectives_updated" from="Day1Objectives" to="." method="_on_Day1Objectives_objectives_updated"]
 [connection signal="objectives_updated" from="Day1Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
+[connection signal="objectives_updated" from="Day1Objectives" to="." method="_on_Day1Objectives_objectives_updated"]
 
 [editable path="Experimenter"]

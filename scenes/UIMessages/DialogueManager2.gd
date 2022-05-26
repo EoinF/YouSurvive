@@ -60,6 +60,7 @@ func start_section(section_name):
 	visible = true
 	_next_node()
 
+
 func stop():
 	visible = false
 	is_playing = false

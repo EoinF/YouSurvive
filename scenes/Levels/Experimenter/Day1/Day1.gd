@@ -28,8 +28,8 @@ func _on_DialogueManager_finish_dialogue(section_name):
 
 func _on_Day1Objectives_objectives_updated(objectives):
 	if not is_find_test_subject_complete and objectives[0]["is_complete"]:
-		get_node("HUDLayer/HUD/DialogueManager").start_section("Main1")
 		is_find_test_subject_complete = true
+		get_node("HUDLayer/HUD/DialogueManager").start_section("Main1")
 		
 	if not is_collect_branches_complete and objectives[1]["is_complete"]:
 		is_collect_branches_complete = true

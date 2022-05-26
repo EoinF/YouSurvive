@@ -12,8 +12,6 @@ var num_boars_killed = 0
 
 var num_weapons_placed = 0
 
-var is_objective_active = {}
-
 func _num_predators_placed():
 	return num_crabs_placed + num_porcupines_placed + num_boars_placed
 
@@ -28,14 +26,14 @@ func _ready():
 	emit_signal("objectives_updated", _get_objectives())
 
 
-func add_objective(type):
+func set_objective_active(type, is_active):
 	if type == "place_predators":
-		is_predator_placement_active = true
+		is_predator_placement_active = is_active
 	if type == "place_weapon":
-		is_weapon_placement_active = true
+		is_weapon_placement_active = is_active
 	if type == "kill_predators":
-		is_kill_mode_active = true
-	emit_signal("objectives_updated", _get_objectives())
+		is_kill_mode_active = is_active
+	call_deferred("emit_signal", "objectives_updated", _get_objectives())
 
 
 func _get_objectives():

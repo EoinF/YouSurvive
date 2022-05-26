@@ -11,8 +11,6 @@ var current_action = null
 var is_collect_branches_complete = false
 
 func _ready():
-	get_node("Day1Objectives")._on_Experimenter_sees_islander()
-	
 	# Run this only if scene is run standalone
 	if get_owner() == null:
 		var test_file = File.new()
