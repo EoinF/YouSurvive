@@ -25,6 +25,7 @@ func save_game(current_level, experiment_level = null, new_experiment_data = nul
 		save_data[experiment_level] = new_experiment_data
 	
 	save_file.store_string(to_json(save_data))
+	save_file.close()
 
 func load_scene(scene_name, _save_data = null):
 	if _save_data != null:
@@ -38,7 +39,6 @@ func load_scene(scene_name, _save_data = null):
 	get_node(scene_name).connect("finish_scene", self, "_on_" + scene_name + "_finish_scene")
 
 func load_intro():
-	print("loading intro scene")
 	var scene_placeholder = get_node("Intro")
 	scene_placeholder.replace_by_instance()
 	get_node("Intro").connect("finish_scene", self, "_on_Intro_finish_scene")
@@ -52,28 +52,15 @@ func _on_Intro_finish_scene(_player_name):
 
 
 func _on_Day1_finish_scene(experiment_data):
-	print("finished day 1 experimenter")
-	var save_file = File.new()
-	save_file.open(constants.SAVE_FILE_LOCATION, File.WRITE)
-	
-	save_data["current_chapter"] = "Islander"
-	save_data["current_level"] = "Day1"
-	
-	save_data["Day1"] = experiment_data
-	
-	save_file.store_string(to_json(save_data))
-	print("Finishing experimenter scenes")
-	emit_signal("finish_scenes", save_data)
-	
-	#save_game("Night1", "Day1", experiment_data)
-	#load_scene("Night1")
+	save_game("Night1", "Day1", experiment_data)
+	load_scene("Night1")
 
 
 func _on_Night1_finish_scene():
-	print("night 1 finished")
 	save_game("Day2")
 	load_scene("Day2")
 	
 	
-func _on_Day2_finish_scene():
-	print("TODO: On finish day 2 scene")
+func _on_Day2_finish_scene(experiment_data):
+	save_game("Night2", "Day2", experiment_data)
+	load_scene("Night2")

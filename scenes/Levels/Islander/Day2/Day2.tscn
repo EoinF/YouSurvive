@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/Levels/Base/BaseDay2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Levels/Islander/Day2/Day2.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Levels/Islander/ExperimentReplay.gd" type="Script" id=3]
+[ext_resource path="res://scenes/Levels/Islander/Day1/test.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Levels/Base/IslanderController.gd" type="Script" id=5]
+
+[node name="IslanderDay2" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="Objects/Props/Islander" index="10"]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="ExperimentReplay" type="Node" parent="." index="5"]
+script = ExtResource( 3 )
+
+[node name="IslanderInput" type="Node" parent="." index="6"]
+script = ExtResource( 5 )
+
+[node name="FPS counter" type="Node" parent="." index="7"]
+script = ExtResource( 4 )
+[connection signal="enemy_killed" from="Objects/Props" to="Day2Objectives" method="_on_Props_enemy_killed"]
+[connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="IslanderInput" method="_on_PlayerInteraction_area_entered"]
+[connection signal="area_exited" from="Objects/Props/Islander/PlayerInteraction" to="IslanderInput" method="_on_PlayerInteraction_area_exited"]
+[connection signal="use_item" from="HUDLayer/HUD" to="Objects/Props/Islander" method="_on_HUD_use_item"]
+[connection signal="objectives_updated" from="Day2Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
+[connection signal="objectives_updated" from="Day2Objectives" to="." method="_on_Day2Objectives_objectives_updated"]
+[connection signal="place_item" from="ExperimentReplay" to="Objects/Props" method="_on_place_item"]
+[connection signal="place_item" from="ExperimentReplay" to="Day2Objectives" method="_on_Experimenter_place_item"]

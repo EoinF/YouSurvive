@@ -9,6 +9,10 @@ var is_crab_shown = false
 var crab_spawn_position: Vector2
 var items_spawned = 0
 
+func set_player_name(_player_name):
+	print("TODO: night 2 set player name")
+
+
 func _ready():
 	var crab = get_node("Objects/Props/Crab")
 	crab_spawn_position = crab.global_position

@@ -8,13 +8,10 @@ func set_objectives(_objectives: Array):
 			visible = true
 			var new_node = Label.new()
 			new_node.set_name(str(index + 1))
-			get_node("MarginContainer/GridContainer").call_deferred("add_child", new_node)
+			get_node("MarginContainer/GridContainer").add_child(new_node)
 			_set_objective_display(new_node, _objectives[index])
 		else:
 			var label = get_node("MarginContainer/GridContainer/" + str(index + 1))
-			for child in get_node("MarginContainer/GridContainer").get_children():
-				print (child.get_name())
-			print(label)
 			_set_objective_display(label, _objectives[index])
 	is_first_time = false
 

@@ -86,4 +86,3 @@ func _on_Experimenter_place_item(item_type, _source_location):
 	elif item_type in ["stick", "stone"]:
 		num_weapons_placed += 1
 	emit_signal("objectives_updated", _get_objectives())
-

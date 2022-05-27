@@ -70,9 +70,6 @@ func _process_inventory_item_input():
 func _on_PlayerInteraction_area_entered(area):
 	var interaction_item = area.get_parent()
 	if (interaction_item.is_in_group("Collectable")):
-		print(
-			"found collectable"
-		)
 		var screen_position = area.get_global_transform_with_canvas().get_origin()
 		var x = screen_position.x + area.get_child(0).shape.radius / 2
 		var y = screen_position.y + 20
