@@ -18,13 +18,13 @@ func start_camera_follow():
 	experimenter.set_follow_target(islander, true)
 	ai_controller.add_collection_goal("branch", 10)
 	ai_controller.is_paused = false
-	owner.get_node("Day1Objectives").set_objective_active("locate_islander", false)
-	owner.get_node("Day1Objectives").set_objective_active("collect_branches", true)
 
 
 func gift_branches():
 	var owner = get_owner()
 	owner.get_node("Experimenter").pick_up_item("branch", 10)
+	owner.get_node("Day1Objectives").set_objective_active("locate_islander", false)
+	owner.get_node("Day1Objectives").set_objective_active("collect_branches", true)
 	owner.get_node("AnimationPlayer").play("highlight_inventory")
 
 
