@@ -1,15 +1,17 @@
 extends Node2D
 
 signal finish_scene
-signal place_item(_item_type, _location)
 
 var experiment_data
 var current_time = 0.0
 var current_action = null
 
+var is_predator_placement_complete = false
+var is_weapon_placement_complete = false
+var is_kill_predators_complete = false
+
 func _ready():
-	get_node("Day2Objectives").set_objective_active("place_weapon", true)
-	get_node("Day2Objectives").set_objective_active("place_predators", true)
+	get_node("Day2Objectives").set_objective_active("kill_predators", true)
 	get_node("AIController").enable_ai()
 	
 	# Run this only if scene is run standalone
@@ -26,12 +28,24 @@ func set_experiment_data(_data):
 	get_node("ExperimentReplay").set_experiment_data(_data)
 
 
+func _is_objective_complete(objective):
+	return objective.is_complete and objective.is_visible
+
+
 func _on_Day2Objectives_objectives_updated(objectives):
-	# wait for objectives to be visible first, 
-	# otherwise this will retrigger in groups of 3.
-	# This is left as an example of how not to use signals in Godot.
-	# the objectives should ideally be initialised in one go to avoid
-	# triggering multiple events at once.
-	var objectives_ready = objectives[0]["is_visible"] and objectives[1]["is_visible"]
-	if objectives_ready and (not objectives[0]["is_complete"] or not objectives[1]["is_complete"]):
-		get_node("ExperimentReplay").call_deferred("trigger_next_action")
+	var replay_manager = get_node("ExperimentReplay")
+	if not objectives[0]["is_complete"] or not objectives[1]["is_complete"]:
+		replay_manager.trigger_next_action()
+	if  _is_objective_complete(objectives[2]) \
+	and _is_objective_complete(objectives[3]) \
+	and _is_objective_complete(objectives[4]):
+		if replay_manager.is_finished():
+			get_node("HUDLayer/HUD/DialogueManager").start_section("Main")
+		while not replay_manager.is_finished():
+			replay_manager.trigger_next_action()
+
+
+func _on_DialogueManager_finish_dialogue(section_name):
+	if section_name == "Main":
+		emit_signal("finish_scene")
+		queue_free()

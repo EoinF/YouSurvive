@@ -47,19 +47,22 @@ var is_weapon_placement_complete = false
 var is_kill_predators_complete = false
 
 
+func _is_objective_complete(objective):
+	return objective.is_complete and objective.is_visible
+
 func _on_Day2Objectives_objectives_updated(objectives):
 	var dialogue_manager = get_node("HUDLayer/HUD/DialogueManager")
 	
-	if not is_predator_placement_complete and objectives[0].is_complete :
+	if not is_predator_placement_complete and _is_objective_complete(objectives[0]) :
 		dialogue_manager.start_section("Main1 (After 15 placed)")
 		is_predator_placement_complete = true
 
-	if not is_weapon_placement_complete and objectives[1].is_complete:
+	if not is_weapon_placement_complete and _is_objective_complete(objectives[1]):
 		dialogue_manager.start_section("Main2 (After weapon placed)")
 		is_weapon_placement_complete = true
 
-	if not is_kill_predators_complete and objectives[2].is_complete \
-	and objectives[3].is_complete and objectives[4].is_complete:
+	if not is_kill_predators_complete and _is_objective_complete(objectives[2]) \
+	and _is_objective_complete(objectives[3]) and _is_objective_complete(objectives[4]):
 		get_node("Experimenter").disable_placement()
 		if enemies_score < SCORE_THRESHOLD:
 			dialogue_manager.start_section("Complete - Easy")

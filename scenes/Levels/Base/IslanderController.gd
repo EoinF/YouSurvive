@@ -79,6 +79,8 @@ func _on_PlayerInteraction_area_entered(area):
 
 
 func _on_PlayerInteraction_area_exited(area):
+	if get_owner() == null:
+		return
 	var interaction_item = area.get_parent()
 	var tooltip_container = get_owner().get_node("HUDLayer/TooltipContainer")
 	var interaction_item_index = nearby_interaction_items.find(interaction_item)

@@ -2,7 +2,7 @@ extends Node
 
 signal place_item(_item_type, _location)
 
-var experiment_data
+var experiment_data: Array
 
 var current_time = 0.0
 var current_action = null
@@ -30,3 +30,7 @@ func set_experiment_data(_experiment_data):
 	experiment_data = _experiment_data
 	if len(experiment_data) > 0:
 		current_action = experiment_data[0]
+
+
+func is_finished():
+	return experiment_data.empty()

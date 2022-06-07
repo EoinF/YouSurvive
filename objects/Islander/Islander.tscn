@@ -42,115 +42,115 @@ atlas = ExtResource( 15 )
 region = Rect2( 66, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 14 )
+atlas = ExtResource( 17 )
 region = Rect2( 0, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 14 )
+atlas = ExtResource( 17 )
 region = Rect2( 22, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 14 )
+atlas = ExtResource( 17 )
 region = Rect2( 44, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 14 )
+atlas = ExtResource( 17 )
 region = Rect2( 66, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 16 )
 region = Rect2( 0, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 16 )
 region = Rect2( 22, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 16 )
 region = Rect2( 44, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 16 )
 region = Rect2( 66, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 11 )
+atlas = ExtResource( 13 )
 region = Rect2( 0, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 11 )
+atlas = ExtResource( 13 )
 region = Rect2( 22, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 11 )
+atlas = ExtResource( 13 )
 region = Rect2( 44, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 11 )
+atlas = ExtResource( 13 )
 region = Rect2( 66, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 12 )
+atlas = ExtResource( 11 )
 region = Rect2( 0, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 12 )
+atlas = ExtResource( 11 )
 region = Rect2( 22, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 12 )
+atlas = ExtResource( 11 )
 region = Rect2( 44, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 12 )
+atlas = ExtResource( 11 )
 region = Rect2( 66, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 17 )
+atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 17 )
+atlas = ExtResource( 12 )
 region = Rect2( 22, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 17 )
+atlas = ExtResource( 12 )
 region = Rect2( 44, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 17 )
+atlas = ExtResource( 12 )
 region = Rect2( 66, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 13 )
+atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 13 )
+atlas = ExtResource( 14 )
 region = Rect2( 22, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 13 )
+atlas = ExtResource( 14 )
 region = Rect2( 44, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 13 )
+atlas = ExtResource( 14 )
 region = Rect2( 66, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=30]
-atlas = ExtResource( 16 )
+atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 16 )
+atlas = ExtResource( 10 )
 region = Rect2( 22, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=32]
-atlas = ExtResource( 16 )
+atlas = ExtResource( 10 )
 region = Rect2( 44, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=33]
-atlas = ExtResource( 16 )
+atlas = ExtResource( 10 )
 region = Rect2( 66, 0, 22, 40 )
 
 [sub_resource type="SpriteFrames" id=34]
@@ -160,24 +160,14 @@ animations = [ {
 "name": "Run_UpRight",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "Stand_DownRight",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "Stand_UpRight",
+"name": "Stand_DownLeft",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
-"name": "Run_Up",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
-"loop": true,
-"name": "Run_Down",
+"name": "Run_Right",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 9 ) ],
@@ -190,29 +180,9 @@ animations = [ {
 "name": "Stand_Left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
-"name": "Stand_DownLeft",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "Stand_Down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "Stand_Right",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
-"loop": true,
-"name": "Run_DownRight",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
-"loop": true,
-"name": "Run_DownLeft",
+"name": "Run_UpLeft",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 3 ) ],
@@ -220,19 +190,49 @@ animations = [ {
 "name": "Stand_Up",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
-"loop": true,
-"name": "Run_Right",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
 "name": "Run_Left",
 "speed": 10.0
 }, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "Stand_UpRight",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"loop": true,
+"name": "Run_DownRight",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Stand_Down",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": true,
+"name": "Run_DownLeft",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
+"loop": true,
+"name": "Run_Up",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Stand_Right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "Stand_DownRight",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
 "loop": true,
-"name": "Run_UpLeft",
+"name": "Run_Down",
 "speed": 10.0
 } ]
 

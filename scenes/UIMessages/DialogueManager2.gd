@@ -41,8 +41,7 @@ func _ready():
 	var file = File.new()
 	file.open(DIALOGUE_FILE, File.READ)
 	data = parse_json(file.get_as_text())
-	
-		
+
 
 
 func _process(delta):

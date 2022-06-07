@@ -125,7 +125,6 @@ visible = false
 
 [node name="PlacementSensor" parent="Experimenter/ItemPlacementTool" index="0"]
 visible = false
-[connection signal="enemy_killed" from="Objects/Props" to="Day2Objectives" method="_on_Props_enemy_killed"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
 [connection signal="body_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_body_entered"]
@@ -136,12 +135,11 @@ visible = false
 [connection signal="use_item" from="HUDLayer/HUD" to="Experimenter" method="_on_HUD_use_item"]
 [connection signal="finish_dialogue" from="HUDLayer/HUD/DialogueManager" to="." method="_on_DialogueManager_finish_dialogue"]
 [connection signal="trigger_event" from="HUDLayer/HUD/DialogueManager" to="HUDLayer/HUD/Events" method="_on_DialogueManager_trigger_event"]
-[connection signal="objectives_updated" from="Day2Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
 [connection signal="objectives_updated" from="Day2Objectives" to="." method="_on_Day2Objectives_objectives_updated"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="." method="_on_Experimenter_place_item"]
-[connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 [connection signal="place_item" from="Experimenter" to="Day2Objectives" method="_on_Experimenter_place_item"]
+[connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 
 [editable path="Experimenter"]
