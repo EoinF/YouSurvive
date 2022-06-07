@@ -13,7 +13,7 @@
 [node name="ExperimenterDay3" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
 
-[node name="IslanderVisionSensor" parent="Objects/Props/Islander" index="10"]
+[node name="IslanderVisionSensor" parent="Objects/Props/Islander" index="9"]
 collision_mask = 15
 
 [node name="HUD" parent="HUDLayer" index="0"]
@@ -110,5 +110,6 @@ script = ExtResource( 11 )
 [connection signal="trigger_event" from="HUDLayer/HUD/DialogueManager" to="HUDLayer/HUD/Events" method="_on_DialogueManager_trigger_event"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Experimenter"]

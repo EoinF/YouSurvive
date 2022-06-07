@@ -1,6 +1,10 @@
 {
   "Intro": [
     { "type": "config", "letter_delay": 0.06, "y": 0.9 },
+    {
+      "type": "event",
+      "event_name": "enable_controls"
+    },
     { "type": "text", "content": "A new day, {player_name}." },
     { "type": "text", "content": "Today we combine our previous ideas." },
     {
@@ -10,6 +14,14 @@
     {
       "type": "text",
       "content": "The test subject needs more branches for shelter. And coconuts for food."
+    },
+    {
+      "type": "event",
+      "event_name": "add_collection_goal"
+    },
+    {
+      "type": "event",
+      "event_name": "gift_crabs"
     },
     {
       "type": "text",
