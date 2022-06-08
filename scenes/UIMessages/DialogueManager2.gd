@@ -49,8 +49,8 @@ func _process(delta):
 		_on_Button_pressed()
 
 
-func start_section(section_name):
-	self.section_name = section_name
+func start_section(_section_name):
+	self.section_name = _section_name
 	current_length = 0
 	final_text = ""
 	node_index = -1

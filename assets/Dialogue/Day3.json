@@ -27,27 +27,51 @@
       "type": "text",
       "content": "We want to make this challenging by interposing some predators."
     },
+    {
+      "type": "event",
+      "event_name": "enable_ai"
+    },
     { "type": "text", "content": "Put them to work." }
   ],
-  "Complete - Slow": [
+  "Coconuts collected": [
+    {
+      "type": "text",
+      "content": "Well done. They got all the coconuts that are needed."
+    },
+    {
+      "type": "text",
+      "content": "As for the remaining branches, we can provide them."
+    },
+    {
+      "type": "event",
+      "event_name": "gift_branches"
+    },
+    {
+      "type": "text",
+      "content": "Now place the rest of them."
+    }
+  ],
+  "Complete - Easy": [
     {
       "type": "text",
       "content": "Well that was a rough time for our test subject."
     },
-    { "type": "text", "content": "But effective nonetheless" }
+    { "type": "text", "content": "But effective nonetheless" },
+    { "type": "link_to", "section_name": "Outro" }
   ],
-  "Complete - Fast": [
+  "Complete - Hard": [
     { "type": "text", "content": "Quick and easy for the test subject." },
-    { "type": "text", "content": "But effective nonetheless" }
+    { "type": "text", "content": "But effective nonetheless" },
+    { "type": "link_to", "section_name": "Outro" }
   ],
   "Outro": [
     {
       "type": "text",
-      "content": "Through combining goals and conflict, we instilled"
+      "content": "Through combining goals and conflict,"
     },
     {
       "type": "text",
-      "content": "a feeling of separation for the test subject."
+      "content": "we instilled a feeling of separation for the test subject."
     },
     {
       "type": "text",
