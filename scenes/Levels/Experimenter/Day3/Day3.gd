@@ -1,14 +1,16 @@
 extends Node2D
 
+signal finish_scene(experimenter_data)
+
 var is_collect_coconuts_complete = false
 var enemies_score = 0
-
 
 var hard_score_breakpoint = 70
 
 var score_map = {
 	"crab": 2,
 	"boar": 3,
+	"branch": -1,
 }
 
 var max_time = 180.0 # 3 minutes
@@ -30,8 +32,7 @@ func set_player_name(player_name):
 
 
 func _ready():
-	get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
-	#_fade_in()
+	_fade_in()
 
 
 func _fade_in():

@@ -3,7 +3,6 @@ extends Node
 signal objectives_updated(objectives)
 
 var OBJECTIVE_COLLECT_COCONUTS_TEMPLATE = "Collect coconuts (%d/%d)"
-
 var OBJECTIVE_COLLECT_BRANCHES_TEMPLATE = "Collect branches (%d/%d)"
 
 var coconuts_collected = 0
@@ -33,16 +32,18 @@ func set_objective_active(type, is_active = true):
 
 
 func _get_objectives():
-	return [{
-		"description": OBJECTIVE_COLLECT_BRANCHES_TEMPLATE % [branches_collected, branches_required],
-		"is_complete": branches_collected >= branches_required,
-		"is_visible": is_collect_items_active
-	}, {
-		"description": OBJECTIVE_COLLECT_COCONUTS_TEMPLATE % [coconuts_collected, coconuts_required],
-		"is_complete": coconuts_collected >= coconuts_required,
-		"is_visible": is_collect_items_active
-	}]
-	
+	return [
+		{
+			"description": OBJECTIVE_COLLECT_COCONUTS_TEMPLATE % [coconuts_collected, coconuts_required],
+			"is_complete": coconuts_collected >= coconuts_required,
+			"is_visible": is_collect_items_active
+		},{
+			"description": OBJECTIVE_COLLECT_BRANCHES_TEMPLATE % [branches_collected, branches_required],
+			"is_complete": branches_collected >= branches_required,
+			"is_visible": is_collect_items_active
+		}
+	]
+
 
 func _on_Islander_inventory_slot_change(inventory_slot):
 	if inventory_slot.item_type == "branch":
