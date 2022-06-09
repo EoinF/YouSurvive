@@ -9,6 +9,7 @@ func enable_controls():
 	var owner = get_owner()
 	owner.get_node("Experimenter").enable_controls()
 	owner.get_node("Day1Objectives").set_objective_active("locate_islander", true)
+	owner.get_node("HUDLayer/HUD/MovementTutorial").activate()
 
 
 func start_camera_follow():
@@ -26,6 +27,7 @@ func gift_branches():
 	owner.get_node("Day1Objectives").set_objective_active("locate_islander", false)
 	owner.get_node("Day1Objectives").set_objective_active("collect_branches", true)
 	owner.get_node("AnimationPlayer").play("highlight_inventory")
+	owner.get_node("HUDLayer/HUD/PlacementTutorial").activate()
 
 
 func stop_camera_follow():

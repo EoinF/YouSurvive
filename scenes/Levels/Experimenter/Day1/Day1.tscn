@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://objects/Experimenter/Experimenter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Base/BaseDay1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Dialogue/GameOver.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Tutorials/MovementTutorial.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/ExplorationNode.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Tutorials/PlacementTutorial.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/AI/IslanderAIController.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/AI/Pathfinder.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Levels/Experimenter/Day1/Day1.gd" type="Script" id=9]
@@ -87,6 +89,10 @@ mouse_filter = 2
 
 [node name="Events" type="Node" parent="HUDLayer/HUD" index="9"]
 script = ExtResource( 23 )
+
+[node name="MovementTutorial" parent="HUDLayer/HUD" index="10" instance=ExtResource( 4 )]
+
+[node name="PlacementTutorial" parent="HUDLayer/HUD" index="11" instance=ExtResource( 6 )]
 
 [node name="IslanderAIController" parent="." index="3" instance=ExtResource( 7 )]
 
@@ -187,6 +193,7 @@ autostart = true
 [connection signal="finish" from="HUDLayer/HUD/GameOver" to="." method="_on_GameOver_finish"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
+[connection signal="place_item" from="Experimenter" to="HUDLayer/HUD/PlacementTutorial" method="_on_Experimenter_place_item"]
 [connection signal="sees_islander" from="Experimenter" to="Day1Objectives" method="_on_Experimenter_sees_islander"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="objectives_updated" from="Day1Objectives" to="." method="_on_Day1Objectives_objectives_updated"]

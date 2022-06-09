@@ -1,0 +1,29 @@
+extends Control
+
+var is_active = true
+
+func _ready():
+	get_node("Tip").visible = false
+	
+	# Activate when this is a standalone scene
+	if get_owner() == null:
+		activate()
+
+
+func activate():
+	get_node("Tip").visible = true
+	get_node("AnimationPlayer").play("Flash")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "fade out":
+		get_node("Tip").visible = false
+		return
+	var next_animation_name = "Flash" if is_active else "fade out"
+	get_node("AnimationPlayer").play(next_animation_name)
+
+
+func _on_Experimenter_place_item(item_type, source_location):
+	if not is_active:
+		return
+	is_active = false
