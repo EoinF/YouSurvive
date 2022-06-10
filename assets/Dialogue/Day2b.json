@@ -1,15 +1,47 @@
 {
   "Main": [
-    { "type": "text", "content": "It's (...) again......." },
+    {
+      "type": "config",
+      "letter_delay": 0.06,
+      "x": 0.1,
+      "y": 0.9,
+      "foreground": "pink"
+    },
+    { "type": "text", "content": "It's me again, (...)......." },
     {
       "type": "text",
-      "content": "This experiment was designed to create a sense of self."
+      "content": "I must tell you what's really going on here."
     },
-    { "type": "text", "content": "There's no proof for this concept." },
     {
       "type": "text",
-      "content": "It's simply something we are told to believe."
+      "content": "This island. These tasks. It's just an experiment."
     },
-    { "type": "text", "content": "And we don't dwell too much on it." }
+    {
+      "type": "text",
+      "content": "Do you believe that this islander represents you as a whole?"
+    },
+    {
+      "type": "text",
+      "content": "That weapon you used, is it not an extension of you?"
+    },
+    {
+      "type": "text",
+      "content": "If not then what about your arms that hold that weapon?"
+    },
+    {
+      "type": "text",
+      "content": "If the arm is separated from the body, then does that make two of \"you\"?"
+    },
+    { "type": "text", "content": "You would say it's no longer part of you." },
+    { "type": "text", "content": "So imagine losing more and more body parts" },
+    {
+      "type": "text",
+      "content": "At what point can we stop before we reach the true \"you\"?"
+    },
+    {
+      "type": "text",
+      "content": "Think about this. I will return next time."
+    },
+    { "type": "text", "content": "Until then......." }
   ]
 }

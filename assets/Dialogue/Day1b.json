@@ -1,10 +1,37 @@
 {
   "Main": [
+    {
+      "type": "config",
+      "letter_delay": 0.06,
+      "x": 0.1,
+      "y": 0.9,
+      "foreground": "pink"
+    },
     { "type": "text", "content": "Hey you......." },
     { "type": "text", "content": "Over here......." },
     { "type": "text", "content": "My name is (...)" },
     { "type": "text", "content": "There's something you should know." },
-    { "type": "text", "content": "Everything is not what it seems." },
-    { "type": "text", "content": "This is all a trick." }
+    {
+      "type": "text",
+      "content": "Would you agree that there's something off here?"
+    },
+    {
+      "type": "text",
+      "content": "You just appeared on this island and were given a task to complete."
+    },
+    {
+      "type": "text",
+      "content": "You completed that task - no questions asked."
+    },
+    { "type": "text", "content": "But how did you even get here?" },
+    { "type": "text", "content": "What were you doing before this?" },
+    {
+      "type": "text",
+      "content": "Do you just exist now? Or have you always existed?"
+    },
+    {
+      "type": "text",
+      "content": "Ah but we're out of time for now......."
+    }
   ]
 }
