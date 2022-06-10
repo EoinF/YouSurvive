@@ -26,21 +26,6 @@ BRANCH_DROPS = 1
 [node name="Tree28" parent="Objects/Props" index="23"]
 BRANCH_DROPS = 1
 
-[node name="Branch" parent="Objects/Props" index="33" instance=ExtResource( 2 )]
-position = Vector2( 1675.53, 425.396 )
-
-[node name="Branch2" parent="Objects/Props" index="34" instance=ExtResource( 2 )]
-position = Vector2( 2223.69, 788.213 )
-
-[node name="Branch3" parent="Objects/Props" index="35" instance=ExtResource( 2 )]
-position = Vector2( 1999.2, 912.806 )
-
-[node name="Branch4" parent="Objects/Props" index="36" instance=ExtResource( 2 )]
-position = Vector2( 1794.91, -34.5518 )
-
-[node name="Branch5" parent="Objects/Props" index="37" instance=ExtResource( 2 )]
-position = Vector2( 1275.89, 219.551 )
-
 [node name="HUD" parent="HUDLayer" index="0"]
 INVENTORY_TYPE = "Experimenter"
 
@@ -145,8 +130,8 @@ wait_time = 1e+09
 [connection signal="trigger_event" from="HUDLayer/HUD/DialogueManager" to="HUDLayer/HUD/Events" method="_on_DialogueManager_trigger_event"]
 [connection signal="objectives_updated" from="Day3Objectives" to="." method="_on_Day3Objectives_objectives_updated"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
-[connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 [connection signal="place_item" from="Experimenter" to="." method="_on_Experimenter_place_item"]
+[connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Experimenter"]

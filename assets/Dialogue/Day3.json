@@ -52,15 +52,15 @@
     }
   ],
   "Complete - Easy": [
-    {
-      "type": "text",
-      "content": "Well that was a rough time for our test subject."
-    },
+    { "type": "text", "content": "Quick and easy for the test subject." },
     { "type": "text", "content": "But effective nonetheless" },
     { "type": "link_to", "section_name": "Outro" }
   ],
   "Complete - Hard": [
-    { "type": "text", "content": "Quick and easy for the test subject." },
+    {
+      "type": "text",
+      "content": "Well that was a rough time for our test subject."
+    },
     { "type": "text", "content": "But effective nonetheless" },
     { "type": "link_to", "section_name": "Outro" }
   ],

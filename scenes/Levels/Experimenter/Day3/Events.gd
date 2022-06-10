@@ -11,6 +11,7 @@ func enable_controls():
 
 func add_collection_goal():
 	get_owner().get_node("Day3Objectives").set_objective_active("collect_items")
+	get_owner().get_node("ObjectivesTimer").start()
 
 
 func gift_branches():

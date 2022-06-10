@@ -24,7 +24,13 @@ func _on_Day1_finish_scene():
 	
 	
 func _on_Day2_finish_scene():
-	emit_signal("finish_scenes")
+	save_game("Day3")
+	load_scene("Day3")
+
+	
+func _on_Day3_finish_scene():
+	save_game("Outro")
+	load_scene("Outro")
 
 
 func load_scene(scene_name, _save_data = null):

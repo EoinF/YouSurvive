@@ -291,7 +291,180 @@
       }
     }
   ],
+  "Day3": [
+    {
+      "action_type": "place_item",
+      "current_time": 10.173775,
+      "item_type": "crab",
+      "location": {
+        "x": 795.690979,
+        "y": 452.890991
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 13.132307,
+      "item_type": "crab",
+      "location": {
+        "x": 1215.580322,
+        "y": 426.890991
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 15.403439,
+      "item_type": "crab",
+      "location": {
+        "x": 1176.611816,
+        "y": 325.194092
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 20.049353,
+      "item_type": "crab",
+      "location": {
+        "x": 1341.611816,
+        "y": 265.194092
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 46.673986,
+      "item_type": "crab",
+      "location": {
+        "x": 1803.367432,
+        "y": -3.143982
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 55.014632,
+      "item_type": "crab",
+      "location": {
+        "x": 1751.367432,
+        "y": 77.411545
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 55.986855,
+      "item_type": "crab",
+      "location": {
+        "x": 1822.367432,
+        "y": 192.411545
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 83.131301,
+      "item_type": "crab",
+      "location": {
+        "x": 1753.398193,
+        "y": 745.275391
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 85.653523,
+      "item_type": "crab",
+      "location": {
+        "x": 2100.57959,
+        "y": 843.659424
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 88.299753,
+      "item_type": "crab",
+      "location": {
+        "x": 2061.57959,
+        "y": 830.659424
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 89.452928,
+      "item_type": "crab",
+      "location": {
+        "x": 2158.57959,
+        "y": 819.659424
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 90.591817,
+      "item_type": "crab",
+      "location": {
+        "x": 2125.57959,
+        "y": 931.659424
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 95.619317,
+      "item_type": "crab",
+      "location": {
+        "x": 1964.57959,
+        "y": 797.659424
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 97.320706,
+      "item_type": "crab",
+      "location": {
+        "x": 1923.57959,
+        "y": 796.659424
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 124.737373,
+      "item_type": "branch",
+      "location": {
+        "x": 1944.57959,
+        "y": 698.325928
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 125.216539,
+      "item_type": "branch",
+      "location": {
+        "x": 1828.57959,
+        "y": 660.325928
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 125.667928,
+      "item_type": "branch",
+      "location": {
+        "x": 1775.57959,
+        "y": 619.325928
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 126.133206,
+      "item_type": "branch",
+      "location": {
+        "x": 1692.57959,
+        "y": 623.325928
+      }
+    },
+    {
+      "action_type": "place_item",
+      "current_time": 126.660984,
+      "item_type": "branch",
+      "location": {
+        "x": 1673.57959,
+        "y": 623.325928
+      }
+    }
+  ],
   "current_chapter": "Experimenter",
-  "current_level": "Night2",
+  "current_level": "Outro",
   "player_name": "test"
 }

@@ -2,10 +2,9 @@ extends Node2D
 
 signal finish_scene
 
-var is_collect_branches_complete = false
-
 func _ready():
-	get_node("Day1Objectives").set_objective_active("collect_branches", true)
+	get_node("Day3Objectives").set_objective_active("collect_items", true)
+	get_node("AIController").enable_ai()
 	
 	# Run this only if scene is run standalone
 	if get_owner() == null:
@@ -14,16 +13,15 @@ func _ready():
 		test_file.open("utils/test_data.json", File.READ)
 		var test_data = parse_json(test_file.get_as_text())
 		test_file.close()
-		set_experiment_data(test_data["Day1"])
+		set_experiment_data(test_data["Day3"])
 
 
 func set_experiment_data(_data):
 	get_node("ExperimentReplay").set_experiment_data(_data)
 
 
-func _on_Day1Objectives_objectives_updated(objectives):
-	if not is_collect_branches_complete and objectives[1]["is_complete"]:
-		is_collect_branches_complete = true
+func _on_Day3Objectives_objectives_updated(objectives):
+	if objectives[0]["is_complete"] and objectives[1]["is_complete"]:
 		get_node("HUDLayer/HUD/DialogueManager").start_section("Main")
 
 

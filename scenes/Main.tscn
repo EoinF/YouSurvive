@@ -18,6 +18,8 @@ script = ExtResource( 4 )
 
 [node name="Day2" parent="IslanderScenes" instance_placeholder="res://scenes/Levels/Islander/Day2/Day2.tscn"]
 
+[node name="Day3" parent="IslanderScenes" instance_placeholder="res://scenes/Levels/Islander/Day3/Day3.tscn"]
+
 [node name="ExperimenterScenes" type="Node" parent="."]
 script = ExtResource( 3 )
 

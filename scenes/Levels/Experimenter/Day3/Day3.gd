@@ -22,6 +22,11 @@ func calculate_score():
 	var _score = ceil((time_elapsed / max_time) * 40)
 	var capped_time_score = min(_score, max_time_score)
 	
+	print("time_score = ", _score)
+	print("capped_time_score = ", capped_time_score)
+	print("elapsed = ", time_elapsed)
+	print("enemies_score = ", enemies_score)
+	
 	return capped_time_score + enemies_score
 
 
