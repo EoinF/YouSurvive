@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Branch.tres" type="Texture" id=1]
 [ext_resource path="res://objects/Experimenter/Experimenter.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/Boar - Sprite Sheet.png" type="Texture" id=7]
 [ext_resource path="res://assets/Porcupine Sprite Sheet.png" type="Texture" id=8]
 [ext_resource path="res://assets/stick.png" type="Texture" id=9]
+[ext_resource path="res://scenes/Island/CircleSprite.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 222.322
@@ -46,6 +47,7 @@ smoothing_speed = 10.0
 script = ExtResource( 3 )
 
 [node name="VisionDetectionArea" type="Area2D" parent="Camera"]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera/VisionDetectionArea"]
@@ -53,6 +55,8 @@ shape = SubResource( 1 )
 
 [node name="ItemPlacementTool" type="Node2D" parent="."]
 script = ExtResource( 4 )
+
+[node name="CircleSprite" parent="ItemPlacementTool" instance=ExtResource( 10 )]
 
 [node name="PlacementSensor" type="Area2D" parent="ItemPlacementTool"]
 collision_layer = 0
@@ -86,6 +90,10 @@ texture = SubResource( 6 )
 [node name="stick" type="Sprite" parent="ItemPlacementTool/Sprites"]
 visible = false
 texture = ExtResource( 9 )
+
+[node name="PlacementDelay" type="Timer" parent="ItemPlacementTool"]
+wait_time = 0.05
+one_shot = true
 [connection signal="body_entered" from="Camera/VisionDetectionArea" to="." method="_on_VisionDetectionArea_body_entered"]
 [connection signal="place_item" from="ItemPlacementTool" to="." method="_on_ItemPlacementTool_place_item"]
 [connection signal="body_entered" from="ItemPlacementTool/PlacementSensor" to="ItemPlacementTool" method="_on_PlacementSensor_body_entered"]

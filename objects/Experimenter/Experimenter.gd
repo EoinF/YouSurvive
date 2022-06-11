@@ -37,6 +37,7 @@ func disable_controls():
 func disable_placement():
 	get_node("ItemPlacementTool").disable_item_placement()
 
+
 func move(deltaVector: Vector2):
 	if is_controls_enabled:
 		var translate = deltaVector * CAMERA_MOVE_SPEED

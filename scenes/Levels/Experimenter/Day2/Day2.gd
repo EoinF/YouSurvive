@@ -11,7 +11,8 @@ func set_player_name(player_name):
 
 func _ready():
 	get_node("AIController").disable_ai()
-	_fade_in()
+#	_fade_in()
+	get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
 
 
 func _fade_in():
@@ -50,10 +51,11 @@ var is_kill_predators_complete = false
 func _is_objective_complete(objective):
 	return objective.is_complete and objective.is_visible
 
+
 func _on_Day2Objectives_objectives_updated(objectives):
 	var dialogue_manager = get_node("HUDLayer/HUD/DialogueManager")
 	
-	if not is_predator_placement_complete and _is_objective_complete(objectives[0]) :
+	if not is_predator_placement_complete and _is_objective_complete(objectives[0]):
 		dialogue_manager.start_section("Main1 (After 15 placed)")
 		is_predator_placement_complete = true
 

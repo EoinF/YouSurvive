@@ -44,7 +44,7 @@ func _ready():
 
 
 
-func _process(delta):
+func _process(_delta):
 	if is_started and Input.is_action_just_released("skip_dialogue"):
 		_on_Button_pressed()
 

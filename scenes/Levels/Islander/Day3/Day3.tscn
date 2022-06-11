@@ -15,7 +15,7 @@ zoom = Vector2( 0.5, 0.5 )
 process_mode = 0
 smoothing_enabled = true
 
-[node name="DialogueManager" parent="HUDLayer" index="1" instance=ExtResource( 5 )]
+[node name="DialogueManager" parent="HUDLayer/HUD" index="7" instance=ExtResource( 5 )]
 DIALOGUE_FILE = "res://assets/Dialogue/Day3b.json"
 
 [node name="IslanderInput" type="Node" parent="." index="5"]
