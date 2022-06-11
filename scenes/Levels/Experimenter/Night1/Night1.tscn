@@ -16,6 +16,9 @@ MAX_HEALTH = 400
 [node name="HUD" parent="HUDLayer" index="0"]
 visible = false
 
+[node name="Overlay" parent="HUDLayer" index="2"]
+INTENSITY = 0.0
+
 [node name="IslanderController" type="Node" parent="." index="3"]
 script = ExtResource( 2 )
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="IslanderController" method="_on_PlayerInteraction_area_entered"]

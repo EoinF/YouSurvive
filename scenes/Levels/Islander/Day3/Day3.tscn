@@ -12,6 +12,7 @@ script = ExtResource( 4 )
 [node name="Camera2D" type="Camera2D" parent="Objects/Props/Islander" index="9"]
 current = true
 zoom = Vector2( 0.5, 0.5 )
+smoothing_enabled = true
 
 [node name="DialogueManager" parent="HUDLayer" index="1" instance=ExtResource( 5 )]
 DIALOGUE_FILE = "res://assets/Dialogue/Day3b.json"
@@ -23,11 +24,9 @@ script = ExtResource( 2 )
 script = ExtResource( 3 )
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="die" from="Objects/Props/Islander" to="." method="_on_Islander_die"]
-[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day3Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="IslanderInput" method="_on_PlayerInteraction_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/PlayerInteraction" to="IslanderInput" method="_on_PlayerInteraction_area_exited"]
 [connection signal="use_item" from="HUDLayer/HUD" to="Objects/Props/Islander" method="_on_HUD_use_item"]
 [connection signal="objectives_updated" from="Day3Objectives" to="." method="_on_Day3Objectives_objectives_updated"]
-[connection signal="objectives_updated" from="Day3Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="place_item" from="ExperimentReplay" to="Objects/Props" method="_on_place_item"]

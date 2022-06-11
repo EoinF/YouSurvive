@@ -41,6 +41,8 @@ limit_left = -1500
 limit_top = -1500
 limit_right = 3000
 limit_bottom = 1600
+smoothing_enabled = true
+smoothing_speed = 10.0
 script = ExtResource( 3 )
 
 [node name="VisionDetectionArea" type="Area2D" parent="Camera"]
