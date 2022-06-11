@@ -11,8 +11,12 @@ func set_player_name(player_name):
 
 func _ready():
 	get_node("AIController").disable_ai()
-#	_fade_in()
-	get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
+	
+	# if standalone skip the fade in animation
+	if get_owner() == null:
+		get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
+	else:
+		_fade_in()
 
 
 func _fade_in():

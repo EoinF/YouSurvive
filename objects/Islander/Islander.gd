@@ -25,7 +25,6 @@ var attack_direction = Vector2.DOWN
 var active_sprite_state = "Stand"
 var active_sprite_direction = "Down"
 var _is_hurting = false
-var initial_modulate = self.modulate
 var health = MAX_HEALTH
 var is_alive = true
 
@@ -125,7 +124,6 @@ func pick_up_item(item_type):
 
 
 func start_target_spotted_emote(on_finished: FuncRef):
-	print("starting emote")
 	on_finished_emote_ref = on_finished
 	get_node("TargetFoundEmote").visible = true
 	get_node("EmoteTimer").start()
@@ -194,16 +192,13 @@ func _on_Hurtbox_area_entered(area):
 	and not area.is_in_group("Islander") \
 	and (not IS_IMMUNE_TO_STONE or not area.is_in_group("Stone")):
 		set_health(health - 100 * area.attack_power)
-		initial_modulate = self.modulate
-		self.modulate.r = 1
-		self.modulate.g = 0.1
-		self.modulate.b = 0.1
+		get_node("CharacterAnimations").modulate = Color.red
 		_is_hurting = true
 		get_node("HurtCooldown").start()
 
 
 func _on_HurtTimer_timeout():
-	self.modulate = initial_modulate
+	get_node("CharacterAnimations").modulate = Color.white
 	_is_hurting = false
 
 
