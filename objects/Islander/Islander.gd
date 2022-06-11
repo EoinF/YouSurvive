@@ -58,6 +58,7 @@ func _ready():
 
 
 func _process(_delta):
+	velocity = Vector2.ZERO
 	if (active_sprite_state == "Run"):
 		if (walking_timeout < 0):
 			_update_active_sprite("Stand", active_sprite_direction)
@@ -142,7 +143,6 @@ func _update_active_sprite(new_sprite_state, new_sprite_direction):
 func _physics_process(delta):
 	move_and_slide(velocity * delta)
 	_is_colliding = get_slide_count() > 0
-	velocity = Vector2.ZERO
 
 
 func _on_AttackAnimation_animation_finished():
