@@ -10,11 +10,11 @@
     { "type": "text", "content": "It's me again, (...)......." },
     {
       "type": "text",
-      "content": "I must tell you what's really going on here."
+      "content": "I need to tell you what's really going on here."
     },
     {
       "type": "text",
-      "content": "This island. These tasks. It's just an experiment."
+      "content": "This island. These tasks. It's all just an experiment."
     },
     {
       "type": "text",
@@ -30,18 +30,23 @@
     },
     {
       "type": "text",
-      "content": "If the arm is separated from the body, then does that make two of \"you\"?"
-    },
-    { "type": "text", "content": "You would say it's no longer part of you." },
-    { "type": "text", "content": "So imagine losing more and more body parts" },
-    {
-      "type": "text",
-      "content": "At what point can we stop before we reach the true \"you\"?"
+      "content": "If you separate the arm from the body, then is the arm still you?"
     },
     {
       "type": "text",
-      "content": "Think about it. I'll be back soon."
+      "content": "Imagine taking away more and more parts of the body."
     },
-    { "type": "text", "content": "Until then......." }
+    {
+      "type": "text",
+      "content": "At what point can we stop and conclude that the remainder is the true \"you\"?"
+    },
+    {
+      "type": "text",
+      "content": "Think about it."
+    },
+    {
+      "type": "text",
+      "content": "I'll be back soon. Until then......."
+    }
   ]
 }

@@ -1,7 +1,22 @@
 {
   "Day 3": [
     { "type": "text", "content": "Hey......." },
-    { "type": "text", "content": "So " },
+    {
+      "type": "text",
+      "content": "I noticed you couldn't complete your task alone"
+    },
+    {
+      "type": "text",
+      "content": ""
+    },
+    {
+      "type": "text",
+      "content": ""
+    },
+    {
+      "type": "text",
+      "content": ""
+    },
     { "type": "text", "content": "You and I, we're one in the same." },
     {
       "type": "text",

@@ -10,10 +10,10 @@
     { "type": "text", "content": "Hey you......." },
     { "type": "text", "content": "Over here......." },
     { "type": "text", "content": "My name is (...)" },
-    { "type": "text", "content": "There's something you should know." },
+    { "type": "text", "content": "There's something I need to ask." },
     {
       "type": "text",
-      "content": "Would you agree that there's something off here?"
+      "content": "There's something amiss here right?"
     },
     {
       "type": "text",
@@ -25,13 +25,19 @@
     },
     { "type": "text", "content": "But how did you even get here?" },
     { "type": "text", "content": "What were you doing before this?" },
+    { "type": "text", "content": "And before that?" },
     {
       "type": "text",
-      "content": "Do you just exist now? Or have you always existed?"
+      "content": "If you keep going back you'll reach a stopping point."
+    },
+    { "type": "text", "content": "Did you exist before that point?" },
+    {
+      "type": "text",
+      "content": "Have you always existed?"
     },
     {
       "type": "text",
-      "content": "Ah but we're out of time for now......."
+      "content": "Just because you can't remember, does that really mean there was nothing before that point in time?"
     }
   ]
 }
