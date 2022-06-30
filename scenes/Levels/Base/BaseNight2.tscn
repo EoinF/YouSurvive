@@ -237,6 +237,9 @@ shape = SubResource( 1 )
 position = Vector2( 458.813, 246.333 )
 shape = SubResource( 2 )
 
+[node name="Overlay" parent="HUDLayer" index="2"]
+INTENSITY = 0.0
+
 [node name="Night2Objectives" type="Node" parent="." index="3"]
 script = ExtResource( 5 )
 

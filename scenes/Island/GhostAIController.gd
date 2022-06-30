@@ -1,6 +1,7 @@
 extends Node
 
-var DESIRED_DISTANCE_FROM_PLAYER = 80
+export var DESIRED_DISTANCE_FROM_PLAYER = 80
+export var SHOULD_WALK_TOWARD_PLAYER = true
 var ERROR_MARGIN = 3
 
 
@@ -40,6 +41,7 @@ func _ready():
 	for prop in get_owner().get_node("Objects/Props").get_children():
 		if prop.is_in_group("Ghost"):
 			ai_nodes.append(AINode.new(prop))
+	print(ai_nodes)
 
 
 func _process(delta):
@@ -57,10 +59,11 @@ func _process(delta):
 			var direction_to_move
 			if direction_to_player.length() < DESIRED_DISTANCE_FROM_PLAYER - ERROR_MARGIN:
 				direction_to_move = -direction_to_player
-			elif direction_to_player.length() > DESIRED_DISTANCE_FROM_PLAYER + ERROR_MARGIN:
+			elif SHOULD_WALK_TOWARD_PLAYER and \
+				direction_to_player.length() > DESIRED_DISTANCE_FROM_PLAYER + ERROR_MARGIN:
 				direction_to_move = direction_to_player
 			else:
-				break
+				continue
 			reposition_on_collide_with_wall(ai_node, direction_to_player)
 				
 			ai_node.node.move(direction_to_move.x, direction_to_move.y)
@@ -68,7 +71,6 @@ func _process(delta):
 
 func reposition_on_collide_with_wall(ai_node, direction_to_player):
 	if ai_node.node.is_colliding():
-		print("is colliding")
 		ai_node.node.global_position += 2 * direction_to_player
 		
 		if ai_node.node.will_collide():

@@ -30,20 +30,20 @@ void fragment () {
 	COLOR = mix(vec4(0.0), rect_color * tex_color, intensity);
 }"
 
-[sub_resource type="OpenSimplexNoise" id=5]
+[sub_resource type="OpenSimplexNoise" id=4]
 seed = 11
 octaves = 9
 period = 256.0
 persistence = 1.0
 lacunarity = 4.0
 
-[sub_resource type="NoiseTexture" id=6]
-noise = SubResource( 5 )
+[sub_resource type="NoiseTexture" id=5]
+noise = SubResource( 4 )
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=6]
 shader = SubResource( 3 )
 shader_param/intensity = 0.0
-shader_param/noise = SubResource( 6 )
+shader_param/noise = SubResource( 5 )
 
 [node name="DreamIsland" type="Node2D"]
 
@@ -59,7 +59,6 @@ script = ExtResource( 6 )
 
 [node name="Islander" parent="Objects/Props" instance=ExtResource( 3 )]
 position = Vector2( 753.677, 265.663 )
-collision_mask = 22
 
 [node name="PlayerInteraction" type="Area2D" parent="Objects/Props/Islander"]
 visible = false
@@ -96,13 +95,14 @@ visible = false
 
 [node name="Overlay" type="ColorRect" parent="HUDLayer"]
 modulate = Color( 1, 0, 0, 1 )
-material = SubResource( 4 )
+material = SubResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+INTENSITY = 0.0
 
 [node name="AIController" type="Node" parent="."]
 script = ExtResource( 11 )
