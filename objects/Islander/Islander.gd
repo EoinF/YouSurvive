@@ -13,7 +13,7 @@ export var MAX_HEALTH = 1000
 var object_type = "islander"
 
 var walking_timeout = 0
-
+var attack_ready = true
 
 func is_attacking():
 	return get_node("AttackPivotPoint/AttackAnimation").is_playing()
@@ -98,14 +98,17 @@ func throw_stone(x, y):
 
 
 func attack(_x = 0, _y = 0):
+	if not attack_ready:
+		return
+	
+	attack_ready = false
 	get_node("AttackPivotPoint/AttackAnimation/AttackArea/Shape").disabled = false
 	var attack_animation = get_node("AttackPivotPoint/AttackAnimation")
-	if(not attack_animation.is_playing()):
-		get_node("AttackPivotPoint").rotation = atan2(direction.y, direction.x) - PI / 2
+	get_node("AttackPivotPoint").rotation = atan2(direction.y, direction.x) - PI / 2
 	attack_animation.visible = true
 	attack_animation.set_frame(0)
 	attack_animation.play()
-	attack_direction = direction 
+	attack_direction = direction
 	_update_active_sprite("Run", active_sprite_direction)
 	walking_timeout = 40
 
@@ -148,6 +151,7 @@ func _on_AttackAnimation_animation_finished():
 	var attack_animation = get_node("AttackPivotPoint/AttackAnimation")
 	attack_animation.visible = false
 	attack_animation.stop()
+	get_node("AttackCooldown").start()
 
 
 func set_health(new_health):
@@ -195,6 +199,10 @@ func _on_Hurtbox_area_entered(area):
 		get_node("CharacterAnimations").modulate = Color.red
 		_is_hurting = true
 		get_node("HurtCooldown").start()
+
+
+func _on_AttackCooldown_timeout():
+	attack_ready = true
 
 
 func _on_HurtTimer_timeout():
