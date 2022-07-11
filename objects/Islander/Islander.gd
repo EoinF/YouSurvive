@@ -133,7 +133,12 @@ func start_target_spotted_emote(on_finished: FuncRef):
 
 
 func _update_active_sprite(new_sprite_state, new_sprite_direction):
-	if (new_sprite_direction != ""):
+	if new_sprite_state == "Run":
+		get_node("WalkEffect").start()
+	else:
+		get_node("WalkEffect").stop()
+	
+	if new_sprite_direction != "":
 		active_sprite_direction = new_sprite_direction
 		active_sprite_state = new_sprite_state
 		get_node("CharacterAnimations").animation = active_sprite_state + "_" + active_sprite_direction
