@@ -122,18 +122,23 @@ func vector_hash(vec: Vector2):
 
 
 func a_star(frontier: Array, destination: Vector2):
+	# Optimisation to avoid expanding the same nodes too many times
 	var explored_nodes = {}
+	
 	while frontier[0].location != destination:
 		var current = frontier.pop_front()
 		for next_node in get_surrounding_nodes(current):
-			var location_key = vector_hash(next_node.location)
-			if !explored_nodes.has(location_key):
-				if get_cellv(next_node.location) == 0:
-					var g_cost = next_node.g_cost
+			if get_cellv(next_node.location) == 0:
+				var location_key = vector_hash(next_node.location)
+				var g_cost = next_node.g_cost
+				
+				# Avoid re-exploring nodes, unless we found a shorter route to it
+				if !explored_nodes.has(location_key) or \
+				explored_nodes[location_key] > g_cost:
 					var h_cost = h(next_node.location, destination)
 					next_node.f_cost = g_cost + h_cost
 					append_by_priority(frontier, next_node)
-					explored_nodes[location_key] = true
+					explored_nodes[location_key] = g_cost
 
 	var path = []
 	var current_node = frontier[0]
