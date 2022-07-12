@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Levels/Base/BaseDay2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Experimenter/Day2/Events.gd" type="Script" id=2]
 [ext_resource path="res://scenes/UIMessages/DialogueManager2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Dialogue/GameOver.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/ExplorationNode.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/AI/Pathfinder.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/Experimenter/Experimenter.tscn" type="PackedScene" id=7]
@@ -55,6 +56,8 @@ script = ExtResource( 2 )
 
 [node name="DialogueManager" parent="HUDLayer/HUD" index="8" instance=ExtResource( 3 )]
 DIALOGUE_FILE = "res://assets/Dialogue/Day2.json"
+
+[node name="GameOver" parent="HUDLayer/HUD" index="9" instance=ExtResource( 4 )]
 
 [node name="IslanderAIController" parent="." index="5" instance=ExtResource( 8 )]
 
@@ -125,6 +128,8 @@ position = Vector2( 394.817, 366.276 )
 
 [node name="PlacementSensor" parent="Experimenter/ItemPlacementTool" index="1"]
 visible = false
+[connection signal="enemy_killed" from="Objects/Props" to="Day2Objectives" method="_on_Props_enemy_killed"]
+[connection signal="die" from="Objects/Props/Islander" to="." method="_on_Islander_die"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
 [connection signal="body_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_body_entered"]
@@ -135,7 +140,9 @@ visible = false
 [connection signal="use_item" from="HUDLayer/HUD" to="Experimenter" method="_on_HUD_use_item"]
 [connection signal="finish_dialogue" from="HUDLayer/HUD/DialogueManager" to="." method="_on_DialogueManager_finish_dialogue"]
 [connection signal="trigger_event" from="HUDLayer/HUD/DialogueManager" to="HUDLayer/HUD/Events" method="_on_DialogueManager_trigger_event"]
+[connection signal="finish" from="HUDLayer/HUD/GameOver" to="." method="_on_GameOver_finish"]
 [connection signal="objectives_updated" from="Day2Objectives" to="." method="_on_Day2Objectives_objectives_updated"]
+[connection signal="objectives_updated" from="Day2Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]

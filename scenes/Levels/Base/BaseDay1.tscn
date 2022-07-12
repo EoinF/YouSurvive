@@ -34,7 +34,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "fade_out"
-length = 2.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
 tracks/0/interp = 2
@@ -42,7 +42,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.5 ),
+"times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0.823529, 0.647059, 0.529412, 1 ), Color( 0, 0, 0, 1 ) ]
@@ -88,6 +88,6 @@ anims/fade_out = SubResource( 2 )
 
 [node name="Day1Objectives" type="Node" parent="." index="4"]
 script = ExtResource( 2 )
-[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="inventory_slot_change" from="Objects/Props/Islander" to="HUDLayer/HUD" method="_on_Islander_inventory_slot_change"]
+[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="objectives_updated" from="Day1Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]

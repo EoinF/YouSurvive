@@ -58,6 +58,9 @@ func _ready():
 
 func _process(_delta):
 	velocity = Vector2.ZERO
+	if not is_alive:
+		return
+	
 	if (active_sprite_state == "Run"):
 		if (walking_timeout < 0):
 			_update_active_sprite("Stand", active_sprite_direction)
@@ -71,6 +74,8 @@ func _process(_delta):
 
 
 func move(x, y):
+	if not is_alive:
+		return
 	walking_timeout = 10
 	direction = Vector2(x, y).normalized()
 	
@@ -98,7 +103,7 @@ func throw_stone(x, y):
 
 
 func attack(_x = 0, _y = 0):
-	if not attack_ready:
+	if not attack_ready or not is_alive:
 		return
 	
 	attack_ready = false
@@ -166,6 +171,7 @@ func set_health(new_health):
 	if health <= 0:
 		is_alive = false
 		health = 0
+		_update_active_sprite("Stand", active_sprite_direction)
 		emit_signal("die")
 	emit_signal("health_change", health)
 

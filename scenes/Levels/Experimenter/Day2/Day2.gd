@@ -27,6 +27,8 @@ func _fade_in():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "fade":
 		get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
+	if anim_name == "fade_out":
+		get_tree().reload_current_scene()
 
 
 func _on_DialogueManager_finish_dialogue(section_name):
@@ -80,3 +82,16 @@ func _on_Day2Objectives_objectives_updated(objectives):
 func _on_Experimenter_place_item(item_type, _source_location):
 	if item_type in score_map:
 		enemies_score += score_map[item_type]
+
+
+func _on_Islander_die():
+	var islander = get_node("Objects/Props/Islander")
+	var experimenter = get_node("Experimenter")
+	experimenter.set_follow_target(islander, true)
+	experimenter.disable_controls()
+	get_node("HUDLayer/HUD/DialogueManager").stop()
+	get_node("HUDLayer/HUD/GameOver").start()
+
+
+func _on_GameOver_finish():
+	get_node("AnimationPlayer").play("fade_out")

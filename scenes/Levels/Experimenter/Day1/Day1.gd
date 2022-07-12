@@ -57,6 +57,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_Islander_die():
+	var islander = get_node("Objects/Props/Islander")
+	var experimenter = get_node("Experimenter")
+	experimenter.set_follow_target(islander, true)
+	experimenter.disable_controls()
 	get_node("HUDLayer/HUD/DialogueManager").stop()
 	get_node("HUDLayer/HUD/GameOver").start()
 
