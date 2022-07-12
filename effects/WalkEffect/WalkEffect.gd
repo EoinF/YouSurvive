@@ -4,6 +4,8 @@ var rand = RandomNumberGenerator.new()
 var is_playing = false
 var is_left_foot = true
 
+var sound_weighting = ["1", "1", "1", "2", "2", "2", "3"]
+
 func _ready():
 	if get_owner() == null:
 		start()
@@ -23,10 +25,8 @@ func stop():
 func play_sound():
 	is_left_foot = not is_left_foot
 	var prefix = "Left" if is_left_foot else "Right"
-	
-	print(prefix)
-	var index = rand.randi_range(1, 3)
-	var sound = get_node(prefix + str(index))
+	var index = rand.randi_range(0, len(sound_weighting) - 1)
+	var sound = get_node(prefix + sound_weighting[index])
 	sound.play()
 
 
