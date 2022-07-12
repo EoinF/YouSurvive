@@ -65,11 +65,11 @@ script = ExtResource( 9 )
 [node name="Islander" parent="Objects/Props" index="0"]
 collision_mask = 11
 
-[node name="PlayerInteraction" parent="Objects/Props/Islander" index="8"]
+[node name="PlayerInteraction" parent="Objects/Props/Islander" index="10"]
 collision_layer = 1
 collision_mask = 1
 
-[node name="IslanderVisionSensor" parent="Objects/Props/Islander" index="9"]
+[node name="IslanderVisionSensor" parent="Objects/Props/Islander" index="11"]
 collision_mask = 15
 
 [node name="Boar" parent="Objects/Props" index="37"]

@@ -13,7 +13,6 @@ script = ExtResource( 3 )
 [node name="Camera2D" type="Camera2D" parent="Objects/Props/Islander" index="9"]
 current = true
 zoom = Vector2( 0.5, 0.5 )
-smoothing_enabled = true
 
 [node name="HUD" parent="HUDLayer" index="0"]
 margin_left = 4.62494

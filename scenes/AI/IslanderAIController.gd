@@ -121,8 +121,7 @@ func collect():
 	if current_target != null:
 		while len(current_move_path) != 0 and current_tile.distance_to(current_move_path[0]) <= 1.0:
 			current_move_path.pop_front()
-	
-	
+		
 		on_update_current_move_path()
 		if len(current_move_path) == 0:
 			if current_target.has_method("interact"):
@@ -147,7 +146,7 @@ func dodge_enemy():
 		
 		var path_left: Array = _get_path_in_direction_of(dodge_left).slice(0, 8)
 		var path_right: Array = _get_path_in_direction_of(dodge_right).slice(0, 8)
-
+		
 		var chosen_path = path_left if len(path_left) > len(path_right) else path_right
 		if len(chosen_path) <= 2:
 			chosen_path = _get_path_in_direction_of(-direction_to_target).slice(0, 8)
@@ -156,7 +155,7 @@ func dodge_enemy():
 		on_update_current_move_path()
 	else:
 		var current_tile = Vector2(floor(islander_position.x / 16), floor(islander_position.y / 16))
-
+		
 		while len(current_move_path) != 0 and current_tile.distance_to(current_move_path[0]) <= 1.0:
 			current_move_path.pop_front()
 			
