@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/slide.wav-76819fc7e6a37ad64ff8bd8ed74caa10.sample"
+path="res://.import/pig_grunt3.wav-edf4e2c6512f46d8ca95ec9e86f7e440.sample"
 
 [deps]
 
-source_file="res://assets/Audio/slide.wav"
-dest_files=[ "res://.import/slide.wav-76819fc7e6a37ad64ff8bd8ed74caa10.sample" ]
+source_file="res://assets/Audio/pig_grunt3.wav"
+dest_files=[ "res://.import/pig_grunt3.wav-edf4e2c6512f46d8ca95ec9e86f7e440.sample" ]
 
 [params]
 

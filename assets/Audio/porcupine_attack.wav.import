@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/porcupine_attack.wav-296443d706bd93768b2a72883752fbe5.sample"
+
+[deps]
+
+source_file="res://assets/Audio/porcupine_attack.wav"
+dest_files=[ "res://.import/porcupine_attack.wav-296443d706bd93768b2a72883752fbe5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

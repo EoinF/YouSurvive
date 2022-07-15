@@ -91,6 +91,7 @@ func attack(x, y):
 	var animated_sprite = get_node("AnimatedSprite")
 	animated_sprite.animation = "default"
 	animated_sprite.play()
+	get_node("AttackSound").play()
 
 
 func _process(delta):
