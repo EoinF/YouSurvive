@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="YouSurvive"
 run/main_scene="res://scenes/Main.tscn"
 
+[audio]
+
+default_bus_layout=""
+
 [input]
 
 ui_accept={

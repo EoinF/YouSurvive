@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Levels/Base/BaseDay3.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Dialogue/GameOver.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/Projectiles/Projectiles.gd" type="Script" id=3]
 [ext_resource path="res://objects/Experimenter/Experimenter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Levels/Experimenter/Day3/Day3.gd" type="Script" id=5]
 [ext_resource path="res://scenes/AI/Pathfinder.tscn" type="PackedScene" id=8]
@@ -25,6 +26,9 @@ BRANCH_DROPS = 1
 
 [node name="Tree28" parent="Objects/Props" index="23"]
 BRANCH_DROPS = 1
+
+[node name="Projectiles" parent="Objects/Props" index="32"]
+script = ExtResource( 3 )
 
 [node name="HUD" parent="HUDLayer" index="0"]
 INVENTORY_TYPE = "Experimenter"
@@ -124,6 +128,7 @@ script = ExtResource( 11 )
 wait_time = 1e+09
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="die" from="Objects/Props/Islander" to="." method="_on_Islander_die"]
+[connection signal="throw_stone" from="Objects/Props/Islander" to="Objects/Props/Projectiles" method="_on_Islander_throw_stone"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
 [connection signal="body_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_body_entered"]

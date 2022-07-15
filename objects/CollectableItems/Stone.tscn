@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://objects/CollectableItems/CollectableItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/beach_tileset.png" type="Texture" id=2]
 [ext_resource path="res://assets/Shadow.png" type="Texture" id=3]
+[ext_resource path="res://assets/Audio/stone_hit.wav" type="AudioStream" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 195, 242, 12, 12 )
 
@@ -15,13 +15,23 @@ region = Rect2( 195, 242, 12, 12 )
 "stone",
 ] instance=ExtResource( 1 )]
 object_type = "stone"
+is_usable = true
+fall_duration_seconds = 0.8
+fall_sway = 1.0
 display_name = "Rock"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 2.34147, 3.68658 )
-rotation = 11.6206
+rotation = 12.0155
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 12.3086
+rotation = 12.7036
 texture = SubResource( 1 )
+
+[node name="StoneHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -8.0
+pitch_scale = 0.5
+autoplay = true
+attenuation = 6.9644

@@ -26,6 +26,7 @@ script = ExtResource( 5 )
 
 [node name="FPS counter" type="Node" parent="." index="7"]
 script = ExtResource( 4 )
+[connection signal="throw_stone" from="Objects/Props/Islander" to="Objects/Props/Projectiles" method="_on_Islander_throw_stone"]
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="IslanderInput" method="_on_PlayerInteraction_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/PlayerInteraction" to="IslanderInput" method="_on_PlayerInteraction_area_exited"]
 [connection signal="use_item" from="HUDLayer/HUD" to="Objects/Props/Islander" method="_on_HUD_use_item"]

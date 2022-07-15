@@ -8,9 +8,10 @@
 [ext_resource path="res://scenes/Island/Props.gd" type="Script" id=6]
 [ext_resource path="res://scenes/Island/Overlay.gd" type="Script" id=7]
 [ext_resource path="res://objects/Tree/Tree.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/Island/Projectiles.gd" type="Script" id=9]
+[ext_resource path="res://objects/Projectiles/Projectiles.gd" type="Script" id=9]
 [ext_resource path="res://assets/Audio/beach_loop_night.ogg" type="AudioStream" id=10]
 [ext_resource path="res://scenes/Island/AIController.gd" type="Script" id=11]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.61711
