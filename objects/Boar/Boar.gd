@@ -124,6 +124,7 @@ func _physics_process(delta):
 	if _state == State.SLIDING:
 		slide_timeout -= delta
 		
+		# should probably use a tween function instead of this
 		var easing_value = ease(slide_timeout / SLIDE_DURATION, EASE_OUT)
 		velocity = Vector2(direction.x * ATTACK_SPEED, direction.y * ATTACK_SPEED) * easing_value
 	
@@ -136,6 +137,7 @@ func _on_PreAttackTimer_timeout():
 	var animated_sprite = get_node("AnimatedSprite")
 	animated_sprite.animation = "running"
 	animated_sprite.play()
+	get_node("SlideSound").play()
 	get_node("AttackTimer").start()
 	get_node("AttackArea/Shape").disabled = false
 	_state = State.ATTACKING
@@ -145,6 +147,7 @@ func _on_AttackTimer_timeout():
 	_state = State.SLIDING
 	slide_timeout = SLIDE_DURATION
 	get_node("AnimatedSprite").animation = "sliding"
+	get_node("SlideStop").play()
 	get_node("AnimatedSprite").play()
 	get_node("PostAttackTimer").start()
 	get_node("AttackArea/Shape").disabled = true

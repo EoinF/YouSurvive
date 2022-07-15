@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/slide_medium.wav-a7a1ef543adf87f4c9515367c9a1579f.sample"
+
+[deps]
+
+source_file="res://assets/Audio/slide_medium.wav"
+dest_files=[ "res://.import/slide_medium.wav-a7a1ef543adf87f4c9515367c9a1579f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

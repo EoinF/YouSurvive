@@ -93,6 +93,7 @@ func _on_PreAttackTimer_timeout():
 	var animated_sprite = get_node("AnimatedSprite")
 	animated_sprite.animation = "attacking"
 	animated_sprite.play()
+	get_node("SlideSound").play()
 	get_node("AttackTimer").start()
 	get_node("AttackArea/Shape").disabled = false
 	_attack_phase = AttackPhase.ATTACKING

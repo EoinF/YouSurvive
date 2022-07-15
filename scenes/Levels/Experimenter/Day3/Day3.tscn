@@ -124,7 +124,6 @@ script = ExtResource( 11 )
 wait_time = 1e+09
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="die" from="Objects/Props/Islander" to="." method="_on_Islander_die"]
-[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day3Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
 [connection signal="body_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_body_entered"]
@@ -137,7 +136,6 @@ wait_time = 1e+09
 [connection signal="trigger_event" from="HUDLayer/HUD/DialogueManager" to="HUDLayer/HUD/Events" method="_on_DialogueManager_trigger_event"]
 [connection signal="finish" from="HUDLayer/HUD/GameOver" to="." method="_on_GameOver_finish"]
 [connection signal="objectives_updated" from="Day3Objectives" to="." method="_on_Day3Objectives_objectives_updated"]
-[connection signal="objectives_updated" from="Day3Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 [connection signal="place_item" from="Experimenter" to="." method="_on_Experimenter_place_item"]

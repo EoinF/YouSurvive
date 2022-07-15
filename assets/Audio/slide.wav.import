@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/sand_slide.wav-c8e9562c704e6048b5287f6adb8cc5bc.sample"
+path="res://.import/slide.wav-76819fc7e6a37ad64ff8bd8ed74caa10.sample"
 
 [deps]
 
-source_file="res://assets/Audio/sand_slide.wav"
-dest_files=[ "res://.import/sand_slide.wav-c8e9562c704e6048b5287f6adb8cc5bc.sample" ]
+source_file="res://assets/Audio/slide.wav"
+dest_files=[ "res://.import/slide.wav-76819fc7e6a37ad64ff8bd8ed74caa10.sample" ]
 
 [params]
 

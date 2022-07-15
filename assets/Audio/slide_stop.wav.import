@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/slide_stop.wav-8b9dbf12915e5466e0bd170e635f5874.sample"
+
+[deps]
+
+source_file="res://assets/Audio/slide_stop.wav"
+dest_files=[ "res://.import/slide_stop.wav-8b9dbf12915e5466e0bd170e635f5874.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

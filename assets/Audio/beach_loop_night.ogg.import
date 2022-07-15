@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/beach_loop_night.ogg-cdb538ca1c40a371c7f737c77074b78f.oggstr"
+
+[deps]
+
+source_file="res://assets/Audio/beach_loop_night.ogg"
+dest_files=[ "res://.import/beach_loop_night.ogg-cdb538ca1c40a371c7f737c77074b78f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

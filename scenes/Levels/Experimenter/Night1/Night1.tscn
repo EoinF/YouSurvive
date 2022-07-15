@@ -12,12 +12,10 @@ modulate = Color( 1, 1, 1, 1 )
 
 [node name="Ghost" parent="Objects/Props" index="3"]
 MAX_HEALTH = 400
+FOOTSTEPS_VOLUME_OFFSET = -8
 
 [node name="HUD" parent="HUDLayer" index="0"]
 visible = false
-
-[node name="Overlay" parent="HUDLayer" index="2"]
-INTENSITY = 0.0
 
 [node name="IslanderController" type="Node" parent="." index="3"]
 script = ExtResource( 2 )

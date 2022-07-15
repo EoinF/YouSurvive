@@ -9,6 +9,7 @@ signal throw_stone(position, direction)
 export var SPEED = 8 * 1000
 export var IS_IMMUNE_TO_STONE = true
 export var MAX_HEALTH = 1000
+export var FOOTSTEPS_VOLUME_OFFSET = 0
 
 var object_type = "islander"
 
@@ -52,6 +53,7 @@ func will_collide():
 	
 
 func _ready():
+	get_node("WalkEffect").set_volume_offset(FOOTSTEPS_VOLUME_OFFSET)
 	set_health(MAX_HEALTH)
 	is_alive = true
 

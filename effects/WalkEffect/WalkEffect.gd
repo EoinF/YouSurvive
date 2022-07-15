@@ -1,14 +1,22 @@
 extends Node
 
-var rand = RandomNumberGenerator.new()
+var rand
 var is_playing = false
 var is_left_foot = true
+var BASE_VOLUME_OFFSET = -10
 
 var sound_weighting = ["1", "1", "1", "2", "2", "2", "3"]
 
 func _ready():
+	rand = RandomNumberGenerator.new()
 	if get_owner() == null:
 		start()
+
+
+func set_volume_offset(volume):
+	for prefix in ["Left", "Right"]:
+		for suffix in ["1","2","3"]:
+			get_node(prefix + suffix).volume_db = volume + BASE_VOLUME_OFFSET
 
 
 func start():
@@ -21,6 +29,7 @@ func start():
 
 func stop():
 	is_playing = false
+
 
 func play_sound():
 	is_left_foot = not is_left_foot
