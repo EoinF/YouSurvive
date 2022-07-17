@@ -32,5 +32,5 @@ script = ExtResource( 4 )
 [connection signal="use_item" from="HUDLayer/HUD" to="Objects/Props/Islander" method="_on_HUD_use_item"]
 [connection signal="finish_dialogue" from="HUDLayer/HUD/DialogueManager" to="." method="_on_DialogueManager_finish_dialogue"]
 [connection signal="objectives_updated" from="Day2Objectives" to="." method="_on_Day2Objectives_objectives_updated"]
-[connection signal="place_item" from="ExperimentReplay" to="Day2Objectives" method="_on_Experimenter_place_item"]
 [connection signal="place_item" from="ExperimentReplay" to="Objects/Props" method="_on_place_item"]
+[connection signal="place_item" from="ExperimentReplay" to="Day2Objectives" method="_on_Experimenter_place_item"]

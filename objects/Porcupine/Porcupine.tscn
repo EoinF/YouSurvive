@@ -156,7 +156,6 @@ frames = SubResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 24 )
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -194,7 +193,7 @@ wait_time = 0.3
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 0.5
 one_shot = true
 
 [node name="AttackCooldown" type="Timer" parent="."]
