@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/stick_hit.wav-77c565a504a4d52be20fbc34cd51baf3.sample"
+
+[deps]
+
+source_file="res://assets/Audio/stick_hit.wav"
+dest_files=[ "res://.import/stick_hit.wav-77c565a504a4d52be20fbc34cd51baf3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

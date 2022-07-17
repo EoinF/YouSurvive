@@ -13,6 +13,8 @@ export var FOOTSTEPS_VOLUME_OFFSET = 0
 
 var object_type = "islander"
 
+var rand = RandomNumberGenerator.new()
+
 var walking_timeout = 0
 var attack_ready = true
 
@@ -96,6 +98,8 @@ func move(x, y):
 		directionHorizontal = "Right"
 	
 	_update_active_sprite("Run", directionVertical + directionHorizontal)
+	get_node("WalkEffect").start()
+	
 
 
 func throw_stone(x, y):
@@ -115,9 +119,12 @@ func attack(_x = 0, _y = 0):
 	attack_animation.visible = true
 	attack_animation.set_frame(0)
 	attack_animation.play()
+	var sound_index = rand.randi_range(1, 2)
+	get_node("StickAttack" + str(sound_index)).play()
+	
 	attack_direction = direction
 	_update_active_sprite("Run", active_sprite_direction)
-	walking_timeout = 40
+	walking_timeout = 20
 
 
 func pick_up_item(item_type):
@@ -140,9 +147,7 @@ func start_target_spotted_emote(on_finished: FuncRef):
 
 
 func _update_active_sprite(new_sprite_state, new_sprite_direction):
-	if new_sprite_state == "Run":
-		get_node("WalkEffect").start()
-	else:
+	if new_sprite_state == "Stand":
 		get_node("WalkEffect").stop()
 	
 	if new_sprite_direction != "":
@@ -236,3 +241,11 @@ func _on_HUD_use_item(item_type):
 			_use_coconut()
 		"stick":
 			attack()
+
+
+func _on_AttackArea_area_entered(area):
+	if area.get_owner().is_in_group("Islander"):
+		return
+	
+	get_node("StickHit").play()
+	

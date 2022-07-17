@@ -22,11 +22,11 @@ display_name = "Rock"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 2.34147, 3.68658 )
-rotation = 12.0155
+rotation = 12.0999
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 12.7036
+rotation = 12.788
 texture = SubResource( 1 )
 
 [node name="StoneHit" type="AudioStreamPlayer2D" parent="."]
