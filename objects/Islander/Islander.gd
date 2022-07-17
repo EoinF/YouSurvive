@@ -138,7 +138,8 @@ func pick_up_item(item_type):
 		item_type_to_slot[item_type].node_key = node_key
 		item_type_to_slot[item_type].amount = 1
 		item_type_to_slot[item_type].item_type = item_type
-		
+	
+	get_node("PickUpItem").play()
 	emit_signal("inventory_slot_change", item_type_to_slot[item_type])
 
 
