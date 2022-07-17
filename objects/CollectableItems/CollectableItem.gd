@@ -43,16 +43,22 @@ func _get_configuration_warning():
 
 
 func _process(delta):
-	if is_falling:
-		elapsed_fall_time += delta
-		
-		var t = elapsed_fall_time / fall_duration_seconds
-		position = original_position.linear_interpolate(destination_position, t)
-		position.x += fall_sway * (3.0 + (100.0 / (1.0 + destination_position.y - original_position.y))) * sin(t * 5)
-		get_node("Shadow").position = shadow_position + Vector2(0, destination_position.y - position.y)
-		
-		if elapsed_fall_time >= fall_duration_seconds:
-			is_falling = false
+	if not is_falling:
+		return
+	
+	elapsed_fall_time += delta
+	
+	var t = elapsed_fall_time / fall_duration_seconds
+	position = original_position.linear_interpolate(destination_position, t)
+	position.x += fall_sway * (3.0 + (100.0 / (1.0 + destination_position.y - original_position.y))) * sin(t * 5)
+	get_node("Shadow").position = shadow_position + Vector2(0, destination_position.y - position.y)
+	
+	if elapsed_fall_time < fall_duration_seconds:
+		return
+	
+	is_falling = false
+	if has_node("DropSound"):
+		get_node("DropSound").play()
 
 func drop_item(from, to):
 	original_position = from

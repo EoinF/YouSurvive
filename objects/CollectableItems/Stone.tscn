@@ -15,10 +15,14 @@ region = Rect2( 195, 242, 12, 12 )
 "stone",
 ] instance=ExtResource( 1 )]
 object_type = "stone"
-is_usable = true
-fall_duration_seconds = 0.8
-fall_sway = 1.0
 display_name = "Rock"
+
+[node name="DropSound" type="AudioStreamPlayer2D" parent="CollectableItem"]
+stream = ExtResource( 4 )
+volume_db = -8.0
+pitch_scale = 0.5
+autoplay = true
+attenuation = 6.9644
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 2.34147, 3.68658 )
@@ -28,10 +32,3 @@ texture = ExtResource( 3 )
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
 rotation = 12.788
 texture = SubResource( 1 )
-
-[node name="StoneHit" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 4 )
-volume_db = -8.0
-pitch_scale = 0.5
-autoplay = true
-attenuation = 6.9644

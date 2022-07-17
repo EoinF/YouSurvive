@@ -103,6 +103,8 @@ func move(x, y):
 
 
 func throw_stone(x, y):
+	if not is_alive:
+		return
 	# First, face the direction to throw, then throw the stone
 	move(x, y)
 	_use_stone()
@@ -247,5 +249,5 @@ func _on_AttackArea_area_entered(area):
 	if area.get_owner().is_in_group("Islander"):
 		return
 	
-	get_node("StickHit").play()
+	get_node("AttackPivotPoint/StickHit").play()
 	

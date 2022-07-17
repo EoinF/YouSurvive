@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://objects/CollectableItems/CollectableItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Shadow.png" type="Texture" id=2]
 [ext_resource path="res://assets/coconut.png" type="Texture" id=3]
+[ext_resource path="res://assets/Audio/stone_hit.wav" type="AudioStream" id=4]
 
 [node name="Coconut" type="Node2D"]
 
@@ -14,11 +15,18 @@ fall_duration_seconds = 0.2
 fall_sway = 0.0
 display_name = "Coconut"
 
+[node name="DropSound" type="AudioStreamPlayer2D" parent="CollectableItem"]
+stream = ExtResource( 4 )
+volume_db = -8.0
+pitch_scale = 0.5
+autoplay = true
+attenuation = 6.9644
+
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 0.707108, 3.97748 )
-rotation = 61.5107
+rotation = 62.7257
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 61.5107
+rotation = 62.7257
 texture = ExtResource( 3 )

@@ -25,6 +25,7 @@ func hit():
 	is_hittable = false
 	
 	get_node("ShakeEffect").start()
+	get_node("HitSound").play()
 	
 	if (cooldown_timer.is_stopped()):
 		get_node("Sprite").modulate = Color.gray
