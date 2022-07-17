@@ -244,10 +244,3 @@ func _on_HUD_use_item(item_type):
 		"stick":
 			attack()
 
-
-func _on_AttackArea_area_entered(area):
-	if area.get_owner().is_in_group("Islander"):
-		return
-	
-	get_node("AttackPivotPoint/StickHit").play()
-	

@@ -111,10 +111,13 @@ func _on_AttackCooldown_timeout():
 
 
 func _on_Hurtbox_area_entered(area):
-	if not _is_dying and not area.is_in_group("AI") and area.is_in_group("Attack"):
-		HEALTH -= area.attack_power
-		if (HEALTH <= 0):
-			_die()
+	if _is_dying or area.is_in_group("AI") or not area.is_in_group("Attack"):
+		return
+		
+	HEALTH -= area.attack_power
+	get_node("HurtSound").play()
+	if (HEALTH <= 0):
+		_die()
 
 
 func _die():

@@ -164,19 +164,22 @@ func _on_AttackCooldown_timeout():
 
 
 func _on_Hurtbox_area_entered(area):
-	if not _state in [State.DYING, State.DEAD, State.HURTING] and not area.is_in_group("AI") and area.is_in_group("Attack"):
-		HEALTH -= area.attack_power
+	if _state in [State.DYING, State.DEAD, State.HURTING] or area.is_in_group("AI") or not area.is_in_group("Attack"):
+		return
 		
-		if HEALTH <= 0:
-			_die()
-		else:
-			get_node("AnimatedSprite").animation = "hurting"
-			get_node("AnimatedSprite").play()
-			_state = State.HURTING
-			get_node("AttackTimer").stop()
-			get_node("PreAttackTimer").stop()
-			get_node("PostAttackTimer").stop()
-			get_node("HurtCooldown").start()
+	HEALTH -= area.attack_power
+	get_node("HurtSound").play()
+	
+	if HEALTH <= 0:
+		_die()
+	else:
+		get_node("AnimatedSprite").animation = "hurting"
+		get_node("AnimatedSprite").play()
+		_state = State.HURTING
+		get_node("AttackTimer").stop()
+		get_node("PreAttackTimer").stop()
+		get_node("PostAttackTimer").stop()
+		get_node("HurtCooldown").start()
 			
 func _on_HurtCooldown_timeout():
 	_state = State.IDLE
