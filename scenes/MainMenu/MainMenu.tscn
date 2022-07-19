@@ -1,34 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/Audio/main_menu_music_loop.ogg" type="AudioStream" id=2]
+[ext_resource path="res://scenes/MainMenu/MenuButtonDisabled.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/MainMenu/MenuButton.tscn" type="PackedScene" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.65098, 0.615686, 0.380392, 1 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.184314, 0.364706, 0.545098, 1 )
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_size = 3
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.113725, 0.286275, 0.462745, 1 )
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_size = 4
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.133333, 0.337255, 0.54902, 1 )
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_size = 3
 
 [sub_resource type="Animation" id=5]
 resource_name = "fadeLabel"
@@ -72,45 +50,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewGame" type="Button" parent="Panel"]
-modulate = Color( 0.729412, 0.686275, 0.686275, 0.741176 )
-margin_left = 266.0
-margin_top = 133.0
-margin_right = 452.0
-margin_bottom = 173.0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-text = "New Game"
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ContinueGame" type="Button" parent="Panel"]
-margin_left = 266.0
-margin_top = 187.437
-margin_right = 452.0
-margin_bottom = 227.437
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+[node name="Grid" type="GridContainer" parent="Panel/CenterContainer"]
+margin_left = 259.0
+margin_top = 136.0
+margin_right = 445.0
+margin_bottom = 332.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGame" parent="Panel/CenterContainer/Grid" instance=ExtResource( 3 )]
+
+[node name="ContinueGame" parent="Panel/CenterContainer/Grid" instance=ExtResource( 4 )]
+margin_top = 68.0
+margin_bottom = 128.0
 text = "Continue"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Intro" type="Button" parent="Panel"]
-margin_left = 266.0
-margin_top = 240.0
-margin_right = 452.0
-margin_bottom = 280.0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+[node name="Intro" parent="Panel/CenterContainer/Grid" instance=ExtResource( 4 )]
+margin_top = 136.0
+margin_bottom = 196.0
 text = "Intro"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HintLabel" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -130,6 +99,5 @@ anims/fadeLabel = SubResource( 5 )
 stream = ExtResource( 2 )
 volume_db = -8.0
 autoplay = true
-[connection signal="pressed" from="Panel/NewGame" to="." method="_on_NewGame_pressed"]
-[connection signal="pressed" from="Panel/ContinueGame" to="." method="_on_ContinueGame_pressed"]
-[connection signal="pressed" from="Panel/Intro" to="." method="_on_Intro_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/Grid/ContinueGame" to="." method="_on_ContinueGame_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/Grid/Intro" to="." method="_on_Intro_pressed"]
