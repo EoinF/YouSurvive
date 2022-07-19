@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Levels/Base/BaseDay2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Experimenter/Day2/Events.gd" type="Script" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://scenes/AI/Pathfinder.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/Experimenter/Experimenter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/AI/IslanderAIController.tscn" type="PackedScene" id=8]
-[ext_resource path="res://objects/Projectiles/Projectiles.gd" type="Script" id=9]
 [ext_resource path="res://scenes/Levels/Base/ExperimenterController.gd" type="Script" id=10]
 [ext_resource path="res://assets/PathfinderTileset.png" type="Texture" id=11]
 [ext_resource path="res://scenes/Levels/Experimenter/Day2/Day2.gd" type="Script" id=20]
@@ -48,9 +47,6 @@ script = ExtResource( 20 )
 
 [node name="Islander" parent="Objects/Props" index="0"]
 MAX_HEALTH = 1500
-
-[node name="Projectiles" parent="Objects/Props" index="32"]
-script = ExtResource( 9 )
 
 [node name="HUD" parent="HUDLayer" index="0"]
 INVENTORY_TYPE = "Experimenter"
@@ -148,8 +144,8 @@ visible = false
 [connection signal="objectives_updated" from="Day2Objectives" to="." method="_on_Day2Objectives_objectives_updated"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
-[connection signal="place_item" from="Experimenter" to="Day2Objectives" method="_on_Experimenter_place_item"]
 [connection signal="place_item" from="Experimenter" to="." method="_on_Experimenter_place_item"]
+[connection signal="place_item" from="Experimenter" to="Day2Objectives" method="_on_Experimenter_place_item"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 
 [editable path="Experimenter"]
