@@ -25,6 +25,7 @@ func _on_Day1Objectives_objectives_updated(objectives):
 	if not is_collect_branches_complete and objectives[1]["is_complete"]:
 		is_collect_branches_complete = true
 		get_node("HUDLayer/HUD/DialogueManager").start_section("Main")
+		get_node("MusicLoop").stop()
 
 
 func _on_DialogueManager_finish_dialogue(section_name):

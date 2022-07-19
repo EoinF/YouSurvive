@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://objects/Rock/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Islander/Islander.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/Island/TooltipContainer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Audio/beach_loop_day.ogg" type="AudioStream" id=6]
 [ext_resource path="res://objects/Projectiles/Projectiles.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/Audio/island_music_loop.ogg" type="AudioStream" id=8]
 [ext_resource path="res://scenes/Island/Props.gd" type="Script" id=9]
 [ext_resource path="res://scenes/Island/AIController.gd" type="Script" id=15]
 [ext_resource path="res://scenes/Island/IslandLayout.tscn" type="PackedScene" id=16]
@@ -727,6 +728,11 @@ script = ExtResource( 15 )
 
 [node name="BeachLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -16.0
+autoplay = true
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 volume_db = -16.0
 autoplay = true
 [connection signal="health_change" from="Objects/Props/Islander" to="HUDLayer/HUD" method="_on_Islander_health_change"]

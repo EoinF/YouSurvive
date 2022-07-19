@@ -130,6 +130,8 @@ func _next_node():
 
 func _on_LetterTimer_timeout():
 	if (current_length < len(final_text)):
+		if final_text[current_length] != ' ':
+			get_node("LetterSound").play()
 		current_length += 1
 		get_node("Button/LabelContainer/Label").text = final_text.substr(0, current_length)
 	else:

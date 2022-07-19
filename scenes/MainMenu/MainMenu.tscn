@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/MainMenu/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/Audio/main_menu_music_loop.ogg" type="AudioStream" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.65098, 0.615686, 0.380392, 1 )
@@ -124,6 +125,11 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fadeLabel = SubResource( 5 )
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -8.0
+autoplay = true
 [connection signal="pressed" from="Panel/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="Panel/ContinueGame" to="." method="_on_ContinueGame_pressed"]
 [connection signal="pressed" from="Panel/Intro" to="." method="_on_Intro_pressed"]

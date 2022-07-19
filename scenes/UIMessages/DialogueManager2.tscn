@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/UIMessages/DialogueManager2.gd" type="Script" id=1]
+[ext_resource path="res://assets/Audio/dialogue_blip.wav" type="AudioStream" id=2]
 
 [node name="DialogueManager" type="Control"]
 visible = false
@@ -47,5 +48,9 @@ __meta__ = {
 
 [node name="LetterTimer" type="Timer" parent="."]
 wait_time = 0.06
+
+[node name="LetterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -16.0
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="LetterTimer" to="." method="_on_LetterTimer_timeout"]
