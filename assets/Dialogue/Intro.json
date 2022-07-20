@@ -22,6 +22,13 @@
   "Named": [
     { "type": "text", "content": "Ah, {player_name}......." },
     { "type": "text", "content": "So you don't remember? No matter." },
+    { "type": "text", "content": "All that you need to know is" },
+    { "type": "text", "content": "we'll be running a series of experiments" },
+    {
+      "type": "text",
+      "content": "The goal of which will become clear by the end"
+    },
+    { "type": "text", "content": "So pay attention." },
     { "type": "link_to", "section_name": "Outro" }
   ],
   "Remembered": [
@@ -40,7 +47,7 @@
     { "type": "text", "content": "[... continue to crab closing level]" }
   ],
   "Outro": [
-    { "type": "text", "content": "I hope you're ready to get to work." },
+    { "type": "text", "content": "Now. Off to the island you go......" },
     { "type": "text", "content": "I'll pass along your name." }
   ]
 }

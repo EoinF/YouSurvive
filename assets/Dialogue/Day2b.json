@@ -7,22 +7,30 @@
       "y": 0.9,
       "foreground": "pink"
     },
-    { "type": "text", "content": "It's me again, (...)......." },
+    { "type": "text", "content": "It's me, Durme......." },
     {
       "type": "text",
       "content": "I need to tell you what's really going on here."
     },
     {
       "type": "text",
-      "content": "This island. These tasks. It's all just an experiment."
+      "content": "About this island. About these tasks."
     },
     {
       "type": "text",
-      "content": "Do you believe that this islander represents you as a whole?"
+      "content": "I need to ask - who are you?"
     },
     {
       "type": "text",
-      "content": "That weapon you used, is it not an extension of you?"
+      "content": "Are you the one walking around?"
+    },
+    {
+      "type": "text",
+      "content": "Or is that merely an empty husk that you are controlling?"
+    },
+    {
+      "type": "text",
+      "content": "And that weapon you used, is it not an extension of you?"
     },
     {
       "type": "text",
@@ -34,7 +42,7 @@
     },
     {
       "type": "text",
-      "content": "Imagine taking away more and more parts of the body."
+      "content": "Imagine separating more and more parts of the body."
     },
     {
       "type": "text",
@@ -42,11 +50,11 @@
     },
     {
       "type": "text",
-      "content": "Think about it."
+      "content": "The answer isn't clear."
     },
     {
       "type": "text",
-      "content": "I'll be back soon. Until then......."
+      "content": "So I'll let you think about that and take my leave......."
     }
   ]
 }

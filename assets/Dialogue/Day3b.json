@@ -1,26 +1,50 @@
 {
   "Day 3": [
-    { "type": "text", "content": "Hey......." },
+    { "type": "text", "content": "Hello again......." },
     {
       "type": "text",
-      "content": "I noticed you couldn't complete your task alone"
+      "content": "I have more questions for you."
     },
     {
       "type": "text",
-      "content": ""
+      "content": "These will be the last of them however."
     },
     {
       "type": "text",
-      "content": ""
+      "content": "Some say the world is made up of these fundamental substances - pixels."
     },
     {
       "type": "text",
-      "content": ""
+      "content": "So that means every object is just an arrangment of pixels right?"
+    },
+    {
+      "type": "text",
+      "content": "And every separate object is really just a pattern"
+    },
+    {
+      "type": "text",
+      "content": "within this continuous stream of pixels"
+    },
+    {
+      "type": "text",
+      "content": "With that definition, does it follow that objects are just a mental construct?"
+    },
+    {
+      "type": "text",
+      "content": "Can a self really physically exist? If it's only real in the mind."
+    },
+    {
+      "type": "text",
+      "content": "Then physically we are all part of one big picture"
+    },
+    {
+      "type": "text",
+      "content": "And our aims should be collective, not individual"
     },
     { "type": "text", "content": "You and I, we're one in the same." },
     {
       "type": "text",
-      "content": "So when we meet again, remember to call yourself (...)"
+      "content": "So when we meet again, remember to call yourself Durme"
     }
   ]
 }
