@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/Audio/main_menu_music_loop.ogg" type="AudioStream" id=2]
 [ext_resource path="res://scenes/MainMenu/MenuButtonDisabled.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/MainMenu/MenuButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Fonts/Small.tres" type="DynamicFont" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.65098, 0.615686, 0.380392, 1 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "fadeLabel"
 length = 2.0
 tracks/0/type = "value"
@@ -87,17 +88,19 @@ margin_left = 418.722
 margin_top = 170.162
 margin_right = 622.722
 margin_bottom = 184.162
-text = "You must continue your journey"
+custom_fonts/font = ExtResource( 5 )
+text = "There's no starting over..."
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fadeLabel = SubResource( 5 )
+anims/fadeLabel = SubResource( 2 )
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 volume_db = -8.0
 autoplay = true
+[connection signal="pressed" from="Panel/CenterContainer/Grid/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="Panel/CenterContainer/Grid/ContinueGame" to="." method="_on_ContinueGame_pressed"]
 [connection signal="pressed" from="Panel/CenterContainer/Grid/Intro" to="." method="_on_Intro_pressed"]

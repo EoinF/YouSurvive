@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Island/ObjectivesDisplay.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.113725, 0.113725, 0.113725, 0.584314 )
+
+[node name="ObjectivesDisplay" type="PanelContainer"]
+visible = false
+margin_left = 5.0
+margin_top = 51.0
+margin_right = 122.0
+margin_bottom = 75.0
+size_flags_horizontal = 8
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_top = 16.0
+margin_right = 10.0
+margin_bottom = 26.0
+size_flags_horizontal = 2
+size_flags_vertical = 4
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 5.0
+margin_bottom = 5.0
+size_flags_vertical = 2
+custom_constants/vseparation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}

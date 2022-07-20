@@ -1,6 +1,6 @@
 extends Control
 
-var is_active = true
+var is_active = false
 
 func _ready():
 	get_node("Tip").visible = false
@@ -12,6 +12,7 @@ func _ready():
 func activate():
 	get_node("Tip").visible = true
 	get_node("AnimationPlayer").play("Flash")
+	is_active = true
 
 
 func _process(delta):

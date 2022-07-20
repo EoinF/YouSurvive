@@ -3,5 +3,4 @@
 [ext_resource path="res://assets/Fonts/Oswald-Regular.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 14
 font_data = ExtResource( 1 )

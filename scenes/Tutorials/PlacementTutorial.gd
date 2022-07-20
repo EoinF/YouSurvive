@@ -1,6 +1,6 @@
 extends Control
 
-var is_active = true
+var is_active = false
 
 func _ready():
 	get_node("Tip").visible = false
@@ -13,7 +13,7 @@ func _ready():
 func activate():
 	get_node("Tip").visible = true
 	get_node("AnimationPlayer").play("Flash")
-
+	is_active = true
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "fade out":
@@ -24,6 +24,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_Experimenter_place_item(item_type, source_location):
-	if not is_active:
-		return
 	is_active = false

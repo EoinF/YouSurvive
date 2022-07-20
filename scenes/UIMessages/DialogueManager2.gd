@@ -3,6 +3,8 @@ extends Control
 signal finish_dialogue(section_name)
 signal trigger_event(event_name)
 
+var LABEL_MARGIN_X = 16
+
 var final_text
 var current_length
 
@@ -107,12 +109,12 @@ func _next_node():
 			
 			var label = get_node("Button/LabelContainer/Label")
 			label.modulate = FOREGROUND_MAP[config["foreground"]]
-			var text_area = label.get_font("normal_font").get_string_size(final_text)
+			var text_area = label.get_font("Regular").get_string_size(final_text)
 			var background = get_node("Button/LabelContainer")
 			background.color = BACKGROUND_MAP[config["background"]]
 
 			var button = get_node("Button")
-			button.rect_size.x = text_area.x + 40
+			button.rect_size.x = text_area.x + LABEL_MARGIN_X * 2
 			button.rect_position.x = (rect_size.x - background.rect_size.x) * config["x_pct"]
 			button.rect_position.y = (rect_size.y - background.rect_size.y) * config["y_pct"]
 			

@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Inventory/Inventory.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/UIMessages/AlertMessage.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Island/ObjectivesDisplay.gd" type="Script" id=3]
+[ext_resource path="res://scenes/UIMessages/ObjectivesDisplay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Island/HUD.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Island/HealthBar.tscn" type="PackedScene" id=6]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.113725, 0.113725, 0.113725, 0.584314 )
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -55,44 +52,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ObjectivesDisplay" type="PanelContainer" parent="."]
-visible = false
-margin_left = 5.0
-margin_top = 51.0
-margin_right = 122.0
-margin_bottom = 75.0
-size_flags_horizontal = 8
-size_flags_vertical = 3
-custom_styles/panel = SubResource( 1 )
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="ObjectivesDisplay"]
-margin_top = 16.0
-margin_right = 10.0
-margin_bottom = 26.0
-size_flags_horizontal = 2
-size_flags_vertical = 4
-custom_constants/margin_right = 5
-custom_constants/margin_top = 5
-custom_constants/margin_left = 5
-custom_constants/margin_bottom = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GridContainer" type="GridContainer" parent="ObjectivesDisplay/MarginContainer"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 5.0
-margin_bottom = 5.0
-size_flags_vertical = 2
-custom_constants/vseparation = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ObjectivesDisplay" parent="." instance=ExtResource( 3 )]
 
 [node name="HealthBar" parent="." instance=ExtResource( 6 )]
 [connection signal="use_item" from="Inventory" to="." method="_on_Inventory_use_item"]

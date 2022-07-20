@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/UIMessages/DialogueManager2.gd" type="Script" id=1]
 [ext_resource path="res://assets/Audio/dialogue_blip.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/Fonts/Regular.tres" type="DynamicFont" id=3]
 
 [node name="DialogueManager" type="Control"]
 visible = false
@@ -29,17 +30,27 @@ __meta__ = {
 [node name="LabelContainer" type="ColorRect" parent="Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 7.62939e-06
+margin_bottom = 3.24249e-05
 mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Button/LabelContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -14.0
+margin_right = 50.0
+margin_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "hello world"
+custom_fonts/font = ExtResource( 3 )
+text = "Hello world"
 align = 1
 valign = 1
 __meta__ = {

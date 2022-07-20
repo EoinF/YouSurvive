@@ -22,7 +22,7 @@ func _ready():
 func _on_NewGame_pressed():
 	get_node("AnimationPlayer").stop()
 	get_node("AnimationPlayer").play("fadeLabel")
-	var new_game_panel = get_node("Panel/NewGame")
+	var new_game_panel = get_node("Panel/CenterContainer/Grid/NewGame")
 	new_game_panel.modulate.a -= 0.30
 	
 	if new_game_panel.modulate.a < 0.1:
