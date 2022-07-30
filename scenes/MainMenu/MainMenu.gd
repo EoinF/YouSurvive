@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-signal start_intro
 signal continue_game(save_data)
+signal start_credits
 
 var save_data
 
@@ -30,9 +30,9 @@ func _on_NewGame_pressed():
 		new_game_panel.visible = false
 
 
-func _on_Intro_pressed():
-	emit_signal("start_intro")
-
-
 func _on_ContinueGame_pressed():
 	emit_signal("continue_game", save_data)
+
+
+func _on_Credits_pressed():
+	emit_signal("start_credits")

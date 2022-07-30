@@ -1,16 +1,6 @@
 extends Node
 
 
-func _on_MainMenu_start_new_game():
-	get_node("ExperimenterScenes").load_scene("Day1")
-	remove_child(get_node("MainMenu"))
-
-
-func _on_MainMenu_start_intro():
-	get_node("ExperimenterScenes").load_intro()
-	remove_child(get_node("MainMenu"))
-
-
 func _on_ExperimenterScenes_finish_scenes(save_data):
 	var islander_scenes = get_node("IslanderScenes")
 	islander_scenes.save_game("Day1")
@@ -31,3 +21,11 @@ func _on_MainMenu_continue_game(save_data):
 	chapter_scenes.load_scene(save_data["current_level"], save_data)
 
 	remove_child(get_node("MainMenu"))
+
+
+func _on_MainMenu_start_credits():
+	get_node("MainMenu/Credits").visible = true
+
+
+func _on_Credits_finish_scene():
+	get_node("MainMenu/Credits").visible = false

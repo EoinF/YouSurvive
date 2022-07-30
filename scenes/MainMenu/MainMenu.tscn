@@ -77,10 +77,10 @@ margin_top = 68.0
 margin_bottom = 128.0
 text = "Continue"
 
-[node name="Intro" parent="Panel/CenterContainer/Grid" instance=ExtResource( 4 )]
+[node name="Credits" parent="Panel/CenterContainer/Grid" instance=ExtResource( 4 )]
 margin_top = 136.0
 margin_bottom = 196.0
-text = "Intro"
+text = "Credits"
 
 [node name="HintLabel" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -103,4 +103,4 @@ volume_db = -8.0
 autoplay = true
 [connection signal="pressed" from="Panel/CenterContainer/Grid/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="Panel/CenterContainer/Grid/ContinueGame" to="." method="_on_ContinueGame_pressed"]
-[connection signal="pressed" from="Panel/CenterContainer/Grid/Intro" to="." method="_on_Intro_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/Grid/Credits" to="." method="_on_Credits_pressed"]
