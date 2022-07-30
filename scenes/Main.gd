@@ -29,3 +29,11 @@ func _on_MainMenu_start_credits():
 
 func _on_Credits_finish_scene():
 	get_node("MainMenu/Credits").visible = false
+
+
+func _on_MainMenu_start_settings():
+	get_node("MainMenu/Settings").visible = true
+
+
+func _on_Settings_finish_scene():
+	get_node("MainMenu/Settings").visible = false

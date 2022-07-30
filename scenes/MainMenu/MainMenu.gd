@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal continue_game(save_data)
 signal start_credits
+signal start_settings
 
 var save_data
 
@@ -36,3 +37,7 @@ func _on_ContinueGame_pressed():
 
 func _on_Credits_pressed():
 	emit_signal("start_credits")
+
+
+func _on_Settings_pressed():
+	emit_signal("start_settings")

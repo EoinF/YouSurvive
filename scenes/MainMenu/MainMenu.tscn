@@ -60,9 +60,9 @@ __meta__ = {
 
 [node name="Grid" type="GridContainer" parent="Panel/CenterContainer"]
 margin_left = 259.0
-margin_top = 136.0
+margin_top = 102.0
 margin_right = 445.0
-margin_bottom = 332.0
+margin_bottom = 366.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/vseparation = 8
@@ -77,9 +77,14 @@ margin_top = 68.0
 margin_bottom = 128.0
 text = "Continue"
 
-[node name="Credits" parent="Panel/CenterContainer/Grid" instance=ExtResource( 4 )]
+[node name="Settings" parent="Panel/CenterContainer/Grid" instance=ExtResource( 4 )]
 margin_top = 136.0
 margin_bottom = 196.0
+text = "Settings"
+
+[node name="Credits" parent="Panel/CenterContainer/Grid" instance=ExtResource( 4 )]
+margin_top = 204.0
+margin_bottom = 264.0
 text = "Credits"
 
 [node name="HintLabel" type="Label" parent="."]
@@ -103,4 +108,5 @@ volume_db = -8.0
 autoplay = true
 [connection signal="pressed" from="Panel/CenterContainer/Grid/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="Panel/CenterContainer/Grid/ContinueGame" to="." method="_on_ContinueGame_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/Grid/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Panel/CenterContainer/Grid/Credits" to="." method="_on_Credits_pressed"]

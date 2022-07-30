@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/MainMenu/Settings.gd" type="Script" id=1]
+[ext_resource path="res://assets/Fonts/Small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Fonts/Large.tres" type="DynamicFont" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.65098, 0.615686, 0.380392, 1 )
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -351.5
+margin_top = -235.0
+margin_right = 353.5
+margin_bottom = 233.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_top = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/MarginContainer"]
+margin_top = 8.0
+margin_right = 705.0
+margin_bottom = 69.0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/CenterContainer"]
+margin_left = 318.0
+margin_right = 386.0
+margin_bottom = 61.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/CenterContainer/GridContainer"]
+margin_right = 68.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 3 )
+text = "Settings"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main Volume" type="Label" parent="Panel/MarginContainer/CenterContainer/GridContainer"]
+margin_top = 26.0
+margin_right = 68.0
+margin_bottom = 41.0
+custom_fonts/font = ExtResource( 2 )
+text = "Main volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/CenterContainer/GridContainer"]
+margin_top = 45.0
+margin_right = 68.0
+margin_bottom = 61.0
+size_flags_horizontal = 3
+value = 30.0

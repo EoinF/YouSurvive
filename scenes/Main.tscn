@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/MainMenu/MainMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Main.gd" type="Script" id=2]
 [ext_resource path="res://scenes/ExperimenterScenes.gd" type="Script" id=3]
 [ext_resource path="res://scenes/IslanderScenes.gd" type="Script" id=4]
 [ext_resource path="res://scenes/MainMenu/Credits.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/MainMenu/Settings.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
@@ -44,8 +45,13 @@ script = ExtResource( 3 )
 
 [node name="Credits" parent="MainMenu" instance=ExtResource( 5 )]
 visible = false
+
+[node name="Settings" parent="MainMenu" instance=ExtResource( 6 )]
+visible = false
 [connection signal="finish_scenes" from="IslanderScenes" to="." method="_on_IslanderScenes_finish_scenes"]
 [connection signal="finish_scenes" from="ExperimenterScenes" to="." method="_on_ExperimenterScenes_finish_scenes"]
 [connection signal="continue_game" from="MainMenu" to="." method="_on_MainMenu_continue_game"]
 [connection signal="start_credits" from="MainMenu" to="." method="_on_MainMenu_start_credits"]
+[connection signal="start_settings" from="MainMenu" to="." method="_on_MainMenu_start_settings"]
 [connection signal="finish_scene" from="MainMenu/Credits" to="." method="_on_Credits_finish_scene"]
+[connection signal="finish_scene" from="MainMenu/Settings" to="." method="_on_Settings_finish_scene"]
