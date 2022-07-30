@@ -76,3 +76,6 @@ func _on_Night2_finish_scene():
 func _on_Day3_finish_scene(experiment_data):
 	save_game("Outro", "Day3", experiment_data)
 	load_scene("Outro")
+
+func _on_Outro_finish_scene():
+	emit_signal("finish_scenes")

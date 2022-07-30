@@ -20,6 +20,8 @@ script = ExtResource( 4 )
 
 [node name="Day3" parent="IslanderScenes" instance_placeholder="res://scenes/Levels/Islander/Day3/Day3.tscn"]
 
+[node name="Outro" parent="IslanderScenes" instance_placeholder="res://scenes/Levels/Islander/Outro/Outro.tscn"]
+
 [node name="ExperimenterScenes" type="Node" parent="."]
 script = ExtResource( 3 )
 
@@ -34,6 +36,8 @@ script = ExtResource( 3 )
 [node name="Night2" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Night2/Night2.tscn"]
 
 [node name="Day3" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Day3/Day3.tscn"]
+
+[node name="Outro" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Outro/Outro.tscn"]
 
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
 [connection signal="finish_scenes" from="IslanderScenes" to="." method="_on_IslanderScenes_finish_scenes"]

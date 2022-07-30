@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://assets/Audio/beach_loop_day.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scenes/TextEntry/TextEntry.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Levels/Experimenter/Intro/Intro.gd" type="Script" id=4]
 [ext_resource path="res://scenes/UIMessages/DialogueManager2.tscn" type="PackedScene" id=5]
@@ -28,5 +29,10 @@ LABEL_TEXT = "Enter your name"
 
 [node name="DialogueManager" parent="." instance=ExtResource( 5 )]
 DIALOGUE_FILE = "res://assets/Dialogue/Intro.json"
+
+[node name="BeachLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -16.0
+autoplay = true
 [connection signal="text_entered" from="Name Entry" to="." method="_on_Name_Entry_text_entered"]
 [connection signal="finish_dialogue" from="DialogueManager" to="." method="_on_DialogueManager_finish_dialogue"]

@@ -12,7 +12,9 @@ func _on_MainMenu_start_intro():
 
 
 func _on_ExperimenterScenes_finish_scenes(save_data):
-	get_node("IslanderScenes").load_scene("Day1", save_data)
+	var islander_scenes = get_node("IslanderScenes")
+	islander_scenes.save_game("Day1")
+	islander_scenes.load_scene("Day1", save_data)
 
 
 func _on_IslanderScenes_finish_scenes():
