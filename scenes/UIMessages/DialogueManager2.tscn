@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/UIMessages/DialogueManager2.gd" type="Script" id=1]
 [ext_resource path="res://assets/Audio/dialogue_blip.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/Fonts/Regular.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Theme" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
 
 [node name="DialogueManager" type="Control"]
 visible = false
@@ -23,9 +35,13 @@ margin_left = -50.2649
 margin_top = 200.47
 margin_right = 49.7351
 margin_bottom = 224.47
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+text = "abc"
 
 [node name="LabelContainer" type="ColorRect" parent="Button"]
 anchor_right = 1.0
@@ -64,5 +80,6 @@ wait_time = 0.06
 stream = ExtResource( 2 )
 volume_db = -16.0
 bus = "SFX"
+[connection signal="resized" from="." to="." method="_on_DialogueManager_resized"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="LetterTimer" to="." method="_on_LetterTimer_timeout"]

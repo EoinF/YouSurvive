@@ -13,7 +13,8 @@ var config = {
 	"x_pct": 0.5,
 	"y_pct": 0.5,
 	"foreground": "default",
-	"background": "default"
+	"background": "default",
+	"is_full_screen": false
 }
 
 var section_name
@@ -45,6 +46,14 @@ func _ready():
 	data = parse_json(file.get_as_text())
 
 
+func _on_DialogueManager_resized():
+	if not config["is_full_screen"]:
+		return
+		
+	$Button.rect_position = Vector2(0, 0)
+	$Button.rect_size.x = self.rect_size.x
+	$Button.rect_size.y = self.rect_size.y
+
 
 func _process(_delta):
 	if is_started and Input.is_action_just_released("skip_dialogue"):
@@ -67,8 +76,7 @@ func stop():
 	is_playing = false
 	is_started = false
 	get_node("LetterTimer").stop()
-	
-	
+
 
 func set_variables(_variables: Dictionary):
 	variables = _variables
@@ -102,6 +110,9 @@ func _next_node():
 				config["letter_delay"] = current_node["letter_delay"]
 				var letter_timer = get_node("LetterTimer")
 				letter_timer.set_wait_time(config["letter_delay"])
+			if "is_full_screen" in current_node:
+				config["is_full_screen"] = current_node["is_full_screen"]
+				_on_DialogueManager_resized()
 			_next_node()
 		elif current_node["type"] == "text":
 			current_length = 0
@@ -113,10 +124,11 @@ func _next_node():
 			var background = get_node("Button/LabelContainer")
 			background.color = BACKGROUND_MAP[config["background"]]
 
-			var button = get_node("Button")
-			button.rect_size.x = text_area.x + LABEL_MARGIN_X * 2
-			button.rect_position.x = (rect_size.x - background.rect_size.x) * config["x_pct"]
-			button.rect_position.y = (rect_size.y - background.rect_size.y) * config["y_pct"]
+			if not config["is_full_screen"]:
+				var button = $Button
+				button.rect_size.x = text_area.x + LABEL_MARGIN_X * 2
+				button.rect_position.x = (rect_size.x - background.rect_size.x) * config["x_pct"]
+				button.rect_position.y = (rect_size.y - background.rect_size.y) * config["y_pct"]
 			
 			label.text = ""
 			var letter_timer = get_node("LetterTimer")
@@ -141,10 +153,11 @@ func _on_LetterTimer_timeout():
 
 
 func _on_Button_pressed():
-	if visible:
-		get_node("LetterTimer").stop()
-		if current_length < len(final_text):
-			current_length = len(final_text)
-			get_node("Button/LabelContainer/Label").text = final_text
-		else:
-			_next_node()
+	if not visible:
+		return
+	get_node("LetterTimer").stop()
+	if current_length < len(final_text):
+		current_length = len(final_text)
+		get_node("Button/LabelContainer/Label").text = final_text
+	else:
+		_next_node()

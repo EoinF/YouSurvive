@@ -4,7 +4,8 @@
       "type": "config",
       "letter_delay": 0.08,
       "foreground": "pink",
-      "background": "black"
+      "background": "black",
+      "is_full_screen": "true"
     },
     { "type": "text", "content": "Hello?" },
     { "type": "text", "content": "Are you awake yet?" },

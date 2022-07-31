@@ -28,3 +28,5 @@ func _on_Name_Entry_text_entered(text: String):
 			"player_name": player_name
 		})
 		manager.start_section("Named")
+
+
