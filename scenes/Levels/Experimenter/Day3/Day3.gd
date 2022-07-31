@@ -96,5 +96,6 @@ func _on_Islander_die():
 	var experimenter = get_node("Experimenter")
 	experimenter.set_follow_target(islander, true)
 	experimenter.disable_controls()
+	is_islander_dead = true
 	get_node("HUDLayer/HUD/DialogueManager").stop()
 	get_node("HUDLayer/HUD/GameOver").start()

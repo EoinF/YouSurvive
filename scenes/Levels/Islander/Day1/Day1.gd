@@ -3,6 +3,12 @@ extends Node2D
 signal finish_scene
 
 var is_collect_branches_complete = false
+var is_islander_dead = false
+
+
+func _fade_out():
+	$AnimationPlayer.play("fade_out")
+
 
 func _ready():
 	get_node("Day1Objectives").set_objective_active("collect_branches", true)
@@ -30,14 +36,18 @@ func _on_Day1Objectives_objectives_updated(objectives):
 
 func _on_DialogueManager_finish_dialogue(section_name):
 	if section_name == "Main":
-		emit_signal("finish_scene")
-		queue_free()
+		_fade_out()
 
 
 func _on_Islander_die():
 	get_node("AnimationPlayer").play("fade_out")
+	is_islander_dead = true
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "fade_out":
-		get_tree().reload_current_scene()
+		if is_islander_dead:
+			get_tree().reload_current_scene()
+		else:
+			emit_signal("finish_scene")
+			queue_free()
