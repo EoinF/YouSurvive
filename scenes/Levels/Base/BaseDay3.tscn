@@ -46,6 +46,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../MusicLoop:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -16.0, -40.0 ]
+}
 
 [node name="BaseDay3" instance=ExtResource( 1 )]
 

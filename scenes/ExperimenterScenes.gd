@@ -35,9 +35,11 @@ func load_scene(scene_name, _save_data = null):
 	var scene_placeholder = get_node(scene_name)
 	scene_placeholder.replace_by_instance()
 	
-	get_node(scene_name).set_player_name(save_data.player_name)
+	var new_scene = get_node(scene_name)
+	if new_scene.has_method("set_player_name"):
+		new_scene.set_player_name(save_data.player_name)
 	print("starting experimenter scene " + "_on_" + scene_name + "finish_scene")
-	get_node(scene_name).connect("finish_scene", self, "_on_" + scene_name + "_finish_scene")
+	new_scene.connect("finish_scene", self, "_on_" + scene_name + "_finish_scene")
 
 
 func load_intro():

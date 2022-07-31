@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Island/DreamIsland.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Islander/Islander.tscn" type="PackedScene" id=2]
@@ -21,6 +21,70 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0.0431373, 0.0392157, 0.0941176, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeachLoopNight:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -20.0, -80.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "FadeOutFast"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Objects:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0431373, 0.0392157, 0.0941176, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BeachLoopNight:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -20.0, -60.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HUDLayer/Overlay:INTENSITY")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.5, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Objects/Props/Islander/Light2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -288,8 +352,12 @@ shape = SubResource( 1 )
 [node name="HUD" parent="HUDLayer" index="0"]
 visible = true
 
+[node name="Overlay" parent="HUDLayer" index="2"]
+INTENSITY = 0.5
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 anims/FadeOut = SubResource( 2 )
+anims/FadeOutFast = SubResource( 9 )
 anims/HighlightRock = SubResource( 3 )
 anims/RainCoconuts = SubResource( 4 )
 anims/ShowIslander = SubResource( 5 )

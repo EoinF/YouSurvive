@@ -2,6 +2,7 @@ extends Node2D
 
 signal finish_scene(experimenter_data)
 
+var is_islander_dead = false
 
 func set_player_name(player_name):
 	get_node("HUDLayer/HUD/DialogueManager").set_variables({
@@ -20,22 +21,28 @@ func _ready():
 
 
 func _fade_in():
-	var animation_player = get_node("AnimationPlayer")
-	animation_player.play("fade")
+	$AnimationPlayer.play("fade")
+
+
+func _fade_out():
+	$AnimationPlayer.play("fade_out")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "fade":
 		get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
 	if anim_name == "fade_out":
-		get_tree().reload_current_scene()
+		if is_islander_dead:
+			get_tree().reload_current_scene()
+		else:
+			var experiment_data = $Experimenter.get_experiment_data()
+			emit_signal("finish_scene", experiment_data)
+			queue_free()
 
 
 func _on_DialogueManager_finish_dialogue(section_name):
 	if section_name == "Outro":
-		var experiment_data = get_node("Experimenter").get_experiment_data()
-		emit_signal("finish_scene", experiment_data)
-		queue_free()
+		_fade_out()
 
 
 var enemies_score = 0
