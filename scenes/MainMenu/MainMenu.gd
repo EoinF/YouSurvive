@@ -17,13 +17,19 @@ func _ready():
 		save_data = parse_json(save_file.get_as_text())
 		save_file.close()
 	
-	get_node("HintLabel").modulate.a = 0
+	$CanvasModulate/HintLabel.modulate.a = 0
 
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "fadeOut":
+		emit_signal("continue_game", save_data)
+		queue_free()
+	
 
 func _on_NewGame_pressed():
-	get_node("AnimationPlayer").stop()
-	get_node("AnimationPlayer").play("fadeLabel")
-	var new_game_panel = get_node("Panel/CenterContainer/Grid/NewGame")
+	$CanvasModulate/AnimationPlayer.stop()
+	$CanvasModulate/AnimationPlayer.play("fadeLabel")
+	var new_game_panel = $CanvasModulate/Panel/CenterContainer/Grid/NewGame
 	new_game_panel.modulate.a -= 0.30
 	
 	if new_game_panel.modulate.a < 0.1:
@@ -32,7 +38,7 @@ func _on_NewGame_pressed():
 
 
 func _on_ContinueGame_pressed():
-	emit_signal("continue_game", save_data)
+	$CanvasModulate/AnimationPlayer.play("fadeOut")
 
 
 func _on_Credits_pressed():
@@ -41,3 +47,4 @@ func _on_Credits_pressed():
 
 func _on_Settings_pressed():
 	emit_signal("start_settings")
+

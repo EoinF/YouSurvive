@@ -20,8 +20,6 @@ func _on_MainMenu_continue_game(save_data):
 	
 	chapter_scenes.load_scene(save_data["current_level"], save_data)
 
-	remove_child(get_node("MainMenu"))
-
 
 func _on_MainMenu_start_credits():
 	get_node("MainMenu/Credits").visible = true
