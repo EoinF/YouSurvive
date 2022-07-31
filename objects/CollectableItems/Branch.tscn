@@ -15,12 +15,12 @@ display_name = "Branch"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 1.63412, 1.92028 )
-rotation = 37.7187
+rotation = 38.399
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 36.1656
+rotation = 36.8459
 texture = ExtResource( 2 )
 
 [node name="DropSound" type="AudioStreamPlayer2D" parent="CollectableItem"]
@@ -28,3 +28,4 @@ stream = ExtResource( 4 )
 volume_db = -16.0
 pitch_scale = 0.8
 autoplay = true
+bus = "SFX"

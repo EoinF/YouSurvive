@@ -15,31 +15,37 @@ script = ExtResource( 1 )
 stream = ExtResource( 3 )
 volume_db = -10.0
 max_distance = 1000.0
+bus = "SFX"
 
 [node name="Left2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 volume_db = -10.0
 max_distance = 1000.0
+bus = "SFX"
 
 [node name="Left3" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 2 )
 volume_db = -10.0
 max_distance = 1000.0
+bus = "SFX"
 
 [node name="Right1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
 volume_db = -10.0
 max_distance = 1000.0
+bus = "SFX"
 
 [node name="Right2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
 volume_db = -10.0
 max_distance = 1000.0
+bus = "SFX"
 
 [node name="Right3" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 volume_db = -10.0
 max_distance = 1000.0
+bus = "SFX"
 
 [node name="NextSoundTimer" type="Timer" parent="."]
 wait_time = 0.28

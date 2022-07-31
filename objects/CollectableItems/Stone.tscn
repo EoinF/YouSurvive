@@ -23,12 +23,13 @@ volume_db = -8.0
 pitch_scale = 0.5
 autoplay = true
 attenuation = 6.9644
+bus = "SFX"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 2.34147, 3.68658 )
-rotation = 12.0999
+rotation = 14.6969
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 12.788
+rotation = 15.385
 texture = SubResource( 1 )

@@ -183,6 +183,7 @@ texture = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 30 )
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -241,17 +242,20 @@ one_shot = true
 stream = ExtResource( 5 )
 volume_db = -8.0
 pitch_scale = 2.0
+bus = "SFX"
 
 [node name="SlideStop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
 volume_db = -12.0
 pitch_scale = 1.4
+bus = "SFX"
 
 [node name="GruntEffect" parent="." instance=ExtResource( 7 )]
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
 pitch_scale = 0.75
+bus = "SFX"
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="PreAttackTimer" to="." method="_on_PreAttackTimer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

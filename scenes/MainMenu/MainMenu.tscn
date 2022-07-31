@@ -106,6 +106,7 @@ anims/fadeLabel = SubResource( 2 )
 stream = ExtResource( 2 )
 volume_db = -8.0
 autoplay = true
+bus = "Music"
 [connection signal="pressed" from="Panel/CenterContainer/Grid/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="Panel/CenterContainer/Grid/ContinueGame" to="." method="_on_ContinueGame_pressed"]
 [connection signal="pressed" from="Panel/CenterContainer/Grid/Settings" to="." method="_on_Settings_pressed"]

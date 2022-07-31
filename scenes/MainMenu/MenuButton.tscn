@@ -43,4 +43,5 @@ __meta__ = {
 
 [node name="PressedSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+bus = "SFX"
 [connection signal="pressed" from="." to="." method="_on_MenuButton_pressed"]

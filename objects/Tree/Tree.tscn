@@ -54,5 +54,6 @@ one_shot = true
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
+bus = "SFX"
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_InteractionArea_area_entered"]
 [connection signal="timeout" from="InteractionCooldown" to="." method="_on_InteractionCooldown_timeout"]

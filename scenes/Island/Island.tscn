@@ -730,10 +730,12 @@ script = ExtResource( 15 )
 stream = ExtResource( 6 )
 volume_db = -16.0
 autoplay = true
+bus = "SFX"
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -16.0
 autoplay = true
+bus = "Music"
 [connection signal="health_change" from="Objects/Props/Islander" to="HUDLayer/HUD" method="_on_Islander_health_change"]
 [connection signal="spawn_item" from="Objects/Props/Projectiles" to="Objects/Props" method="_on_Projectiles_spawn_item"]

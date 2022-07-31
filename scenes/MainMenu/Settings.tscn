@@ -1,11 +1,37 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/MainMenu/Settings.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts/Small.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Fonts/Large.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/MainMenu/MenuButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Fonts/Regular.tres" type="DynamicFont" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.65098, 0.615686, 0.380392, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.184314, 0.364706, 0.545098, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.113725, 0.286275, 0.462745, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.133333, 0.337255, 0.54902, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 3
 
 [node name="Settings" type="Control"]
 anchor_right = 1.0
@@ -40,31 +66,28 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/margin_right = 100
 custom_constants/margin_top = 8
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 24
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="Panel/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer"]
+margin_left = 100.0
 margin_top = 8.0
-margin_right = 705.0
-margin_bottom = 69.0
-size_flags_vertical = 0
+margin_right = 605.0
+margin_bottom = 444.0
+custom_constants/vseparation = 24
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/CenterContainer"]
-margin_left = 318.0
-margin_right = 386.0
-margin_bottom = 61.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Title" type="Label" parent="Panel/MarginContainer/CenterContainer/GridContainer"]
-margin_right = 68.0
+[node name="Title" type="Label" parent="Panel/MarginContainer/GridContainer"]
+margin_right = 505.0
 margin_bottom = 22.0
+size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 3 )
 text = "Settings"
 align = 1
@@ -72,19 +95,97 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Main Volume" type="Label" parent="Panel/MarginContainer/CenterContainer/GridContainer"]
-margin_top = 26.0
-margin_right = 68.0
-margin_bottom = 41.0
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/GridContainer"]
+margin_top = 46.0
+margin_right = 505.0
+margin_bottom = 167.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 8
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/GridContainer/GridContainer"]
+margin_right = 505.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+
+[node name="Main Volume" type="Label" parent="Panel/MarginContainer/GridContainer/GridContainer/GridContainer"]
+margin_right = 505.0
+margin_bottom = 15.0
 custom_fonts/font = ExtResource( 2 )
 text = "Main volume"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/CenterContainer/GridContainer"]
-margin_top = 45.0
-margin_right = 68.0
-margin_bottom = 61.0
+[node name="MainVolumeSlider" type="HSlider" parent="Panel/MarginContainer/GridContainer/GridContainer/GridContainer"]
+margin_top = 19.0
+margin_right = 505.0
+margin_bottom = 35.0
 size_flags_horizontal = 3
-value = 30.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="GridContainer2" type="GridContainer" parent="Panel/MarginContainer/GridContainer/GridContainer"]
+margin_top = 43.0
+margin_right = 505.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+
+[node name="Music Volume" type="Label" parent="Panel/MarginContainer/GridContainer/GridContainer/GridContainer2"]
+margin_right = 505.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 2 )
+text = "Music volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Panel/MarginContainer/GridContainer/GridContainer/GridContainer2"]
+margin_top = 19.0
+margin_right = 505.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="GridContainer3" type="GridContainer" parent="Panel/MarginContainer/GridContainer/GridContainer"]
+margin_top = 86.0
+margin_right = 505.0
+margin_bottom = 121.0
+size_flags_horizontal = 3
+
+[node name="SFX Volume" type="Label" parent="Panel/MarginContainer/GridContainer/GridContainer/GridContainer3"]
+margin_right = 505.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 2 )
+text = "SFX volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SfxVolumeSlider" type="HSlider" parent="Panel/MarginContainer/GridContainer/GridContainer/GridContainer3"]
+margin_top = 19.0
+margin_right = 505.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Back Button" parent="Panel/MarginContainer" instance=ExtResource( 5 )]
+margin_left = 419.0
+margin_top = 384.0
+margin_right = 605.0
+margin_bottom = 444.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 6 )
+text = "Main Menu"
+[connection signal="value_changed" from="Panel/MarginContainer/GridContainer/GridContainer/GridContainer/MainVolumeSlider" to="." method="_on_MainVolumeSlider_value_changed"]
+[connection signal="value_changed" from="Panel/MarginContainer/GridContainer/GridContainer/GridContainer2/MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
+[connection signal="value_changed" from="Panel/MarginContainer/GridContainer/GridContainer/GridContainer3/SfxVolumeSlider" to="." method="_on_SfxVolumeSlider_value_changed"]
+[connection signal="pressed" from="Panel/MarginContainer/Back Button" to="." method="_on_Back_Button_pressed"]

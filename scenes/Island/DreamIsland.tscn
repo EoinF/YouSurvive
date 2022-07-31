@@ -12,7 +12,6 @@
 [ext_resource path="res://assets/Audio/beach_loop_night.ogg" type="AudioStream" id=10]
 [ext_resource path="res://scenes/Island/AIController.gd" type="Script" id=11]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.61711
 
@@ -111,10 +110,11 @@ script = ExtResource( 11 )
 [node name="GhostAIController" type="Node" parent="."]
 script = ExtResource( 4 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BeachLoopNight" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = -20.0
 autoplay = true
+bus = "SFX"
 [connection signal="spawn_item" from="Objects/Projectiles" to="Objects/Props" method="_on_Projectiles_spawn_item"]
 [connection signal="throw_stone" from="Objects/Props/Islander" to="Objects/Projectiles" method="_on_Islander_throw_stone"]
 [connection signal="timeout" from="Objects/Props/Islander/StaminaTimer" to="Objects/Props/Islander" method="_on_StaminaTimer_timeout"]
