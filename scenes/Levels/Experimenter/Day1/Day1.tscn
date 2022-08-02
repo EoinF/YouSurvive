@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://objects/Experimenter/Experimenter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Base/BaseDay1.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/AI/IslanderAIController.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/AI/Pathfinder.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Levels/Experimenter/Day1/Day1.gd" type="Script" id=9]
+[ext_resource path="res://scenes/PauseMenu/PauseMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/PathfinderTileset.png" type="Texture" id=14]
 [ext_resource path="res://scenes/Levels/Base/ExperimenterController.gd" type="Script" id=18]
 [ext_resource path="res://scenes/UIMessages/DialogueManager2.tscn" type="PackedScene" id=22]
@@ -178,8 +179,11 @@ script = ExtResource( 18 )
 wait_time = 50.0
 one_shot = true
 autostart = true
+
+[node name="PauseMenu" parent="." index="11" instance=ExtResource( 10 )]
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="die" from="Objects/Props/Islander" to="." method="_on_Islander_die"]
+[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="Day1Objectives" method="_on_Islander_inventory_slot_change"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
 [connection signal="body_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_body_entered"]
@@ -195,6 +199,7 @@ autostart = true
 [connection signal="place_item" from="Experimenter" to="HUDLayer/HUD/PlacementTutorial" method="_on_Experimenter_place_item"]
 [connection signal="sees_islander" from="Experimenter" to="Day1Objectives" method="_on_Experimenter_sees_islander"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="objectives_updated" from="Day1Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
 [connection signal="objectives_updated" from="Day1Objectives" to="." method="_on_Day1Objectives_objectives_updated"]
 
 [editable path="Experimenter"]
