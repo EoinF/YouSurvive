@@ -44,7 +44,7 @@ func enable_ai():
 
 func _ready():
 	for prop in get_owner().get_node("Objects/Props").get_children():
-		if prop.is_in_group("AI"):
+		if prop.is_in_group("AI") and not prop.is_in_group("Sea"):
 			ai_nodes.append(AINode.new(prop))
 
 
@@ -88,5 +88,5 @@ func _process(delta):
 
 
 func _on_Props_prop_added(prop):
-	if prop.is_in_group("AI"):
+	if prop.is_in_group("AI") and not prop.is_in_group("Sea"):
 		ai_nodes.append(AINode.new(prop))
