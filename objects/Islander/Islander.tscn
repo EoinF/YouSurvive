@@ -94,51 +94,51 @@ atlas = ExtResource( 17 )
 region = Rect2( 66, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 11 )
 region = Rect2( 0, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 11 )
 region = Rect2( 22, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 11 )
 region = Rect2( 44, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 11 )
 region = Rect2( 66, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 11 )
+atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 11 )
+atlas = ExtResource( 14 )
 region = Rect2( 22, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 11 )
+atlas = ExtResource( 14 )
 region = Rect2( 44, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 11 )
+atlas = ExtResource( 14 )
 region = Rect2( 66, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 14 )
+atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 14 )
+atlas = ExtResource( 10 )
 region = Rect2( 22, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 14 )
+atlas = ExtResource( 10 )
 region = Rect2( 44, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 14 )
+atlas = ExtResource( 10 )
 region = Rect2( 66, 0, 22, 40 )
 
 [sub_resource type="AtlasTexture" id=30]
@@ -184,15 +184,25 @@ animations = [ {
 "name": "Stand_UpRight",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "Stand_Down",
+"name": "Stand_Up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "Stand_UpLeft",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
 "name": "Run_Right",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "Stand_DownRight",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
@@ -201,32 +211,22 @@ animations = [ {
 }, {
 "frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
-"name": "Run_Down",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "Stand_DownRight",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
-"loop": true,
 "name": "Run_DownRight",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 9 ) ],
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
-"name": "Stand_UpLeft",
-"speed": 5.0
+"name": "Run_Up",
+"speed": 10.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "Stand_Up",
+"name": "Stand_Right",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
 "loop": true,
-"name": "Run_Up",
+"name": "Run_Down",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
@@ -234,9 +234,9 @@ animations = [ {
 "name": "Run_Left",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
-"name": "Stand_Right",
+"name": "Stand_Down",
 "speed": 5.0
 } ]
 
@@ -373,6 +373,8 @@ bus = "SFX"
 
 [node name="PickUpItem" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 25 )
+volume_db = -7.0
+pitch_scale = 1.15
 bus = "SFX"
 [connection signal="animation_finished" from="AttackPivotPoint/AttackAnimation" to="." method="_on_AttackAnimation_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

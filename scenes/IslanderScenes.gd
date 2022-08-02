@@ -1,9 +1,12 @@
 extends Node
 
 signal finish_scenes
+signal set_active_scene(scene)
 
 var save_data
 var constants
+
+var BASE_PATH = "res://scenes/Levels/Islander/"
 
 func _ready():
 	constants = preload("res://scripts/constants.gd").new()
@@ -37,7 +40,18 @@ func load_scene(scene_name, _save_data = null):
 	if _save_data != null:
 		save_data = _save_data
 
+	_instance_scene(scene_name)
+	
+	var new_scene = get_node(scene_name)
+	new_scene.connect("finish_scene", self, "_on_" + scene_name + "_finish_scene")
+	new_scene.set_experiment_data(save_data[scene_name])
+	emit_signal("set_active_scene", new_scene)
+
+func _instance_scene(scene_name):
+	if get_node(scene_name) == null:
+		var scene_file = load(BASE_PATH + scene_name + "/" + scene_name + ".tscn")
+		add_child(scene_file.instance())
+		return
+		
 	var scene_placeholder = get_node(scene_name)
 	scene_placeholder.replace_by_instance()
-	get_node(scene_name).connect("finish_scene", self, "_on_" + scene_name + "_finish_scene")
-	get_node(scene_name).set_experiment_data(save_data[scene_name])

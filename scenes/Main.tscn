@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/MainMenu/MainMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Main.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/IslanderScenes.gd" type="Script" id=4]
 [ext_resource path="res://scenes/MainMenu/Credits.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/MainMenu/Settings.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/PauseMenu/PauseMenu.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
@@ -17,10 +18,12 @@ __meta__ = {
 script = ExtResource( 4 )
 
 [node name="Day1" parent="IslanderScenes" instance_placeholder="res://scenes/Levels/Islander/Day1/Day1.tscn"]
+pause_mode = 0
 
 [node name="Day2" parent="IslanderScenes" instance_placeholder="res://scenes/Levels/Islander/Day2/Day2.tscn"]
 
 [node name="Day3" parent="IslanderScenes" instance_placeholder="res://scenes/Levels/Islander/Day3/Day3.tscn"]
+pause_mode = 0
 
 [node name="Outro" parent="IslanderScenes" instance_placeholder="res://scenes/Levels/Islander/Outro/Outro.tscn"]
 
@@ -30,6 +33,7 @@ script = ExtResource( 3 )
 [node name="Intro" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Intro/Intro.tscn"]
 
 [node name="Day1" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Day1/Day1.tscn"]
+pause_mode = 0
 
 [node name="Night1" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Night1/Night1.tscn"]
 
@@ -38,20 +42,28 @@ script = ExtResource( 3 )
 [node name="Night2" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Night2/Night2.tscn"]
 
 [node name="Day3" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Day3/Day3.tscn"]
+pause_mode = 0
 
 [node name="Outro" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Outro/Outro.tscn"]
 
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
+layer = 127
 
 [node name="Credits" parent="MainMenu" instance=ExtResource( 5 )]
 visible = false
 
 [node name="Settings" parent="MainMenu" instance=ExtResource( 6 )]
 visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource( 7 )]
 [connection signal="finish_scenes" from="IslanderScenes" to="." method="_on_IslanderScenes_finish_scenes"]
+[connection signal="set_active_scene" from="IslanderScenes" to="." method="_on_IslanderScenes_set_active_scene"]
 [connection signal="finish_scenes" from="ExperimenterScenes" to="." method="_on_ExperimenterScenes_finish_scenes"]
+[connection signal="set_active_scene" from="ExperimenterScenes" to="." method="_on_ExperimenterScenes_set_active_scene"]
 [connection signal="continue_game" from="MainMenu" to="." method="_on_MainMenu_continue_game"]
 [connection signal="start_credits" from="MainMenu" to="." method="_on_MainMenu_start_credits"]
 [connection signal="start_settings" from="MainMenu" to="." method="_on_MainMenu_start_settings"]
 [connection signal="finish_scene" from="MainMenu/Credits" to="." method="_on_Credits_finish_scene"]
 [connection signal="finish_scene" from="MainMenu/Settings" to="." method="_on_Settings_finish_scene"]
+[connection signal="main_menu_pressed" from="PauseMenu" to="." method="_on_PauseMenu_main_menu_pressed"]
+[connection signal="resume_pressed" from="PauseMenu" to="." method="_on_PauseMenu_resume_pressed"]

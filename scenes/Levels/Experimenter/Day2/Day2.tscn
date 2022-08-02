@@ -43,6 +43,7 @@
 1/z_index = 0
 
 [node name="ExperimenterDay2" instance=ExtResource( 1 )]
+pause_mode = 2
 script = ExtResource( 20 )
 
 [node name="Islander" parent="Objects/Props" index="0"]
@@ -50,6 +51,9 @@ MAX_HEALTH = 1500
 
 [node name="HUD" parent="HUDLayer" index="0"]
 INVENTORY_TYPE = "Experimenter"
+
+[node name="Day2Label" parent="HUDLayer/HUD" index="6"]
+self_modulate = Color( 1, 1, 1, 0 )
 
 [node name="Events" type="Node" parent="HUDLayer/HUD" index="7"]
 script = ExtResource( 2 )
@@ -142,12 +146,12 @@ visible = false
 [connection signal="finish_dialogue" from="HUDLayer/HUD/DialogueManager" to="." method="_on_DialogueManager_finish_dialogue"]
 [connection signal="trigger_event" from="HUDLayer/HUD/DialogueManager" to="HUDLayer/HUD/Events" method="_on_DialogueManager_trigger_event"]
 [connection signal="finish" from="HUDLayer/HUD/GameOver" to="." method="_on_GameOver_finish"]
-[connection signal="objectives_updated" from="Day2Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
 [connection signal="objectives_updated" from="Day2Objectives" to="." method="_on_Day2Objectives_objectives_updated"]
+[connection signal="objectives_updated" from="Day2Objectives" to="HUDLayer/HUD" method="_on_objectives_updated"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
-[connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 [connection signal="place_item" from="Experimenter" to="." method="_on_Experimenter_place_item"]
 [connection signal="place_item" from="Experimenter" to="Day2Objectives" method="_on_Experimenter_place_item"]
+[connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 
 [editable path="Experimenter"]

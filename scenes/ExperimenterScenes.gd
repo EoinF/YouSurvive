@@ -1,8 +1,9 @@
 extends Node
 
 signal finish_scenes
+signal set_active_scene(scene)
 
-
+var BASE_PATH = "res://scenes/Levels/Experimenter/"
 var DEFAULT_SAVE_DATA = {
 	"player_name": "test"
 }
@@ -32,14 +33,13 @@ func load_scene(scene_name, _save_data = null):
 	if _save_data != null:
 		save_data = _save_data
 
-	var scene_placeholder = get_node(scene_name)
-	scene_placeholder.replace_by_instance()
+	_instance_scene(scene_name)
 	
 	var new_scene = get_node(scene_name)
 	if new_scene.has_method("set_player_name"):
 		new_scene.set_player_name(save_data.player_name)
-	print("starting experimenter scene " + "_on_" + scene_name + "finish_scene")
 	new_scene.connect("finish_scene", self, "_on_" + scene_name + "_finish_scene")
+	emit_signal("set_active_scene", new_scene)
 
 
 func load_intro():
@@ -81,3 +81,13 @@ func _on_Day3_finish_scene(experiment_data):
 
 func _on_Outro_finish_scene():
 	emit_signal("finish_scenes")
+
+
+func _instance_scene(scene_name):
+	if get_node(scene_name) == null:
+		var scene_file = load(BASE_PATH + scene_name + "/" + scene_name + ".tscn")
+		add_child(scene_file.instance())
+		return
+		
+	var scene_placeholder = get_node(scene_name)
+	scene_placeholder.replace_by_instance()

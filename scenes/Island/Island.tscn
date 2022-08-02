@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://objects/Rock/Rock.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/Islander/Islander.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://objects/Projectiles/Projectiles.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/Audio/island_music_loop.ogg" type="AudioStream" id=8]
 [ext_resource path="res://scenes/Island/Props.gd" type="Script" id=9]
+[ext_resource path="res://scenes/PauseMenu/PauseMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Island/AIController.gd" type="Script" id=15]
 [ext_resource path="res://scenes/Island/IslandLayout.tscn" type="PackedScene" id=16]
 
@@ -19,6 +20,7 @@ radius = 4.61711
 radius = 203.455
 
 [node name="Island" type="Node2D"]
+pause_mode = 1
 
 [node name="Objects" type="CanvasModulate" parent="."]
 
@@ -737,5 +739,7 @@ stream = ExtResource( 8 )
 volume_db = -16.0
 autoplay = true
 bus = "Music"
+
+[node name="PauseMenu" parent="." instance=ExtResource( 10 )]
 [connection signal="health_change" from="Objects/Props/Islander" to="HUDLayer/HUD" method="_on_Islander_health_change"]
 [connection signal="spawn_item" from="Objects/Props/Projectiles" to="Objects/Props" method="_on_Projectiles_spawn_item"]

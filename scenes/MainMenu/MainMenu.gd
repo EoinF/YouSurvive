@@ -5,11 +5,28 @@ signal start_credits
 signal start_settings
 
 var save_data
-
 var constants
+
+var is_active
+
+
+func show():
+	is_active = true
+	$CanvasModulate.color = Color.white
+	$CanvasModulate.visible = true
+	$CanvasModulate/MusicLoop.play()
+	$CanvasModulate/MusicLoop.set_volume_db(-8)
+
+
+func hide():
+	is_active = false
+	$CanvasModulate.visible = false
+	$CanvasModulate/MusicLoop.stop()
+
 
 func _ready():
 	constants = preload("res://scripts/constants.gd").new()
+	is_active = true
 	
 	var save_file = File.new()
 	if save_file.file_exists(constants.SAVE_FILE_LOCATION):
@@ -23,7 +40,6 @@ func _ready():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "fadeOut":
 		emit_signal("continue_game", save_data)
-		queue_free()
 	
 
 func _on_NewGame_pressed():

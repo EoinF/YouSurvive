@@ -131,11 +131,11 @@ bus = "SFX"
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
+volume_db = -8.0
 bus = "SFX"
 
 [node name="SpawnSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
-volume_db = -4.0
 pitch_scale = 4.0
 autoplay = true
 bus = "SFX"
