@@ -27,9 +27,9 @@ bus = "SFX"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 2.34147, 3.68658 )
-rotation = 14.6969
+rotation = 15.9975
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 15.385
+rotation = 16.6856
 texture = SubResource( 1 )
