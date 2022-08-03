@@ -13,13 +13,17 @@ var is_paused = true
 
 
 func _ready():
-	exploration_nodes = get_node("ExplorationNodes").get_children()
-	exploration_nodes.shuffle()
 	goals.push_back(IdleGoal.new())
 	goals.push_back(DodgeGoal.new("boar"))
 	goals.push_back(DodgeGoal.new("porcupine"))
 	goals.push_back(DodgeGoal.new("crab"))
+	goals.push_back(DodgeGoal.new("shark"))
 	current_goal = goals[0]
+	
+	if $ExplorationNodes == null:
+		return
+	exploration_nodes = $ExplorationNodes.get_children()
+	exploration_nodes.shuffle()
 
 
 func add_kill_goal(target_type, limit):

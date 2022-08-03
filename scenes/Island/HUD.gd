@@ -5,7 +5,6 @@ signal set_active_item(item_type)
 
 var _message_use_coconut_without_rock = "You need a rock to break open the coconut"
 
-
 export var INVENTORY_TYPE = "Islander"
 
 
