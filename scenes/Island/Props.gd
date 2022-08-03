@@ -2,6 +2,7 @@ extends YSort
 
 signal prop_added(node)
 signal enemy_killed(node)
+signal enemy_struggle
 
 var scene_map = {
 	"branch": preload("res://objects/CollectableItems/Branch.tscn"),
@@ -21,6 +22,9 @@ func _ready():
 		
 		if child.is_in_group("AI"):
 			child.connect("dies", self, "_on_enemy_dies")
+			
+		if child.is_in_group("Sea"):
+			child.connect("struggle", self, "_on_enemy_struggle")
 
 
 func _add_prop(prop, source_position, owner_instance_id):
@@ -31,6 +35,10 @@ func _add_prop(prop, source_position, owner_instance_id):
 
 	if prop.is_in_group("AI"):
 		prop.connect("dies", self, "_on_enemy_dies")
+		
+	if prop.is_in_group("Sea"):
+		prop.connect("struggle", self, "_on_enemy_struggle")
+		
 
 	emit_signal("prop_added", prop)
 
@@ -68,3 +76,7 @@ func _on_place_item(item_type, source_position):
 
 func _on_enemy_dies(node):
 	emit_signal("enemy_killed", node)
+
+
+func _on_enemy_struggle():
+	emit_signal("enemy_struggle")

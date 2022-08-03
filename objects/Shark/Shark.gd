@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal dies(node)
+signal struggle
 
 var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
@@ -90,3 +91,7 @@ func _die():
 	
 	get_node("AnimatedSprite").stop()
 	get_node("AttackArea/Shape").set_deferred("disabled", true)
+
+
+func _on_StruggleEffect_finish_iteration():
+	emit_signal("struggle")

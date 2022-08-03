@@ -92,3 +92,4 @@ autoplay = true
 bus = "SFX"
 
 [node name="StruggleEffect" parent="." instance=ExtResource( 8 )]
+[connection signal="finish_iteration" from="StruggleEffect" to="." method="_on_StruggleEffect_finish_iteration"]

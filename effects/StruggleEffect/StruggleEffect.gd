@@ -1,5 +1,7 @@
 extends Node
 
+signal finish_iteration
+
 var OFFSET_BEGIN_SCALE = 6
 var OFFSET_END_SCALE = 0
 
@@ -10,6 +12,7 @@ var _start
 var _forward_cutoff
 var _backward_cutoff
 var is_forwards = false
+
 
 func _ready():
 	var parent = get_parent()
@@ -36,6 +39,7 @@ func _start_new_iteration():
 func _on_Tween_tween_completed(object, key):
 	var parent = get_parent()
 	if is_forwards:
+		emit_signal("finish_iteration")
 		_start_new_iteration()
 	else:
 		$Tween.interpolate_property(parent, "position", 

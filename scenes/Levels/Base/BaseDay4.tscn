@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/Island/AIController.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Levels/Base/SeaAIController.gd" type="Script" id=2]
 [ext_resource path="res://objects/Islander/Islander.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Island/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Audio/raft_music_loop.ogg" type="AudioStream" id=5]
+[ext_resource path="res://effects/ShakeEffect/ShakeEffect.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Island/IslandLayout.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/Projectiles/Projectiles.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Island/TooltipContainer.tscn" type="PackedScene" id=9]
@@ -75,6 +76,9 @@ collision_layer = 2
 collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 1179674, 7, 0, 1179675, 7, 1, 1179676, 7, 1, 1179677, 7, 1, 1179678, 7, 1, 1179679, 7, 1, 1179680, 7, 1, 1179681, 7, 1, 1179682, 7, 1, 1179683, 7, 4, 1245210, 7, 65536, 1245211, 7, 65537, 1245212, 7, 65537, 1245213, 7, 65537, 1245214, 7, 65537, 1245215, 7, 65537, 1245216, 7, 65537, 1245217, 7, 65537, 1245218, 7, 65537, 1245219, 7, 65540, 1310746, 7, 65536, 1310747, 7, 65537, 1310748, 7, 65537, 1310749, 7, 65537, 1310750, 7, 65537, 1310751, 7, 65537, 1310752, 7, 65537, 1310753, 7, 65537, 1310754, 7, 65537, 1310755, 7, 65540, 1376282, 7, 65536, 1376283, 7, 65537, 1376284, 7, 65537, 1376285, 7, 65537, 1376286, 7, 65537, 1376287, 7, 65537, 1376288, 7, 65537, 1376289, 7, 65537, 1376290, 7, 65537, 1376291, 7, 65540, 1441818, 7, 65536, 1441819, 7, 65537, 1441820, 7, 65537, 1441821, 7, 65537, 1441822, 7, 65537, 1441823, 7, 65537, 1441824, 7, 65537, 1441825, 7, 65537, 1441826, 7, 65537, 1441827, 7, 65540, 1507354, 7, 65536, 1507355, 7, 65537, 1507356, 7, 65537, 1507357, 7, 65537, 1507358, 7, 65537, 1507359, 7, 65537, 1507360, 7, 65537, 1507361, 7, 65537, 1507362, 7, 65537, 1507363, 7, 65540, 1572890, 7, 65536, 1572891, 7, 65537, 1572892, 7, 65537, 1572893, 7, 65537, 1572894, 7, 65537, 1572895, 7, 65537, 1572896, 7, 65537, 1572897, 7, 65537, 1572898, 7, 65537, 1572899, 7, 65540, 1638426, 7, 65536, 1638427, 7, 65537, 1638428, 7, 65537, 1638429, 7, 65537, 1638430, 7, 65537, 1638431, 7, 65537, 1638432, 7, 65537, 1638433, 7, 65537, 1638434, 7, 65537, 1638435, 7, 65540, 1703962, 7, 131072, 1703963, 7, 131073, 1703964, 7, 131073, 1703965, 7, 131073, 1703966, 7, 131073, 1703967, 7, 131073, 1703968, 7, 131073, 1703969, 7, 131073, 1703970, 7, 131073, 1703971, 7, 131076 )
+
+[node name="ShakeEffect" parent="Objects/Raft" instance=ExtResource( 6 )]
+is_repeating = true
 
 [node name="Props" type="YSort" parent="Objects"]
 script = ExtResource( 10 )
