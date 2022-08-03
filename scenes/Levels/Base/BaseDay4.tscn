@@ -80,6 +80,7 @@ script = ExtResource( 10 )
 
 [node name="Islander" parent="Objects/Props" instance=ExtResource( 3 )]
 position = Vector2( 499.573, 365.67 )
+IS_ON_WOOD = true
 
 [node name="PlayerInteraction" type="Area2D" parent="Objects/Props/Islander"]
 collision_layer = 0

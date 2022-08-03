@@ -10,6 +10,7 @@ export var SPEED = 8 * 1000
 export var IS_IMMUNE_TO_STONE = true
 export var MAX_HEALTH = 1000
 export var FOOTSTEPS_VOLUME_OFFSET = 0
+export var IS_ON_WOOD = false
 
 var object_type = "islander"
 
@@ -98,7 +99,7 @@ func move(x, y):
 		directionHorizontal = "Right"
 	
 	_update_active_sprite("Run", directionVertical + directionHorizontal)
-	get_node("WalkEffect").start()
+	get_node("WalkEffect").start(IS_ON_WOOD)
 	
 
 
