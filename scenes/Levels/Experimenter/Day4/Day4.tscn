@@ -39,6 +39,9 @@ script = ExtResource( 5 )
 
 [node name="ObjectivesTimer" type="Timer" parent="." index="10"]
 wait_time = 1e+09
+[connection signal="enemy_struggle" from="Objects/Props" to="." method="_on_Props_enemy_struggle"]
+[connection signal="prop_added" from="Objects/Props" to="SeaAIController" method="_on_Props_prop_added"]
+[connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="mouse_entered" from="HUDLayer/HUD" to="Experimenter" method="_on_MainContainer_mouse_entered"]
 [connection signal="mouse_exited" from="HUDLayer/HUD" to="Experimenter" method="_on_MainContainer_mouse_exited"]
 [connection signal="set_active_item" from="HUDLayer/HUD" to="Experimenter" method="_on_HUD_set_active_item"]

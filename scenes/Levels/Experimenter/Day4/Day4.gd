@@ -17,6 +17,8 @@ func set_player_name(name: String):
 func _ready():
 	$Experimenter.enable_controls()
 	$IslanderAIController.is_paused = false
+	$AIController.enable_ai()
+	$SeaAIController.enable_ai()
 	# if standalone skip the fade in animation
 	if get_owner() == null:
 		get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
@@ -61,3 +63,7 @@ func _on_Islander_die():
 
 func _on_GameOver_finish():
 	get_node("AnimationPlayer").play("fade_out")
+
+
+func _on_Props_enemy_struggle():
+	$Objects/Raft.hit()

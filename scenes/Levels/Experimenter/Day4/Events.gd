@@ -14,10 +14,10 @@ func gift_weapons():
 
 func gift_sharks():
 	var owner = get_owner()
-	#owner.get_node("Experimenter").pick_up_item("shark", 1)
+	owner.get_node("Experimenter").pick_up_item("shark", 99)
 	
 	
 func gift_crabs():
 	var owner = get_owner()
-	owner.get_node("Experimenter").pick_up_item("crab", 30)
+	owner.get_node("Experimenter").pick_up_item("crab", 99)
 	

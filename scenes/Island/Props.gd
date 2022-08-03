@@ -11,7 +11,8 @@ var scene_map = {
 	"stick": preload("res://objects/CollectableItems/Stick.tscn"),
 	"crab": preload("res://objects/Crab/Crab.tscn"),
 	"boar": preload("res://objects/Boar/Boar.tscn"),
-	"porcupine": preload("res://objects/Porcupine/Porcupine.tscn")
+	"porcupine": preload("res://objects/Porcupine/Porcupine.tscn"),
+	"shark": preload("res://objects/Shark/Shark.tscn")
 }
 
 func _ready():
