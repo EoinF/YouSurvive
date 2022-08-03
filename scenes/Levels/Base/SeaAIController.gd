@@ -3,7 +3,7 @@ extends Node
 enum AIState {
 	FINDING_TARGET
 	APPROACHING
-	ATTACKING
+	STRUGGLING
 }
 
 
@@ -63,13 +63,13 @@ func _process(delta):
 				var direction = ai_node.target - ai_node.node.global_position
 				ai_node.set_state(AIState.APPROACHING)
 			AIState.APPROACHING:
-				if ai_node.target.distance_to(ai_node.node.global_position) < 5:
-					ai_node.set_state(AIState.ATTACKING)
-					return
 				var direction = ai_node.target - ai_node.node.global_position
+				if ai_node.target.distance_to(ai_node.node.global_position) < 5:
+					ai_node.set_state(AIState.STRUGGLING)
+					ai_node.node.struggle(ai_node.target, direction)
+					return
 				ai_node.node.move(direction.x, direction.y)
-			AIState.ATTACKING:
-				# TODO: attack
+			AIState.STRUGGLING:
 				pass
 
 
