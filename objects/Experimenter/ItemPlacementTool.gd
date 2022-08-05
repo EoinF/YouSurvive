@@ -4,10 +4,17 @@ signal place_item(item_type, location)
 
 var selected_item_type
 
-var bodies_entered = {}
+var SEA_TYPES = [
+	"shark"
+]
+
+var land_bodies_entered = {}
+var sea_bodies_entered = {}
 var is_mouse_in_game_scene = false
 var _is_enabled = false
-var is_blocked = false
+var is_land_placement_active = true
+var is_land_blocked = false
+var is_sea_blocked = false
 var is_placing = false
 var is_physics_processed = false
 var physics_ticks = 0
@@ -20,7 +27,8 @@ func _process(_delta):
 	if not is_placing:
 		self.position = get_global_mouse_position()
 	
-	if is_blocked:
+	if (is_land_placement_active and is_land_blocked) or \
+		(not is_land_placement_active and is_sea_blocked):
 		is_placing = false
 		return
 	
@@ -40,6 +48,7 @@ func _physics_process(_delta):
 		physics_ticks += 1
 	else:
 		physics_ticks = 0
+
 
 func enable_item_placement():
 	_is_enabled = true
@@ -63,19 +72,7 @@ func set_item_type(item_type):
 	if item_type != null and _is_enabled:
 		get_node("Sprites/" + item_type).visible = true
 		get_node("CircleSprite").visible = true
-
-
-func _on_PlacementSensor_body_entered(body):
-	bodies_entered[body.get_instance_id()] = body
-	is_blocked = true
-	self.modulate = Color.red
-
-
-func _on_PlacementSensor_body_exited(body):
-	bodies_entered.erase(body.get_instance_id())
-	if bodies_entered.empty():
-		is_blocked = false
-		self.modulate = Color.white
+		is_land_placement_active = not item_type in SEA_TYPES
 
 
 func _on_MainContainer_mouse_entered():
@@ -86,3 +83,35 @@ func _on_MainContainer_mouse_entered():
 func _on_MainContainer_mouse_exited():
 	self.visible = false
 	is_mouse_in_game_scene = false
+
+
+func _on_LandPlacementSensor_body_entered(body):
+	land_bodies_entered[body.get_instance_id()] = body
+	is_land_blocked = true
+	if is_land_placement_active:
+		self.modulate = Color.red
+
+
+func _on_LandPlacementSensor_body_exited(body):
+	land_bodies_entered.erase(body.get_instance_id())
+	if not land_bodies_entered.empty():
+		return
+	is_land_blocked = false
+	if is_land_placement_active:
+		self.modulate = Color.white
+
+
+func _on_SeaPlacementSensor_body_entered(body):
+	sea_bodies_entered[body.get_instance_id()] = body
+	is_sea_blocked = true
+	if not is_land_placement_active:
+		self.modulate = Color.red
+
+
+func _on_SeaPlacementSensor_body_exited(body):
+	sea_bodies_entered.erase(body.get_instance_id())
+	if not sea_bodies_entered.empty():
+		return
+	is_sea_blocked = false
+	if not is_land_placement_active:
+		self.modulate = Color.white
