@@ -32,16 +32,27 @@
       "type": "text",
       "content": "They've already started their search for branches."
     },
+    {
+      "type": "text",
+      "content": "But there aren't enough on the island"
+    },
     { "type": "event", "event_name": "gift_branches" },
     {
       "type": "text",
-      "content": "We just need to add some more for our test subject."
+      "content": "Check out the inventory in the top left."
     },
     {
       "type": "text",
-      "content": "But try to make it at least a little challenging"
+      "content": "We've added some branches there."
     },
-    { "type": "text", "content": "and scatter them reasonably well." },
+    {
+      "type": "text",
+      "content": "Scatter them throughout the island however it may please."
+    },
+    {
+      "type": "text",
+      "content": "But try to make it at least a little challenging."
+    },
     { "type": "event", "event_name": "stop_camera_follow" }
   ],
   "Complete - Slow": [
@@ -71,11 +82,19 @@
   "Outro": [
     {
       "type": "text",
-      "content": "So we see, by providing a personal goal for the test subject,"
+      "content": "Today was about providing a personal goal for the test subject,"
     },
     {
       "type": "text",
-      "content": "for which their own needs come first, the test subject will become aware of their individuality"
+      "content": "for which their own needs come first."
+    },
+    {
+      "type": "text",
+      "content": "With this the test subject will become aware of their individuality"
+    },
+    {
+      "type": "text",
+      "content": "We continue tomorrow..."
     }
   ]
 }

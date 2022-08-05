@@ -9,11 +9,19 @@
     { "type": "text", "content": "Today we combine our previous ideas." },
     {
       "type": "text",
-      "content": "We provide a personal goal and mix in some conflict to spice things up."
+      "content": "We provide a personal goal and mix in some conflict to supplement it."
     },
     {
       "type": "text",
-      "content": "The test subject needs more branches for shelter. And coconuts for food."
+      "content": "It's time for the test subject to leave the island."
+    },
+    {
+      "type": "text",
+      "content": "But first they will need materials to build a raft."
+    },
+    {
+      "type": "text",
+      "content": "And some food supplies to survive the journey."
     },
     {
       "type": "event",
@@ -25,13 +33,17 @@
     },
     {
       "type": "text",
-      "content": "We want to make this challenging by interposing some predators."
+      "content": "We will make this challenging by interposing some predators."
     },
     {
       "type": "event",
       "event_name": "enable_ai"
     },
-    { "type": "text", "content": "Put them to work." }
+    {
+      "type": "text",
+      "content": "Their goal is to collect branches and coconuts."
+    },
+    { "type": "text", "content": "So put them to work." }
   ],
   "Coconuts collected": [
     {
@@ -67,15 +79,23 @@
   "Outro": [
     {
       "type": "text",
-      "content": "Through combining goals and conflict,"
+      "content": "We ensure the test subject has some personal goals to strive for."
     },
     {
       "type": "text",
-      "content": "we instilled a feeling of separation in the test subject."
+      "content": "Without goals there would be no meaning for them."
     },
     {
       "type": "text",
-      "content": "They had to fend for themselves and fight off the others."
+      "content": "Identity is shaped by purpose."
+    },
+    {
+      "type": "text",
+      "content": "And purpose is only found outside of oneself."
+    },
+    {
+      "type": "text",
+      "content": "Tomorrow we complete our experiment, with a final test..."
     }
   ]
 }

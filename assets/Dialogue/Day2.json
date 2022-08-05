@@ -12,16 +12,24 @@
     },
     {
       "type": "text",
-      "content": "Place 15 predators and then we can begin."
+      "content": "For without the \"other\" there is no self."
     },
-    { "type": "text", "content": "Here are the options:" },
+    {
+      "type": "text",
+      "content": "We want to set up the island with 15 predators."
+    },
+    {
+      "type": "text",
+      "content": "The test subject will not be aware of anything until we choose."
+    },
+    { "type": "text", "content": "Here are the predators:" },
     {
       "type": "event",
       "event_name": "gift_crabs"
     },
     {
       "type": "text",
-      "content": "The meek crab barely presents a challenge."
+      "content": "Firstly, the meek crab, which barely presents a challenge."
     },
     {
       "type": "event",
@@ -29,7 +37,7 @@
     },
     {
       "type": "text",
-      "content": "The porcupine is tougher still."
+      "content": "Secondly, the porcupine, a tougher opponent for sure."
     },
     {
       "type": "event",
@@ -37,7 +45,7 @@
     },
     {
       "type": "text",
-      "content": "But for a formidable foe, the wild boar will suffice."
+      "content": "Lastly, the wild boar, a formidable foe."
     },
     {
       "type": "event",
@@ -45,7 +53,7 @@
     },
     {
       "type": "text",
-      "content": "Now place 15 of these."
+      "content": "Now, place 15 of these and we can begin."
     },
     {
       "type": "text",
@@ -56,7 +64,11 @@
     { "type": "text", "content": "Good." },
     {
       "type": "text",
-      "content": "Now the test subject must defend themself."
+      "content": "Now the test subject must defend themselves."
+    },
+    {
+      "type": "text",
+      "content": "So we will provide a weapon."
     },
     {
       "type": "event",
@@ -103,15 +115,15 @@
   "Outro": [
     {
       "type": "text",
-      "content": "So we see, conflict brings about a further separation of one from the \"other\""
+      "content": "Conflict brings about a further separation of one from the \"other\""
     },
     {
       "type": "text",
-      "content": "Friends draw closer together. But enemies push each other apart."
+      "content": "Friends draw closer together as one. But enemies push each other apart as many."
     },
     {
       "type": "text",
-      "content": "Without looking too closely, the test subject will take this to heart."
+      "content": "We continue with this tomorrow."
     }
   ]
 }

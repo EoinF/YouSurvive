@@ -1,9 +1,10 @@
 {
   "Intro": [
     { "type": "config", "letter_delay": 0.06, "x": 0.5, "y": 0.5 },
-    { "type": "event", "event_name": "gift_weapons" },
-    { "type": "event", "event_name": "gift_sharks" },
-    { "type": "event", "event_name": "gift_crabs" },
+    { "type": "text", "content": "Today the experiment ends" },
+    { "type": "event", "event_name": "gift_items" },
+    { "type": "text", "content": "..." },
+    { "type": "event", "event_name": "enable_controls" },
     { "type": "text", "content": "..." }
   ]
 }
