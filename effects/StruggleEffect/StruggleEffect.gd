@@ -14,10 +14,6 @@ var _backward_cutoff
 var is_forwards = false
 
 
-func _ready():
-	var parent = get_parent()
-
-
 func start(anchor_position: Vector2, direction: Vector2):
 	_direction = direction.normalized()
 	_anchor = anchor_position
@@ -36,7 +32,7 @@ func _start_new_iteration():
 	$Tween.start()
 
 
-func _on_Tween_tween_completed(object, key):
+func _on_Tween_tween_completed(_object, _key):
 	var parent = get_parent()
 	if is_forwards:
 		emit_signal("finish_iteration")

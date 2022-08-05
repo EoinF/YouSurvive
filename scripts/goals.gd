@@ -6,6 +6,7 @@ enum GoalTypes {
 	COLLECT
 	DODGE_ENEMY
 	KILL_ENEMY
+	WANDER
 }
 
 class Goal:
@@ -34,10 +35,11 @@ class LocateGoal extends Goal:
 		self.goal_type = GoalTypes.LOCATE
 	
 	func get_priority(_owner_context):
+		if _owner_context.num_exploration_nodes == 0:
+			return -1
 		if (not target in _owner_context.inventory) or (_owner_context.inventory[target].amount < limit):
 			return 1
-		else:
-			return 0
+		return 0
 
 
 class CollectGoal extends Goal:
@@ -45,7 +47,6 @@ class CollectGoal extends Goal:
 		self.goal_type = GoalTypes.COLLECT
 	
 	func get_priority(_owner_context):
-		
 		var is_limit_reached = (target in _owner_context.inventory) and (_owner_context.inventory[target].amount >= limit)
 		if not is_limit_reached \
 			and target in _owner_context.objects_in_view \
@@ -54,8 +55,8 @@ class CollectGoal extends Goal:
 				if object.global_position.distance_to(_owner_context.islander_position) < 30:
 					return 4
 			return 2
-		else:
-			return -1
+		
+		return -1
 
 
 class DodgeGoal extends Goal:
@@ -94,4 +95,14 @@ class KillGoal extends Goal:
 			for object in _owner_context.objects_in_view[target].values():
 				if object.has_method("is_alive") and object.is_alive():
 					return 5
+		return -1
+
+
+class WanderGoal extends Goal:
+	func _init().(null, null):
+		self.goal_type = GoalTypes.WANDER
+	
+	func get_priority(_owner_context):
+		if _owner_context.wander_timeout > 0:
+			return 1
 		return -1

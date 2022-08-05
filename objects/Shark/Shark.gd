@@ -55,9 +55,9 @@ func move(x, y):
 		$AnimatedSprite.flip_h = x < 0
 
 
-func struggle(anchor_position, direction):
+func struggle(anchor_position, _direction):
 	if not _is_dying:
-		$StruggleEffect.start(anchor_position, direction)
+		$StruggleEffect.start(anchor_position, _direction)
 
 
 func _process(delta):

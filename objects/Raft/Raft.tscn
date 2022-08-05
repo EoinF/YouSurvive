@@ -25,6 +25,7 @@ stream = ExtResource( 4 )
 volume_db = -16.0
 
 [node name="LandArea2D" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2( 496, 356 )
 collision_layer = 64
 collision_mask = 2147483648
@@ -32,3 +33,7 @@ collision_mask = 2147483648
 [node name="RectangleShape" type="CollisionShape2D" parent="LandArea2D"]
 position = Vector2( 1.12372, 4.86948 )
 shape = SubResource( 1 )
+
+[node name="HitCooldown" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

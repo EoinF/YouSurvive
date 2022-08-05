@@ -21,8 +21,8 @@ func set_volume_offset(volume):
 			get_node(prefix + suffix).volume_db = volume + BASE_VOLUME_OFFSET
 
 
-func start(is_on_wood):
-	self.is_on_wood = is_on_wood
+func start(_is_on_wood):
+	self.is_on_wood = _is_on_wood
 	if is_playing:
 		return
 	is_playing = true
