@@ -12,12 +12,18 @@ var _start
 var _forward_cutoff
 var _backward_cutoff
 var is_forwards = false
+var is_playing = false
 
 
 func start(anchor_position: Vector2, direction: Vector2):
 	_direction = direction.normalized()
 	_anchor = anchor_position
+	is_playing = true
 	_start_new_iteration()
+
+
+func stop():
+	is_playing = false
 
 
 func _start_new_iteration():
@@ -34,6 +40,8 @@ func _start_new_iteration():
 
 func _on_Tween_tween_completed(_object, _key):
 	var parent = get_parent()
+	if not is_playing:
+		return
 	if is_forwards:
 		emit_signal("finish_iteration")
 		_start_new_iteration()

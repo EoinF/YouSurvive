@@ -6,4 +6,4 @@ func _ready():
 
 
 func _on_Night3Objectives_complete_objective():
-	print("done")
+	pass

@@ -24,7 +24,6 @@ func _ready():
 	goals.push_back(DodgeGoal.new("boar"))
 	goals.push_back(DodgeGoal.new("porcupine"))
 	goals.push_back(DodgeGoal.new("crab"))
-	goals.push_back(DodgeGoal.new("shark"))
 	current_goal = goals[0]
 	
 	if $ExplorationNodes == null:
@@ -75,8 +74,6 @@ func _process(delta):
 	for goal in goals:
 		var next_priority = goal.get_priority(owner_context)
 		if next_priority > current_priority:
-			if current_goal.goal_type != goal.goal_type:
-				print(goal.goal_type, goal.target)
 			current_goal = goal
 			current_priority = next_priority
 	
@@ -117,8 +114,6 @@ func locate():
 	on_update_current_move_path()
 	if len(current_move_path) == 0:
 		idle_timeout = rand.randf_range(MIN_IDLE_DURATION, MAX_IDLE_DURATION)
-		
-		print(idle_timeout)
 		current_direction = Vector2.ZERO
 		current_target = _get_next_exploration_node()
 		current_move_path = _get_quickest_path_to(islander.global_position, current_target.get_resting_position())

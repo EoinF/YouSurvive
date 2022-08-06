@@ -41,10 +41,9 @@ func _ready():
 	for prop in get_owner().get_node("Objects/Props").get_children():
 		if prop.is_in_group("Ghost"):
 			ai_nodes.append(AINode.new(prop))
-	print(ai_nodes)
 
 
-func _process(delta):
+func _process(_delta):
 	if not is_ai_enabled:
 		return
 	for i in range(ai_nodes.size() - 1, -1, -1):

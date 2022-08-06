@@ -61,14 +61,14 @@ script = ExtResource( 4 )
 
 [node name="LandPlacementSensor" type="Area2D" parent="ItemPlacementTool"]
 collision_layer = 0
-collision_mask = 22
+collision_mask = 86
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPlacementTool/LandPlacementSensor"]
 shape = SubResource( 2 )
 
 [node name="SeaPlacementSensor" type="Area2D" parent="ItemPlacementTool"]
 collision_layer = 0
-collision_mask = 64
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPlacementTool/SeaPlacementSensor"]
 shape = SubResource( 2 )

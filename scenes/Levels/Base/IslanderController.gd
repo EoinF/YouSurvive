@@ -87,7 +87,6 @@ func _on_PlayerInteraction_area_exited(area):
 	if interaction_item_index != -1:
 		nearby_interaction_items.remove(interaction_item_index)
 	if nearby_interaction_items.size() > 0:
-		print(nearby_interaction_items)
 		current_interaction_item = nearby_interaction_items.back()
 		var x = tooltip_container.rect_position.x
 		var y = tooltip_container.rect_position.y

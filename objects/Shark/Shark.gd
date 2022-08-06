@@ -18,7 +18,7 @@ export var CHASE_SPEED = 9 * 1000
 export var SPEED = 2 * 1000
 export var ATTACK_SPEED = 12 * 1000
 export var DEATH_COOLDOWN = 1.0
-export var HEALTH = 1
+export var HEALTH = 3
 
 
 func get_position():
@@ -89,6 +89,7 @@ func _die():
 	_death_cooldown = DEATH_COOLDOWN
 	_is_dying = true
 	
+	$StruggleEffect.stop()
 	get_node("AnimatedSprite").stop()
 	get_node("AttackArea/Shape").set_deferred("disabled", true)
 
