@@ -156,12 +156,12 @@ func _update_active_sprite(new_sprite_state, new_sprite_direction):
 	if new_sprite_state == "Stand":
 		get_node("WalkEffect").stop()
 	
-	if new_sprite_direction != "":
-		active_sprite_direction = new_sprite_direction
-		active_sprite_state = new_sprite_state
-		get_node("CharacterAnimations").animation = active_sprite_state + "_" + active_sprite_direction
-	else:
-		print("invalid sprite direction")
+	if new_sprite_direction == "":
+		new_sprite_direction = "Down"
+	
+	active_sprite_direction = new_sprite_direction
+	active_sprite_state = new_sprite_state
+	get_node("CharacterAnimations").animation = active_sprite_state + "_" + active_sprite_direction
 
 
 func _physics_process(delta):

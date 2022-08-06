@@ -108,6 +108,8 @@ wait_time = 0.05
 one_shot = true
 [connection signal="body_entered" from="Camera/VisionDetectionArea" to="." method="_on_VisionDetectionArea_body_entered"]
 [connection signal="place_item" from="ItemPlacementTool" to="." method="_on_ItemPlacementTool_place_item"]
+[connection signal="area_entered" from="ItemPlacementTool/LandPlacementSensor" to="ItemPlacementTool" method="_on_LandPlacementSensor_body_entered"]
+[connection signal="area_exited" from="ItemPlacementTool/LandPlacementSensor" to="ItemPlacementTool" method="_on_LandPlacementSensor_body_exited"]
 [connection signal="body_entered" from="ItemPlacementTool/LandPlacementSensor" to="ItemPlacementTool" method="_on_LandPlacementSensor_body_entered"]
 [connection signal="body_exited" from="ItemPlacementTool/LandPlacementSensor" to="ItemPlacementTool" method="_on_LandPlacementSensor_body_exited"]
 [connection signal="body_entered" from="ItemPlacementTool/SeaPlacementSensor" to="ItemPlacementTool" method="_on_SeaPlacementSensor_body_entered"]

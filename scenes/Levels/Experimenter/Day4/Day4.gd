@@ -16,7 +16,7 @@ func set_player_name(name: String):
 
 func _ready():
 	$Experimenter.enable_controls()
-	$IslanderAIController.is_paused = false
+	#$IslanderAIController.is_paused = false
 	$AIController.enable_ai()
 	$SeaAIController.enable_ai()
 	# if standalone skip the fade in animation
