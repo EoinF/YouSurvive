@@ -25,7 +25,6 @@ func is_attacking():
 
 var velocity = Vector2.ZERO
 var direction = Vector2.DOWN
-var attack_direction = Vector2.DOWN
 var active_sprite_state = "Stand"
 var active_sprite_direction = "Down"
 var _is_hurting = false
@@ -75,18 +74,11 @@ func _process(_delta):
 	var attack_animation = get_node("AttackPivotPoint/AttackAnimation")
 	if attack_animation.is_playing() and velocity.length_squared() == 0:
 		var t = attack_animation.frames.get_frame_count("default") / float(attack_animation.frame + 1)
-		velocity = 15 * t * attack_direction
+		velocity = 15 * t * direction
 
 
-func move(x, y):
-	if not is_alive:
-		return
-	walking_timeout = 10
+func update_direction(x, y):
 	direction = Vector2(x, y).normalized()
-	
-	velocity.x = direction.x * SPEED
-	velocity.y = direction.y * SPEED
-	
 	var directionVertical = ""
 	var directionHorizontal = ""
 	if (velocity.y < 0):
@@ -99,8 +91,18 @@ func move(x, y):
 		directionHorizontal = "Right"
 	
 	_update_active_sprite("Run", directionVertical + directionHorizontal)
-	get_node("WalkEffect").start(IS_ON_WOOD)
+
+func move(x, y):
+	if not is_alive:
+		return
+	walking_timeout = 10
 	
+	update_direction(x, y)
+	
+	velocity.x = direction.x * SPEED
+	velocity.y = direction.y * SPEED
+	
+	get_node("WalkEffect").start(IS_ON_WOOD)
 
 
 func throw_stone(x, y):
@@ -115,6 +117,8 @@ func attack(_x = 0, _y = 0):
 	if not attack_ready or not is_alive:
 		return
 	
+	if _x != 0 or _y != 0:
+		update_direction(_x, _y)
 	attack_ready = false
 	get_node("AttackPivotPoint/AttackAnimation/AttackArea/Shape").disabled = false
 	var attack_animation = get_node("AttackPivotPoint/AttackAnimation")
@@ -125,8 +129,6 @@ func attack(_x = 0, _y = 0):
 	var sound_index = rand.randi_range(1, 2)
 	get_node("StickAttack" + str(sound_index)).play()
 	
-	attack_direction = direction
-	_update_active_sprite("Run", active_sprite_direction)
 	walking_timeout = 20
 
 
