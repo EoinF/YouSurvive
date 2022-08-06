@@ -8,6 +8,9 @@ func _on_DialogueManager_trigger_event(event_name):
 func enable_controls():
 	var owner = get_owner()
 	owner.get_node("Experimenter").enable_controls()
+	var islander_ai = owner.get_node("IslanderAIController")
+	islander_ai.add_collection_goal("stick", 1)
+	islander_ai.add_collection_goal("stone", 1)
 
 
 func gift_items():

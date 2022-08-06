@@ -1,5 +1,8 @@
 extends "res://scripts/goals.gd"
 
+export var MIN_IDLE_DURATION = 0.0
+export var MAX_IDLE_DURATION = 0.0
+
 var goals = []
 var current_goal = null
 
@@ -10,9 +13,7 @@ var current_target: Node = null
 var current_enemy: Node = null
 var objects_in_view = {}
 var is_paused = true
-var wander_target: Vector2
-var wander_timeout = -1
-var idle_timeout = -1
+var idle_timeout = -1.0
 
 var rand = RandomNumberGenerator.new()
 
@@ -20,7 +21,6 @@ var rand = RandomNumberGenerator.new()
 func _ready():
 	rand.randomize()
 	goals.push_back(IdleGoal.new())
-	goals.push_back(WanderGoal.new())
 	goals.push_back(DodgeGoal.new("boar"))
 	goals.push_back(DodgeGoal.new("porcupine"))
 	goals.push_back(DodgeGoal.new("crab"))
@@ -68,8 +68,7 @@ func _process(delta):
 		islander_position = islander.global_position,
 		current_direction = current_direction,
 		next_move_node = current_move_path.front() if len(current_move_path) > 0 else null,
-		num_exploration_nodes = len(exploration_nodes),
-		wander_timeout = wander_timeout,
+		idle_timeout = idle_timeout,
 	}
 	
 	var current_priority = current_goal.get_priority(owner_context)
@@ -81,6 +80,10 @@ func _process(delta):
 			current_goal = goal
 			current_priority = next_priority
 	
+	if current_goal.goal_type == GoalTypes.IDLE:
+		idle_timeout -= delta
+	else:
+		idle_timeout = -1
 	
 	match current_goal.goal_type:
 		GoalTypes.KILL_ENEMY:
@@ -91,11 +94,8 @@ func _process(delta):
 			locate()
 		GoalTypes.COLLECT:
 			collect()
-		GoalTypes.IDLE:
-			idle()
-		GoalTypes.WANDER:
-			wander(delta)
 
+	
 	if current_goal.goal_type != GoalTypes.DODGE_ENEMY and current_goal.goal_type != GoalTypes.KILL_ENEMY:
 		current_enemy = null
 	
@@ -116,6 +116,10 @@ func locate():
 		
 	on_update_current_move_path()
 	if len(current_move_path) == 0:
+		idle_timeout = rand.randf_range(MIN_IDLE_DURATION, MAX_IDLE_DURATION)
+		
+		print(idle_timeout)
+		current_direction = Vector2.ZERO
 		current_target = _get_next_exploration_node()
 		current_move_path = _get_quickest_path_to(islander.global_position, current_target.get_resting_position())
 		on_update_current_move_path()
@@ -350,36 +354,3 @@ func _start_new_target_animation(target):
 
 func _on_finish_animation():
 	is_paused = false
-
-
-func get_wander_target():
-	var islander = get_parent().get_node("Objects/Props/Islander")
-	var rand_sign = ((randi() % 2) * 2) - 1
-	var rand_x = 2 * randf() - 1
-	var rand_y = 2 * randf() - 1
-	var scale = 1000
-	var x = rand_sign * scale / (rand_x * rand_x)
-	var y = rand_sign * scale / (rand_y * rand_y)
-	return islander.global_position + Vector2(x, y)
-
-
-var MIN_IDLE_TIMEOUT = 40
-var MAX_IDLE_TIMEOUT = 240
-var MIN_WANDER_TIMEOUT = 0.3
-var MAX_WANDER_TIMEOUT = 1.0
-
-func idle():
-	var islander = get_parent().get_node("Objects/Props/Islander")
-	if idle_timeout < 0:
-		current_direction = Vector2.ZERO
-		idle_timeout = rand.randi_range(MIN_IDLE_TIMEOUT, MAX_IDLE_TIMEOUT)
-		return
-		
-	if idle_timeout == 0:
-		wander_target = get_wander_target()
-		current_direction = wander_target - islander.global_position
-		wander_timeout = rand.randf_range(MIN_WANDER_TIMEOUT, MAX_WANDER_TIMEOUT)
-	idle_timeout -= 1
-
-func wander(delta):
-	wander_timeout -= delta

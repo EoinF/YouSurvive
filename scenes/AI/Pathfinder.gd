@@ -44,12 +44,12 @@ func generate_base_nav_tiles():
 	if get_owner() != null:
 		var tilemap = get_parent().get_node(TILEMAP_NODE_PATH)
 		if tilemap != null and tilemap.get_class() == "TileMap":
-			var tileset = tilemap.get_tileset()
+			var tileset: TileSet = tilemap.get_tileset()
 			for tile_position in tilemap.get_used_cells():
-				var tileType = tilemap.get_cellv(tile_position)
-				var shape = tileset.tile_get_shape(tileType, 0)
+				var tile_type = tilemap.get_cellv(tile_position)
+				var tile_name = tileset.tile_get_name(tile_type)
 				
-				if shape != null:
+				if tile_name == "sea":
 					set_cell(tile_position.x, tile_position.y, 1)
 				else:
 					set_cell(tile_position.x, tile_position.y, 0)
