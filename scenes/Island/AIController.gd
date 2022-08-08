@@ -1,6 +1,6 @@
 extends Node
 
-export var ISLANDER_PATH: NodePath = "Objects/Props/Islander"
+export var ISLANDER_PATH: NodePath = "../Objects/Props/Islander"
 
 enum AIState {
 	IDLE

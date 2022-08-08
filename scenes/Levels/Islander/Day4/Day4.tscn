@@ -30,5 +30,5 @@ script = ExtResource( 3 )
 
 [node name="IslanderInput" type="Node" parent="." index="5"]
 script = ExtResource( 2 )
-ISLANDER_NODE_PATH = "Objects/Props/Raft/Islander"
+ISLANDER_NODE_PATH = NodePath("../Objects/Props/Raft/Islander")
 [connection signal="enemy_struggle" from="Objects/Props" to="." method="_on_Props_enemy_struggle"]

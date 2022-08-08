@@ -240,7 +240,6 @@ func kill_enemy():
 	if len(current_move_path) > 0:
 		var next_tile = current_move_path[0]
 		current_direction = (get_pathfinder_offset() + next_tile - current_tile).normalized()
-		print(current_direction)
 	else:
 		current_move_path = _get_quickest_path_to(islander_position, current_enemy.global_position)
 		on_update_current_move_path()

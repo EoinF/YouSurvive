@@ -158,6 +158,7 @@ shape = SubResource( 6 )
 
 [node name="AIController" type="Node" parent="."]
 script = ExtResource( 1 )
+ISLANDER_PATH = NodePath("../Objects/Props/Raft/Islander")
 
 [node name="SeaAIController" type="Node" parent="."]
 script = ExtResource( 2 )

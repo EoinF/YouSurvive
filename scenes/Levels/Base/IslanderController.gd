@@ -1,6 +1,6 @@
 extends Node
 
-export var ISLANDER_NODE_PATH = "Objects/Props/Islander"
+export var ISLANDER_NODE_PATH: NodePath = "../Objects/Props/Islander"
 
 var nearby_interaction_items = []
 var current_interaction_item = null
