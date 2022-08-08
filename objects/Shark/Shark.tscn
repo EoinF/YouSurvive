@@ -52,6 +52,7 @@ shape = SubResource( 2 )
 "AI",
 "Attack",
 ]]
+visible = false
 position = Vector2( 0.148651, 6.7431 )
 collision_layer = 0
 collision_mask = 5
@@ -64,6 +65,7 @@ shape = SubResource( 3 )
 disabled = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
+visible = false
 position = Vector2( 0.148651, 3.13524 )
 collision_layer = 2
 collision_mask = 0

@@ -23,6 +23,10 @@ func is_attacking():
 	return get_node("AttackPivotPoint/AttackAnimation").is_playing()
 
 
+func get_weight():
+	return 10
+
+
 var velocity = Vector2.ZERO
 var direction = Vector2.DOWN
 var active_sprite_state = "Stand"
@@ -78,16 +82,15 @@ func _process(_delta):
 
 
 func update_direction(x, y):
-	direction = Vector2(x, y).normalized()
 	var directionVertical = ""
 	var directionHorizontal = ""
-	if (velocity.y < 0):
+	if (y < 0):
 		directionVertical = "Up"
-	elif (velocity.y > 0):
+	elif (y > 0):
 		directionVertical = "Down"
-	if (velocity.x < 0):
+	if (x < 0):
 		directionHorizontal = "Left"
-	elif (velocity.x > 0):
+	elif (x > 0):
 		directionHorizontal = "Right"
 	
 	_update_active_sprite("Run", directionVertical + directionHorizontal)
@@ -99,6 +102,7 @@ func move(x, y):
 	
 	update_direction(x, y)
 	
+	direction = Vector2(x, y).normalized()
 	velocity.x = direction.x * SPEED
 	velocity.y = direction.y * SPEED
 	

@@ -10,14 +10,18 @@ enum AIState {
 class SeaAINode:
 	var state
 	var node: Node
-	var target: Vector2
+	var target: Node2D
+	var last_target_location: Vector2
 	func _init(_node):
 		node = _node
 		state = AIState.FINDING_TARGET
-		target = Vector2.ZERO
+		target = null
 		
 	func set_state(next_state):
 		state = next_state
+		
+	func distance_to_target():
+		return target.global_position.distance_to(node.global_position)
 
 
 var ai_nodes = []
@@ -49,7 +53,7 @@ func _process(delta):
 			
 		match(ai_node.state):
 			AIState.FINDING_TARGET:
-				var attack_nodes = $AttackNodes.get_children()
+				var attack_nodes = get_owner().get_node("Objects/Props/Raft/AttackNodes").get_children()
 				
 				var best_node_index = 0
 				var closest_distance = 9999999
@@ -59,12 +63,11 @@ func _process(delta):
 					if distance < closest_distance:
 						best_node_index = index
 						closest_distance = distance
-				ai_node.target = attack_nodes[best_node_index].global_position
-				var direction = ai_node.target - ai_node.node.global_position
+				ai_node.target = attack_nodes[best_node_index]
 				ai_node.set_state(AIState.APPROACHING)
 			AIState.APPROACHING:
-				var direction = ai_node.target - ai_node.node.global_position
-				if ai_node.target.distance_to(ai_node.node.global_position) < 5:
+				var direction = ai_node.target.global_position - ai_node.node.global_position
+				if ai_node.distance_to_target() < 5:
 					ai_node.set_state(AIState.STRUGGLING)
 					ai_node.node.struggle(ai_node.target, direction)
 					return

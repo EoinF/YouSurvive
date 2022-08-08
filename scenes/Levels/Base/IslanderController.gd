@@ -1,5 +1,6 @@
 extends Node
 
+export var ISLANDER_NODE_PATH = "Objects/Props/Islander"
 
 var nearby_interaction_items = []
 var current_interaction_item = null
@@ -24,7 +25,7 @@ func _process(delta):
 
 
 func _process_movement_input(delta):
-	var islander = get_owner().get_node("Objects/Props/Islander")
+	var islander = get_owner().get_node(ISLANDER_NODE_PATH)
 	var x = 0
 	var y = 0
 	
@@ -47,11 +48,11 @@ func _process_interaction_input(_delta):
 	and Input.is_action_just_released('interact') \
 	and current_interaction_item.is_usable:
 		current_interaction_item.interact()
-		get_owner().get_node("Objects/Props/Islander").pick_up_item(current_interaction_item.object_type)
+		get_owner().get_node(ISLANDER_NODE_PATH).pick_up_item(current_interaction_item.object_type)
 
 
 func _process_attack_input(_delta):
-	var islander = get_owner().get_node("Objects/Props/Islander")
+	var islander = get_owner().get_node(ISLANDER_NODE_PATH)
 	if Input.is_action_just_released('attack') and not islander.is_attacking():
 		islander.attack()
 
