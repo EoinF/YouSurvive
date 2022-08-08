@@ -18,7 +18,7 @@ func enable_controls():
 func gift_items():
 	var owner = get_owner()
 	owner.get_node("Experimenter").pick_up_item("shark", 99)
-	owner.get_node("Objects/Props/Islander").pick_up_item("stick")
+	owner.get_node("Objects/Props/Raft/Islander").pick_up_item("stick")
 	owner.get_node("Experimenter").pick_up_item("crab", 99)
 	
 	

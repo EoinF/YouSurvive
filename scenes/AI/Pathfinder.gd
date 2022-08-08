@@ -1,8 +1,8 @@
 tool
 extends TileMap
 
-export var TILEMAP_NODE_PATH = "" setget set_tilemap_node_path
-export var OBJECTS_NODE_PATH = "" setget set_objects_node_path
+export var TILEMAP_NODE_PATH: NodePath = "" setget set_tilemap_node_path
+export var OBJECTS_NODE_PATH: NodePath = "" setget set_objects_node_path
 
 
 func set_tilemap_node_path(new_path):
@@ -42,7 +42,7 @@ func _get_collision_nodes(static_bodies: Array):
 
 func generate_base_nav_tiles():
 	if get_owner() != null:
-		var tilemap = get_parent().get_node(TILEMAP_NODE_PATH)
+		var tilemap = get_node(TILEMAP_NODE_PATH)
 		if tilemap != null and tilemap.get_class() == "TileMap":
 			var tileset: TileSet = tilemap.get_tileset()
 			for tile_position in tilemap.get_used_cells():
@@ -56,7 +56,7 @@ func generate_base_nav_tiles():
 
 
 func generate_static_body_nav_tiles():
-	var objects_node = get_owner().get_node(OBJECTS_NODE_PATH)
+	var objects_node = get_node(OBJECTS_NODE_PATH)
 	if objects_node != null:
 		var static_bodies = _get_all_static_bodies(objects_node)
 		var all_collision_nodes = _get_collision_nodes(static_bodies)
@@ -74,7 +74,9 @@ func generate_static_body_nav_tiles():
 						set_cell(i, j, 1)
 
 
-func get_quickest_path_to(from, to):
+func get_quickest_path_to(_from, _to):
+	var from = _from - self.global_position
+	var to = _to - self.global_position
 	var tile_from = Vector2(floor(from.x / 16), floor(from.y / 16))
 	var tile_to = Vector2(floor(to.x / 16), floor(to.y / 16))
 	

@@ -2,6 +2,10 @@ extends "res://scripts/goals.gd"
 
 export var MIN_IDLE_DURATION = 0.0
 export var MAX_IDLE_DURATION = 0.0
+export var EXPLORATION_NODES_PATH: NodePath = "ExplorationNodes"
+export var ISLANDER_PATH: NodePath = "../Objects/Props/Islander"
+export var PATHFINDER_PATH: NodePath = "../Pathfinder"
+
 
 var goals = []
 var current_goal = null
@@ -14,6 +18,7 @@ var current_enemy: Node = null
 var objects_in_view = {}
 var is_paused = true
 var idle_timeout = -1.0
+var pathfinder_offset: Vector2
 
 var rand = RandomNumberGenerator.new()
 
@@ -26,10 +31,15 @@ func _ready():
 	goals.push_back(DodgeGoal.new("crab"))
 	current_goal = goals[0]
 	
-	if $ExplorationNodes == null:
+	var exploration_nodes_parent = get_node(EXPLORATION_NODES_PATH)
+	if exploration_nodes_parent == null:
 		return
-	exploration_nodes = $ExplorationNodes.get_children()
+	exploration_nodes = exploration_nodes_parent.get_children()
 	exploration_nodes.shuffle()
+
+
+func get_pathfinder_offset():
+	 return get_node(PATHFINDER_PATH).global_position / 16
 
 
 func add_kill_goal(target_type, limit):
@@ -40,6 +50,7 @@ func add_kill_goal(target_type, limit):
 	goals.push_back(KillGoal.new(
 		target_type, limit
 	))
+
 
 func on_update_current_move_path():
 	get_node("DebugPathMap").set_path(current_move_path)
@@ -60,7 +71,9 @@ func _process(delta):
 	if is_paused:
 		return
 		
-	var islander = get_parent().get_node("Objects/Props/Islander")
+	$DebugPathMap.position = get_node(PATHFINDER_PATH).global_position
+		
+	var islander = get_node(ISLANDER_PATH)
 	var owner_context = {
 		inventory = islander.item_type_to_slot,
 		objects_in_view = objects_in_view,
@@ -91,7 +104,7 @@ func _process(delta):
 			locate()
 		GoalTypes.COLLECT:
 			collect()
-
+	
 	
 	if current_goal.goal_type != GoalTypes.DODGE_ENEMY and current_goal.goal_type != GoalTypes.KILL_ENEMY:
 		current_enemy = null
@@ -101,14 +114,15 @@ func _process(delta):
 
 
 func locate():
-	var islander = get_parent().get_node("Objects/Props/Islander")
+	var islander = get_node(ISLANDER_PATH)
 	if current_target == null:
 		current_target = _get_next_exploration_node()
 		current_move_path = _get_quickest_path_to(islander.global_position, current_target.get_resting_position())
 		on_update_current_move_path()
 	var current_tile = Vector2(floor(islander.global_position.x / 16), floor(islander.global_position.y / 16))
 		
-	while len(current_move_path) != 0 and current_tile.distance_to(current_move_path[0]) <= 1.0:
+	while len(current_move_path) != 0 and \
+		current_tile.distance_to(get_pathfinder_offset() + current_move_path[0]) <= 1.0:
 		current_move_path.pop_front()
 		
 	on_update_current_move_path()
@@ -120,18 +134,18 @@ func locate():
 		on_update_current_move_path()
 	else:
 		var next_tile = current_move_path[0]
-		current_direction = (next_tile - current_tile).normalized()
+		current_direction = (get_pathfinder_offset() + next_tile - current_tile).normalized()
 
 
 func collect():
-	var islander = get_parent().get_node("Objects/Props/Islander")
+	var islander = get_node(ISLANDER_PATH)
 	if current_target == null or current_target.object_type != current_goal.target:
 		current_target = _get_closest_target_of_type(current_goal.target)
 		current_move_path = _get_quickest_path_to(islander.global_position, current_target.get_resting_position())
 		on_update_current_move_path()
 		_start_new_target_animation(current_target)
 		return
-
+	
 	var current_tile = Vector2(floor(islander.global_position.x / 16), floor(islander.global_position.y / 16))
 	
 	if current_target != null:
@@ -146,12 +160,12 @@ func collect():
 			current_target = null
 		else:
 			var next_tile = current_move_path[0]
-			current_direction = (next_tile - current_tile).normalized()
+			current_direction = (get_pathfinder_offset() + next_tile - current_tile).normalized()
 
 
 func dodge_enemy():
-	var islander_position = get_parent().get_node("Objects/Props/Islander").global_position
-
+	var islander_position = get_node(ISLANDER_PATH).global_position
+	
 	var closest_enemy = _get_closest_enemy_in_path(current_goal.target)
 	
 	if current_enemy == null or not current_enemy.is_alive() or closest_enemy.global_position.distance_to(islander_position) < 20:
@@ -172,17 +186,18 @@ func dodge_enemy():
 	else:
 		var current_tile = Vector2(floor(islander_position.x / 16), floor(islander_position.y / 16))
 		
-		while len(current_move_path) != 0 and current_tile.distance_to(current_move_path[0]) <= 1.0:
+		while len(current_move_path) != 0 and \
+		current_tile.distance_to(current_move_path[0] + get_pathfinder_offset()) <= 1.0:
 			current_move_path.pop_front()
 			
 		on_update_current_move_path()
 		if len(current_move_path) > 0:
 			var next_tile = current_move_path[0]
-			current_direction = (next_tile - current_tile).normalized()
+			current_direction = (get_pathfinder_offset() + next_tile - current_tile).normalized()
 
 
 func kill_enemy():
-	var islander = get_owner().get_node("Objects/Props/Islander")
+	var islander = get_node(ISLANDER_PATH)
 	if islander.is_attacking():
 		return
 	var islander_position = islander.global_position
@@ -217,22 +232,24 @@ func kill_enemy():
 	
 	var current_tile = Vector2(floor(islander_position.x / 16), floor(islander_position.y / 16))
 
-	while len(current_move_path) != 0 and current_tile.distance_to(current_move_path[0]) <= 1.0:
+	while len(current_move_path) != 0 and \
+		current_tile.distance_to(current_move_path[0] + get_pathfinder_offset()) <= 1.0:
 		current_move_path.pop_front()
 		
 	on_update_current_move_path()
 	if len(current_move_path) > 0:
 		var next_tile = current_move_path[0]
-		current_direction = (next_tile - current_tile).normalized()
+		current_direction = (get_pathfinder_offset() + next_tile - current_tile).normalized()
+		print(current_direction)
 	else:
 		current_move_path = _get_quickest_path_to(islander_position, current_enemy.global_position)
 		on_update_current_move_path()
-		
+
 
 func _get_closest_enemy_in_path(target_type):
 	if len(current_move_path) == 0:
 		return null
-	var islander_position = get_parent().get_node("Objects/Props/Islander").global_position
+	var islander_position = get_node(ISLANDER_PATH).global_position
 	var target_position = current_move_path[0] * 16.0
 	var direction_to_target = (target_position - islander_position).normalized()
 		
@@ -253,7 +270,7 @@ func _get_closest_enemy_in_path(target_type):
 
 
 func _get_closest_target_of_type(target_type):
-	var islander_position = get_parent().get_node("Objects/Props/Islander").global_position
+	var islander_position = get_node(ISLANDER_PATH).global_position
 	var closest_node = null
 	var distance_to_closest = INF
 	for node in objects_in_view[target_type].values():
@@ -269,7 +286,7 @@ func _get_closest_target_of_type(target_type):
 
 
 func _get_next_exploration_node():
-	var islander_position = get_parent().get_node("Objects/Props/Islander").global_position
+	var islander_position = get_node(ISLANDER_PATH).global_position
 	var best_h_score = INF
 	var best_node_index = 0
 	for index in range(0, len(exploration_nodes)):
@@ -288,14 +305,14 @@ func _get_next_exploration_node():
 
 
 func _get_path_in_direction_of(direction: Vector2, destination = null):
-	var islander_position = get_owner().get_node("Objects/Props/Islander").global_position
-	var pathfinder = get_owner().get_node("Pathfinder")
+	var islander_position = get_node(ISLANDER_PATH).global_position
+	var pathfinder = get_node(PATHFINDER_PATH)
 	var max_distance = islander_position.distance_to(destination) if destination != null else 200
 	return pathfinder.get_path_in_direction_of(islander_position, direction, max_distance)
 
 
 func _get_quickest_path_to(from: Vector2, to: Vector2):
-	var pathfinder = get_owner().get_node("Pathfinder")
+	var pathfinder = get_node(PATHFINDER_PATH)
 	return pathfinder.get_quickest_path_to(from, to)
 
 
@@ -327,7 +344,7 @@ func _on_IslanderVisionSensor_area_exited(area):
 
 func _start_new_target_animation(target):
 	current_direction = Vector2.ZERO
-	var islander = get_owner().get_node("Objects/Props/Islander")
+	var islander = get_node(ISLANDER_PATH)
 	
 	# Skip the animation if the islander is the one that put the target there
 	if target.has_method("get_owner_instance_id") and target.get_owner_instance_id() == islander.get_instance_id():

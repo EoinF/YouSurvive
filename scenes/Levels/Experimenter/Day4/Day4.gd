@@ -16,7 +16,7 @@ func set_player_name(name: String):
 
 func _ready():
 	$Experimenter.enable_controls()
-	#$IslanderAIController.is_paused = false
+	$IslanderAIController.is_paused = false
 	$AIController.enable_ai()
 	$SeaAIController.enable_ai()
 	# if standalone skip the fade in animation
@@ -52,7 +52,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_Islander_die():
-	var islander = get_node("Objects/Props/Islander")
+	var islander = get_node("Objects/Props/Raft/Islander")
 	var experimenter = get_node("Experimenter")
 	experimenter.set_follow_target(islander, true)
 	experimenter.disable_controls()
@@ -66,4 +66,4 @@ func _on_GameOver_finish():
 
 
 func _on_Props_enemy_struggle():
-	$Objects/Raft.hit()
+	$Objects/Props/Raft.hit()

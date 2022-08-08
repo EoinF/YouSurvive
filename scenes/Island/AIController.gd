@@ -1,5 +1,7 @@
 extends Node
 
+export var ISLANDER_PATH: NodePath = "Objects/Props/Islander"
+
 enum AIState {
 	IDLE
 	WANDER
@@ -56,7 +58,7 @@ func _process(delta):
 		if ai_node.node == null:
 			ai_nodes.remove(i)
 		else:
-			var islander_position = get_owner().get_node("Objects/Props/Islander").global_position
+			var islander_position = get_node(ISLANDER_PATH).global_position
 			var direction_to_player = islander_position - ai_node.node.get_position()
 			
 			if direction_to_player.length() < 200:

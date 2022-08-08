@@ -1,6 +1,8 @@
 extends Node
 
 
+export var ISLANDER_PATH: NodePath = "../Objects/Props/Islander"
+
 func _process(delta):
 	_process_movement_input(delta)
 	_process_inventory_item_input()
@@ -11,7 +13,7 @@ func _process_movement_input(delta):
 	var x = 0
 	var y = 0
 	
-	var islander = get_owner().get_node("Objects/Props/Islander")
+	var islander = get_node(ISLANDER_PATH)
 	if Input.is_action_just_released('center_camera'):
 		experimenter.focus_target(islander)
 	
