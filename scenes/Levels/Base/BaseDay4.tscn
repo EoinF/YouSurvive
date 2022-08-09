@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/Island/AIController.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Levels/Base/SeaAIController.gd" type="Script" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://scenes/Island/TooltipContainer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Island/Props.gd" type="Script" id=10]
 [ext_resource path="res://effects/ScrollEffect/ScrollEffect.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Island/HealthBar.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Island/HealthBar.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 563.624, 162.192 )
@@ -184,6 +186,20 @@ text = "Day 4"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RaftHealthBar" type="Control" parent="HUDLayer/HUD" instance=ExtResource( 12 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -105.0
+margin_top = 34.0756
+margin_right = -8.0
+margin_bottom = 57.0756
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+LABEL_TEXT = "Raft"
+MAX_HEALTH = 200
 
 [node name="TooltipContainer" parent="HUDLayer" instance=ExtResource( 9 )]
 

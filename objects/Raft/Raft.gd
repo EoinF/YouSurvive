@@ -1,6 +1,8 @@
 extends Node2D
 
-var health = 100
+signal health_change(new_amount)
+
+var health = 200
 var LOW_HEALTH_BREAKPOINT = 30
 
 var partially_damaged
@@ -31,6 +33,7 @@ func hit():
 	$HitCooldown.start()
 	
 	health -= 1
+	emit_signal("health_change", health)
 	if health == LOW_HEALTH_BREAKPOINT:
 		create_damaged_tilemap()
 

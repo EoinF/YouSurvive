@@ -67,3 +67,7 @@ func _on_GameOver_finish():
 
 func _on_Props_enemy_struggle():
 	$Objects/Props/Raft.hit()
+
+
+func _on_Raft_health_change(new_amount):
+	$HUDLayer/HUD/RaftHealthBar.set_health(new_amount)
