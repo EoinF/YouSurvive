@@ -3,7 +3,6 @@ extends Node
 signal finish_scene(experiment_data)
 
 var player_name: String
-
 var is_islander_dead = false
 
 
@@ -33,6 +32,7 @@ func _on_DialogueManager_finish_dialogue(section_name):
 
 func _fade_in():
 	$AnimationPlayer.play("fade")
+
 
 func _fade_out():
 	$AnimationPlayer.play("fade_out")

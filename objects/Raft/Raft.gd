@@ -4,6 +4,7 @@ signal health_change(new_amount)
 
 var health = 200
 var LOW_HEALTH_BREAKPOINT = 30
+var STEER_SPEED = 2.5
 
 var partially_damaged
 
@@ -18,13 +19,13 @@ func _ready():
 		create_damaged_tilemap()
 
 func _process(delta):
-	self.position.y += steering_weight * 1 * delta
+	self.position.y += steering_weight * STEER_SPEED * delta
 	
 	$LocalPosition.rotation_degrees = steering_weight * 0.2
 
 
 # Called when the node enters the scene tree for the first time.
-func hit():
+func hit(damage = 1):
 	if $HitCooldown.time_left > 0:
 		return
 	
@@ -32,9 +33,10 @@ func hit():
 	$HitSound.play()
 	$HitCooldown.start()
 	
-	health -= 1
+	var old_health = health
+	health -= damage
 	emit_signal("health_change", health)
-	if health == LOW_HEALTH_BREAKPOINT:
+	if old_health > LOW_HEALTH_BREAKPOINT and health < LOW_HEALTH_BREAKPOINT:
 		create_damaged_tilemap()
 
 

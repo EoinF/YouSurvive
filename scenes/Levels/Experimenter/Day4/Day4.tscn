@@ -15,14 +15,8 @@
 [node name="ExperimenterDay4" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="SeaBarriers" parent="Objects" index="0"]
-collision_layer = 64
-
-[node name="Props" parent="Objects" index="2"]
+[node name="Props" parent="Objects" index="1"]
 CUSTOM_LAND_PROPS_PATH = NodePath("Raft")
-
-[node name="Raft" parent="Objects/Props" index="0"]
-position = Vector2( 864.912, 412.873 )
 
 [node name="ExplorationNodes" type="Node2D" parent="Objects/Props/Raft" index="8"]
 
@@ -86,8 +80,8 @@ ISLANDER_PATH = NodePath("../Objects/Props/Raft/Islander")
 [node name="ObjectivesTimer" type="Timer" parent="." index="9"]
 wait_time = 1e+09
 [connection signal="enemy_struggle" from="Objects/Props" to="." method="_on_Props_enemy_struggle"]
-[connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="prop_added" from="Objects/Props" to="SeaAIController" method="_on_Props_prop_added"]
+[connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="health_change" from="Objects/Props/Raft" to="." method="_on_Raft_health_change"]
 [connection signal="die" from="Objects/Props/Raft/Islander" to="." method="_on_Islander_die"]
 [connection signal="area_entered" from="Objects/Props/Raft/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]

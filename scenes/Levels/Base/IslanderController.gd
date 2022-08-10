@@ -25,7 +25,7 @@ func _process(delta):
 
 
 func _process_movement_input(delta):
-	var islander = get_owner().get_node(ISLANDER_NODE_PATH)
+	var islander = get_node(ISLANDER_NODE_PATH)
 	var x = 0
 	var y = 0
 	
