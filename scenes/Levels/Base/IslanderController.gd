@@ -48,11 +48,11 @@ func _process_interaction_input(_delta):
 	and Input.is_action_just_released('interact') \
 	and current_interaction_item.is_usable:
 		current_interaction_item.interact()
-		get_owner().get_node(ISLANDER_NODE_PATH).pick_up_item(current_interaction_item.object_type)
+		get_node(ISLANDER_NODE_PATH).pick_up_item(current_interaction_item.object_type)
 
 
 func _process_attack_input(_delta):
-	var islander = get_owner().get_node(ISLANDER_NODE_PATH)
+	var islander = get_node(ISLANDER_NODE_PATH)
 	if Input.is_action_just_released('attack') and not islander.is_attacking():
 		islander.attack()
 

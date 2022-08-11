@@ -18,6 +18,7 @@ func _ready():
 	$IslanderAIController.is_paused = false
 	$AIController.enable_ai()
 	$SeaAIController.enable_ai()
+	$IslanderAIController.add_steer_goal(get_node("Objects/Props/Raft"))
 	# if standalone skip the fade in animation
 	if get_owner() == null:
 		get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")

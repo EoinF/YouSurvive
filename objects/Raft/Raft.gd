@@ -1,17 +1,50 @@
 extends Node2D
 
 signal health_change(new_amount)
+signal y_change(amount)
 
 var health = 200
 var LOW_HEALTH_BREAKPOINT = 30
 var STEER_SPEED = 2.5
+var TILE_SIZE = 16
 
 var partially_damaged
 
-var steering_weight = 0
+var steering_weight = 0 setget set_steering_weight
 
 var bodies_top = {}
 var bodies_bottom = {}
+var steering_direction = 0
+
+
+func set_steering_weight(new_value):
+	steering_weight = new_value
+	if new_value > 0:
+		steering_direction = 1
+	elif new_value < 0:
+		steering_direction = -1
+	else:
+		steering_direction = 0
+
+func get_x_left():
+	return self.global_position.x + \
+		$LocalPosition/HealthyTilemap.get_used_rect().position.x * TILE_SIZE
+
+
+func get_x_right():
+	return get_x_left() + \
+		TILE_SIZE * $LocalPosition/HealthyTilemap.get_used_rect().size.x
+
+
+func get_y_top():
+	return self.global_position.y + \
+		$LocalPosition/HealthyTilemap.get_used_rect().position.y * TILE_SIZE
+
+
+func get_y_bottom():
+	return get_y_top() + \
+		TILE_SIZE * $LocalPosition/HealthyTilemap.get_used_rect().size.y
+
 
 func _ready():
 	randomize()
@@ -19,7 +52,7 @@ func _ready():
 		create_damaged_tilemap()
 
 func _process(delta):
-	self.position.y += steering_weight * STEER_SPEED * delta
+	emit_signal("y_change", steering_weight * STEER_SPEED * delta)
 	
 	$LocalPosition.rotation_degrees = steering_weight * 0.2
 
@@ -69,7 +102,6 @@ func _on_SteeringAreaTop_body_exited(body: Node2D):
 		
 	steering_weight += body.get_weight()
 	bodies_top.erase(id)
-
 
 
 func _on_SteeringAreaBottom_body_entered(body):

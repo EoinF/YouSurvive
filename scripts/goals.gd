@@ -6,6 +6,7 @@ enum GoalTypes {
 	COLLECT
 	DODGE_ENEMY
 	KILL_ENEMY
+	STEER_RAFT
 }
 
 class Goal:
@@ -32,14 +33,18 @@ class IdleGoal extends Goal:
 class LocateGoal extends Goal:
 	func _init(_target, _limit).(_target, _limit):
 		self.goal_type = GoalTypes.LOCATE
+		
+	func is_in_view(object_dict, type):
+		return object_dict.has(type) \
+			and not object_dict[type].empty()
 	
 	func get_priority(_owner_context):
 		if _owner_context.idle_timeout > 0:
 			# Avoid idling in the face of enemies
-			if not _owner_context.objects_in_view.has("crab") and \
-				not _owner_context.objects_in_view.has("shark") and \
-				not _owner_context.objects_in_view.has("boar") and \
-				not _owner_context.objects_in_view.has("porcupine"):
+			if not is_in_view(_owner_context.objects_in_view, "crab") and \
+				not is_in_view(_owner_context.objects_in_view, "shark") and \
+				not is_in_view(_owner_context.objects_in_view, "boar") and \
+				not is_in_view(_owner_context.objects_in_view, "porcupine"):
 				return -1
 		if (not target in _owner_context.inventory) or (_owner_context.inventory[target].amount < limit):
 			return 1
@@ -101,3 +106,26 @@ class KillGoal extends Goal:
 					return 5
 		return -1
 
+
+class SteerGoal extends Goal:
+	var ERROR_MARGIN = 10
+	var raft: Node2D
+	func _init(_target_to_avoid, _raft_node).(_target_to_avoid, 0):
+		self.goal_type = GoalTypes.STEER_RAFT
+		self.raft = _raft_node
+		
+	func get_priority(_owner_context):
+		if not target in _owner_context.objects_in_view:
+			return -1
+		if _owner_context.steering_direction == 0 and _owner_context.steering_timeout > 0:
+			return -1
+		
+		var raft_top = raft.get_y_top() - ERROR_MARGIN
+		var raft_bottom = raft.get_y_bottom() + ERROR_MARGIN
+		
+		for object in _owner_context.objects_in_view[target].values():
+			var obstacle_y_top = object.global_position.y
+			var obstacle_y_bottom = object.global_position.y + object.get_height()
+			if obstacle_y_bottom > raft_top and obstacle_y_top < raft_bottom:
+				return 4
+		return -1

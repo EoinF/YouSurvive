@@ -15,22 +15,22 @@
 [ext_resource path="res://objects/Rock/SeaRock.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Levels/Base/SeaRocks.gd" type="Script" id=14]
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=1]
 radius = 4.61711
 
-[sub_resource type="CircleShape2D" id=6]
-radius = 203.455
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 671.77, 162.192 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 696.363, 125.808 )
+[sub_resource type="CircleShape2D" id=2]
+radius = 258.731
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 270.658, 55.6321 )
+extents = Vector2( 671.77, 162.192 )
 
 [sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 696.363, 125.808 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 270.658, 55.6321 )
+
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 306.726, 56.0857 )
 
 [sub_resource type="Animation" id=7]
@@ -124,7 +124,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Shape" type="CollisionShape2D" parent="Objects/Props/Raft/Islander/PlayerInteraction"]
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 
 [node name="IslanderVisionSensor" type="Area2D" parent="Objects/Props/Raft/Islander"]
 visible = false
@@ -133,7 +133,7 @@ collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Props/Raft/Islander/IslanderVisionSensor"]
 position = Vector2( -1, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 
 [node name="SeaBarriers" type="Area2D" parent="Objects/Props/Raft"]
 visible = false
@@ -143,19 +143,25 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Props/Raft/SeaBarriers"]
 position = Vector2( 25.7152, -59.5289 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Objects/Props/Raft/SeaBarriers"]
 position = Vector2( 46.531, 338.978 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Objects/Props/Raft/SeaBarriers"]
 position = Vector2( -366.223, 158.392 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Objects/Props/Raft/SeaBarriers"]
 position = Vector2( 392.552, 158.846 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
+
+[node name="SteerLeftNode" type="Position2D" parent="Objects/Props/Raft"]
+position = Vector2( 87.8953, -51.0876 )
+
+[node name="SteerRightNode" type="Position2D" parent="Objects/Props/Raft"]
+position = Vector2( 86.9018, 49.0695 )
 
 [node name="Projectiles" parent="Objects/Props" instance=ExtResource( 8 )]
 

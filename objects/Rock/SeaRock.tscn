@@ -10,15 +10,17 @@ region = Rect2( 224, 185, 16, 17 )
 [sub_resource type="CircleShape2D" id=2]
 radius = 4.66137
 
-[node name="SeaRock" type="Area2D"]
-collision_layer = 2
-collision_mask = 2
+[node name="SeaRock" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = SubResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 position = Vector2( 1, 2 )
 shape = SubResource( 2 )
-[connection signal="body_entered" from="." to="." method="_on_SeaRock_body_entered"]
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

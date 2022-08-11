@@ -13,6 +13,7 @@ func enable_controls():
 	islander_ai.add_collection_goal("stone", 1)
 	islander_ai.add_kill_goal("crab", 999)
 	islander_ai.add_kill_goal("shark", 999)
+	islander_ai.add_steer_goal(owner.get_node("Objects/Props/Raft"))
 
 
 func gift_items():
