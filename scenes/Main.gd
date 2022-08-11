@@ -46,7 +46,7 @@ func _on_Credits_finish_scene():
 
 
 func _on_MainMenu_start_settings():
-	get_node("MainMenu/Settings").visible = true
+	$MainMenu/Settings.visible = true
 
 
 func _on_Settings_finish_scene():
@@ -72,3 +72,7 @@ func _on_IslanderScenes_set_active_scene(scene):
 
 func _on_ExperimenterScenes_set_active_scene(scene):
 	active_scene = scene
+
+
+func _on_MainMenu_on_load_save_data(save_data):
+	$MainMenu/Settings.set_data(save_data)
