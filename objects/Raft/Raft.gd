@@ -5,7 +5,7 @@ signal y_change(amount)
 signal start_sinking
 signal finish_sinking
 
-var health = 10
+var health = 200
 var is_alive = true
 
 var LOW_HEALTH_BREAKPOINT = 30

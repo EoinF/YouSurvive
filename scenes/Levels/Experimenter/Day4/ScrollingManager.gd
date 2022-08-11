@@ -3,15 +3,15 @@ extends Node
 signal edge_reached
 signal finish
 
-var original_y
 var is_finished = false
 var is_at_edge = false
 var RAFT_SPEED = 20
+var sea_tilemap_original_position: Vector2
 
 
 func _ready():
 	var sea_tilemap = get_owner().get_node("Objects/GroundTiles")
-	original_y = sea_tilemap.position.y
+	sea_tilemap_original_position = sea_tilemap.position
 
 
 func _on_Raft_y_change(amount):
@@ -19,8 +19,8 @@ func _on_Raft_y_change(amount):
 	var y_delta = -amount
 	var sea_tilemap = get_owner().get_node("Objects/GroundTiles")
 	sea_tilemap.position.y += y_delta
-	while sea_tilemap.position.y > original_y + 16:
-		sea_tilemap.position.y -= 16
+	while sea_tilemap.position.y < sea_tilemap_original_position.y - 16:
+		sea_tilemap.position.y += 16
 	
 	var sea_rocks = get_owner().get_node("Objects/Props/SeaRocks")
 	sea_rocks.position.y += y_delta
@@ -41,8 +41,13 @@ func _process(delta):
 			is_finished = true
 		return
 	
+	var sea_tilemap = get_owner().get_node("Objects/GroundTiles")
 	var sea_rocks = get_owner().get_node("Objects/Props/SeaRocks")
 	sea_rocks.position.x -= diff_x
+	sea_tilemap.position.x -= diff_x
+	while sea_tilemap.position.x < sea_tilemap_original_position.x - 16:
+		sea_tilemap.position.x += 16
+		
 	$ScrollEdge.position.x -= diff_x
 	if $ScrollEdge.global_position.x < raft.get_x_left():
 		is_at_edge = true
