@@ -72,3 +72,12 @@ func _on_Props_enemy_struggle():
 
 func _on_Raft_health_change(new_amount):
 	$HUDLayer/HUD/RaftHealthBar.set_health(new_amount)
+
+
+func _on_Raft_start_sinking():
+	pass
+
+func _on_Raft_finish_sinking():
+	$IslanderAIController.is_paused = true
+	$AnimationPlayer.play("fade_out")
+	is_islander_dead = true

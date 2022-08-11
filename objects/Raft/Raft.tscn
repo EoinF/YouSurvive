@@ -75,7 +75,10 @@ collision_mask = 2147483648
 [node name="RectangleShape" type="CollisionShape2D" parent="LandArea2D"]
 position = Vector2( 1.12372, -0.481945 )
 shape = SubResource( 3 )
+
+[node name="ColourTween" type="Tween" parent="."]
 [connection signal="body_entered" from="SteeringAreaTop" to="." method="_on_SteeringAreaTop_body_entered"]
 [connection signal="body_exited" from="SteeringAreaTop" to="." method="_on_SteeringAreaTop_body_exited"]
 [connection signal="body_entered" from="SteeringAreaBottom" to="." method="_on_SteeringAreaBottom_body_entered"]
 [connection signal="body_exited" from="SteeringAreaBottom" to="." method="_on_SteeringAreaBottom_body_exited"]
+[connection signal="tween_all_completed" from="ColourTween" to="." method="_on_ColourTween_tween_all_completed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Levels/Base/BaseDay4.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Experimenter/Day4/Day4.gd" type="Script" id=2]
@@ -8,16 +8,12 @@
 [ext_resource path="res://objects/ExplorationNode.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/Shark/Shark.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Dialogue/GameOver.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/Levels/Experimenter/Day4/ScrollingManager.gd" type="Script" id=9]
 [ext_resource path="res://objects/Experimenter/Experimenter.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/AI/Pathfinder.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/AI/IslanderAIController.tscn" type="PackedScene" id=12]
 
 [node name="ExperimenterDay4" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-
-[node name="ScrollingManager" type="Node" parent="Objects" index="0"]
-script = ExtResource( 9 )
 
 [node name="Props" parent="Objects" index="2"]
 CUSTOM_LAND_PROPS_PATH = NodePath("Raft")
@@ -84,10 +80,11 @@ ISLANDER_PATH = NodePath("../Objects/Props/Raft/Islander")
 [node name="ObjectivesTimer" type="Timer" parent="." index="9"]
 wait_time = 1e+09
 [connection signal="enemy_struggle" from="Objects/Props" to="." method="_on_Props_enemy_struggle"]
-[connection signal="prop_added" from="Objects/Props" to="SeaAIController" method="_on_Props_prop_added"]
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
+[connection signal="prop_added" from="Objects/Props" to="SeaAIController" method="_on_Props_prop_added"]
+[connection signal="finish_sinking" from="Objects/Props/Raft" to="." method="_on_Raft_finish_sinking"]
 [connection signal="health_change" from="Objects/Props/Raft" to="." method="_on_Raft_health_change"]
-[connection signal="y_change" from="Objects/Props/Raft" to="Objects/ScrollingManager" method="_on_Raft_y_change"]
+[connection signal="start_sinking" from="Objects/Props/Raft" to="." method="_on_Raft_start_sinking"]
 [connection signal="die" from="Objects/Props/Raft/Islander" to="." method="_on_Islander_die"]
 [connection signal="area_entered" from="Objects/Props/Raft/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Raft/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_exited"]
@@ -97,6 +94,7 @@ wait_time = 1e+09
 [connection signal="mouse_exited" from="HUDLayer/HUD" to="Experimenter" method="_on_MainContainer_mouse_exited"]
 [connection signal="set_active_item" from="HUDLayer/HUD" to="Experimenter" method="_on_HUD_set_active_item"]
 [connection signal="trigger_event" from="HUDLayer/HUD/DialogueManager" to="HUDLayer/HUD/Events" method="_on_DialogueManager_trigger_event"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
 

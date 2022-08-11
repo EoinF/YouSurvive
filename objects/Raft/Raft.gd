@@ -2,11 +2,16 @@ extends Node2D
 
 signal health_change(new_amount)
 signal y_change(amount)
+signal start_sinking
+signal finish_sinking
 
-var health = 200
+var health = 10
+var is_alive = true
+
 var LOW_HEALTH_BREAKPOINT = 30
 var STEER_SPEED = 2.5
 var TILE_SIZE = 16
+var SINKING_DURATION_SECONDS = 1.0
 
 var partially_damaged
 
@@ -25,6 +30,7 @@ func set_steering_weight(new_value):
 		steering_direction = -1
 	else:
 		steering_direction = 0
+
 
 func get_x_left():
 	return self.global_position.x + \
@@ -52,14 +58,17 @@ func _ready():
 		create_damaged_tilemap()
 
 func _process(delta):
-	emit_signal("y_change", steering_weight * STEER_SPEED * delta)
+	if not is_alive:
+		$LocalPosition.rotation_degrees = 0
+		return
 	
+	emit_signal("y_change", steering_weight * STEER_SPEED * delta)
 	$LocalPosition.rotation_degrees = steering_weight * 0.2
 
 
 # Called when the node enters the scene tree for the first time.
 func hit(damage = 1):
-	if $HitCooldown.time_left > 0:
+	if not is_alive or $HitCooldown.time_left > 0:
 		return
 	
 	$LocalPosition/ShakeEffect.start()
@@ -71,6 +80,15 @@ func hit(damage = 1):
 	emit_signal("health_change", health)
 	if old_health > LOW_HEALTH_BREAKPOINT and health < LOW_HEALTH_BREAKPOINT:
 		create_damaged_tilemap()
+	if health <= 0:
+		die()
+
+
+func die():
+	is_alive = false
+	$ColourTween.interpolate_property(self, "modulate", Color.white, Color(0, 0, 1, 0), SINKING_DURATION_SECONDS)
+	$ColourTween.start()
+	emit_signal("start_sinking")
 
 
 func create_damaged_tilemap():
@@ -120,3 +138,8 @@ func _on_SteeringAreaBottom_body_exited(body):
 		
 	steering_weight -= body.get_weight()
 	bodies_bottom.erase(id)
+
+
+
+func _on_ColourTween_tween_all_completed():
+	emit_signal("finish_sinking")
