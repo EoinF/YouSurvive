@@ -8,8 +8,10 @@ var constants
 
 var BASE_PATH = "res://scenes/Levels/Islander/"
 
+
 func _ready():
 	constants = preload("res://scripts/constants.gd").new()
+
 
 func save_game(current_level):
 	var save_file = File.new()
@@ -20,6 +22,7 @@ func save_game(current_level):
 	
 	save_file.store_string(to_json(save_data))
 	save_file.close()
+
 
 func _on_Day1_finish_scene():
 	save_game("Day2")
@@ -32,6 +35,11 @@ func _on_Day2_finish_scene():
 
 	
 func _on_Day3_finish_scene():
+	save_game("Day4")
+	load_scene("Day4")
+
+
+func _on_Day4_finish_scene():
 	save_game("Outro")
 	load_scene("Outro")
 
@@ -46,6 +54,7 @@ func load_scene(scene_name, _save_data = null):
 	new_scene.connect("finish_scene", self, "_on_" + scene_name + "_finish_scene")
 	new_scene.set_experiment_data(save_data[scene_name])
 	emit_signal("set_active_scene", new_scene)
+
 
 func _instance_scene(scene_name):
 	if get_node(scene_name) == null:

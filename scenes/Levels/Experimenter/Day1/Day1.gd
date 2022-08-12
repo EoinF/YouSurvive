@@ -56,7 +56,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		return
 	if anim_name == "fade_out":
 		if is_islander_dead:
-			get_tree().reload_current_scene()
+			get_tree().change_scene("res://scenes/Levels/Experimenter/Day1/Day1.tscn")
 		else:
 			var experiment_data = $Experimenter.get_experiment_data()
 			emit_signal("finish_scene", experiment_data)

@@ -12,7 +12,7 @@ var save_data = DEFAULT_SAVE_DATA
 var constants
 
 func _ready():
-	constants = preload("res://scripts/constants.gd").new()
+	constants = preload("res://scripts/constants.gd").new()	
 
 
 func save_game(current_level, experiment_level = null, new_experiment_data = null):
@@ -76,8 +76,19 @@ func _on_Night2_finish_scene():
 
 
 func _on_Day3_finish_scene(experiment_data):
-	save_game("Outro", "Day3", experiment_data)
+	save_game("Night3", "Day3", experiment_data)
+	load_scene("Night3")
+
+
+func _on_Night3_finish_scene():
+	save_game("Day4")
+	load_scene("Day4")
+
+
+func _on_Day4_finish_scene(experiment_data):
+	save_game("Outro", "Day4", experiment_data)
 	load_scene("Outro")
+
 
 func _on_Outro_finish_scene():
 	emit_signal("finish_scenes")

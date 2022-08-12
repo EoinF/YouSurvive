@@ -47,7 +47,7 @@ func _on_Islander_die():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "fade_out":
 		if is_islander_dead:
-			get_tree().reload_current_scene()
+			get_tree().change_scene("res://scenes/Levels/Islander/Day1/Day1.tscn")
 		else:
 			emit_signal("finish_scene")
 			queue_free()
