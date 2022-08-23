@@ -15,22 +15,22 @@
 [ext_resource path="res://scenes/Levels/Base/SeaRocks.gd" type="Script" id=14]
 [ext_resource path="res://scenes/Levels/Experimenter/Day4/ScrollingManager.gd" type="Script" id=15]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=9]
 radius = 4.61711
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=10]
 radius = 258.731
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 671.77, 162.192 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 696.363, 125.808 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 270.658, 55.6321 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 306.726, 56.0857 )
 
 [sub_resource type="Animation" id=7]
@@ -131,7 +131,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Shape" type="CollisionShape2D" parent="Objects/Props/Raft/Islander/PlayerInteraction"]
-shape = SubResource( 1 )
+shape = SubResource( 9 )
 
 [node name="IslanderVisionSensor" type="Area2D" parent="Objects/Props/Raft/Islander"]
 visible = false
@@ -140,7 +140,7 @@ collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Props/Raft/Islander/IslanderVisionSensor"]
 position = Vector2( -1, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 10 )
 
 [node name="SeaBarriers" type="Area2D" parent="Objects/Props/Raft"]
 visible = false
@@ -150,19 +150,19 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Props/Raft/SeaBarriers"]
 position = Vector2( 25.7152, -59.5289 )
-shape = SubResource( 3 )
+shape = SubResource( 11 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Objects/Props/Raft/SeaBarriers"]
 position = Vector2( 46.531, 338.978 )
-shape = SubResource( 4 )
+shape = SubResource( 12 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Objects/Props/Raft/SeaBarriers"]
 position = Vector2( -366.223, 158.392 )
-shape = SubResource( 5 )
+shape = SubResource( 13 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Objects/Props/Raft/SeaBarriers"]
 position = Vector2( 392.552, 158.846 )
-shape = SubResource( 6 )
+shape = SubResource( 14 )
 
 [node name="SteerLeftNode" type="Position2D" parent="Objects/Props/Raft"]
 position = Vector2( 87.8953, -51.0876 )
@@ -172,58 +172,58 @@ position = Vector2( 86.9018, 49.0695 )
 
 [node name="Projectiles" parent="Objects/Props" instance=ExtResource( 8 )]
 
-[node name="SeaRocks" type="YSort" parent="Objects/Props"]
+[node name="SeaProps" type="YSort" parent="Objects/Props"]
 script = ExtResource( 14 )
 
-[node name="SeaRock" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 1062.45, 371.218 )
 
-[node name="SeaRock2" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock2" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 1322.44, 493.014 )
 
-[node name="SeaRock3" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock3" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 1469.67, 366.23 )
 
-[node name="SeaRock4" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock4" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 1695.27, 586.268 )
 
-[node name="SeaRock5" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock5" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 1818.04, 666.995 )
 
-[node name="SeaRock6" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock6" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 1754.14, 628.313 )
 
-[node name="SeaRock7" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock7" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 1829.82, 298.682 )
 
-[node name="SeaRock8" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock8" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 1893.73, 323.909 )
 
-[node name="SeaRock9" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock9" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 1967.72, 357.545 )
 
-[node name="SeaRock10" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock10" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 2039.56, 225.094 )
 
-[node name="SeaRock11" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock11" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 2321.09, 745.379 )
 
-[node name="SeaRock12" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock12" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 2107.27, 813.087 )
 
-[node name="SeaRock13" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock13" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 2673.88, 563.636 )
 
-[node name="SeaRock14" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock14" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 2859.19, 406.837 )
 
-[node name="SeaRock15" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock15" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 3040.93, 699.052 )
 
-[node name="SeaRock16" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock16" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 3468.56, 435.346 )
 
-[node name="SeaRock17" parent="Objects/Props/SeaRocks" instance=ExtResource( 13 )]
+[node name="SeaRock17" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 3529.14, 517.309 )
 
 [node name="AIController" type="Node" parent="."]
@@ -275,3 +275,4 @@ autoplay = true
 [connection signal="y_change" from="Objects/Props/Raft" to="Objects/ScrollingManager" method="_on_Raft_y_change"]
 [connection signal="health_change" from="Objects/Props/Raft/Islander" to="HUDLayer/HUD" method="_on_Islander_health_change"]
 [connection signal="spawn_item" from="Objects/Props/Projectiles" to="Objects/Props" method="_on_Projectiles_spawn_item"]
+[connection signal="hit_raft" from="Objects/Props/SeaProps" to="Objects/Props/Raft" method="_on_SeaProps_hit_raft"]

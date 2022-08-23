@@ -19,9 +19,6 @@ visible = false
 
 [node name="IslanderController" type="Node" parent="." index="3"]
 script = ExtResource( 2 )
-
-[node name="BeachLoopNight" parent="." index="7"]
-volume_db = -80.0
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="IslanderController" method="_on_PlayerInteraction_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/PlayerInteraction" to="IslanderController" method="_on_PlayerInteraction_area_exited"]
 [connection signal="health_change" from="Objects/Props/Ghost" to="." method="_on_Ghost_health_change"]

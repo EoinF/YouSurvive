@@ -143,3 +143,8 @@ func _on_SteeringAreaBottom_body_exited(body):
 
 func _on_ColourTween_tween_all_completed():
 	emit_signal("finish_sinking")
+
+
+func _on_SeaProps_hit_raft(damage_amount):
+	hit(damage_amount)
+

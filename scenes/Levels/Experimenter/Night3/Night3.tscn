@@ -1,16 +1,31 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Levels/Base/BaseNight3.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Levels/Base/IslanderController.gd" type="Script" id=2]
-[ext_resource path="res://scenes/Levels/Experimenter/Night3/Night3.gd" type="Script" id=3]
+[ext_resource path="res://assets/Audio/beach_loop_night.ogg" type="AudioStream" id=2]
+[ext_resource path="res://scenes/Levels/Base/IslanderController.gd" type="Script" id=3]
+[ext_resource path="res://assets/light2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Levels/Experimenter/Night3/Night3.gd" type="Script" id=5]
 
 [node name="Night3" instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+
+[node name="Props" parent="Objects" index="2"]
+CUSTOM_LAND_PROPS_PATH = NodePath("../../../Night3/Objects/Props")
+CUSTOM_SEA_PROPS_PATH = NodePath("../../../Night3/Objects/Props")
+
+[node name="Light2D" type="Light2D" parent="Objects/Props/Raft/Islander" index="15"]
+texture = ExtResource( 4 )
+texture_scale = 0.5
+color = Color( 0.501961, 0.780392, 1, 1 )
+energy = 0.8
+
+[node name="BeachLoopNight" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 2 )
+volume_db = -20.0
+autoplay = true
+bus = "SFX"
+
+[node name="IslanderController" type="Node" parent="." index="3"]
 script = ExtResource( 3 )
-
-[node name="IslanderController" type="Node" parent="." index="4"]
-script = ExtResource( 2 )
-
-[node name="GhostAIController" parent="." index="5"]
-DESIRED_DISTANCE_FROM_PLAYER = 60
-SHOULD_WALK_TOWARD_PLAYER = false
-[connection signal="complete_objective" from="Night3Objectives" to="." method="_on_Night3Objectives_complete_objective"]
+ISLANDER_NODE_PATH = NodePath("../Objects/Props/Raft/Islander")
+[connection signal="hit_raft" from="Objects/Props/SeaProps" to="." method="_on_SeaProps_hit_raft"]
