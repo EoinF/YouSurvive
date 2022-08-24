@@ -44,6 +44,8 @@ script = ExtResource( 3 )
 [node name="Day3" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Day3/Day3.tscn"]
 pause_mode = 0
 
+[node name="Night3" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Night3/Night3.tscn"]
+
 [node name="Day4" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Day4/Day4.tscn"]
 
 [node name="Outro" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Outro/Outro.tscn"]

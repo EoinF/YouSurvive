@@ -12,7 +12,7 @@ radius = 7.47797
 [sub_resource type="CircleShape2D" id=2]
 radius = 57.5965
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 10.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Particles2D:emitting")
@@ -147,7 +147,7 @@ tracks/10/keys = {
 "values": [ -20.0, -40.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Objects/Props/Islander/Light2D:energy")
@@ -162,7 +162,7 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Objects/Props/Tree/Light2D:energy")
@@ -177,7 +177,7 @@ tracks/0/keys = {
 "values": [ 0.0, 0.8 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Objects/Props/Crab:visible")
@@ -211,9 +211,10 @@ color = Color( 0.0431373, 0.0392157, 0.0941176, 1 )
 
 [node name="Islander" parent="Objects/Props" index="0"]
 modulate = Color( 1, 1, 1, 0.933333 )
+MAX_HEALTH = 9999999999999
 
 [node name="Light2D" type="Light2D" parent="Objects/Props/Islander" index="11"]
-position = Vector2( 0, -12.2704 )
+position = Vector2( 0, -12 )
 texture = ExtResource( 3 )
 texture_scale = 0.5
 color = Color( 0.501961, 0.780392, 1, 1 )
@@ -249,14 +250,17 @@ shape = SubResource( 1 )
 position = Vector2( 458.813, 246.333 )
 shape = SubResource( 2 )
 
+[node name="Overlay" parent="HUDLayer" index="2"]
+INTENSITY = 0.0
+
 [node name="Night2Objectives" type="Node" parent="." index="3"]
 script = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
-anims/RainCoconuts = SubResource( 4 )
-anims/ShowIslander = SubResource( 5 )
-anims/ShowTree = SubResource( 6 )
-anims/SpawnAndShowCrab = SubResource( 7 )
+anims/RainCoconuts = SubResource( 3 )
+anims/ShowIslander = SubResource( 4 )
+anims/ShowTree = SubResource( 5 )
+anims/SpawnAndShowCrab = SubResource( 6 )
 
 [node name="Particles2D" type="CPUParticles2D" parent="." index="5"]
 position = Vector2( 455.549, 215.014 )

@@ -24,7 +24,7 @@ func is_attacking():
 
 
 func get_weight():
-	return 10
+	return 25
 
 
 var velocity = Vector2.ZERO

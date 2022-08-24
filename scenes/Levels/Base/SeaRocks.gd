@@ -37,4 +37,8 @@ func _on_rock_collide(rock):
 	emit_signal("hit_raft", ROCK_DAMAGE)
 	rock.queue_free()
 	if SHOULD_RESET_ON_HIT:
-		position = starting_position
+		reset()
+
+
+func reset():
+	position = starting_position

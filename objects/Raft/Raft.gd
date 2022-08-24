@@ -16,6 +16,7 @@ var SINKING_DURATION_SECONDS = 1.0
 var partially_damaged
 
 var steering_weight = 0 setget set_steering_weight
+var is_steering_enabled = true
 
 var bodies_top = {}
 var bodies_bottom = {}
@@ -30,6 +31,14 @@ func set_steering_weight(new_value):
 		steering_direction = -1
 	else:
 		steering_direction = 0
+
+
+func enable_steering():
+	is_steering_enabled = true
+
+
+func disable_steering():
+	is_steering_enabled = false
 
 
 func get_x_left():
@@ -57,13 +66,14 @@ func _ready():
 	if get_owner() == null:
 		create_damaged_tilemap()
 
+
 func _process(delta):
-	if not is_alive:
+	if not is_alive or not is_steering_enabled:
 		$LocalPosition.rotation_degrees = 0
 		return
 	
 	emit_signal("y_change", steering_weight * STEER_SPEED * delta)
-	$LocalPosition.rotation_degrees = steering_weight * 0.2
+	$LocalPosition.rotation_degrees = steering_weight * 0.1
 
 
 # Called when the node enters the scene tree for the first time.
@@ -138,7 +148,6 @@ func _on_SteeringAreaBottom_body_exited(body):
 		
 	steering_weight -= body.get_weight()
 	bodies_bottom.erase(id)
-
 
 
 func _on_ColourTween_tween_all_completed():

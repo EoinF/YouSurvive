@@ -34,7 +34,7 @@ extents = Vector2( 306.726, 56.0857 )
 [node name="BaseNight3" type="Node2D"]
 
 [node name="Objects" type="CanvasModulate" parent="."]
-color = Color( 0.0941176, 0.0862745, 0.192157, 1 )
+color = Color( 0.0431373, 0.0392157, 0.0941176, 1 )
 
 [node name="ScrollingManager" type="Node" parent="Objects"]
 script = ExtResource( 12 )
@@ -52,7 +52,7 @@ tile_data = PoolIntArray( -2359312, 5, 0, -2359311, 5, 1, -2359310, 5, 1, -23593
 script = ExtResource( 8 )
 
 [node name="Raft" parent="Objects/Props" instance=ExtResource( 14 )]
-position = Vector2( 600, 300 )
+position = Vector2( 414.792, 300 )
 
 [node name="AttackNodes" type="Node2D" parent="Objects/Props/Raft"]
 
@@ -138,9 +138,9 @@ IS_SHARK_SPRITE = true
 
 [node name="Light2D" type="Light2D" parent="Objects/Props/SeaProps/SeaRock"]
 texture = ExtResource( 6 )
-texture_scale = 0.2
+texture_scale = 0.12
 color = Color( 0.537255, 0.788235, 0.843137, 1 )
-energy = 0.7
+energy = 0.8
 
 [node name="BobEffect" parent="Objects/Props/SeaProps/SeaRock" instance=ExtResource( 7 )]
 
@@ -150,9 +150,9 @@ IS_SHARK_SPRITE = true
 
 [node name="Light2D" type="Light2D" parent="Objects/Props/SeaProps/SeaRock2"]
 texture = ExtResource( 6 )
-texture_scale = 0.2
+texture_scale = 0.12
 color = Color( 0.537255, 0.788235, 0.843137, 1 )
-energy = 0.7
+energy = 0.8
 
 [node name="BobEffect" parent="Objects/Props/SeaProps/SeaRock2" instance=ExtResource( 7 )]
 
@@ -162,11 +162,23 @@ IS_SHARK_SPRITE = true
 
 [node name="Light2D" type="Light2D" parent="Objects/Props/SeaProps/SeaRock3"]
 texture = ExtResource( 6 )
-texture_scale = 0.2
+texture_scale = 0.12
 color = Color( 0.537255, 0.788235, 0.843137, 1 )
-energy = 0.7
+energy = 0.8
 
 [node name="BobEffect" parent="Objects/Props/SeaProps/SeaRock3" instance=ExtResource( 7 )]
+
+[node name="SeaRock4" parent="Objects/Props/SeaProps" instance=ExtResource( 15 )]
+position = Vector2( 1065.43, 47.2943 )
+IS_SHARK_SPRITE = true
+
+[node name="Light2D" type="Light2D" parent="Objects/Props/SeaProps/SeaRock4"]
+texture = ExtResource( 6 )
+texture_scale = 0.12
+color = Color( 0.537255, 0.788235, 0.843137, 1 )
+energy = 0.8
+
+[node name="BobEffect" parent="Objects/Props/SeaProps/SeaRock4" instance=ExtResource( 7 )]
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 
