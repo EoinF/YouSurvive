@@ -8,7 +8,11 @@
     },
     {
       "type": "text",
-      "content": "By scattering predators throughout the island, we force the test subject to confront the \"other\""
+      "content": "We make them fight for their life."
+    },
+    {
+      "type": "text",
+      "content": "Only by confronting the \"other\" can one distinguish themselves."
     },
     {
       "type": "text",
@@ -20,7 +24,7 @@
     },
     {
       "type": "text",
-      "content": "The test subject will not be aware of anything until we choose."
+      "content": "Take your time. We won't begin until everything has been set up"
     },
     { "type": "text", "content": "Here are the predators:" },
     {
@@ -54,21 +58,17 @@
     {
       "type": "text",
       "content": "Now, place 15 of these and we can begin."
-    },
-    {
-      "type": "text",
-      "content": "Feel free to mix and match however it may please."
     }
   ],
   "Main1 (After 15 placed)": [
     { "type": "text", "content": "Good." },
     {
       "type": "text",
-      "content": "Now the test subject must defend themselves."
+      "content": "The test subject needs a way to defend themselves."
     },
     {
       "type": "text",
-      "content": "So we will provide a weapon."
+      "content": "So we will provide one."
     },
     {
       "type": "event",
@@ -83,7 +83,7 @@
       "type": "text",
       "content": "Leave it further from the test subject to give an extra challenge."
     },
-    { "type": "text", "content": "Or closer to make things easy." }
+    { "type": "text", "content": "Or closer to make things easier." }
   ],
   "Main2 (After weapon placed)": [
     { "type": "text", "content": "Good." },
@@ -93,18 +93,18 @@
   "Complete - Easy": [
     {
       "type": "text",
-      "content": "A bit too easy for the test subject I see."
+      "content": "That was a bit too easy for the test subject I see."
     },
     {
       "type": "text",
-      "content": "A lack of conflict implies a lack of purpose."
+      "content": "A lack of conflict leads to a lack of purpose."
     },
     { "type": "link_to", "section_name": "Outro" }
   ],
   "Complete - Hard": [
     {
       "type": "text",
-      "content": "A tough challenge for the test subject I see."
+      "content": "Well that was a tough challenge for the test subject."
     },
     {
       "type": "text",
@@ -115,15 +115,11 @@
   "Outro": [
     {
       "type": "text",
-      "content": "Conflict brings about a further separation of one from the \"other\""
+      "content": "Either way, our experiments are going well sp far."
     },
     {
       "type": "text",
-      "content": "Friends draw closer together as one. But enemies push each other apart as many."
-    },
-    {
-      "type": "text",
-      "content": "We continue with this tomorrow."
+      "content": "On to tomorrow."
     }
   ]
 }

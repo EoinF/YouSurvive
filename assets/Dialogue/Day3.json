@@ -33,7 +33,7 @@
     },
     {
       "type": "text",
-      "content": "We will make this challenging by interposing some predators."
+      "content": "We'll throw in some predators to make this challenging."
     },
     {
       "type": "event",
@@ -41,7 +41,7 @@
     },
     {
       "type": "text",
-      "content": "Their goal is to collect branches and coconuts."
+      "content": "Their goal is to collect enough branches and coconuts."
     },
     { "type": "text", "content": "So put them to work." }
   ],
@@ -60,7 +60,11 @@
     },
     {
       "type": "text",
-      "content": "Now place the rest of them."
+      "content": "Check your inventory in the top left."
+    },
+    {
+      "type": "text",
+      "content": "Now place the rest of the branches."
     }
   ],
   "Complete - Easy": [
@@ -95,7 +99,11 @@
     },
     {
       "type": "text",
-      "content": "Tomorrow we complete our experiment, with a final test..."
+      "content": "Tomorrow we complete our experiment - with a final test."
+    },
+    {
+      "type": "text",
+      "content": "We'll see how the test subject has progressed..."
     }
   ]
 }

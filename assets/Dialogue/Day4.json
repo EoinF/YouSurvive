@@ -1,7 +1,16 @@
 {
   "Intro": [
     { "type": "config", "letter_delay": 0.06, "x": 0.5, "y": 0.5 },
-    { "type": "text", "content": "Today the experiment ends" },
+    {
+      "type": "text",
+      "content": "Today we close out this cycle of experiments."
+    },
+    {
+      "type": "text",
+      "content": "The last important facet of the self is a finite existence."
+    },
+    { "type": "text", "content": "A beginning followed by an end." },
+    { "type": "text", "content": "" },
     { "type": "event", "event_name": "gift_items" },
     { "type": "text", "content": "..." },
     { "type": "event", "event_name": "enable_controls" },

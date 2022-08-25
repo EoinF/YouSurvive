@@ -75,22 +75,26 @@
     },
     {
       "type": "text",
-      "content": "There's no meaning to be found in trivial tasks."
+      "content": "They won't find meaning in a trivial task."
     },
     { "type": "link_to", "section_name": "Outro" }
   ],
   "Outro": [
     {
       "type": "text",
-      "content": "Today was about providing a personal goal for the test subject,"
+      "content": "Today we provided a goal for the test subject."
     },
     {
       "type": "text",
-      "content": "for which their own needs come first."
+      "content": "They had to look out for themselves."
     },
     {
       "type": "text",
-      "content": "With this the test subject will become aware of their individuality"
+      "content": "Soon the test subject will become aware of their individuality."
+    },
+    {
+      "type": "text",
+      "content": "But this is just the beginning."
     },
     {
       "type": "text",
