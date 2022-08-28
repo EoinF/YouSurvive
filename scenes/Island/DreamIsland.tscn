@@ -49,6 +49,7 @@ shader_param/noise = SubResource( 5 )
 [node name="DreamIsland" type="Node2D"]
 
 [node name="Objects" type="CanvasModulate" parent="."]
+color = Color( 0.45098, 0.027451, 0.027451, 1 )
 
 [node name="GroundTiles" parent="Objects" instance=ExtResource( 2 )]
 
@@ -99,6 +100,7 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+INTENSITY = 0.0
 
 [node name="AIController" type="Node" parent="."]
 script = ExtResource( 11 )

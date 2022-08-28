@@ -11,8 +11,6 @@ var sound_weighting = ["1", "1", "1", "2", "2", "2", "3"]
 func _ready():
 	rand = RandomNumberGenerator.new()
 	rand.randomize()
-	if get_owner() == null:
-		start(false)
 
 
 func set_volume_offset(volume):

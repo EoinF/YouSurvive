@@ -11,12 +11,14 @@ var is_predator_placement_complete = false
 var is_weapon_placement_complete = false
 var is_kill_predators_complete = false
 
+var IS_DEBUG_ACTIVE = false
+
 func _ready():
 	get_node("Day2Objectives").set_objective_active("kill_predators", true)
 	get_node("AIController").enable_ai()
 	
 	# Run this only if scene is run standalone
-	if get_owner() == null:
+	if IS_DEBUG_ACTIVE:
 		var test_file = File.new()
 		
 		test_file.open("utils/test_data.json", File.READ)

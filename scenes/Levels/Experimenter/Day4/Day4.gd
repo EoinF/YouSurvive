@@ -19,11 +19,13 @@ func _ready():
 	$AIController.enable_ai()
 	$SeaAIController.enable_ai()
 	$IslanderAIController.add_steer_goal(get_node("Objects/Props/Raft"))
-	# if standalone skip the fade in animation
-	if get_owner() == null:
-		get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
-	else:
-		_fade_in()
+	
+	# Workaround for delay in CanvasModulate changing between scenes
+	$Objects.hide()
+	yield(get_tree(), "idle_frame")
+	$Objects.show()
+	
+	_fade_in()
 
 
 func _on_DialogueManager_finish_dialogue(section_name):

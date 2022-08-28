@@ -5,6 +5,8 @@ signal finish_scene
 var is_collect_branches_complete = false
 var is_islander_dead = false
 
+var IS_DEBUG_ACTIVE = false
+
 
 func _fade_out():
 	$AnimationPlayer.play("fade_out")
@@ -13,8 +15,7 @@ func _fade_out():
 func _ready():
 	get_node("Day1Objectives").set_objective_active("collect_branches", true)
 	
-	# Run this only if scene is run standalone
-	if get_owner() == null:
+	if IS_DEBUG_ACTIVE:
 		var test_file = File.new()
 		
 		test_file.open("utils/test_data.json", File.READ)

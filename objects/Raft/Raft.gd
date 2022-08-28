@@ -5,7 +5,8 @@ signal y_change(amount)
 signal start_sinking
 signal finish_sinking
 
-var health = 200
+export var MAX_HEALTH = 200
+var health
 var is_alive = true
 
 var LOW_HEALTH_BREAKPOINT = 30
@@ -63,6 +64,7 @@ func get_y_bottom():
 
 func _ready():
 	randomize()
+	health = MAX_HEALTH
 	if get_owner() == null:
 		create_damaged_tilemap()
 
@@ -88,7 +90,7 @@ func hit(damage = 1):
 	var old_health = health
 	health -= damage
 	emit_signal("health_change", health)
-	if old_health > LOW_HEALTH_BREAKPOINT and health < LOW_HEALTH_BREAKPOINT:
+	if old_health >= LOW_HEALTH_BREAKPOINT and health < LOW_HEALTH_BREAKPOINT:
 		create_damaged_tilemap()
 	if health <= 0:
 		die()

@@ -1,5 +1,7 @@
 extends Node2D
 
+signal finish_scene
+
 var rocks_hit = 0
 var sea_props
 
@@ -10,6 +12,11 @@ func _ready():
 	$IslanderController.disable_controls()
 	$Objects/Props/Raft.disable_steering()
 	$AnimationPlayer.play("ShowIslander")
+	
+	# Workaround for delay in CanvasModulate changing between scenes
+	$Objects.hide()
+	yield(get_tree(), "idle_frame")
+	$Objects.show()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

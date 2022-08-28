@@ -9,6 +9,7 @@ func _ready():
 	if get_owner() == null:
 		activate()
 
+
 func activate():
 	get_node("Tip").visible = true
 	get_node("AnimationPlayer").play("Flash")

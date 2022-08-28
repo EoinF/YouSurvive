@@ -4,12 +4,14 @@ signal finish_scene
 
 var is_islander_dead = false
 
+var IS_DEBUG_ACTIVE = false
+
 func _ready():
 	get_node("Day3Objectives").set_objective_active("collect_items", true)
 	get_node("AIController").enable_ai()
 	
 	# Run this only if scene is run standalone
-	if get_owner() == null:
+	if IS_DEBUG_ACTIVE:
 		var test_file = File.new()
 		
 		test_file.open("utils/test_data.json", File.READ)

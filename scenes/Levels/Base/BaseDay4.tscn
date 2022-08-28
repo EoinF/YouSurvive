@@ -15,22 +15,22 @@
 [ext_resource path="res://scenes/Levels/Base/SeaRocks.gd" type="Script" id=14]
 [ext_resource path="res://scenes/Levels/Experimenter/Day4/ScrollingManager.gd" type="Script" id=15]
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=1]
 radius = 4.61711
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=2]
 radius = 258.731
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 671.77, 162.192 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 696.363, 125.808 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 270.658, 55.6321 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 306.726, 56.0857 )
 
 [sub_resource type="Animation" id=7]
@@ -131,7 +131,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Shape" type="CollisionShape2D" parent="Objects/Props/Raft/Islander/PlayerInteraction"]
-shape = SubResource( 9 )
+shape = SubResource( 1 )
 
 [node name="IslanderVisionSensor" type="Area2D" parent="Objects/Props/Raft/Islander"]
 visible = false
@@ -140,7 +140,7 @@ collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Props/Raft/Islander/IslanderVisionSensor"]
 position = Vector2( -1, 0 )
-shape = SubResource( 10 )
+shape = SubResource( 2 )
 
 [node name="SeaBarriers" type="Area2D" parent="Objects/Props/Raft"]
 visible = false
@@ -150,19 +150,19 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Props/Raft/SeaBarriers"]
 position = Vector2( 25.7152, -59.5289 )
-shape = SubResource( 11 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Objects/Props/Raft/SeaBarriers"]
 position = Vector2( 46.531, 338.978 )
-shape = SubResource( 12 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Objects/Props/Raft/SeaBarriers"]
 position = Vector2( -366.223, 158.392 )
-shape = SubResource( 13 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Objects/Props/Raft/SeaBarriers"]
 position = Vector2( 392.552, 158.846 )
-shape = SubResource( 14 )
+shape = SubResource( 6 )
 
 [node name="SteerLeftNode" type="Position2D" parent="Objects/Props/Raft"]
 position = Vector2( 87.8953, -51.0876 )
@@ -272,6 +272,7 @@ anims/fade_out = SubResource( 8 )
 stream = ExtResource( 5 )
 volume_db = -16.0
 autoplay = true
+[connection signal="health_change" from="Objects/Props/Raft" to="HUDLayer/HUD/RaftHealthBar" method="_on_Raft_health_change"]
 [connection signal="y_change" from="Objects/Props/Raft" to="Objects/ScrollingManager" method="_on_Raft_y_change"]
 [connection signal="health_change" from="Objects/Props/Raft/Islander" to="HUDLayer/HUD" method="_on_Islander_health_change"]
 [connection signal="spawn_item" from="Objects/Props/Projectiles" to="Objects/Props" method="_on_Projectiles_spawn_item"]

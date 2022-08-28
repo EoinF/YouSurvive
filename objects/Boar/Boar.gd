@@ -32,9 +32,9 @@ var slide_timeout = 0
 
 export var CHASE_SPEED = 9 * 1000
 export var SPEED = 7 * 1000
-export var ATTACK_SPEED = 18 * 1000
+export var ATTACK_SPEED = 15 * 1000
 export var DEATH_COOLDOWN = 1.0
-export var HEALTH = 3
+export var HEALTH = 4
 
 
 func get_position():
@@ -62,6 +62,7 @@ func get_wander_target():
 func _ready():
 	SLIDE_DURATION = get_node("PostAttackTimer").wait_time
 
+
 func _turn_if_needed(x):
 	var animated_sprite = get_node("AnimatedSprite")
 	if x > 0 and is_flipped or x < 0 and not is_flipped:
@@ -71,6 +72,7 @@ func _turn_if_needed(x):
 		animated_sprite.flip_h = is_flipped
 		return true
 	return false
+
 
 func idle():
 	var animated_sprite = get_node("AnimatedSprite")
@@ -90,7 +92,6 @@ func move(x, y):
 	if not animated_sprite.animation in ["running", "turning"]:
 		animated_sprite.animation = "running"
 		animated_sprite.play()
-		
 
 
 func attack(x, y):
@@ -105,8 +106,6 @@ func attack(x, y):
 	var animated_sprite = get_node("AnimatedSprite")
 	animated_sprite.animation = "default"
 	animated_sprite.play()
-	
-	
 
 
 func _process(delta):
@@ -129,7 +128,6 @@ func _physics_process(delta):
 		velocity = Vector2(direction.x * ATTACK_SPEED, direction.y * ATTACK_SPEED) * easing_value
 	
 	move_and_slide(velocity * delta)
-	
 	velocity = Vector2.ZERO
 
 

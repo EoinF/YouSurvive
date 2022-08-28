@@ -38,11 +38,12 @@ func set_player_name(player_name):
 
 
 func _ready():
-	# if standalone skip the fade in animation
-	if get_owner() == null:
-		get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
-	else:
-		_fade_in()
+	# Workaround for delay in CanvasModulate changing between scenes
+	$Objects.hide()
+	yield(get_tree(), "idle_frame")
+	$Objects.show()
+	
+	_fade_in()
 
 
 func _fade_in():
@@ -76,10 +77,16 @@ func _on_Day3Objectives_objectives_updated(objectives):
 		get_node("HUDLayer/HUD/DialogueManager").start_section("Coconuts collected")
 		
 	if objectives[0].is_complete and objectives[1].is_complete:
-		if calculate_score() >= hard_score_breakpoint:
-			get_node("HUDLayer/HUD/DialogueManager").start_section("Complete - Hard")
-		else:
-			get_node("HUDLayer/HUD/DialogueManager").start_section("Complete - Easy")
+		on_objectives_complete()
+
+
+func on_objectives_complete():
+	$Experimenter.disable_placement()
+	$AIController.set_is_peaceful(true)
+	if calculate_score() >= hard_score_breakpoint:
+		get_node("HUDLayer/HUD/DialogueManager").start_section("Complete - Hard")
+	else:
+		get_node("HUDLayer/HUD/DialogueManager").start_section("Complete - Easy")
 
 
 func _on_Experimenter_place_item(item_type, _source_location):
@@ -93,9 +100,8 @@ func _on_GameOver_finish():
 
 func _on_Islander_die():
 	var islander = get_node("Objects/Props/Islander")
-	var experimenter = get_node("Experimenter")
-	experimenter.set_follow_target(islander, true)
-	experimenter.disable_controls()
+	$Experimenter.set_follow_target(islander, true)
+	$Experimenter.disable_controls()
 	is_islander_dead = true
 	get_node("HUDLayer/HUD/DialogueManager").stop()
 	get_node("HUDLayer/HUD/GameOver").start()

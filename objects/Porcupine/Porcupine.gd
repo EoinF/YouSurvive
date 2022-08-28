@@ -31,7 +31,7 @@ export var CHASE_SPEED = 6 * 1000
 export var SPEED = 5 * 1000
 export var ATTACK_SPEED = 5 * 1000
 export var DEATH_COOLDOWN = 1.0
-export var HEALTH = 2
+export var HEALTH = 3
 
 
 func get_position():

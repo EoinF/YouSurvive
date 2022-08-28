@@ -12,12 +12,7 @@ func set_player_name(player_name):
 
 func _ready():
 	get_node("AIController").disable_ai()
-	
-	# if standalone skip the fade in animation
-	if get_owner() == null:
-		get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
-	else:
-		_fade_in()
+	_fade_in()
 
 
 func _fade_in():
@@ -78,7 +73,7 @@ func _on_Day2Objectives_objectives_updated(objectives):
 
 	if not is_kill_predators_complete and _is_objective_complete(objectives[2]) \
 	and _is_objective_complete(objectives[3]) and _is_objective_complete(objectives[4]):
-		get_node("Experimenter").disable_placement()
+		$Experimenter.disable_placement()
 		if enemies_score < SCORE_THRESHOLD:
 			dialogue_manager.start_section("Complete - Easy")
 		else:

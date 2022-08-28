@@ -8,7 +8,7 @@ signal throw_stone(position, direction)
 
 export var SPEED = 8 * 1000
 export var IS_IMMUNE_TO_STONE = true
-export var MAX_HEALTH = 1000
+export var MAX_HEALTH = 1500
 export var FOOTSTEPS_VOLUME_OFFSET = 0
 export var IS_ON_WOOD = false
 

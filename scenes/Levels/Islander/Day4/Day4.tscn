@@ -14,7 +14,7 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="Shark" parent="Objects/Props" index="1" instance=ExtResource( 4 )]
-position = Vector2( 372.054, 245.848 )
+position = Vector2( 532.597, 274.389 )
 collision_mask = 61
 
 [node name="HUD" parent="HUDLayer" index="0"]

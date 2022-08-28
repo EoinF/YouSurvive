@@ -15,7 +15,7 @@ var object_type = "shark"
 
 
 export var CHASE_SPEED = 9 * 1000
-export var SPEED = 2 * 1000
+export var SPEED = 3 * 1000
 export var ATTACK_SPEED = 12 * 1000
 export var DEATH_COOLDOWN = 1.0
 export var HEALTH = 3

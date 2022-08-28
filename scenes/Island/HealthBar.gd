@@ -2,9 +2,9 @@ tool
 extends Control
 
 export var LABEL_TEXT = "Test Subject" setget set_label_text
-export var MAX_HEALTH = 1000
 
-var health = MAX_HEALTH
+var health = 0
+var max_health = 0
 
 func set_label_text(_text):
 	LABEL_TEXT = _text
@@ -12,12 +12,17 @@ func set_label_text(_text):
 
 
 func _ready():
-	health = MAX_HEALTH
+	health = 0
 	var health_segment = get_node("Background/HealthSegmentBackground/HealthSegment")
-	health_segment.rect_scale.x = health / MAX_HEALTH
+	health_segment.rect_scale.x = 1
 
 
 func set_health(amount):
 	health = amount
+	max_health = amount if amount > max_health else max_health
 	var health_segment = get_node("Background/HealthSegmentBackground/HealthSegment")
-	health_segment.rect_scale.x = float(health) / MAX_HEALTH
+	health_segment.rect_scale.x = float(health) / max_health
+
+
+func _on_Raft_health_change(new_amount):
+	set_health(new_amount)

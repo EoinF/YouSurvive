@@ -167,8 +167,8 @@ radius = 10.0992
 height = 15.0221
 
 [sub_resource type="CapsuleShape2D" id=33]
-radius = 9.46838
-height = 10.9761
+radius = 10.3885
+height = 11.6261
 
 [node name="Boar" type="KinematicBody2D" groups=[
 "AI",
@@ -183,7 +183,7 @@ texture = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 30 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -225,7 +225,6 @@ shape = SubResource( 32 )
 disabled = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
-visible = false
 position = Vector2( 0, 6 )
 collision_layer = 2
 collision_mask = 0

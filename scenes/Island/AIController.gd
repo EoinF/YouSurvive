@@ -34,7 +34,11 @@ class AINode:
 
 var ai_nodes = []
 var is_ai_enabled = true
+var is_peaceful = false
 
+
+func set_is_peaceful(new_value):
+	is_peaceful = new_value
 
 func disable_ai():
 	is_ai_enabled = false
@@ -61,7 +65,7 @@ func _process(delta):
 			var islander_position = get_node(ISLANDER_PATH).global_position
 			var direction_to_player = islander_position - ai_node.node.get_position()
 			
-			if direction_to_player.length() < 200:
+			if not is_peaceful and direction_to_player.length() < 200:
 				ai_node.set_state(AIState.CHASE)
 				ai_node.state_timeout = 0
 			

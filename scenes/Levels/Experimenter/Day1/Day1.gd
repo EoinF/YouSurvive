@@ -17,11 +17,7 @@ func set_player_name(name: String):
 
 
 func _ready():
-	# if standalone skip the fade in animation
-	if get_owner() == null:
-		get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
-	else:
-		_fade_in()
+	_fade_in()
 
 
 func _on_DialogueManager_finish_dialogue(section_name):

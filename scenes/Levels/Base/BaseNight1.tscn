@@ -226,7 +226,7 @@ tracks/9/keys = {
 }
 
 [sub_resource type="Animation" id=6]
-length = 3.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Objects/Props/Islander/Light2D:energy")
 tracks/0/interp = 1
@@ -234,10 +234,22 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 3 ),
+"times": PoolRealArray( 0, 2, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Objects:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.0431373, 0.0392157, 0.0941176, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
