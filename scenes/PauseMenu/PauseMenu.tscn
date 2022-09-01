@@ -6,6 +6,7 @@
 
 [node name="PauseMenu" type="CanvasLayer"]
 pause_mode = 2
+layer = 3
 script = ExtResource( 3 )
 
 [node name="Panel" type="Panel" parent="."]

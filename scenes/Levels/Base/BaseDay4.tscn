@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scenes/Island/AIController.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Levels/Base/SeaAIController.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://objects/Projectiles/Projectiles.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Island/TooltipContainer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Island/Props.gd" type="Script" id=10]
+[ext_resource path="res://assets/Audio/beach_loop_day.ogg" type="AudioStream" id=11]
 [ext_resource path="res://scenes/Island/HealthBar.tscn" type="PackedScene" id=12]
 [ext_resource path="res://objects/Rock/SeaRock.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Levels/Base/SeaRocks.gd" type="Script" id=14]
@@ -60,7 +61,35 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=10]
+resource_name = "fade_in_music"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../MusicLoop:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -40.0, -16.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../MusicLoop:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=9]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
@@ -79,14 +108,14 @@ tracks/0/keys = {
 
 [node name="Objects" type="CanvasModulate" parent="."]
 
-[node name="ScrollingManager" type="Node" parent="Objects"]
+[node name="ScrollingManager" type="Node2D" parent="Objects"]
 script = ExtResource( 15 )
 
 [node name="ScrollEdge" type="Position2D" parent="Objects/ScrollingManager"]
-position = Vector2( 897.908, 285.013 )
+position = Vector2( 3325.41, 285.013 )
 
 [node name="SceneEdge" type="Position2D" parent="Objects/ScrollingManager"]
-position = Vector2( 2040.39, 253.058 )
+position = Vector2( 3669.06, 253.058 )
 
 [node name="GroundTiles" parent="Objects" instance=ExtResource( 7 )]
 z_index = -2
@@ -176,55 +205,55 @@ position = Vector2( 86.9018, 49.0695 )
 script = ExtResource( 14 )
 
 [node name="SeaRock" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 1062.45, 371.218 )
+position = Vector2( 1429.64, 371.218 )
 
 [node name="SeaRock2" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 1322.44, 493.014 )
+position = Vector2( 1689.63, 493.014 )
 
 [node name="SeaRock3" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 1469.67, 366.23 )
+position = Vector2( 1836.86, 366.23 )
 
 [node name="SeaRock4" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 1695.27, 586.268 )
+position = Vector2( 2062.46, 586.268 )
 
 [node name="SeaRock5" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 1818.04, 666.995 )
+position = Vector2( 2185.23, 666.995 )
 
 [node name="SeaRock6" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 1754.14, 628.313 )
+position = Vector2( 2121.33, 628.313 )
 
 [node name="SeaRock7" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 1829.82, 298.682 )
+position = Vector2( 2197.01, 298.682 )
 
 [node name="SeaRock8" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 1893.73, 323.909 )
+position = Vector2( 2260.92, 323.909 )
 
 [node name="SeaRock9" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 1967.72, 357.545 )
+position = Vector2( 2334.91, 357.545 )
 
 [node name="SeaRock10" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 2039.56, 225.094 )
+position = Vector2( 2406.75, 225.094 )
 
 [node name="SeaRock11" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 2321.09, 745.379 )
+position = Vector2( 2688.28, 745.379 )
 
 [node name="SeaRock12" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 2107.27, 813.087 )
+position = Vector2( 2474.46, 813.087 )
 
 [node name="SeaRock13" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 2673.88, 563.636 )
+position = Vector2( 3041.07, 563.636 )
 
 [node name="SeaRock14" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 2859.19, 406.837 )
+position = Vector2( 3226.38, 406.837 )
 
 [node name="SeaRock15" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 3040.93, 699.052 )
+position = Vector2( 3408.11, 699.052 )
 
 [node name="SeaRock16" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 3468.56, 435.346 )
+position = Vector2( 3835.75, 435.346 )
 
 [node name="SeaRock17" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
-position = Vector2( 3529.14, 517.309 )
+position = Vector2( 3896.32, 517.309 )
 
 [node name="AIController" type="Node" parent="."]
 script = ExtResource( 1 )
@@ -234,6 +263,7 @@ ISLANDER_PATH = NodePath("../Objects/Props/Raft/Islander")
 script = ExtResource( 2 )
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="HUD" parent="HUDLayer" instance=ExtResource( 4 )]
 margin_left = -1.5874
@@ -259,19 +289,25 @@ __meta__ = {
 margin_top = 34.0756
 margin_bottom = 57.0756
 LABEL_TEXT = "Raft"
-MAX_HEALTH = 200
 
 [node name="TooltipContainer" parent="HUDLayer" instance=ExtResource( 9 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Objects")
 anims/fade = SubResource( 7 )
-anims/fade_out = SubResource( 8 )
+anims/fade_in_music = SubResource( 10 )
+anims/fade_out = SubResource( 9 )
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = -40.0
+bus = "Music"
+
+[node name="BeachLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
 volume_db = -16.0
 autoplay = true
+bus = "SFX"
 [connection signal="health_change" from="Objects/Props/Raft" to="HUDLayer/HUD/RaftHealthBar" method="_on_Raft_health_change"]
 [connection signal="y_change" from="Objects/Props/Raft" to="Objects/ScrollingManager" method="_on_Raft_y_change"]
 [connection signal="health_change" from="Objects/Props/Raft/Islander" to="HUDLayer/HUD" method="_on_Islander_health_change"]

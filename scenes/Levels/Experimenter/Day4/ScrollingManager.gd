@@ -1,12 +1,17 @@
-extends Node
+extends Node2D
 
 signal edge_reached
 signal finish
 
+var is_started = false
 var is_finished = false
 var is_at_edge = false
-export var RAFT_SPEED = 20
+export var RAFT_SPEED = 40
 var sea_tilemap_original_position: Vector2
+
+
+func start():
+	is_started = true
 
 
 func _ready():
@@ -21,6 +26,8 @@ func _on_Raft_y_change(amount):
 	sea_tilemap.position.y += y_delta
 	while sea_tilemap.position.y < sea_tilemap_original_position.y - 16:
 		sea_tilemap.position.y += 16
+	while sea_tilemap.position.y > 16:
+		sea_tilemap.position.y -= 16
 	
 	var sea_props = get_owner().get_node("Objects/Props/SeaProps")
 	sea_props.move(0, y_delta)
@@ -32,11 +39,11 @@ func _process(delta):
 	
 	if is_finished:
 		return
-	
+		
 	if is_at_edge:
 		raft.position.x += diff_x
 		
-		if $SceneEdge.position.x < raft.get_x_left():
+		if is_started and $SceneEdge.position.x < raft.get_x_left():
 			emit_signal("finish")
 			is_finished = true
 		return
@@ -51,11 +58,6 @@ func _process(delta):
 	if not has_node("ScrollEdge"):
 		return
 	
-	$ScrollEdge.position.x -= diff_x
-	if $ScrollEdge.global_position.x < raft.get_x_left():
+	if is_started and $ScrollEdge.global_position.x < raft.get_x_left():
 		is_at_edge = true
 		emit_signal("edge_reached")
-	
-	
-	
-

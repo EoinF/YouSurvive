@@ -2,6 +2,7 @@ extends Node
 
 var active_scene
 
+
 func _process(delta):
 	var pause_pressed = Input.is_action_just_pressed("toggle_pause")
 	if not pause_pressed or $MainMenu.is_active:
@@ -17,9 +18,10 @@ func _process(delta):
 
 
 func _on_ExperimenterScenes_finish_scenes(save_data):
-	var islander_scenes = get_node("IslanderScenes")
-	islander_scenes.save_game("Day1")
-	islander_scenes.load_scene("Day1", save_data)
+	$MainMenu.show()
+	$MainMenu.remove_new_game()
+	active_scene.queue_free()
+	active_scene = null
 
 
 func _on_IslanderScenes_finish_scenes():

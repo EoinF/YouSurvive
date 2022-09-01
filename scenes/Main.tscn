@@ -18,13 +18,12 @@ __meta__ = {
 script = ExtResource( 4 )
 
 [node name="Day1" parent="IslanderScenes" instance_placeholder="res://scenes/Levels/Islander/Day1/Day1.tscn"]
+pause_mode = 1
 
 [node name="Day2" parent="IslanderScenes" instance_placeholder="res://scenes/Levels/Islander/Day2/Day2.tscn"]
 
 [node name="Day3" parent="IslanderScenes" instance_placeholder="res://scenes/Levels/Islander/Day3/Day3.tscn"]
 pause_mode = 0
-
-[node name="Outro" parent="IslanderScenes" instance_placeholder="res://scenes/Levels/Islander/Outro/Outro.tscn"]
 
 [node name="Day4" parent="IslanderScenes" instance_placeholder="res://scenes/Levels/Islander/Day4/Day4.tscn"]
 
@@ -34,6 +33,7 @@ script = ExtResource( 3 )
 [node name="Intro" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Intro/Intro.tscn"]
 
 [node name="Day1" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Day1/Day1.tscn"]
+pause_mode = 1
 
 [node name="Night1" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Night1/Night1.tscn"]
 
@@ -47,8 +47,6 @@ pause_mode = 0
 [node name="Night3" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Night3/Night3.tscn"]
 
 [node name="Day4" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Day4/Day4.tscn"]
-
-[node name="Outro" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Outro/Outro.tscn"]
 
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
 layer = 127

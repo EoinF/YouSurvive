@@ -26,13 +26,19 @@ func show():
 	$CanvasModulate.color = Color.white
 	$CanvasModulate.visible = true
 	$CanvasModulate/MusicLoop.play()
-	$CanvasModulate/MusicLoop.set_volume_db(-8)
+	$CanvasModulate/MusicLoop.set_volume_db(-12)
 
 
 func hide():
 	is_active = false
 	$CanvasModulate.visible = false
 	$CanvasModulate/MusicLoop.stop()
+
+
+func remove_new_game():
+	var new_game_panel = $CanvasModulate/Panel/CenterContainer/Grid/NewGame
+	new_game_panel.disabled = true
+	new_game_panel.visible = false
 
 
 func _ready():

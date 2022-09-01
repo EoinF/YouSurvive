@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/light2.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Levels/Experimenter/Night3/Night3.gd" type="Script" id=5]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "FadeOut"
 length = 5.0
 tracks/0/type = "value"
@@ -90,8 +90,7 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "ShowIslander"
+[sub_resource type="Animation" id=4]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Objects/Props/Raft/Islander/Light2D:energy")
@@ -150,9 +149,9 @@ script = ExtResource( 3 )
 ISLANDER_NODE_PATH = NodePath("../Objects/Props/Raft/Islander")
 
 [node name="AnimationPlayer" parent="." index="4"]
-anims/FadeOut = SubResource( 4 )
+anims/FadeOut = SubResource( 1 )
 anims/RevealLeftSteering = SubResource( 2 )
 anims/RevealRightSteering = SubResource( 3 )
-anims/ShowIslander = SubResource( 1 )
+anims/ShowIslander = SubResource( 4 )
 [connection signal="hit_raft" from="Objects/Props/SeaProps" to="." method="_on_SeaProps_hit_raft"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

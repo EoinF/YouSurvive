@@ -722,6 +722,7 @@ position = Vector2( 565, 300 )
 script = ExtResource( 15 )
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="HUD" parent="HUDLayer" instance=ExtResource( 3 )]
 

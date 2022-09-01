@@ -85,6 +85,7 @@ shape = SubResource( 2 )
 position = Vector2( 454.597, 249.187 )
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="HUD" parent="HUDLayer" instance=ExtResource( 1 )]
 visible = false

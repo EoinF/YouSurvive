@@ -15,11 +15,11 @@ func _ready():
 	constants = preload("res://scripts/constants.gd").new()	
 
 
-func save_game(current_level, experiment_level = null, new_experiment_data = null):
+func save_game(current_level, experiment_level = null, new_experiment_data = null, new_chapter = "Experimenter"):
 	var save_file = File.new()
 	save_file.open(constants.SAVE_FILE_LOCATION, File.WRITE)
 	
-	save_data["current_chapter"] = "Experimenter"
+	save_data["current_chapter"] = new_chapter
 	save_data["current_level"] = current_level
 	
 	if new_experiment_data != null and experiment_level != null:
@@ -33,9 +33,8 @@ func load_scene(scene_name, _save_data = null):
 	if _save_data != null:
 		save_data = _save_data
 
-	_instance_scene(scene_name)
+	var new_scene = _instance_scene(scene_name)
 	
-	var new_scene = get_node(scene_name)
 	if new_scene.has_method("set_player_name"):
 		new_scene.set_player_name(save_data.player_name)
 	new_scene.connect("finish_scene", self, "_on_" + scene_name + "_finish_scene")
@@ -86,19 +85,17 @@ func _on_Night3_finish_scene():
 
 
 func _on_Day4_finish_scene(experiment_data):
-	save_game("Outro", "Day4", experiment_data)
-	load_scene("Outro")
-
-
-func _on_Outro_finish_scene():
+	save_game("Day1", "Day4", experiment_data, "Islander")
 	emit_signal("finish_scenes")
 
 
 func _instance_scene(scene_name):
 	if get_node(scene_name) == null:
 		var scene_file = load(BASE_PATH + scene_name + "/" + scene_name + ".tscn")
-		add_child(scene_file.instance())
-		return
+		var scene = scene_file.instance()
+		add_child(scene)
+		return scene
 		
 	var scene_placeholder = get_node(scene_name)
 	scene_placeholder.replace_by_instance()
+	return get_node(scene_name)

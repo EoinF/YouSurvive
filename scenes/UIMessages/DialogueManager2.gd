@@ -5,6 +5,7 @@ signal trigger_event(event_name)
 
 var LABEL_MARGIN_X = 16
 
+var highlight_info
 var final_text
 var current_length
 
@@ -71,6 +72,17 @@ func start_section(_section_name):
 	_next_node()
 
 
+func _set_label_text(text: String):
+	if highlight_info != null and highlight_info.begin < len(text):
+		var opening_tag =  "[color=yellow][wave amp=20 freq=3]"
+		var closing_tag = "[/wave][/color]"
+		var before_highlight = text.substr(0, highlight_info.begin)
+		var highlighted_text = text.substr(highlight_info.begin, highlight_info.end - highlight_info.begin)
+		var after_highlight = text.substr(highlight_info.end)
+		text = before_highlight + opening_tag + highlighted_text + closing_tag + after_highlight
+	
+	$Button/LabelContainer/Label.bbcode_text = "[center]%s[/center]" % [text]
+
 func stop():
 	visible = false
 	is_playing = false
@@ -118,19 +130,30 @@ func _next_node():
 			current_length = 0
 			final_text = _apply_variables(current_node["content"])
 			
+			if "highlight" in current_node:
+				highlight_info = current_node["highlight"]
+			else:
+				highlight_info = null
+				
+			if "timeout" in current_node:
+				$NodeTimer.start(current_node["timeout"])
+			
 			var label = get_node("Button/LabelContainer/Label")
 			label.modulate = FOREGROUND_MAP[config["foreground"]]
-			var text_area = label.get_font("Regular").get_string_size(final_text)
+			# Use the hidden label to calculate the text area
+			# as the rich text label automatically wraps to new lines
+			var text_area = $Button/LabelContainer/HiddenLabel.get_font("Regular").get_string_size(final_text)
 			var background = get_node("Button/LabelContainer")
 			background.color = BACKGROUND_MAP[config["background"]]
 
 			if not config["is_full_screen"]:
 				var button = $Button
+				label.rect_size.x = text_area.x + LABEL_MARGIN_X * 2
 				button.rect_size.x = text_area.x + LABEL_MARGIN_X * 2
 				button.rect_position.x = (rect_size.x - background.rect_size.x) * config["x_pct"]
 				button.rect_position.y = (rect_size.y - background.rect_size.y) * config["y_pct"]
 			
-			label.text = ""
+			label.bbcode_text = ""
 			var letter_timer = get_node("LetterTimer")
 			letter_timer.start()
 		elif current_node["type"] == "link_to":
@@ -147,7 +170,7 @@ func _on_LetterTimer_timeout():
 		if final_text[current_length] != ' ':
 			get_node("LetterSound").play()
 		current_length += 1
-		get_node("Button/LabelContainer/Label").text = final_text.substr(0, current_length)
+		_set_label_text(final_text.substr(0, current_length))
 	else:
 		get_node("LetterTimer").stop()
 
@@ -158,6 +181,11 @@ func _on_Button_pressed():
 	get_node("LetterTimer").stop()
 	if current_length < len(final_text):
 		current_length = len(final_text)
-		get_node("Button/LabelContainer/Label").text = final_text
+		_set_label_text(final_text)
 	else:
 		_next_node()
+
+
+func _on_NodeTimer_timeout():
+	get_node("LetterTimer").stop()
+	_next_node()

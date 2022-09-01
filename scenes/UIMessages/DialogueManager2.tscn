@@ -4,17 +4,17 @@
 [ext_resource path="res://assets/Audio/dialogue_blip.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/Fonts/Regular.tres" type="DynamicFont" id=3]
 
-[sub_resource type="Theme" id=6]
+[sub_resource type="Theme" id=1]
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="StyleBoxEmpty" id=9]
+[sub_resource type="StyleBoxEmpty" id=4]
 
-[sub_resource type="StyleBoxEmpty" id=10]
+[sub_resource type="StyleBoxEmpty" id=5]
 
-[sub_resource type="StyleBoxEmpty" id=11]
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [node name="DialogueManager" type="Control"]
 visible = false
@@ -32,16 +32,18 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -50.2649
-margin_top = 200.47
-margin_right = 49.7351
-margin_bottom = 224.47
-theme = SubResource( 6 )
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
-text = "abc"
+margin_top = 200.0
+margin_right = 50.0
+margin_bottom = 225.0
+theme = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LabelContainer" type="ColorRect" parent="Button"]
 anchor_right = 1.0
@@ -54,15 +56,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Button/LabelContainer"]
+[node name="Label" type="RichTextLabel" parent="Button/LabelContainer"]
+margin_top = -2.0
+margin_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HiddenLabel" type="Label" parent="Button/LabelContainer"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -50.0
-margin_top = -14.0
-margin_right = 50.0
-margin_bottom = 11.0
+margin_left = -50.1325
+margin_top = -12.5
+margin_right = 49.8675
+margin_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 3 )
@@ -80,6 +97,10 @@ wait_time = 0.06
 stream = ExtResource( 2 )
 volume_db = -16.0
 bus = "SFX"
+
+[node name="NodeTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="resized" from="." to="." method="_on_DialogueManager_resized"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="LetterTimer" to="." method="_on_LetterTimer_timeout"]
+[connection signal="timeout" from="NodeTimer" to="." method="_on_NodeTimer_timeout"]

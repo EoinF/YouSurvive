@@ -5,7 +5,7 @@ signal y_change(amount)
 signal start_sinking
 signal finish_sinking
 
-export var MAX_HEALTH = 200
+export var MAX_HEALTH = 100
 var health
 var is_alive = true
 
@@ -14,7 +14,7 @@ var STEER_SPEED = 2.5
 var TILE_SIZE = 16
 var SINKING_DURATION_SECONDS = 1.0
 
-var partially_damaged
+var original_position: Vector2
 
 var steering_weight = 0 setget set_steering_weight
 var is_steering_enabled = true
@@ -22,7 +22,6 @@ var is_steering_enabled = true
 var bodies_top = {}
 var bodies_bottom = {}
 var steering_direction = 0
-
 
 func set_steering_weight(new_value):
 	steering_weight = new_value
@@ -62,11 +61,16 @@ func get_y_bottom():
 		TILE_SIZE * $LocalPosition/HealthyTilemap.get_used_rect().size.y
 
 
+func reset():
+	self.position = original_position
+
+
 func _ready():
 	randomize()
 	health = MAX_HEALTH
 	if get_owner() == null:
 		create_damaged_tilemap()
+	original_position = position
 
 
 func _process(delta):
