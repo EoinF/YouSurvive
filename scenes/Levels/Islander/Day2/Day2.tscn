@@ -16,9 +16,6 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 smoothing_enabled = true
 
-[node name="Day2Label" parent="HUDLayer/HUD" index="6"]
-self_modulate = Color( 1, 1, 1, 0 )
-
 [node name="DialogueManager" parent="HUDLayer/HUD" index="7" instance=ExtResource( 6 )]
 DIALOGUE_FILE = "res://assets/Dialogue/Day2b.json"
 
@@ -38,5 +35,5 @@ script = ExtResource( 4 )
 [connection signal="finish_dialogue" from="HUDLayer/HUD/DialogueManager" to="." method="_on_DialogueManager_finish_dialogue"]
 [connection signal="objectives_updated" from="Day2Objectives" to="." method="_on_Day2Objectives_objectives_updated"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="place_item" from="ExperimentReplay" to="Objects/Props" method="_on_place_item"]
 [connection signal="place_item" from="ExperimentReplay" to="Day2Objectives" method="_on_Experimenter_place_item"]
+[connection signal="place_item" from="ExperimentReplay" to="Objects/Props" method="_on_place_item"]

@@ -28,6 +28,7 @@ func _ready():
 
 
 func set_experiment_data(_data):
+	experiment_data = _data
 	get_node("ExperimentReplay").set_experiment_data(_data)
 
 
@@ -54,6 +55,7 @@ func _on_DialogueManager_finish_dialogue(section_name):
 
 
 func _on_Islander_die():
+	$AnimationPlayer.play("fade_out")
 	is_islander_dead = true
 
 
@@ -61,6 +63,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "fade_out":
 		if is_islander_dead:
 			get_tree().change_scene("res://scenes/Levels/Islander/Day2/Day2.tscn")
+			get_tree().current_scene.set_experiment_data(experiment_data)
 		else:
 			emit_signal("finish_scene")
 			queue_free()

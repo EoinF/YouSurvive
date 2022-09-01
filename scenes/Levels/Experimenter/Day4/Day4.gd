@@ -23,7 +23,6 @@ func _ready():
 	yield(get_tree(), "idle_frame")
 	$Objects.show()
 	
-	#$HUDLayer/HUD/DialogueManager.start_section("Capsized")
 	_fade_in()
 
 
@@ -63,12 +62,11 @@ func _on_Raft_health_change(new_amount):
 
 
 func _on_Raft_start_sinking():
-	pass
+	$IslanderAIController.is_paused = true
 
 
 func _on_Raft_finish_sinking():
 	$HUDLayer/HUD/DialogueManager.start_section("Capsized")
-	$IslanderAIController.is_paused = true
 
 
 func _on_ScrollingManager_edge_reached():

@@ -17,7 +17,7 @@ func _process(delta):
 		$PauseMenu.show()
 
 
-func _on_ExperimenterScenes_finish_scenes(save_data):
+func _on_ExperimenterScenes_finish_scenes():
 	$MainMenu.show()
 	$MainMenu.remove_new_game()
 	active_scene.queue_free()

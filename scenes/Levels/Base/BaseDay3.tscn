@@ -77,6 +77,7 @@ position = Vector2( 1794.91, -34.5518 )
 position = Vector2( 1275.89, 219.551 )
 
 [node name="Day3Label" type="Label" parent="HUDLayer/HUD" index="1"]
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

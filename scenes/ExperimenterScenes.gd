@@ -12,7 +12,7 @@ var save_data = DEFAULT_SAVE_DATA
 var constants
 
 func _ready():
-	constants = preload("res://scripts/constants.gd").new()	
+	constants = preload("res://scripts/constants.gd").new()
 
 
 func save_game(current_level, experiment_level = null, new_experiment_data = null, new_chapter = "Experimenter"):
