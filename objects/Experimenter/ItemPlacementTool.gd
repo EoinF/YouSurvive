@@ -72,7 +72,8 @@ func set_item_type(item_type):
 	if item_type != null and _is_enabled:
 		get_node("Sprites/" + item_type).visible = true
 		get_node("CircleSprite").visible = true
-		is_land_placement_active = not item_type in SEA_TYPES
+	
+	is_land_placement_active = not item_type in SEA_TYPES
 	
 	var bodies_to_check = land_bodies_entered if is_land_placement_active else sea_bodies_entered
 	self.modulate = Color.white if bodies_to_check.empty() else Color.red
