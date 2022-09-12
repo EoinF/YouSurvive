@@ -62,6 +62,7 @@ margin_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+size_flags_vertical = 3
 custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 fit_content_height = true

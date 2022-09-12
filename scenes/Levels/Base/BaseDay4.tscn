@@ -61,7 +61,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=8]
 resource_name = "fade_in_music"
 length = 3.0
 tracks/0/type = "value"
@@ -115,7 +115,7 @@ script = ExtResource( 15 )
 position = Vector2( 3325.41, 285.013 )
 
 [node name="SceneEdge" type="Position2D" parent="Objects/ScrollingManager"]
-position = Vector2( 3669.06, 253.058 )
+position = Vector2( 1902.89, 408.042 )
 
 [node name="GroundTiles" parent="Objects" instance=ExtResource( 7 )]
 z_index = -2
@@ -124,6 +124,7 @@ tile_data = PoolIntArray( -2359312, 5, 0, -2359311, 5, 1, -2359310, 5, 1, -23593
 
 [node name="Props" type="YSort" parent="Objects"]
 script = ExtResource( 10 )
+CUSTOM_LAND_PROPS_PATH = NodePath("Raft")
 
 [node name="Raft" parent="Objects/Props" instance=ExtResource( 6 )]
 position = Vector2( 865, 413 )
@@ -203,6 +204,7 @@ position = Vector2( 86.9018, 49.0695 )
 
 [node name="SeaProps" type="YSort" parent="Objects/Props"]
 script = ExtResource( 14 )
+LOOP_DISTANCE_Y = 1000
 
 [node name="SeaRock" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 1429.64, 371.218 )
@@ -295,7 +297,7 @@ LABEL_TEXT = "Raft"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Objects")
 anims/fade = SubResource( 7 )
-anims/fade_in_music = SubResource( 10 )
+anims/fade_in_music = SubResource( 8 )
 anims/fade_out = SubResource( 9 )
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="."]

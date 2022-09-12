@@ -29,6 +29,10 @@ func get_resting_position():
 	return get_position()
 
 
+func get_height():
+	return $Hurtbox/Shape.shape.height
+
+
 func is_alive():
 	return HEALTH > 0
 

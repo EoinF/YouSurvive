@@ -13,11 +13,11 @@ func _ready():
 	constants = preload("res://scripts/constants.gd").new()
 
 
-func save_game(current_level):
+func save_game(current_level, new_chapter = "Islander"):
 	var save_file = File.new()
 	save_file.open(constants.SAVE_FILE_LOCATION, File.WRITE)
 	
-	save_data["current_chapter"] = "Islander"
+	save_data["current_chapter"] = new_chapter
 	save_data["current_level"] = current_level
 	
 	save_file.store_string(to_json(save_data))
@@ -40,8 +40,8 @@ func _on_Day3_finish_scene():
 
 
 func _on_Day4_finish_scene():
-	save_game("Outro")
-	load_scene("Outro")
+	save_game("Intro", "Experimenter")
+	emit_signal("finish_scenes")
 
 
 func load_scene(scene_name, _save_data = null):

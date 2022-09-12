@@ -25,7 +25,10 @@ func _on_ExperimenterScenes_finish_scenes():
 
 
 func _on_IslanderScenes_finish_scenes():
-	get_node("ExperimenterScenes").load_intro()
+	$MainMenu.show()
+	$MainMenu.remove_new_game()
+	active_scene.queue_free()
+	active_scene = null
 
 
 func _on_MainMenu_continue_game(save_data):

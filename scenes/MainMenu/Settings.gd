@@ -13,8 +13,11 @@ func set_data(save_data):
 	var sfx = container.get_node("GridContainer3/SfxVolumeSlider")
 	
 	main.value = save_data["volume"]["0"]
+	set_volume(0, main.value)
 	music.value = save_data["volume"]["1"]
+	set_volume(1, music.value)
 	sfx.value = save_data["volume"]["2"]
+	set_volume(2, sfx.value)
 
 
 func _on_MainVolumeSlider_value_changed(value):

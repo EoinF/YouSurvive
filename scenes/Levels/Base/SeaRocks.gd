@@ -3,6 +3,7 @@ extends YSort
 signal hit_raft(damage_amount)
 
 export var LOOP_DISTANCE_X = -1
+export var LOOP_DISTANCE_Y = 0
 export var SHOULD_LOOP_Y = true
 export var SHOULD_RESET_ON_HIT = false
 
@@ -18,13 +19,13 @@ func move(x_delta, y_delta):
 	if LOOP_DISTANCE_X > 0 and abs(diff.x) >= LOOP_DISTANCE_X:
 		position.x = starting_position.x
 
-	var viewport_y = get_viewport_rect().size.y
+	var limit_y = get_viewport_rect().size.y + LOOP_DISTANCE_Y
 	for child in get_children():
 		var child_height = child.get_height()
-		if child.global_position.y + child_height < 0:
-			child.position.y += viewport_y
-		elif child.global_position.y > viewport_y:
-			child.position.y -= viewport_y
+		if child.global_position.y + child_height < -LOOP_DISTANCE_Y:
+			child.position.y += limit_y + LOOP_DISTANCE_Y
+		elif child.global_position.y > limit_y:
+			child.position.y -= limit_y + LOOP_DISTANCE_Y
 
 
 func _ready():

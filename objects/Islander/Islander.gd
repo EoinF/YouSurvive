@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-signal use_coconut_without_rock
 signal inventory_slot_change(inventory_slot)
 signal health_change(health)
 signal die
@@ -193,19 +192,6 @@ func set_health(new_health):
 	emit_signal("health_change", health)
 
 
-func _use_coconut():
-	for item_type in item_type_to_slot.keys():
-		if item_type == "rock" and item_type_to_slot[item_type].amount > 0:
-			set_health(health + 3)
-			var inventory_slot = item_type_to_slot["coconut"]
-			inventory_slot.amount -= 1
-			
-			emit_signal("inventory_slot_change", inventory_slot)
-			return
-
-	emit_signal("use_coconut_without_rock")
-
-
 func _use_stone():
 	var inventory_slot = item_type_to_slot["stone"]
 	if inventory_slot.amount > 0:
@@ -247,8 +233,6 @@ func _on_HUD_use_item(item_type):
 	match item_type:
 		"stone":
 			_use_stone()
-		"coconut":
-			_use_coconut()
 		"stick":
 			attack()
 

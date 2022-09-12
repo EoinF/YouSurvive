@@ -36,7 +36,7 @@ extents = Vector2( 306.726, 56.0857 )
 [node name="Objects" type="CanvasModulate" parent="."]
 color = Color( 0.0431373, 0.0392157, 0.0941176, 1 )
 
-[node name="ScrollingManager" type="Node" parent="Objects"]
+[node name="ScrollingManager" type="Node2D" parent="Objects"]
 script = ExtResource( 12 )
 RAFT_SPEED = 150
 

@@ -5,7 +5,7 @@ signal finish_scene
 var experiment_data
 var is_islander_dead = false
 
-var IS_DEBUG_ACTIVE = false
+var IS_DEBUG_ACTIVE = true
 
 func _ready():
 	get_node("Day3Objectives").set_objective_active("collect_items", true)

@@ -50,10 +50,12 @@ func _ready():
 func _on_DialogueManager_resized():
 	if not config["is_full_screen"]:
 		return
-		
+	
 	$Button.rect_position = Vector2(0, 0)
 	$Button.rect_size.x = self.rect_size.x
 	$Button.rect_size.y = self.rect_size.y
+	$Button/LabelContainer/Label.rect_size.x = self.rect_size.x
+	$Button/LabelContainer/Label.rect_position.y = self.rect_size.y / 2
 
 
 func _process(_delta):

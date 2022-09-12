@@ -34,7 +34,8 @@ func _on_Raft_y_change(amount):
 
 
 func _process(delta):
-	var diff_x = delta * RAFT_SPEED
+	var diff_x = 0# delta * RAFT_SPEED
+	_on_Raft_y_change(-2)
 	var raft = get_owner().get_node("Objects/Props/Raft")
 	
 	if is_finished:
@@ -58,6 +59,11 @@ func _process(delta):
 	if not has_node("ScrollEdge"):
 		return
 	
-	if is_started and $ScrollEdge.global_position.x < raft.get_x_left():
+	if not is_started:
+		return
+	if $ScrollEdge.global_position.x < raft.get_x_left():
 		is_at_edge = true
 		emit_signal("edge_reached")
+		return
+	
+	$ScrollEdge.position.x -= diff_x

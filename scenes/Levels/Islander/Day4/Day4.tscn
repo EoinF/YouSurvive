@@ -1,25 +1,51 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Levels/Base/BaseDay4.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Base/IslanderController.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Levels/Islander/ExperimentReplay.gd" type="Script" id=3]
-[ext_resource path="res://objects/Shark/Shark.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/UIMessages/DialogueManager2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Levels/Islander/Day4/Day4.gd" type="Script" id=5]
+[ext_resource path="res://objects/Rock/SeaRock.tscn" type="PackedScene" id=6]
 
-[node name="Day4" instance=ExtResource( 1 )]
+[node name="IslanderDay4" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="Objects/Props/Raft/Islander" index="13"]
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
-[node name="Shark" parent="Objects/Props" index="1" instance=ExtResource( 4 )]
-position = Vector2( 532.597, 274.389 )
-collision_mask = 61
+[node name="SeaRock18" parent="Objects/Props/SeaProps" index="17" instance=ExtResource( 6 )]
+position = Vector2( 1070.57, 346.243 )
+
+[node name="SeaRock19" parent="Objects/Props/SeaProps" index="18" instance=ExtResource( 6 )]
+position = Vector2( 1068.19, 634.031 )
+IS_SHARK_SPRITE = true
+
+[node name="SeaRock20" parent="Objects/Props/SeaProps" index="19" instance=ExtResource( 6 )]
+position = Vector2( 1064.83, 973.754 )
+
+[node name="SeaRock21" parent="Objects/Props/SeaProps" index="20" instance=ExtResource( 6 )]
+position = Vector2( 1071.56, 42.0403 )
+IS_SHARK_SPRITE = true
+
+[node name="SeaRock22" parent="Objects/Props/SeaProps" index="21" instance=ExtResource( 6 )]
+position = Vector2( 1068.19, -206.865 )
+
+[node name="SeaRock23" parent="Objects/Props/SeaProps" index="22" instance=ExtResource( 6 )]
+position = Vector2( 1071.56, -435.589 )
+IS_SHARK_SPRITE = true
+
+[node name="AIController" parent="." index="1"]
+ISLANDER_PATH = NodePath("../../IslanderDay4/Objects/Props/Raft/Islander")
 
 [node name="HUD" parent="HUDLayer" index="0"]
-margin_top = 3.5874
-margin_bottom = 3.5874
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="DialogueManager" parent="HUDLayer/HUD" index="8" instance=ExtResource( 4 )]
+DIALOGUE_FILE = "res://assets/Dialogue/Day4b.json"
 
 [node name="ExperimentReplay" type="Node" parent="." index="4"]
 script = ExtResource( 3 )
@@ -27,4 +53,15 @@ script = ExtResource( 3 )
 [node name="IslanderInput" type="Node" parent="." index="5"]
 script = ExtResource( 2 )
 ISLANDER_NODE_PATH = NodePath("../Objects/Props/Raft/Islander")
+[connection signal="edge_reached" from="Objects/ScrollingManager" to="." method="_on_ScrollingManager_edge_reached"]
+[connection signal="finish" from="Objects/ScrollingManager" to="." method="_on_ScrollingManager_finish"]
 [connection signal="enemy_struggle" from="Objects/Props" to="." method="_on_Props_enemy_struggle"]
+[connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
+[connection signal="prop_added" from="Objects/Props" to="SeaAIController" method="_on_Props_prop_added"]
+[connection signal="finish_sinking" from="Objects/Props/Raft" to="." method="_on_Raft_finish_sinking"]
+[connection signal="start_sinking" from="Objects/Props/Raft" to="." method="_on_Raft_start_sinking"]
+[connection signal="die" from="Objects/Props/Raft/Islander" to="." method="_on_Islander_die"]
+[connection signal="inventory_slot_change" from="Objects/Props/Raft/Islander" to="HUDLayer/HUD" method="_on_Islander_inventory_slot_change"]
+[connection signal="use_item" from="HUDLayer/HUD" to="Objects/Props/Raft/Islander" method="_on_HUD_use_item"]
+[connection signal="finish_dialogue" from="HUDLayer/HUD/DialogueManager" to="." method="_on_DialogueManager_finish_dialogue"]
+[connection signal="place_item" from="ExperimentReplay" to="Objects/Props" method="_on_place_item"]
