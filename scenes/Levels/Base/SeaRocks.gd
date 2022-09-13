@@ -9,6 +9,7 @@ export var SHOULD_RESET_ON_HIT = false
 
 var ROCK_DAMAGE = 4
 var starting_position
+var is_raft_alive = true
 
 
 func move(x_delta, y_delta):
@@ -39,7 +40,10 @@ func add_child_prop(prop):
 		prop.connect("collide", self, "_on_rock_collide", [prop])
 	add_child(prop)
 
+
 func _on_rock_collide(rock):
+	if not is_raft_alive:
+		return
 	emit_signal("hit_raft", ROCK_DAMAGE)
 	rock.queue_free()
 	if SHOULD_RESET_ON_HIT:
@@ -48,3 +52,7 @@ func _on_rock_collide(rock):
 
 func reset():
 	position = starting_position
+
+
+func _on_Raft_finish_sinking():
+	is_raft_alive = false

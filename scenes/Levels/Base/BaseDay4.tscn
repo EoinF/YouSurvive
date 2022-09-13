@@ -370,6 +370,7 @@ stream = ExtResource( 11 )
 volume_db = -16.0
 autoplay = true
 bus = "SFX"
+[connection signal="finish_sinking" from="Objects/Props/Raft" to="Objects/Props/SeaProps" method="_on_Raft_finish_sinking"]
 [connection signal="health_change" from="Objects/Props/Raft" to="HUDLayer/HUD/RaftHealthBar" method="_on_Raft_health_change"]
 [connection signal="y_change" from="Objects/Props/Raft" to="Objects/ScrollingManager" method="_on_Raft_y_change"]
 [connection signal="health_change" from="Objects/Props/Raft/Islander" to="HUDLayer/HUD" method="_on_Islander_health_change"]
