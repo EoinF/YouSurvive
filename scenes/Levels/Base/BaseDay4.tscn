@@ -257,6 +257,66 @@ position = Vector2( 3835.75, 435.346 )
 [node name="SeaRock17" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
 position = Vector2( 3896.32, 517.309 )
 
+[node name="SeaRock18" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 1271.29, 559.262 )
+
+[node name="SeaRock19" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 1403.14, 906.869 )
+
+[node name="SeaRock20" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 1433.1, -40.0611 )
+
+[node name="SeaRock21" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 1433.1, -105.987 )
+
+[node name="SeaRock22" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 1481.05, -64.034 )
+
+[node name="SeaRock23" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 2050.41, 25.8644 )
+
+[node name="SeaRock24" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 2032.43, -99.9933 )
+
+[node name="SeaRock25" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 2104.35, -231.844 )
+
+[node name="SeaRock26" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 2751.61, -40.0611 )
+
+[node name="SeaRock27" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 2811.55, -117.973 )
+
+[node name="SeaRock28" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 2859.49, -351.709 )
+
+[node name="SeaRock29" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 3207.1, 73.8102 )
+
+[node name="SeaRock30" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 2781.58, 259.6 )
+
+[node name="SeaRock31" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 3680.56, -231.844 )
+
+[node name="SeaRock32" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 4040.16, 181.688 )
+
+[node name="SeaRock33" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 4178, -70.0274 )
+
+[node name="SeaRock34" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 4345.81, 469.363 )
+
+[node name="SeaRock35" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 3914.3, 930.842 )
+
+[node name="SeaRock36" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 3165.15, 960.808 )
+
+[node name="SeaRock37" parent="Objects/Props/SeaProps" instance=ExtResource( 13 )]
+position = Vector2( 1948.52, 960.808 )
+
 [node name="AIController" type="Node" parent="."]
 script = ExtResource( 1 )
 ISLANDER_PATH = NodePath("../Objects/Props/Raft/Islander")
