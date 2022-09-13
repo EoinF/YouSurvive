@@ -7,7 +7,7 @@ signal enemy_struggle
 export var CUSTOM_LAND_PROPS_PATH: NodePath = "."
 export var CUSTOM_SEA_PROPS_PATH: NodePath = "."
 
-var sea_item_types = ["shark"]
+var sea_item_types = ["shark", "sea_rock"]
 
 var scene_map = {
 	"branch": preload("res://objects/CollectableItems/Branch.tscn"),
@@ -17,12 +17,12 @@ var scene_map = {
 	"crab": preload("res://objects/Crab/Crab.tscn"),
 	"boar": preload("res://objects/Boar/Boar.tscn"),
 	"porcupine": preload("res://objects/Porcupine/Porcupine.tscn"),
-	"shark": preload("res://objects/Shark/Shark.tscn")
+	"shark": preload("res://objects/Shark/Shark.tscn"),
+	"sea_rock": preload("res://objects/Rock/SeaRock.tscn")
 }
 
 func _ready():
 	for child in get_children():
-		# If it's an in-game tree, check if there are items to spawn
 		if child.is_in_group("Tree"):
 			child.connect("spawn_item", self, "_spawn_item_falling")
 		
@@ -37,14 +37,13 @@ func _add_prop(destination_node, prop, source_position, owner_instance_id):
 	prop.position = source_position - destination_node.global_position
 	if prop.has_node("CollectableItem"):
 		prop.get_node("CollectableItem").set_owner_instance_id(owner_instance_id)
-	destination_node.add_child(prop)
+	destination_node.add_child_prop(prop)
 
 	if prop.is_in_group("AI"):
 		prop.connect("dies", self, "_on_enemy_dies")
 		
 	if prop.is_in_group("Sea"):
 		prop.connect("struggle", self, "_on_enemy_struggle")
-		
 
 	emit_signal("prop_added", prop)
 
@@ -76,6 +75,10 @@ func _spawn_item(item_type, source_position, owner_instance_id = null):
 	var destination_node = get_node(CUSTOM_SEA_PROPS_PATH) if \
 		item_type in sea_item_types else get_node(CUSTOM_LAND_PROPS_PATH)
 	_add_prop(destination_node, scene_instance, source_position, owner_instance_id)
+
+
+func add_child_prop(prop):
+	add_child(prop)
 
 
 func _on_Projectiles_spawn_item(item_type, source_position, owner_instance_id):

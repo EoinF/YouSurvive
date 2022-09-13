@@ -34,8 +34,7 @@ func _on_Raft_y_change(amount):
 
 
 func _process(delta):
-	var diff_x = 0# delta * RAFT_SPEED
-	_on_Raft_y_change(-2)
+	var diff_x = delta * RAFT_SPEED
 	var raft = get_owner().get_node("Objects/Props/Raft")
 	
 	if is_finished:

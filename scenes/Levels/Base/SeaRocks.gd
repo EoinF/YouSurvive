@@ -7,7 +7,7 @@ export var LOOP_DISTANCE_Y = 0
 export var SHOULD_LOOP_Y = true
 export var SHOULD_RESET_ON_HIT = false
 
-var ROCK_DAMAGE = 5
+var ROCK_DAMAGE = 4
 var starting_position
 
 
@@ -33,6 +33,11 @@ func _ready():
 	for rock in get_children():
 		rock.connect("collide", self, "_on_rock_collide", [rock])
 
+
+func add_child_prop(prop):
+	if prop.object_type == "sea_rock":
+		prop.connect("collide", self, "_on_rock_collide", [prop])
+	add_child(prop)
 
 func _on_rock_collide(rock):
 	emit_signal("hit_raft", ROCK_DAMAGE)

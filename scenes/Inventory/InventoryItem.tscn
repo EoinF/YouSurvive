@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/Inventory/InventoryItem.gd" type="Script" id=1]
 [ext_resource path="res://assets/coconut.png" type="Texture" id=2]
@@ -26,6 +26,10 @@ region = Rect2( 0, 10, 32, 22 )
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 7 )
 region = Rect2( 1.76962, 14.0088, 26.1648, 18.7704 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 3 )
+region = Rect2( 224, 185, 16, 17 )
 
 [node name="InventoryItem" type="ColorRect"]
 anchor_right = 0.029
@@ -68,65 +72,75 @@ __meta__ = {
 
 [node name="coconut" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
-margin_left = 11.0
-margin_top = 11.0
-margin_right = 21.0
-margin_bottom = 19.0
+margin_left = 283.0
+margin_top = 204.0
+margin_right = 293.0
+margin_bottom = 212.0
 texture = ExtResource( 2 )
 
 [node name="stone" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
-margin_left = 10.0
-margin_top = 9.0
-margin_right = 21.0
-margin_bottom = 20.0
+margin_left = 282.0
+margin_top = 202.0
+margin_right = 293.0
+margin_bottom = 213.0
 texture = SubResource( 1 )
 
 [node name="branch" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
-margin_left = 13.0
-margin_top = 8.0
-margin_right = 19.0
-margin_bottom = 21.0
+margin_left = 285.0
+margin_top = 201.0
+margin_right = 291.0
+margin_bottom = 214.0
 texture = ExtResource( 4 )
 
 [node name="crab" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
-margin_left = 6.0
-margin_top = 5.0
-margin_right = 26.0
-margin_bottom = 25.0
+margin_left = 278.0
+margin_top = 198.0
+margin_right = 298.0
+margin_bottom = 218.0
 texture = SubResource( 2 )
 
 [node name="boar" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
-margin_top = 4.0
-margin_right = 32.0
-margin_bottom = 26.0
+margin_left = 272.0
+margin_top = 197.0
+margin_right = 304.0
+margin_bottom = 219.0
 texture = SubResource( 3 )
 
 [node name="porcupine" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
-margin_left = 3.0
-margin_top = 6.0
-margin_right = 29.0
-margin_bottom = 24.0
+margin_left = 275.0
+margin_top = 199.0
+margin_right = 301.0
+margin_bottom = 217.0
 texture = SubResource( 4 )
 
 [node name="stick" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
-margin_top = -1.0
-margin_right = 32.0
-margin_bottom = 31.0
+margin_left = 272.0
+margin_top = 192.0
+margin_right = 304.0
+margin_bottom = 224.0
 texture = ExtResource( 8 )
 
 [node name="shark" type="TextureRect" parent="Button/SpriteContainer"]
 visible = false
-margin_left = 6.0
-margin_top = 5.0
-margin_right = 26.0
-margin_bottom = 25.0
+margin_left = 278.0
+margin_top = 198.0
+margin_right = 298.0
+margin_bottom = 218.0
 texture = ExtResource( 10 )
+
+[node name="sea_rock" type="TextureRect" parent="Button/SpriteContainer"]
+visible = false
+margin_left = 280.0
+margin_top = 199.0
+margin_right = 296.0
+margin_bottom = 216.0
+texture = SubResource( 5 )
 
 [node name="AmountContainer" type="MarginContainer" parent="Button"]
 anchor_right = 1.0

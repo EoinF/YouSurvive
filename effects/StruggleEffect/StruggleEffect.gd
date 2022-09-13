@@ -23,7 +23,7 @@ func start(anchor_node: Node2D, direction: Vector2):
 	
 	var parent = get_parent()
 	
-	$Tween.follow_property(parent, "position",
+	$Tween.follow_property(parent, "global_position",
 		parent.global_position, _anchor, "global_position", 0.3,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
@@ -37,7 +37,7 @@ func _start_new_iteration():
 	var parent = get_parent()
 	_backward_cutoff = _anchor.global_position - (_direction * OFFSET_BEGIN_SCALE * (1 + randf()))
 	
-	$Tween.interpolate_property(parent, "position",
+	$Tween.interpolate_property(parent, "global_position",
 		_anchor.global_position, _backward_cutoff, 0.3,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
@@ -56,7 +56,7 @@ func _on_Tween_tween_completed(_object, _key):
 		emit_signal("finish_iteration")
 		_start_new_iteration()
 	else:
-		$Tween.follow_property(parent, "position",
+		$Tween.follow_property(parent, "global_position",
 			_backward_cutoff, _anchor, "global_position", 0.2,
 			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()

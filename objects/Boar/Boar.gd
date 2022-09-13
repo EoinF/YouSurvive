@@ -127,6 +127,7 @@ func _physics_process(delta):
 		var easing_value = ease(slide_timeout / SLIDE_DURATION, EASE_OUT)
 		velocity = Vector2(direction.x * ATTACK_SPEED, direction.y * ATTACK_SPEED) * easing_value
 	
+# warning-ignore:return_value_discarded
 	move_and_slide(velocity * delta)
 	velocity = Vector2.ZERO
 

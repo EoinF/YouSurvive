@@ -6,7 +6,7 @@ export var IS_SHARK_SPRITE = false
 var object_type = "sea_rock"
 
 
-func _on_Area_body_entered(body):
+func _on_Area_body_entered(_body):
 	emit_signal("collide")
 
 

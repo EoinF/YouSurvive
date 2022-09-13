@@ -14,9 +14,7 @@ var wandering_scale = 4000
 var object_type = "shark"
 
 
-export var CHASE_SPEED = 9 * 1000
-export var SPEED = 3 * 1000
-export var ATTACK_SPEED = 12 * 1000
+export var SPEED = 4 * 1000
 export var DEATH_COOLDOWN = 1.0
 export var HEALTH = 3
 
@@ -77,6 +75,7 @@ func _process(delta):
 
 
 func _physics_process(delta):
+# warning-ignore:return_value_discarded
 	move_and_slide(velocity * delta)
 	
 	velocity = Vector2.ZERO

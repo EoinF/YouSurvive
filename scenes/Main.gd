@@ -3,11 +3,13 @@ extends Node
 var active_scene
 
 
-func _process(delta):
-	var pause_pressed = Input.is_action_just_pressed("toggle_pause")
-	if not pause_pressed or $MainMenu.is_active:
-		return
-		
+func _process(_delta):
+	var is_pause_pressed = Input.is_action_just_pressed("toggle_pause")
+	if is_pause_pressed and not $MainMenu.is_active:
+		pause_game()
+
+
+func pause_game():
 	var is_paused = self.get_tree().paused
 	self.get_tree().paused = not is_paused
 	

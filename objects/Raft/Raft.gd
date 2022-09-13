@@ -120,6 +120,10 @@ func create_damaged_tilemap():
 	damaged_tile_map.update_bitmask_region()
 
 
+func add_child_prop(prop):
+	add_child(prop)
+
+
 func _on_SteeringAreaTop_body_entered(body: Node2D):
 	var id = body.get_instance_id()
 	if bodies_top.has(id) or not body.has_method("get_weight"):

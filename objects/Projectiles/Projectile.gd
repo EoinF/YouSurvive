@@ -50,6 +50,7 @@ func _process(_delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if (elapsed_time <= duration):
+# warning-ignore:return_value_discarded
 		move_and_collide(direction * delta * MOVE_SPEED)
 		elapsed_time += delta
 

@@ -168,6 +168,7 @@ func _update_active_sprite(new_sprite_state, new_sprite_direction):
 
 
 func _physics_process(delta):
+# warning-ignore:return_value_discarded
 	move_and_slide(velocity * delta)
 	_is_colliding = get_slide_count() > 0
 

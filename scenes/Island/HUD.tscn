@@ -57,6 +57,7 @@ __meta__ = {
 [node name="ObjectivesDisplay" parent="." instance=ExtResource( 3 )]
 
 [node name="HealthBar" parent="." instance=ExtResource( 6 )]
+LABEL_TEXT = "Test Subject"
 [connection signal="use_item" from="Inventory" to="." method="_on_Inventory_use_item"]
 [connection signal="set_active_item" from="ExperimenterInventory" to="." method="_on_ExperimenterInventory_set_active_item"]
 [connection signal="use_item" from="ExperimenterInventory" to="." method="_on_Inventory_use_item"]

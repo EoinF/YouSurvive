@@ -5,7 +5,8 @@ signal place_item(item_type, location)
 var selected_item_type
 
 var SEA_TYPES = [
-	"shark"
+	"shark",
+	"sea_rock"
 ]
 
 var land_bodies_entered = {}

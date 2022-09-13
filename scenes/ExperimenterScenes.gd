@@ -44,6 +44,7 @@ func load_scene(scene_name, _save_data = null):
 func load_intro():
 	var scene_placeholder = get_node("Intro")
 	scene_placeholder.replace_by_instance()
+# warning-ignore:return_value_discarded
 	get_node("Intro").connect("finish_scene", self, "_on_Intro_finish_scene")
 
 

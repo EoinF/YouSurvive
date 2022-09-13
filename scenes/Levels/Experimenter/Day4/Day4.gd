@@ -23,14 +23,7 @@ func _ready():
 	yield(get_tree(), "idle_frame")
 	$Objects.show()
 	
-	$Objects/ScrollingManager.start()
-	$Experimenter.enable_controls()
-	
-	var sea_props = get_node("Objects/Props/SeaProps")
-	sea_props.reset()
-	for sea_prop in sea_props.get_children():
-		sea_prop.activate()
-	#_fade_in()
+	_fade_in()
 
 
 func _on_DialogueManager_finish_dialogue(section_name):

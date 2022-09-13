@@ -42,7 +42,7 @@ func _ready():
 			ai_nodes.append(SeaAINode.new(prop))
 
 
-func _process(delta):
+func _process(_delta):
 	if not is_ai_enabled:
 		return
 	for i in range(ai_nodes.size() - 1, -1, -1):
