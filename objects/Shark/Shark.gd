@@ -9,12 +9,12 @@ var _death_cooldown = -1
 var _is_dying = false
 var min_idle_time = 0.2
 var scale_idle_time = 3.5
-var wandering_scale = 4000
 
 var object_type = "shark"
 
 
 export var SPEED = 4 * 1000
+export var WANDER_SPEED = 2 * 1000
 export var DEATH_COOLDOWN = 1.0
 export var HEALTH = 3
 
@@ -48,12 +48,15 @@ func get_wander_target():
 	return global_position + random_direction * random_distance
 
 
-func move(x, y):
+func move(x, y, speed = SPEED):
 	if not _is_dying:
 		direction = Vector2(x, y).normalized()
-		velocity = Vector2(direction.x * SPEED, direction.y * SPEED)
+		velocity = direction * speed
 		
 		$AnimatedSprite.flip_h = x < 0
+		
+func wander(x, y):
+	move(x, y , WANDER_SPEED)
 
 
 func struggle(anchor_node: Node2D, _direction: Vector2):

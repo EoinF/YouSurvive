@@ -12,7 +12,7 @@ var is_alive = true
 var LOW_HEALTH_BREAKPOINT = 30
 var STEER_SPEED = 2.5
 var TILE_SIZE = 16
-var SINKING_DURATION_SECONDS = 1.0
+var SINKING_DURATION_SECONDS = 2.0
 
 var original_position: Vector2
 

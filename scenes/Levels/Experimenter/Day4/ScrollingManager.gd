@@ -6,8 +6,13 @@ signal finish
 var is_started = false
 var is_finished = false
 var is_at_edge = false
-export var RAFT_SPEED = 40
+
+export var INITIAL_RAFT_SPEED = 40
+var SINKING_DURATION = 2.0
+
 var sea_tilemap_original_position: Vector2
+
+var raft_speed = INITIAL_RAFT_SPEED
 
 
 func start():
@@ -34,7 +39,7 @@ func _on_Raft_y_change(amount):
 
 
 func _process(delta):
-	var diff_x = delta * RAFT_SPEED
+	var diff_x = delta * raft_speed
 	var raft = get_owner().get_node("Objects/Props/Raft")
 	
 	if is_finished:
@@ -66,3 +71,8 @@ func _process(delta):
 		return
 	
 	$ScrollEdge.position.x -= diff_x
+
+
+func _on_Raft_start_sinking():
+	$Tween.interpolate_property(self, "raft_speed", raft_speed, 0, SINKING_DURATION)
+	$Tween.start()

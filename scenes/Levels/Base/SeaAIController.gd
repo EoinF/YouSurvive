@@ -4,6 +4,7 @@ enum AIState {
 	FINDING_TARGET
 	APPROACHING
 	STRUGGLING
+	WANDER
 }
 
 
@@ -11,7 +12,7 @@ class SeaAINode:
 	var state
 	var node: Node
 	var target: Node2D
-	var last_target_location: Vector2
+	var wander_target: Vector2
 	func _init(_node):
 		node = _node
 		state = AIState.FINDING_TARGET
@@ -74,8 +75,21 @@ func _process(_delta):
 				ai_node.node.move(direction.x, direction.y)
 			AIState.STRUGGLING:
 				pass
+			AIState.WANDER:
+				if ai_node.wander_target.distance_to(ai_node.node.get_position()) < 5:
+					ai_node.wander_target = ai_node.node.get_wander_target()
+				else:
+					var diff = ai_node.wander_target - ai_node.node.get_position()
+					ai_node.node.wander(diff.x, diff.y)
 
 
 func _on_Props_prop_added(prop):
 	if prop.is_in_group("AI") and prop.is_in_group("Sea"):
 		ai_nodes.append(SeaAINode.new(prop))
+
+
+func _on_Raft_start_sinking():
+	for ai_node in ai_nodes:
+		ai_node.set_state(AIState.WANDER)
+		ai_node.node.stop_struggling()
+		ai_node.wander_target = ai_node.node.get_wander_target()

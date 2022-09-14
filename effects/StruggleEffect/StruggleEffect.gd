@@ -31,6 +31,8 @@ func start(anchor_node: Node2D, direction: Vector2):
 
 func stop():
 	is_playing = false
+# warning-ignore:return_value_discarded
+	($Tween as Tween).stop_all()
 
 
 func _start_new_iteration():
