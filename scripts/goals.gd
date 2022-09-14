@@ -57,15 +57,17 @@ class CollectGoal extends Goal:
 	
 	func get_priority(_owner_context):
 		var is_limit_reached = (target in _owner_context.inventory) and (_owner_context.inventory[target].amount >= limit)
-		if not is_limit_reached \
-			and target in _owner_context.objects_in_view \
-			and len(_owner_context.objects_in_view[target]) > 0:
-			for object in _owner_context.objects_in_view[target].values():
-				if object.global_position.distance_to(_owner_context.islander_position) < 30:
-					return 4
-			return 2
-		
-		return -1
+		var is_target_visible = target in _owner_context.objects_in_view \
+			and len(_owner_context.objects_in_view[target]) > 0
+		var is_targets_previously_seen = target in _owner_context.seen_targets \
+			and len(_owner_context.seen_targets[target]) > 0
+		var has_known_target = is_target_visible or is_targets_previously_seen
+		if is_limit_reached or not has_known_target:
+			return -1
+		for object in _owner_context.objects_in_view[target].values():
+			if object.global_position.distance_to(_owner_context.islander_position) < 30:
+				return 4
+		return 2
 
 
 class DodgeGoal extends Goal:

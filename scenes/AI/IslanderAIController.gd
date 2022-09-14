@@ -21,6 +21,8 @@ var current_enemy: Node = null
 
 var objects_in_view_unrecognised = {}
 var objects_in_view = {}
+var seen_targets = {}
+
 var is_paused = true
 var idle_timeout = -1.0
 var pathfinder_offset: Vector2
@@ -105,7 +107,7 @@ func _process(delta):
 	var owner_context = {
 		inventory = islander.item_type_to_slot,
 		objects_in_view = objects_in_view,
-		objects_in_view_unrecognised = objects_in_view_unrecognised,
+		seen_targets = seen_targets,
 		islander_position = islander.global_position,
 		current_direction = current_direction,
 		next_move_node = current_move_path.front() if len(current_move_path) > 0 else null,
@@ -175,12 +177,18 @@ func locate():
 
 func collect():
 	var islander = get_node(ISLANDER_PATH)
+	
 	if current_target == null or current_target.object_type != current_goal.target:
-		current_target = _get_closest_target_of_type(current_goal.target)
-		current_move_path = _get_quickest_path_to(islander.global_position, current_target.get_resting_position())
-		on_update_current_move_path()
-		_start_new_target_animation(current_target)
+		var new_target = _get_closest_target_of_type(current_goal.target)
+		_set_current_target(new_target)
 		return
+	
+	if not current_target.get_instance_id() in objects_in_view[current_goal.target]:
+		var closest_target = _get_closest_target_of_type(current_goal.target)
+		if closest_target != current_target:
+			_set_current_target(closest_target)
+			return
+	
 	
 	var current_tile = Vector2(floor(islander.global_position.x / 16), floor(islander.global_position.y / 16))
 	
@@ -193,6 +201,8 @@ func collect():
 			if current_target.has_method("interact"):
 				current_target.interact()
 			islander.pick_up_item(current_target.object_type)
+			var index = seen_targets[current_target.object_type].find(current_target)
+			seen_targets[current_target.object_type].remove(index)
 			current_target = null
 		else:
 			var next_tile = current_move_path[0]
@@ -404,6 +414,16 @@ func _get_closest_target_of_type(target_type):
 		if distance_to_closest > distance_to_current:
 			closest_node = node
 			distance_to_closest = distance_to_current
+			
+	for node in seen_targets[target_type]:
+		# Skip dead targets
+		if node.has_method("is_alive") and not node.is_alive():
+			continue
+
+		var distance_to_current = islander_position.distance_to(node.global_position)
+		if distance_to_closest > distance_to_current:
+			closest_node = node
+			distance_to_closest = distance_to_current
 	return closest_node
 
 
@@ -445,6 +465,7 @@ func _on_IslanderVisionSensor_body_entered(body):
 	if not body.object_type in objects_in_view:
 		objects_in_view[body.object_type] = {}
 		objects_in_view_unrecognised[body.object_type] = {}
+		seen_targets[body.object_type] = []
 	objects_in_view_unrecognised[body.object_type][body.get_instance_id()] = {
 		"time_remaining": NEW_OBJECT_RECOGNISE_TIME,
 		"node": body
@@ -466,6 +487,7 @@ func _on_IslanderVisionSensor_area_entered(area):
 	if not object_node.object_type in objects_in_view:
 		objects_in_view[object_node.object_type] = {}
 		objects_in_view_unrecognised[object_node.object_type] = {}
+		seen_targets[object_node.object_type] = []
 	
 	objects_in_view_unrecognised[object_node.object_type][object_node.get_instance_id()] = {
 		"time_remaining": NEW_OBJECT_RECOGNISE_TIME,
@@ -503,6 +525,19 @@ func _start_new_target_animation(target):
 	
 	is_paused = true
 	islander.start_target_spotted_emote(funcref(self, "_on_finish_animation"))
+
+
+func _set_current_target(new_target):
+	var islander = get_node(ISLANDER_PATH)
+	current_target = new_target
+	current_move_path = _get_quickest_path_to(islander.global_position, current_target.get_resting_position())
+	on_update_current_move_path()
+	
+	if not current_goal.target in seen_targets:
+		seen_targets[current_goal.target] = []
+	if not current_target in seen_targets[current_goal.target]:
+		seen_targets[current_goal.target].push_back(current_target)
+		_start_new_target_animation(current_target)
 
 
 func _on_finish_animation():
