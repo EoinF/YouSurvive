@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Levels/Base/BaseDay4.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Base/IslanderController.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Levels/Islander/ExperimentReplay.gd" type="Script" id=3]
 [ext_resource path="res://scenes/UIMessages/DialogueManager2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Levels/Islander/Day4/Day4.gd" type="Script" id=5]
-[ext_resource path="res://objects/Rock/SeaRock.tscn" type="PackedScene" id=6]
 
 [node name="IslanderDay4" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
@@ -13,27 +12,6 @@ script = ExtResource( 5 )
 [node name="Camera2D" type="Camera2D" parent="Objects/Props/Raft/Islander" index="13"]
 current = true
 zoom = Vector2( 0.5, 0.5 )
-
-[node name="SeaRock18" parent="Objects/Props/SeaProps" index="17" instance=ExtResource( 6 )]
-position = Vector2( 1070.57, 346.243 )
-
-[node name="SeaRock19" parent="Objects/Props/SeaProps" index="18" instance=ExtResource( 6 )]
-position = Vector2( 1068.19, 634.031 )
-IS_SHARK_SPRITE = true
-
-[node name="SeaRock20" parent="Objects/Props/SeaProps" index="19" instance=ExtResource( 6 )]
-position = Vector2( 1064.83, 973.754 )
-
-[node name="SeaRock21" parent="Objects/Props/SeaProps" index="20" instance=ExtResource( 6 )]
-position = Vector2( 1071.56, 42.0403 )
-IS_SHARK_SPRITE = true
-
-[node name="SeaRock22" parent="Objects/Props/SeaProps" index="21" instance=ExtResource( 6 )]
-position = Vector2( 1068.19, -206.865 )
-
-[node name="SeaRock23" parent="Objects/Props/SeaProps" index="22" instance=ExtResource( 6 )]
-position = Vector2( 1071.56, -435.589 )
-IS_SHARK_SPRITE = true
 
 [node name="AIController" parent="." index="1"]
 ISLANDER_PATH = NodePath("../../IslanderDay4/Objects/Props/Raft/Islander")

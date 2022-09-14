@@ -38,7 +38,7 @@ func enable_ai():
 
 
 func _ready():
-	for prop in get_owner().get_node("Objects/Props").get_children():
+	for prop in get_owner().get_node("Objects/Props/SeaProps").get_children():
 		if prop.is_in_group("AI") and prop.is_in_group("Sea"):
 			ai_nodes.append(SeaAINode.new(prop))
 

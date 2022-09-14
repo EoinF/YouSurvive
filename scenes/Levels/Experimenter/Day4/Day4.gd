@@ -73,6 +73,7 @@ func _on_Raft_finish_sinking():
 
 func _on_ScrollingManager_edge_reached():
 	$HUDLayer/HUD/DialogueManager.start_section("Escaping")
+	$Experimenter.set_follow_target($Objects/Props/Raft/Islander, true)
 
 
 func _on_ScrollingManager_finish():
