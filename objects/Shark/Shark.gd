@@ -37,16 +37,15 @@ func is_alive():
 
 func idle():
 	pass
-	
+
+
+var MIN_WANDER_DISTANCE = 60
+var MAX_WANDER_DISTANCE = 250
 
 func get_wander_target():
-	var rand_sign = ((randi() % 2) * 2) - 1
-	var rand_x = 2 * randf() - 1
-	var rand_y = 2 * randf() - 1
-	var scale = 4000
-	var x = rand_sign * scale / (rand_x * rand_x)
-	var y = rand_sign * scale / (rand_y * rand_y)
-	return global_position + Vector2(x, y)
+	var random_direction = Vector2(1, 0).rotated(randf() * PI * 2.0)
+	var random_distance = rand_range(MIN_WANDER_DISTANCE, MAX_WANDER_DISTANCE)
+	return global_position + random_direction * random_distance
 
 
 func move(x, y):

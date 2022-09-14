@@ -46,14 +46,13 @@ func is_alive():
 	return HEALTH > 0
 
 
+var MIN_WANDER_DISTANCE = 100
+var MAX_WANDER_DISTANCE = 500
+
 func get_wander_target():
-	var rand_sign = ((randi() % 2) * 2) - 1
-	var rand_x = 2 * randf() - 1
-	var rand_y = 2 * randf() - 1
-	var _scale = 10000
-	var x = rand_sign * _scale / (rand_x * rand_x)
-	var y = rand_sign * _scale / (rand_y * rand_y)
-	return global_position + Vector2(x, y)
+	var random_direction = Vector2(1, 0).rotated(randf() * PI * 2.0)
+	var random_distance = rand_range(MIN_WANDER_DISTANCE, MAX_WANDER_DISTANCE)
+	return global_position + random_direction * random_distance
 
 
 func _turn_if_needed(x, is_reversed=false):
