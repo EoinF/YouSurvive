@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Levels/Base/BaseDay4.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Experimenter/Day4/Day4.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/Levels/Experimenter/Day4/Events.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Levels/Base/ExperimenterController.gd" type="Script" id=5]
 [ext_resource path="res://objects/ExplorationNode.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Dialogue/SeaGameOver.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/Experimenter/Experimenter.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/AI/Pathfinder.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/AI/IslanderAIController.tscn" type="PackedScene" id=12]
@@ -52,11 +53,16 @@ margin_right = 0.0
 margin_bottom = 0.0
 INVENTORY_TYPE = "Experimenter"
 
+[node name="Day4Label" parent="HUDLayer/HUD" index="6"]
+self_modulate = Color( 1, 1, 1, 1 )
+
 [node name="DialogueManager" parent="HUDLayer/HUD" index="7" instance=ExtResource( 3 )]
 DIALOGUE_FILE = "res://assets/Dialogue/Day4.json"
 
 [node name="Events" type="Node" parent="HUDLayer/HUD" index="8"]
 script = ExtResource( 4 )
+
+[node name="SeaGameOver" parent="HUDLayer/HUD" index="10" instance=ExtResource( 7 )]
 
 [node name="IslanderAIController" parent="." index="6" instance=ExtResource( 12 )]
 MIN_IDLE_DURATION = 0.6
@@ -97,6 +103,7 @@ wait_time = 1e+09
 [connection signal="set_active_item" from="HUDLayer/HUD" to="Experimenter" method="_on_HUD_set_active_item"]
 [connection signal="finish_dialogue" from="HUDLayer/HUD/DialogueManager" to="." method="_on_DialogueManager_finish_dialogue"]
 [connection signal="trigger_event" from="HUDLayer/HUD/DialogueManager" to="HUDLayer/HUD/Events" method="_on_DialogueManager_trigger_event"]
+[connection signal="finish" from="HUDLayer/HUD/SeaGameOver" to="." method="_on_SeaGameOver_finish"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]

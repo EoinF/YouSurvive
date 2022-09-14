@@ -1,0 +1,21 @@
+{
+  "Main": [
+    { "type": "config", "letter_delay": 0.06, "y": 0.9 },
+    {
+      "type": "text",
+      "content": "What? We've lost them again? We have to be more careful."
+    },
+    {
+      "type": "text",
+      "content": "This is not how it should end."
+    },
+    {
+      "type": "text",
+      "content": "We either sink the raft or let them escape."
+    },
+    {
+      "type": "text",
+      "content": "Let's go back and try that again."
+    }
+  ]
+}

@@ -4,6 +4,8 @@ signal finish_scene(experiment_data)
 
 var player_name: String
 
+var is_islander_dead = false
+
 
 func set_player_name(name: String):
 	player_name = name
@@ -23,9 +25,7 @@ func _ready():
 	yield(get_tree(), "idle_frame")
 	$Objects.show()
 	
-	$HUDLayer/HUD/Events.gift_items()
-	$HUDLayer/HUD/Events.enable_controls()
-	#_fade_in()
+	_fade_in()
 
 
 func _on_DialogueManager_finish_dialogue(section_name):
@@ -46,9 +46,12 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
 		return
 	if anim_name == "fade_out":
-		var experiment_data = $Experimenter.get_experiment_data()
-		emit_signal("finish_scene", experiment_data)
-		queue_free()
+		if is_islander_dead:
+			get_tree().change_scene("res://scenes/Levels/Experimenter/Day3/Day3.tscn")
+		else:
+			var experiment_data = $Experimenter.get_experiment_data()
+			emit_signal("finish_scene", experiment_data)
+			queue_free()
 
 
 func _on_GameOver_finish():
@@ -78,3 +81,16 @@ func _on_ScrollingManager_edge_reached():
 
 func _on_ScrollingManager_finish():
 	$HUDLayer/HUD/DialogueManager.start_section("Survived")
+
+
+func _on_SeaGameOver_finish():
+	$AnimationPlayer.play("fade_out")
+
+
+func _on_Islander_die():
+	var islander = get_node("Objects/Props/Islander")
+	$Experimenter.set_follow_target(islander, true)
+	$Experimenter.disable_controls()
+	is_islander_dead = true
+	$HUDLayer/HUD/DialogueManager.stop()
+	$HUDLayer/HUD/SeaGameOver.start()
