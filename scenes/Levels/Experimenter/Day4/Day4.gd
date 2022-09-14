@@ -23,7 +23,9 @@ func _ready():
 	yield(get_tree(), "idle_frame")
 	$Objects.show()
 	
-	_fade_in()
+	$HUDLayer/HUD/Events.gift_items()
+	$HUDLayer/HUD/Events.enable_controls()
+	#_fade_in()
 
 
 func _on_DialogueManager_finish_dialogue(section_name):

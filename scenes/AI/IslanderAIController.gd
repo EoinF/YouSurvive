@@ -6,6 +6,7 @@ export var EXPLORATION_NODES_PATH: NodePath = "ExplorationNodes"
 export var ISLANDER_PATH: NodePath = "../Objects/Props/Islander"
 export var PATHFINDER_PATH: NodePath = "../Pathfinder"
 
+var NEW_OBJECT_RECOGNISE_TIME = 0.5
 var STEERING_TIMEOUT_SECONDS = 2.5
 var RAFT_ERROR_MARGIN = 10
 
@@ -17,6 +18,8 @@ var exploration_nodes = []
 var current_move_path = []
 var current_target: Node = null
 var current_enemy: Node = null
+
+var objects_in_view_unrecognised = {}
 var objects_in_view = {}
 var is_paused = true
 var idle_timeout = -1.0
@@ -82,12 +85,27 @@ func _process(delta):
 	if is_paused:
 		return
 		
+	# Objects take time to be recognised for the AI
+	# This prevents them from instantly reacting
+	# because of balance considerations for when the
+	# player has to control the islander instead
+	for object_type in objects_in_view_unrecognised.keys():
+		var objects_of_type = objects_in_view_unrecognised[object_type]
+		for object_id in objects_of_type.keys():
+			var object = objects_of_type[object_id]
+			object["time_remaining"] -= delta
+			if object["time_remaining"] <= 0:
+				objects_of_type.erase(object_id)
+				objects_in_view[object_type][object_id] = object["node"]
+				print("added " + object_type + " to view")
+	
 	$DebugPathMap.position = get_node(PATHFINDER_PATH).global_position
 		
 	var islander = get_node(ISLANDER_PATH)
 	var owner_context = {
 		inventory = islander.item_type_to_slot,
 		objects_in_view = objects_in_view,
+		objects_in_view_unrecognised = objects_in_view_unrecognised,
 		islander_position = islander.global_position,
 		current_direction = current_direction,
 		next_move_node = current_move_path.front() if len(current_move_path) > 0 else null,
@@ -421,29 +439,48 @@ func _get_quickest_path_to(from: Vector2, to: Vector2):
 
 
 func _on_IslanderVisionSensor_body_entered(body):
-	if "object_type" in body:
-		if not body.object_type in objects_in_view:
-			objects_in_view[body.object_type] = {}
-		objects_in_view[body.object_type][body.get_instance_id()] = body
+	if not "object_type" in body:
+		return
+		
+	if not body.object_type in objects_in_view:
+		objects_in_view[body.object_type] = {}
+		objects_in_view_unrecognised[body.object_type] = {}
+	objects_in_view_unrecognised[body.object_type][body.get_instance_id()] = {
+		"time_remaining": NEW_OBJECT_RECOGNISE_TIME,
+		"node": body
+	}
 
 
 func _on_IslanderVisionSensor_body_exited(body):
-	if "object_type" in body:
-		objects_in_view[body.object_type].erase(body.get_instance_id())
+	if not "object_type" in body:
+		return
+		
+	objects_in_view[body.object_type].erase(body.get_instance_id())
+	objects_in_view_unrecognised[body.object_type].erase(body.get_instance_id())
 
 
 func _on_IslanderVisionSensor_area_entered(area):
 	var object_node = area.get_parent()
-	if "object_type" in object_node:
-		if not object_node.object_type in objects_in_view:
-			objects_in_view[object_node.object_type] = {}
-		objects_in_view[object_node.object_type][object_node.get_instance_id()] = object_node
+	if not "object_type" in object_node:
+		return
+	if not object_node.object_type in objects_in_view:
+		objects_in_view[object_node.object_type] = {}
+		objects_in_view_unrecognised[object_node.object_type] = {}
+	
+	objects_in_view_unrecognised[object_node.object_type][object_node.get_instance_id()] = {
+		"time_remaining": NEW_OBJECT_RECOGNISE_TIME,
+		"node": object_node
+	}
 
 
 func _on_IslanderVisionSensor_area_exited(area):
 	var object_node = area.get_parent()
-	if "object_type" in object_node:
-		objects_in_view[object_node.object_type].erase(area.get_parent().get_instance_id())
+	if not "object_type" in object_node:
+		return
+	
+	var area_id = area.get_parent().get_instance_id()
+	objects_in_view[object_node.object_type].erase(area_id)
+	objects_in_view_unrecognised[object_node.object_type].erase(area_id)
 
 
 func _start_new_target_animation(target):
