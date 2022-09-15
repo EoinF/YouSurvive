@@ -27,16 +27,18 @@ func show():
 	$CanvasModulate.visible = true
 	$CanvasModulate/MusicLoop.play()
 	$CanvasModulate/MusicLoop.set_volume_db(-12)
+	$CanvasModulate/MenuBackground.resume()
 
 
 func hide():
 	is_active = false
 	$CanvasModulate.visible = false
 	$CanvasModulate/MusicLoop.stop()
+	$CanvasModulate/MenuBackground.pause()
 
 
 func remove_new_game():
-	var new_game_panel = $CanvasModulate/Panel/CenterContainer/Grid/NewGame
+	var new_game_panel = $CanvasModulate/Control/Panel/CenterContainer/Grid/NewGame
 	new_game_panel.disabled = true
 	new_game_panel.visible = false
 
@@ -66,7 +68,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_NewGame_pressed():
 	$CanvasModulate/AnimationPlayer.stop()
 	$CanvasModulate/AnimationPlayer.play("fadeLabel")
-	var new_game_panel = $CanvasModulate/Panel/CenterContainer/Grid/NewGame
+	var new_game_panel = $CanvasModulate/Control/Panel/CenterContainer/Grid/NewGame
 	new_game_panel.modulate.a -= 0.30
 	
 	if new_game_panel.modulate.a < 0.1:

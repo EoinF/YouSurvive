@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Levels/Base/BaseNight1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Base/IslanderController.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Levels/Experimenter/Night1/Night1.gd" type="Script" id=3]
+[ext_resource path="res://scenes/Tutorials/AttackTutorial.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Tutorials/MovementTutorial.tscn" type="PackedScene" id=5]
 
 [node name="Night1" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -14,13 +16,24 @@ modulate = Color( 1, 1, 1, 1 )
 MAX_HEALTH = 400
 FOOTSTEPS_VOLUME_OFFSET = -8
 
-[node name="HUD" parent="HUDLayer" index="0"]
+[node name="AttackTutorial" parent="HUDLayer" index="0" instance=ExtResource( 4 )]
+
+[node name="MovementTutorial" parent="HUDLayer" index="1" instance=ExtResource( 5 )]
+
+[node name="HUD" parent="HUDLayer" index="2"]
 visible = false
 
 [node name="IslanderController" type="Node" parent="." index="3"]
 script = ExtResource( 2 )
+
+[node name="MovementTutorialTimer" type="Timer" parent="." index="8"]
+wait_time = 10.0
+one_shot = true
+[connection signal="inventory_slot_change" from="Objects/Props/Islander" to="." method="_on_Islander_inventory_slot_change"]
+[connection signal="move" from="Objects/Props/Islander" to="." method="_on_Islander_move"]
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="IslanderController" method="_on_PlayerInteraction_area_entered"]
 [connection signal="area_exited" from="Objects/Props/Islander/PlayerInteraction" to="IslanderController" method="_on_PlayerInteraction_area_exited"]
 [connection signal="health_change" from="Objects/Props/Ghost" to="." method="_on_Ghost_health_change"]
 [connection signal="body_exited" from="Objects/StartingArea" to="." method="_on_StartingArea_body_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="MovementTutorialTimer" to="." method="_on_MovementTutorialTimer_timeout"]

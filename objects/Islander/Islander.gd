@@ -4,6 +4,7 @@ signal inventory_slot_change(inventory_slot)
 signal health_change(health)
 signal die
 signal throw_stone(position, direction)
+signal move
 
 export var SPEED = 8 * 1000
 export var IS_IMMUNE_TO_STONE = true
@@ -106,6 +107,7 @@ func move(x, y):
 	velocity.y = direction.y * SPEED
 	
 	get_node("WalkEffect").start(IS_ON_WOOD)
+	emit_signal("move")
 
 
 func throw_stone(x, y):

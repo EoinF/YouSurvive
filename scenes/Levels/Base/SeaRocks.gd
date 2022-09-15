@@ -31,8 +31,9 @@ func move(x_delta, y_delta):
 
 func _ready():
 	starting_position = position
-	for rock in get_children():
-		rock.connect("collide", self, "_on_rock_collide", [rock])
+	for prop in get_children():
+		if prop.object_type == "sea_rock":
+			prop.connect("collide", self, "_on_rock_collide", [prop])
 
 
 func add_child_prop(prop):

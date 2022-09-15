@@ -13,10 +13,13 @@ class SeaAINode:
 	var node: Node
 	var target: Node2D
 	var wander_target: Vector2
-	func _init(_node):
+	var wander_timeout
+	func _init(_node, _initial_state):
 		node = _node
-		state = AIState.FINDING_TARGET
+		state = _initial_state
 		target = null
+		wander_target = node.get_wander_target()
+		wander_timeout = -1
 		
 	func set_state(next_state):
 		state = next_state
@@ -25,6 +28,8 @@ class SeaAINode:
 		return target.global_position.distance_to(node.global_position)
 
 
+export(AIState) var INITIAL_STATE = AIState.FINDING_TARGET
+var WANDER_TIMEOUT = 4.0
 var ai_nodes = []
 var is_ai_enabled = true
 
@@ -40,10 +45,10 @@ func enable_ai():
 func _ready():
 	for prop in get_owner().get_node("Objects/Props/SeaProps").get_children():
 		if prop.is_in_group("AI") and prop.is_in_group("Sea"):
-			ai_nodes.append(SeaAINode.new(prop))
+			ai_nodes.append(SeaAINode.new(prop, INITIAL_STATE))
 
 
-func _process(_delta):
+func _process(delta):
 	if not is_ai_enabled:
 		return
 	for i in range(ai_nodes.size() - 1, -1, -1):
@@ -76,16 +81,19 @@ func _process(_delta):
 			AIState.STRUGGLING:
 				pass
 			AIState.WANDER:
-				if ai_node.wander_target.distance_to(ai_node.node.get_position()) < 5:
+				if (ai_node.wander_timeout < 0) \
+					or ai_node.wander_target.distance_to(ai_node.node.get_position()) < 5:
 					ai_node.wander_target = ai_node.node.get_wander_target()
+					ai_node.wander_timeout = WANDER_TIMEOUT
 				else:
+					ai_node.wander_timeout -= delta
 					var diff = ai_node.wander_target - ai_node.node.get_position()
 					ai_node.node.wander(diff.x, diff.y)
 
 
 func _on_Props_prop_added(prop):
 	if prop.is_in_group("AI") and prop.is_in_group("Sea"):
-		ai_nodes.append(SeaAINode.new(prop))
+		ai_nodes.append(SeaAINode.new(prop, INITIAL_STATE))
 
 
 func _on_Raft_start_sinking():

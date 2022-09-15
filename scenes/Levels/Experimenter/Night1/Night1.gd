@@ -17,7 +17,8 @@ func _ready():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "ShowIslander":
-		get_node("IslanderController").enable_controls()
+		$IslanderController.enable_controls()
+		$MovementTutorialTimer.start()
 	if anim_name == "SpawnAndActivateGhost":
 		# spawn the rock for the player
 		get_node("Objects/Props/Tree").hit()
@@ -41,3 +42,15 @@ func _on_Ghost_health_change(health):
 
 func _onFadeOutFinish():
 	emit_signal("finish_scene")
+
+
+func _on_Islander_inventory_slot_change(inventory_slot):
+	$HUDLayer/AttackTutorial.activate()
+
+
+func _on_MovementTutorialTimer_timeout():
+	$HUDLayer/MovementTutorial.activate()
+
+
+func _on_Islander_move():
+	$MovementTutorialTimer.stop()
