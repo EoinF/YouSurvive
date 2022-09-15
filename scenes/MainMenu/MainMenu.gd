@@ -15,7 +15,8 @@ var DEFAULT_SAVE_DATA = {
 		"0": 0.5,
 		"1": 0.5,
 		"2": 0.5
-	}
+	},
+	"is_fullscreen": true
 }
 
 var is_active
@@ -90,6 +91,18 @@ func _on_Settings_pressed():
 
 func _on_Settings_change_volume(index, amount):
 	save_data["volume"][str(index)] = amount
+	var save_file = File.new()
+	save_file.open(constants.SAVE_FILE_LOCATION, File.WRITE)
+	save_file.store_string(to_json(save_data))
+	save_file.close()
+
+
+func _on_Exit_pressed():
+	get_tree().quit()
+
+
+func _on_Settings_set_fullscreen(new_value):
+	save_data["is_fullscreen"] = new_value
 	var save_file = File.new()
 	save_file.open(constants.SAVE_FILE_LOCATION, File.WRITE)
 	save_file.store_string(to_json(save_data))

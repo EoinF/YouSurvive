@@ -1,6 +1,7 @@
 extends Control
 
 signal change_volume(index, amount)
+signal set_fullscreen
 signal finish_scene
 
 var constants
@@ -18,6 +19,8 @@ func set_data(save_data):
 	set_volume(1, music.value)
 	sfx.value = save_data["volume"]["2"]
 	set_volume(2, sfx.value)
+	OS.window_fullscreen = save_data["is_fullscreen"]
+	container.get_node("CheckButton").pressed = OS.window_fullscreen
 
 
 func _on_MainVolumeSlider_value_changed(value):
@@ -41,3 +44,9 @@ func set_volume(index, pct):
 
 func _on_Back_Button_pressed():
 	emit_signal("finish_scene")
+
+
+func _on_CheckButton_pressed():
+	var container = $Panel/MarginContainer/GridContainer/GridContainer
+	OS.window_fullscreen = container.get_node("CheckButton").pressed
+	emit_signal("set_fullscreen", OS.window_fullscreen)

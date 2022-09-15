@@ -1,10 +1,22 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/MainMenu/Settings.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts/Small.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Fonts/Large.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/MainMenu/Panel.tres" type="StyleBox" id=4]
 [ext_resource path="res://scenes/MainMenu/MenuButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Audio/button_press.wav" type="AudioStream" id=6]
+[ext_resource path="res://scenes/MainMenu/CheckButton.gd" type="Script" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.133333, 0.337255, 0.54902, 1 )
@@ -28,9 +40,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -171.5
-margin_top = -180.5
+margin_top = -210.0
 margin_right = 171.5
-margin_bottom = 180.5
+margin_bottom = 210.0
 custom_styles/panel = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -39,26 +51,26 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 64
+custom_constants/margin_right = 32
 custom_constants/margin_top = 24
-custom_constants/margin_left = 64
+custom_constants/margin_left = 32
 custom_constants/margin_bottom = 24
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer"]
-margin_left = 64.0
+margin_left = 32.0
 margin_top = 24.0
-margin_right = 279.0
-margin_bottom = 337.0
+margin_right = 311.0
+margin_bottom = 396.0
 custom_constants/vseparation = 32
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="Panel/MarginContainer/GridContainer"]
-margin_right = 215.0
+margin_right = 279.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 3 )
@@ -71,18 +83,18 @@ __meta__ = {
 
 [node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/GridContainer"]
 margin_top = 54.0
-margin_right = 215.0
-margin_bottom = 175.0
+margin_right = 279.0
+margin_bottom = 215.0
 size_flags_horizontal = 3
 custom_constants/vseparation = 8
 
 [node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/GridContainer/GridContainer"]
-margin_right = 215.0
+margin_right = 279.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
 
 [node name="Main Volume" type="Label" parent="Panel/MarginContainer/GridContainer/GridContainer/GridContainer"]
-margin_right = 215.0
+margin_right = 279.0
 margin_bottom = 15.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.184314, 0.364706, 0.545098, 1 )
@@ -93,7 +105,7 @@ __meta__ = {
 
 [node name="MainVolumeSlider" type="HSlider" parent="Panel/MarginContainer/GridContainer/GridContainer/GridContainer"]
 margin_top = 19.0
-margin_right = 215.0
+margin_right = 279.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
 max_value = 1.0
@@ -102,12 +114,12 @@ value = 0.5
 
 [node name="GridContainer2" type="GridContainer" parent="Panel/MarginContainer/GridContainer/GridContainer"]
 margin_top = 43.0
-margin_right = 215.0
+margin_right = 279.0
 margin_bottom = 78.0
 size_flags_horizontal = 3
 
 [node name="Music Volume" type="Label" parent="Panel/MarginContainer/GridContainer/GridContainer/GridContainer2"]
-margin_right = 215.0
+margin_right = 279.0
 margin_bottom = 15.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.184314, 0.364706, 0.545098, 1 )
@@ -118,7 +130,7 @@ __meta__ = {
 
 [node name="MusicVolumeSlider" type="HSlider" parent="Panel/MarginContainer/GridContainer/GridContainer/GridContainer2"]
 margin_top = 19.0
-margin_right = 215.0
+margin_right = 279.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
 max_value = 1.0
@@ -127,12 +139,12 @@ value = 0.5
 
 [node name="GridContainer3" type="GridContainer" parent="Panel/MarginContainer/GridContainer/GridContainer"]
 margin_top = 86.0
-margin_right = 215.0
+margin_right = 279.0
 margin_bottom = 121.0
 size_flags_horizontal = 3
 
 [node name="SFX Volume" type="Label" parent="Panel/MarginContainer/GridContainer/GridContainer/GridContainer3"]
-margin_right = 215.0
+margin_right = 279.0
 margin_bottom = 15.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.184314, 0.364706, 0.545098, 1 )
@@ -143,23 +155,49 @@ __meta__ = {
 
 [node name="SfxVolumeSlider" type="HSlider" parent="Panel/MarginContainer/GridContainer/GridContainer/GridContainer3"]
 margin_top = 19.0
-margin_right = 215.0
+margin_right = 279.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.01
 value = 0.5
 
+[node name="CheckButton" type="CheckButton" parent="Panel/MarginContainer/GridContainer/GridContainer"]
+margin_top = 129.0
+margin_right = 123.0
+margin_bottom = 161.0
+size_flags_horizontal = 0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/hover_pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.184314, 0.364706, 0.545098, 1 )
+custom_colors/font_color = Color( 0.184314, 0.364706, 0.545098, 1 )
+custom_colors/font_color_hover = Color( 0.184314, 0.364706, 0.545098, 1 )
+custom_colors/font_color_pressed = Color( 0.184314, 0.364706, 0.545098, 1 )
+pressed = true
+text = "Fullscreen"
+script = ExtResource( 7 )
+
+[node name="PressedSound" type="AudioStreamPlayer" parent="Panel/MarginContainer/GridContainer/GridContainer/CheckButton"]
+stream = ExtResource( 6 )
+bus = "SFX"
+
 [node name="Back Button" parent="Panel/MarginContainer" instance=ExtResource( 5 )]
-margin_left = 93.0
-margin_top = 277.0
-margin_right = 279.0
-margin_bottom = 337.0
+margin_left = 125.0
+margin_top = 336.0
+margin_right = 311.0
+margin_bottom = 396.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 custom_styles/normal = SubResource( 1 )
-text = "Main Menu"
+text = "Back"
 [connection signal="value_changed" from="Panel/MarginContainer/GridContainer/GridContainer/GridContainer/MainVolumeSlider" to="." method="_on_MainVolumeSlider_value_changed"]
 [connection signal="value_changed" from="Panel/MarginContainer/GridContainer/GridContainer/GridContainer2/MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
 [connection signal="value_changed" from="Panel/MarginContainer/GridContainer/GridContainer/GridContainer3/SfxVolumeSlider" to="." method="_on_SfxVolumeSlider_value_changed"]
+[connection signal="pressed" from="Panel/MarginContainer/GridContainer/GridContainer/CheckButton" to="Panel/MarginContainer/GridContainer/GridContainer/CheckButton" method="_on_CheckButton_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/GridContainer/GridContainer/CheckButton" to="." method="_on_CheckButton_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/Back Button" to="." method="_on_Back_Button_pressed"]

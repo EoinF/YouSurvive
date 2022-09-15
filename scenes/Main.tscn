@@ -65,5 +65,6 @@ visible = false
 [connection signal="finish_scene" from="MainMenu/Credits" to="." method="_on_Credits_finish_scene"]
 [connection signal="change_volume" from="MainMenu/Settings" to="MainMenu" method="_on_Settings_change_volume"]
 [connection signal="finish_scene" from="MainMenu/Settings" to="." method="_on_Settings_finish_scene"]
+[connection signal="set_fullscreen" from="MainMenu/Settings" to="MainMenu" method="_on_Settings_set_fullscreen"]
 [connection signal="main_menu_pressed" from="PauseMenu" to="." method="_on_PauseMenu_main_menu_pressed"]
 [connection signal="resume_pressed" from="PauseMenu" to="." method="_on_PauseMenu_resume_pressed"]
