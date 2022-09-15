@@ -124,12 +124,13 @@ margin_bottom = 332.0
 text = "Exit"
 
 [node name="HintLabel" type="Label" parent="CanvasModulate"]
-self_modulate = Color( 0.184314, 0.364706, 0.545098, 1 )
+light_mask = -2147483647
 margin_left = 418.722
 margin_top = 114.651
 margin_right = 622.722
 margin_bottom = 129.651
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.0352941, 0.262745, 0.52549, 1 )
 text = "There's no starting over..."
 __meta__ = {
 "_edit_use_anchors_": false
