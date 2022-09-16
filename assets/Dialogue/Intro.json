@@ -30,25 +30,37 @@
     { "type": "text", "content": "So you remembered." },
     {
       "type": "text",
-      "content": "The point is that there is no real you."
+      "content": "The whole point is we can't be sure if there even is a real \"you\""
     },
-    { "type": "text", "content": "It's just atoms arranged in a pattern." },
-    { "type": "text", "content": "Not that this really changes anything." },
     {
       "type": "text",
-      "content": "But just don't get too attached to those patterns."
+      "content": "Since it's just atoms arranged in a pattern."
+    },
+    {
+      "type": "text",
+      "content": "It's just a concept we use to simplify the world around us-"
+    },
+    { "type": "text", "content": "and where we fit into all of it." },
+    { "type": "text", "content": "Same with objects in general." },
+    {
+      "type": "text",
+      "content": "They don't necessarily have intrinsic boundaries between them."
+    },
+    {
+      "type": "text",
+      "content": "So don't get too attached to those patterns."
     },
     { "type": "text", "content": "[... continue to crab closing level]" }
   ],
   "Outro": [
-    { "type": "text", "content": "All that you need to know is" },
-    { "type": "text", "content": "we'll be running a series of experiments" },
+    { "type": "text", "content": "Here's all that you need to know." },
+    { "type": "text", "content": "We'll be running a series of experiments." },
+    { "type": "text", "content": "This will take place on a desert island." },
     {
       "type": "text",
-      "content": "The goal of which will become clear by the end"
+      "content": "The goal of all this should be clear by the end."
     },
     { "type": "text", "content": "So pay attention." },
-    { "type": "text", "content": "Now. Off to the island you go......" },
-    { "type": "text", "content": "I'll pass along your name." }
+    { "type": "text", "content": "Now, off to the island you go......" }
   ]
 }

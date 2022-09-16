@@ -8,25 +8,33 @@
     },
     {
       "type": "text",
-      "content": "We make them fight for their life."
+      "content": "We'll force them to fight in order to survive."
     },
     {
       "type": "text",
-      "content": "Only by confronting the \"other\" can one distinguish themselves."
+      "content": "They'll have no choice but to confront the \"other\""
     },
     {
       "type": "text",
-      "content": "For without the \"other\" there is no self."
+      "content": "And this will help to form some individuality."
     },
     {
       "type": "text",
-      "content": "We want to set up the island with 15 predators."
+      "content": "For without the \"other\" there is no concept of self."
     },
     {
       "type": "text",
-      "content": "Take your time. We won't begin until everything has been set up"
+      "content": "Without darkness, there can be no light."
     },
-    { "type": "text", "content": "Here are the predators:" },
+    {
+      "type": "text",
+      "content": "We will prepare the island with 15 lurking predators."
+    },
+    {
+      "type": "text",
+      "content": "But we will only begin when everything is ready."
+    },
+    { "type": "text", "content": "Here are the available predators:" },
     {
       "type": "event",
       "event_name": "gift_crabs"
@@ -64,7 +72,7 @@
     { "type": "text", "content": "Good." },
     {
       "type": "text",
-      "content": "The test subject needs a way to defend themselves."
+      "content": "But the test subject will need a way to defend themselves."
     },
     {
       "type": "text",

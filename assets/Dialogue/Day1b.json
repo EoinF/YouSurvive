@@ -9,39 +9,51 @@
     },
     { "type": "text", "content": "Hey you......." },
     { "type": "text", "content": "Over here......." },
-    { "type": "text", "content": "My name is Durme" },
+    { "type": "text", "content": "Let me introduce myself." },
+    { "type": "text", "content": "My name is Durme." },
     { "type": "text", "content": "There's something I need to ask." },
     {
       "type": "text",
-      "content": "There's something amiss here right?"
+      "content": "Do you feel like there's something off here?"
     },
     {
       "type": "text",
-      "content": "You just appeared on this island and were given a task to complete."
+      "content": "Like something's not quite right."
+    },
+    {
+      "type": "text",
+      "content": "You just appeared on this island"
+    },
+    {
+      "type": "text",
+      "content": "You were given a task to complete."
     },
     {
       "type": "text",
       "content": "You completed that task - no questions asked."
     },
     { "type": "text", "content": "But how did you even get here?" },
-    { "type": "text", "content": "What were you doing before this?" },
-    { "type": "text", "content": "And before that?" },
     {
       "type": "text",
-      "content": "If you keep going back you'll reach a stopping point."
-    },
-    { "type": "text", "content": "Did you exist before that point?" },
-    {
-      "type": "text",
-      "content": "Have you always existed?"
+      "content": "Where were you before this island?"
     },
     {
       "type": "text",
-      "content": "Just because you can't remember"
+      "content": "And what were you doing?"
+    },
+    { "type": "text", "content": "Did you even exist before this?" },
+    {
+      "type": "text",
+      "content": "Or have you always existed?"
+    },
+    { "type": "text", "content": "How could you even know such a thing?" },
+    {
+      "type": "text",
+      "content": "Just because you can't remember-"
     },
     {
       "type": "text",
-      "content": "does that really mean you didn't exist?"
+      "content": "does that really mean it didn't happen?"
     }
   ]
 }

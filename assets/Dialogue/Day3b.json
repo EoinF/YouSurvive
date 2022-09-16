@@ -1,5 +1,5 @@
 {
-  "Day 3": [
+  "Main": [
     { "type": "text", "content": "Hello again......." },
     {
       "type": "text",
@@ -7,11 +7,11 @@
     },
     {
       "type": "text",
-      "content": "These will be the last of them however."
+      "content": "Some say the world is made up of fundamental substances."
     },
     {
       "type": "text",
-      "content": "Some say the world is made up of these fundamental substances - pixels."
+      "content": "A substance called a \"pixel\"."
     },
     {
       "type": "text",
@@ -23,28 +23,15 @@
     },
     {
       "type": "text",
-      "content": "within this continuous stream of pixels"
+      "content": "within this continuous array of pixels."
     },
     {
       "type": "text",
-      "content": "With that definition, does it follow that objects are just a mental construct?"
+      "content": "Does this mean that objects are just a mental construct?"
     },
     {
       "type": "text",
-      "content": "Can a self really physically exist? If it's only real in the mind."
-    },
-    {
-      "type": "text",
-      "content": "Then physically we are all part of one big picture"
-    },
-    {
-      "type": "text",
-      "content": "And our aims should be collective, not individual"
-    },
-    { "type": "text", "content": "You and I, we're one in the same." },
-    {
-      "type": "text",
-      "content": "So when we meet again, remember to call yourself Durme"
+      "content": "Are they just a tool for making sense of this chaotic world?"
     }
   ]
 }

@@ -47,7 +47,7 @@
     },
     {
       "type": "text",
-      "content": "Scatter them throughout the island however it may please."
+      "content": "Scatter them throughout the island."
     },
     {
       "type": "text",
@@ -63,7 +63,7 @@
     },
     {
       "type": "text",
-      "content": "If the task is out of reach, then so is the meaning behind it."
+      "content": "Try not to make these tasks too difficult for the test subject."
     },
     { "type": "link_to", "section_name": "Outro" }
   ],
@@ -75,7 +75,7 @@
     },
     {
       "type": "text",
-      "content": "They won't find meaning in a trivial task."
+      "content": "The test subject won't find meaning in a trivial task."
     },
     { "type": "link_to", "section_name": "Outro" }
   ],
@@ -91,10 +91,6 @@
     {
       "type": "text",
       "content": "Soon the test subject will become aware of their individuality."
-    },
-    {
-      "type": "text",
-      "content": "But this is just the beginning."
     },
     {
       "type": "text",

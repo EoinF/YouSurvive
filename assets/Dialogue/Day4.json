@@ -1,19 +1,117 @@
 {
   "Intro": [
-    { "type": "config", "letter_delay": 0.06, "x": 0.5, "y": 0.5 },
+    { "type": "config", "letter_delay": 0.06, "y": 0.9 },
     {
       "type": "text",
       "content": "Today we close out this cycle of experiments."
     },
     {
       "type": "text",
-      "content": "The last important facet of the self is a finite existence."
+      "content": "Everything must eventually come to an end."
     },
-    { "type": "text", "content": "A beginning followed by an end." },
-    { "type": "text", "content": "" },
+    {
+      "type": "text",
+      "content": "We've got one final challenge for the test subject."
+    },
+    {
+      "type": "text",
+      "content": "They either succumb to the watery depths-"
+    },
+    { "type": "text", "content": "or escape to some new land." },
+    {
+      "type": "text",
+      "content": "The test subject has already set sail on their raft."
+    },
+    {
+      "type": "text",
+      "content": "But we don't have to let them off easy."
+    },
+    {
+      "type": "text",
+      "content": "Using the sharks, crabs and rocks provided, we can put a stop to them."
+    },
     { "type": "event", "event_name": "gift_items" },
-    { "type": "text", "content": "..." },
+    { "type": "text", "content": "Now then..." },
     { "type": "event", "event_name": "enable_controls" },
-    { "type": "text", "content": "..." }
+    {
+      "type": "text",
+      "content": "It's time to give us a worthwhile experiment.",
+      "timeout": 5.0
+    }
+  ],
+  "Escaping": [
+    {
+      "type": "text",
+      "content": "The test subject is getting away!",
+      "timeout": 4.0
+    }
+  ],
+  "Capsized": [
+    { "type": "config", "letter_delay": 0.06, "y": 0.9 },
+    {
+      "type": "text",
+      "content": "And there goes another test subject."
+    },
+    {
+      "type": "text",
+      "content": "Subsumed back into the endless ocean."
+    },
+    {
+      "type": "text",
+      "content": "Whatever role we take in life, in death we are all equal."
+    },
+    {
+      "type": "text",
+      "content": "At the end of a game of chess, all the pieces go back into the bag."
+    },
+    {
+      "type": "text",
+      "content": "Regardless of it being a queen or a pawn."
+    },
+    {
+      "type": "link_to",
+      "section_name": "Outro"
+    }
+  ],
+  "Survived": [
+    { "type": "config", "letter_delay": 0.06, "y": 0.9 },
+    {
+      "type": "text",
+      "content": "So they were allowed to escape."
+    },
+    {
+      "type": "text",
+      "content": "How merciful."
+    },
+    {
+      "type": "text",
+      "content": "They go on their own journey now."
+    },
+    {
+      "type": "text",
+      "content": "It's up to them to decide where they go next."
+    },
+    {
+      "type": "link_to",
+      "section_name": "Outro"
+    }
+  ],
+  "Outro": [
+    {
+      "type": "text",
+      "content": "So that's it for this set of experiments-"
+    },
+    {
+      "type": "text",
+      "content": "But our task is not done yet."
+    },
+    {
+      "type": "text",
+      "content": "We must continue...",
+      "highlight": {
+        "begin": 8,
+        "end": 16
+      }
+    }
   ]
 }

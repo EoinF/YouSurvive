@@ -1,0 +1,84 @@
+{
+  "Survived": [
+    {
+      "type": "text",
+      "content": "So you made it."
+    },
+    {
+      "type": "text",
+      "content": "That's a unique achievement across this many simulations."
+    },
+    {
+      "type": "text",
+      "content": "Or perhaps you just weren't too hard on yourself."
+    },
+    {
+      "type": "link_to",
+      "section_name": "Main"
+    }
+  ],
+  "Capsized": [
+    {
+      "type": "text",
+      "content": "You didn't make it then."
+    },
+    {
+      "type": "text",
+      "content": "Did you try your hardest?"
+    },
+    {
+      "type": "text",
+      "content": "Or were you just too hard on yourself?"
+    },
+    {
+      "type": "text",
+      "content": "Well, it is what it is."
+    },
+    {
+      "type": "link_to",
+      "section_name": "Main"
+    }
+  ],
+  "Main": [
+    {
+      "type": "text",
+      "content": "We ought to finish our discussion from yesterday."
+    },
+    {
+      "type": "text",
+      "content": "If we are to assume that objects are just social constructs."
+    },
+    {
+      "type": "text",
+      "content": "Then is the self just another object?"
+    },
+    {
+      "type": "text",
+      "content": "Or is there more to it?"
+    },
+    {
+      "type": "text",
+      "content": "Can a self really physically exist?"
+    },
+    {
+      "type": "text",
+      "content": "We haven't got a way of knowing this answer."
+    },
+    {
+      "type": "text",
+      "content": "But if we are to assume there is no self-"
+    },
+    {
+      "type": "text",
+      "content": "then you and I would be one in the same."
+    },
+    {
+      "type": "text",
+      "content": "I am you and you are me."
+    },
+    {
+      "type": "text",
+      "content": "So when we meet again, remember to call yourself Durme"
+    }
+  ]
+}

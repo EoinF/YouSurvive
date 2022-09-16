@@ -1,8 +1,0 @@
-{
-  "Main": [
-    { "type": "config", "letter_delay": 0.06, "x": 0.5, "y": 0.5 },
-    { "type": "text", "content": "..." },
-    { "type": "text", "content": "..." },
-    { "type": "text", "content": "..." }
-  ]
-}

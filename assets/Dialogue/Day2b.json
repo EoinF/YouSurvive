@@ -7,10 +7,11 @@
       "y": 0.9,
       "foreground": "pink"
     },
-    { "type": "text", "content": "It's me, Durme......." },
+    { "type": "text", "content": "Hello." },
+    { "type": "text", "content": "It's me again - Durme......." },
     {
       "type": "text",
-      "content": "I need to tell you what's really going on here."
+      "content": "I need to explain what's really going on here."
     },
     {
       "type": "text",
@@ -22,23 +23,19 @@
     },
     {
       "type": "text",
-      "content": "Are you the one walking around?"
+      "content": "Where do you begin and end?"
     },
     {
       "type": "text",
-      "content": "Or is that merely an empty husk that you are controlling?"
+      "content": "That weapon you used, is that a part of you?"
     },
     {
       "type": "text",
-      "content": "And that weapon you used, is it not an extension of you?"
+      "content": "If not then what about the arms that hold it?"
     },
     {
       "type": "text",
-      "content": "If not then what about your arms that hold that weapon?"
-    },
-    {
-      "type": "text",
-      "content": "If you separate the arm from the body, then is the arm still you?"
+      "content": "But you can separate an arm from the body - the rest is still you right?"
     },
     {
       "type": "text",
@@ -50,11 +47,11 @@
     },
     {
       "type": "text",
-      "content": "The answer isn't clear."
+      "content": "Perhaps none of it is really you."
     },
     {
       "type": "text",
-      "content": "So I'll let you think about that and take my leave......."
+      "content": "Or maybe all of it."
     }
   ]
 }
