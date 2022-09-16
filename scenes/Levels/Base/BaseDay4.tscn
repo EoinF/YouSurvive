@@ -115,7 +115,7 @@ script = ExtResource( 15 )
 position = Vector2( 3325.41, 285.013 )
 
 [node name="SceneEdge" type="Position2D" parent="Objects/ScrollingManager"]
-position = Vector2( 1936.79, 408.042 )
+position = Vector2( 1953.74, 408.042 )
 
 [node name="Tween" type="Tween" parent="Objects/ScrollingManager"]
 
@@ -374,8 +374,8 @@ autoplay = true
 bus = "SFX"
 [connection signal="finish_sinking" from="Objects/Props/Raft" to="Objects/Props/SeaProps" method="_on_Raft_finish_sinking"]
 [connection signal="health_change" from="Objects/Props/Raft" to="HUDLayer/HUD/RaftHealthBar" method="_on_Raft_health_change"]
-[connection signal="start_sinking" from="Objects/Props/Raft" to="Objects/ScrollingManager" method="_on_Raft_start_sinking"]
 [connection signal="start_sinking" from="Objects/Props/Raft" to="SeaAIController" method="_on_Raft_start_sinking"]
+[connection signal="start_sinking" from="Objects/Props/Raft" to="Objects/ScrollingManager" method="_on_Raft_start_sinking"]
 [connection signal="y_change" from="Objects/Props/Raft" to="Objects/ScrollingManager" method="_on_Raft_y_change"]
 [connection signal="health_change" from="Objects/Props/Raft/Islander" to="HUDLayer/HUD" method="_on_Islander_health_change"]
 [connection signal="spawn_item" from="Objects/Props/Projectiles" to="Objects/Props" method="_on_Projectiles_spawn_item"]

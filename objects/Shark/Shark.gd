@@ -9,6 +9,7 @@ var _death_cooldown = -1
 var _is_dying = false
 var min_idle_time = 0.2
 var scale_idle_time = 3.5
+var is_struggling = false
 
 var object_type = "shark"
 
@@ -61,10 +62,12 @@ func wander(x, y):
 
 func struggle(anchor_node: Node2D, _direction: Vector2):
 	if not _is_dying:
+		is_struggling = true
 		$StruggleEffect.start(anchor_node, _direction)
 
 
 func stop_struggling():
+	is_struggling = false
 	$StruggleEffect.stop()
 
 

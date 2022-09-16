@@ -73,7 +73,7 @@ func _process(delta):
 				ai_node.set_state(AIState.APPROACHING)
 			AIState.APPROACHING:
 				var direction = ai_node.target.global_position - ai_node.node.global_position
-				if ai_node.distance_to_target() < 5:
+				if ai_node.distance_to_target() < 10:
 					ai_node.set_state(AIState.STRUGGLING)
 					ai_node.node.struggle(ai_node.target, direction)
 					return

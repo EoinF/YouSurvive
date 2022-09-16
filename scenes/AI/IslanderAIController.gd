@@ -95,11 +95,18 @@ func _process(delta):
 		var objects_of_type = objects_in_view_unrecognised[object_type]
 		for object_id in objects_of_type.keys():
 			var object = objects_of_type[object_id]
+			# Special case for sharks since they're unreachable
+			# until very close to the raft anyway
+			if object_type == "shark":
+				if object["node"].is_struggling:
+					objects_of_type.erase(object_id)
+					objects_in_view[object_type][object_id] = object["node"]
+				continue
+				
 			object["time_remaining"] -= delta
 			if object["time_remaining"] <= 0:
 				objects_of_type.erase(object_id)
 				objects_in_view[object_type][object_id] = object["node"]
-				print("added " + object_type + " to view")
 	
 	$DebugPathMap.position = get_node(PATHFINDER_PATH).global_position
 		
