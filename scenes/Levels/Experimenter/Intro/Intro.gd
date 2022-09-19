@@ -8,6 +8,10 @@ func _ready():
 	get_node("DialogueManager").start_section("Main1")
 
 
+func set_attempt_number(_attempt_number):
+	pass
+	
+
 func _on_DialogueManager_finish_dialogue(section_name):
 	if section_name == "Main1":
 		get_node("Name Entry").visible = true

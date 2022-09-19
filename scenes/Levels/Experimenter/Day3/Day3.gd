@@ -1,5 +1,6 @@
 extends Node2D
 
+signal restart_scene
 signal finish_scene(experimenter_data)
 
 var is_islander_dead = false
@@ -22,12 +23,6 @@ func calculate_score():
 	var time_elapsed = timer.wait_time - timer.time_left
 	var _score = ceil((time_elapsed / max_time) * 40)
 	var capped_time_score = min(_score, max_time_score)
-	
-	print("time_score = ", _score)
-	print("capped_time_score = ", capped_time_score)
-	print("elapsed = ", time_elapsed)
-	print("enemies_score = ", enemies_score)
-	
 	return capped_time_score + enemies_score
 
 
@@ -35,6 +30,10 @@ func set_player_name(player_name):
 	get_node("HUDLayer/HUD/DialogueManager").set_variables({
 		"player_name": player_name
 	})
+
+
+func set_attempt_number(attempt_number):
+	$DifficultyManager.adjust_difficulty(attempt_number)
 
 
 func _ready():
@@ -59,7 +58,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		get_node("HUDLayer/HUD/DialogueManager").start_section("Intro")
 	if anim_name == "fade_out":
 		if is_islander_dead:
-			get_tree().change_scene("res://scenes/Levels/Experimenter/Day3/Day3.tscn")
+			emit_signal("restart_scene")
 		else:
 			var experiment_data = $Experimenter.get_experiment_data()
 			emit_signal("finish_scene", experiment_data)

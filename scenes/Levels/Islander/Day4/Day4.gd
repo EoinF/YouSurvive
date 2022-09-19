@@ -1,5 +1,6 @@
 extends Node2D
 
+signal restart_scene
 signal finish_scene
 
 var experiment_data
@@ -11,6 +12,10 @@ func _on_Props_enemy_struggle():
 func set_experiment_data(_data):
 	experiment_data = _data
 	get_node("ExperimentReplay").set_experiment_data(_data)
+
+
+func set_attempt_number(attempt_number):
+	$DifficultyManager.adjust_difficulty(attempt_number)
 
 
 func _ready():
@@ -44,4 +49,4 @@ func _on_Raft_start_sinking():
 
 
 func _on_Islander_die():
-	pass # Replace with function body.
+	emit_signal("restart_scene")

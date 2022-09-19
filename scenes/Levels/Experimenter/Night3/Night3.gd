@@ -19,6 +19,10 @@ func _ready():
 	$Objects.show()
 
 
+func set_attempt_number(_attempt_number):
+	pass
+
+
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "ShowIslander":
 		$IslanderController.enable_controls()

@@ -6,7 +6,8 @@ signal finish_scene
 
 var constants
 
-func set_data(save_data):
+
+func _on_SaveManager_load_initial_data(save_data):
 	var container = $Panel/MarginContainer/GridContainer/GridContainer
 	
 	var main = container.get_node("GridContainer/MainVolumeSlider")
@@ -50,3 +51,5 @@ func _on_CheckButton_pressed():
 	var container = $Panel/MarginContainer/GridContainer/GridContainer
 	OS.window_fullscreen = container.get_node("CheckButton").pressed
 	emit_signal("set_fullscreen", OS.window_fullscreen)
+
+

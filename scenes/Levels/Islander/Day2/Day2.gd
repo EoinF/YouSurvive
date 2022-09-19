@@ -1,5 +1,6 @@
 extends Node2D
 
+signal restart_scene
 signal finish_scene
 
 var experiment_data
@@ -32,6 +33,10 @@ func set_experiment_data(_data):
 	get_node("ExperimentReplay").set_experiment_data(_data)
 
 
+func set_attempt_number(attempt_number):
+	$DifficultyManager.adjust_difficulty(attempt_number)
+	
+
 func _is_objective_complete(objective):
 	return objective.is_complete and objective.is_visible
 
@@ -62,8 +67,7 @@ func _on_Islander_die():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "fade_out":
 		if is_islander_dead:
-			get_tree().change_scene("res://scenes/Levels/Islander/Day2/Day2.tscn")
-			get_tree().current_scene.set_experiment_data(experiment_data)
+			emit_signal("restart_scene")
 		else:
 			emit_signal("finish_scene")
 			queue_free()

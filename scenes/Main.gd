@@ -1,6 +1,11 @@
 extends Node
 
-var active_scene
+var active_scene: Node
+
+var constants
+
+func _ready():
+	constants = preload("res://scripts/constants.gd").new()
 
 
 func _process(_delta):
@@ -33,14 +38,16 @@ func _on_IslanderScenes_finish_scenes():
 	active_scene = null
 
 
-func _on_MainMenu_continue_game(save_data):
+func _on_MainMenu_continue_game():
+	var save_data = $SaveManager.get_save_data()
 	var chapter_scenes
 	if save_data["current_chapter"] == "Experimenter":
 		chapter_scenes = get_node("ExperimenterScenes")
 	else:
 		chapter_scenes = get_node("IslanderScenes")
 	
-	chapter_scenes.load_scene(save_data["current_level"], save_data)
+	chapter_scenes.set_save_data(save_data)
+	chapter_scenes.load_scene(save_data["current_level"], save_data["current_attempt"])
 	$MainMenu.hide()
 
 
@@ -73,13 +80,9 @@ func _on_PauseMenu_resume_pressed():
 	$PauseMenu.hide()
 
 
-func _on_IslanderScenes_set_active_scene(scene):
+func _on_ExperimenterScenes_scene_loaded(scene):
 	active_scene = scene
 
 
-func _on_ExperimenterScenes_set_active_scene(scene):
+func _on_IslanderScenes_scene_loaded(scene):
 	active_scene = scene
-
-
-func _on_MainMenu_on_load_save_data(save_data):
-	$MainMenu/Settings.set_data(save_data)

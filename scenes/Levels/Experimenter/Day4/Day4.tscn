@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Levels/Base/BaseDay4.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Experimenter/Day4/Day4.gd" type="Script" id=2]
@@ -7,12 +7,16 @@
 [ext_resource path="res://scenes/Levels/Base/ExperimenterController.gd" type="Script" id=5]
 [ext_resource path="res://objects/ExplorationNode.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Dialogue/SeaGameOver.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Island/DifficultyManager.gd" type="Script" id=8]
 [ext_resource path="res://objects/Experimenter/Experimenter.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/AI/Pathfinder.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/AI/IslanderAIController.tscn" type="PackedScene" id=12]
 
 [node name="ExperimenterDay4" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="DifficultyManager" type="Node" parent="." index="0"]
+script = ExtResource( 8 )
 
 [node name="Props" parent="Objects" index="2"]
 CUSTOM_SEA_PROPS_PATH = NodePath("SeaProps")
@@ -64,14 +68,14 @@ script = ExtResource( 4 )
 
 [node name="SeaGameOver" parent="HUDLayer/HUD" index="10" instance=ExtResource( 7 )]
 
-[node name="IslanderAIController" parent="." index="6" instance=ExtResource( 12 )]
+[node name="IslanderAIController" parent="." index="7" instance=ExtResource( 12 )]
 MIN_IDLE_DURATION = 0.6
 MAX_IDLE_DURATION = 3.0
 EXPLORATION_NODES_PATH = NodePath("../Objects/Props/Raft/ExplorationNodes")
 ISLANDER_PATH = NodePath("../Objects/Props/Raft/Islander")
 PATHFINDER_PATH = NodePath("../Objects/Props/Raft/Pathfinder")
 
-[node name="Experimenter" parent="." index="7" instance=ExtResource( 10 )]
+[node name="Experimenter" parent="." index="8" instance=ExtResource( 10 )]
 
 [node name="Camera" parent="Experimenter" index="0"]
 position = Vector2( 865.716, 413.632 )
@@ -79,11 +83,11 @@ limit_top = -200
 limit_right = 1950
 limit_bottom = 1000
 
-[node name="ExperimenterController" type="Node" parent="." index="8"]
+[node name="ExperimenterController" type="Node" parent="." index="9"]
 script = ExtResource( 5 )
 ISLANDER_PATH = NodePath("../Objects/Props/Raft/Islander")
 
-[node name="ObjectivesTimer" type="Timer" parent="." index="9"]
+[node name="ObjectivesTimer" type="Timer" parent="." index="10"]
 wait_time = 1e+09
 [connection signal="edge_reached" from="Objects/ScrollingManager" to="." method="_on_ScrollingManager_edge_reached"]
 [connection signal="finish" from="Objects/ScrollingManager" to="." method="_on_ScrollingManager_finish"]

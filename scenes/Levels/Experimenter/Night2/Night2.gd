@@ -24,6 +24,10 @@ func _ready():
 	$Objects.show()
 
 
+func set_attempt_number(_attempt_number):
+	pass
+
+
 func _on_StartingArea_body_exited(body):
 	if not is_tree_shown and body.is_in_group("Islander"):
 		is_tree_shown = true
