@@ -10,7 +10,7 @@ var menu_background_scene
 
 func _ready():
 	is_active = true
-	$CanvasModulate/HintLabel.modulate.a = 0
+	$Control/Panel/HintLabel.modulate.a = 0
 	menu_background_scene = preload("res://scenes/MainMenu/MenuBackground.tscn")
 
 
@@ -18,8 +18,10 @@ func show():
 	is_active = true
 	$CanvasModulate.color = Color.white
 	$CanvasModulate.visible = true
-	$CanvasModulate/MusicLoop.play()
-	$CanvasModulate/MusicLoop.set_volume_db(-12)
+	$Control.visible = true
+	$Control.modulate = Color.white
+	$MusicLoop.play()
+	$MusicLoop.set_volume_db(-12)
 	var scene_instance = menu_background_scene.instance()
 	$CanvasModulate.add_child(scene_instance)
 	$CanvasModulate.move_child(scene_instance, 0)
@@ -28,13 +30,13 @@ func show():
 func hide():
 	is_active = false
 	$CanvasModulate.visible = false
-	$CanvasModulate/MusicLoop.stop()
-	$CanvasModulate/MenuBackground.pause()
+	$Control.visible = false
+	$MusicLoop.stop()
 	$CanvasModulate.remove_child($CanvasModulate/MenuBackground)
 
 
 func remove_new_game():
-	var new_game_panel = $CanvasModulate/Control/Panel/CenterContainer/Grid/NewGame
+	var new_game_panel = $Control/Panel/CenterContainer/Grid/NewGame
 	new_game_panel.disabled = true
 	new_game_panel.visible = false
 
@@ -45,9 +47,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	
 
 func _on_NewGame_pressed():
-	$CanvasModulate/AnimationPlayer.stop()
-	$CanvasModulate/AnimationPlayer.play("fadeLabel")
-	var new_game_panel = $CanvasModulate/Control/Panel/CenterContainer/Grid/NewGame
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("fadeLabel")
+	var new_game_panel = $Control/Panel/CenterContainer/Grid/NewGame
 	new_game_panel.modulate.a -= 0.30
 	
 	if new_game_panel.modulate.a < 0.1:
@@ -56,7 +58,7 @@ func _on_NewGame_pressed():
 
 
 func _on_ContinueGame_pressed():
-	$CanvasModulate/AnimationPlayer.play("fadeOut")
+	$AnimationPlayer.play("fadeOut")
 
 
 func _on_Credits_pressed():

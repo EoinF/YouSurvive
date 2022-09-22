@@ -6,10 +6,10 @@
 [node name="HealthBar" type="Control"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -105.0
-margin_top = 7.0
-margin_right = -8.0
-margin_bottom = 30.0
+margin_left = -120.0
+margin_bottom = 36.0
+grow_horizontal = 0
+rect_min_size = Vector2( 120, 36 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -18,7 +18,6 @@ __meta__ = {
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = 3.0
 color = Color( 0.113725, 0.113725, 0.113725, 0.584314 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -33,7 +32,6 @@ margin_left = -38.5
 margin_top = -7.0
 margin_right = 37.5
 margin_bottom = -3.0
-rect_pivot_offset = Vector2( 19, -1.8674 )
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -50,10 +48,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -4.79085
-margin_bottom = -2.79085
 custom_fonts/font = ExtResource( 2 )
-text = "Test subject"
+text = "Test Subject"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false,

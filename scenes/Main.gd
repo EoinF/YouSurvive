@@ -4,10 +4,31 @@ var active_scene: Node
 
 var constants
 
+var RESOLUTIONS = [
+	Vector2(950, 560),
+	Vector2(1900, 1080),
+	Vector2(2850, 1640),
+	Vector2(3800, 2160),
+]
+
+onready var viewport = get_viewport()
+
 func _ready():
 	constants = preload("res://scripts/constants.gd").new()
+# warning-ignore:return_value_discarded
+	get_tree().connect("screen_resized", self, "_screen_resized")
 	
-	print(OS.get_window_size())
+
+func _screen_resized():
+	var window_size = OS.get_window_size()
+	
+	var highest_resolution = RESOLUTIONS[0]
+	for resolution in RESOLUTIONS.slice(1, len(RESOLUTIONS) - 1):
+		if resolution.x <= window_size.x and resolution.y <= window_size.y:
+			highest_resolution = resolution
+	
+	var viewport_offset = (window_size - highest_resolution) / 2
+	viewport.set_attach_to_screen_rect(Rect2(viewport_offset, highest_resolution))
 
 
 func _process(_delta):

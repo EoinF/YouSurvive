@@ -19,6 +19,8 @@ __meta__ = {
 [node name="Inventory" parent="." instance=ExtResource( 1 )]
 margin_right = 44.0
 margin_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ExperimenterInventory" parent="." instance=ExtResource( 1 )]
 visible = false
@@ -57,6 +59,9 @@ __meta__ = {
 [node name="ObjectivesDisplay" parent="." instance=ExtResource( 3 )]
 
 [node name="HealthBar" parent="." instance=ExtResource( 6 )]
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = 40.0
 [connection signal="use_item" from="Inventory" to="." method="_on_Inventory_use_item"]
 [connection signal="set_active_item" from="ExperimenterInventory" to="." method="_on_ExperimenterInventory_set_active_item"]
 [connection signal="use_item" from="ExperimenterInventory" to="." method="_on_Inventory_use_item"]

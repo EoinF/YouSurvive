@@ -350,8 +350,10 @@ __meta__ = {
 }
 
 [node name="RaftHealthBar" parent="HUDLayer/HUD" instance=ExtResource( 12 )]
-margin_top = 34.0756
-margin_bottom = 57.0756
+margin_left = -124.0
+margin_top = 44.0
+margin_right = -3.99994
+margin_bottom = 80.0
 LABEL_TEXT = "Raft"
 
 [node name="TooltipContainer" parent="HUDLayer" instance=ExtResource( 9 )]
@@ -373,7 +375,6 @@ volume_db = -16.0
 autoplay = true
 bus = "SFX"
 [connection signal="finish_sinking" from="Objects/Props/Raft" to="Objects/Props/SeaProps" method="_on_Raft_finish_sinking"]
-[connection signal="health_change" from="Objects/Props/Raft" to="HUDLayer/HUD/RaftHealthBar" method="_on_Raft_health_change"]
 [connection signal="start_sinking" from="Objects/Props/Raft" to="SeaAIController" method="_on_Raft_start_sinking"]
 [connection signal="start_sinking" from="Objects/Props/Raft" to="Objects/ScrollingManager" method="_on_Raft_start_sinking"]
 [connection signal="y_change" from="Objects/Props/Raft" to="Objects/ScrollingManager" method="_on_Raft_y_change"]
