@@ -9,6 +9,7 @@ var _is_dying = false
 var min_idle_time = 0.2
 var scale_idle_time = 3.5
 var wandering_scale = 4000
+var speed_scaling = 1.0
 
 var object_type = "crab"
 
@@ -44,6 +45,10 @@ func is_alive():
 func idle():
 	pass
 	
+
+func set_speed_scaling(new_scaling):
+	speed_scaling = new_scaling
+
 
 var MIN_WANDER_DISTANCE = 500
 var MAX_WANDER_DISTANCE = 1000
@@ -84,7 +89,7 @@ func _physics_process(delta):
 		velocity = Vector2(direction.x * ATTACK_SPEED, direction.y * ATTACK_SPEED)
 	
 # warning-ignore:return_value_discarded
-	move_and_slide(velocity * delta)
+	move_and_slide(velocity * delta * speed_scaling)
 	
 	velocity = Vector2.ZERO
 

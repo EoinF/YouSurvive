@@ -35,10 +35,18 @@ class AINode:
 var ai_nodes = []
 var is_ai_enabled = true
 var is_peaceful = false
+var speed_scaling = 1.0
+
+
+func set_speed_scaling(new_scaling):
+	speed_scaling = new_scaling
+	for ai_node in ai_nodes:
+		ai_node.node.set_speed_scaling(new_scaling)
 
 
 func set_is_peaceful(new_value):
 	is_peaceful = new_value
+
 
 func disable_ai():
 	is_ai_enabled = false
@@ -96,3 +104,5 @@ func _process(delta):
 func _on_Props_prop_added(prop):
 	if prop.is_in_group("AI") and not prop.is_in_group("Sea"):
 		ai_nodes.append(AINode.new(prop))
+		print(speed_scaling)
+		prop.set_speed_scaling(speed_scaling)

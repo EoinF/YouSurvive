@@ -31,7 +31,6 @@ func remove_new_game():
 
 func _ready():
 	is_active = true
-	
 	$CanvasModulate/HintLabel.modulate.a = 0
 
 

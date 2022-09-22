@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/MainMenu/MenuBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/MainMenu/Panel.tres" type="StyleBox" id=7]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "fadeLabel"
 length = 2.0
 tracks/0/type = "value"
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
@@ -137,8 +137,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasModulate"]
-anims/fadeLabel = SubResource( 2 )
-anims/fadeOut = SubResource( 3 )
+anims/fadeLabel = SubResource( 1 )
+anims/fadeOut = SubResource( 2 )
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="CanvasModulate"]
 stream = ExtResource( 2 )

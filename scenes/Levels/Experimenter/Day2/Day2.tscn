@@ -144,7 +144,7 @@ position = Vector2( 394.817, 366.276 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="inventory_slot_change" from="Experimenter" to="HUDLayer/HUD" method="_on_Experimenter_inventory_slot_change"]
 [connection signal="place_item" from="Experimenter" to="Day2Objectives" method="_on_Experimenter_place_item"]
-[connection signal="place_item" from="Experimenter" to="." method="_on_Experimenter_place_item"]
 [connection signal="place_item" from="Experimenter" to="Objects/Props" method="_on_place_item"]
+[connection signal="place_item" from="Experimenter" to="." method="_on_Experimenter_place_item"]
 
 [editable path="Experimenter"]

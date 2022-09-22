@@ -8,7 +8,7 @@ signal move
 
 export var SPEED = 8 * 1000
 export var IS_IMMUNE_TO_STONE = true
-export var MAX_HEALTH = 1500
+export var BASE_MAX_HEALTH = 15
 export var FOOTSTEPS_VOLUME_OFFSET = 0
 export var IS_ON_WOOD = false
 
@@ -32,7 +32,8 @@ var direction = Vector2.DOWN
 var active_sprite_state = "Stand"
 var active_sprite_direction = "Down"
 var _is_hurting = false
-var health = MAX_HEALTH
+var max_health = BASE_MAX_HEALTH * 100
+var health = max_health
 var is_alive = true
 
 
@@ -60,7 +61,7 @@ func will_collide():
 
 func _ready():
 	get_node("WalkEffect").set_volume_offset(FOOTSTEPS_VOLUME_OFFSET)
-	set_health(MAX_HEALTH)
+	set_health(max_health)
 	is_alive = true
 
 
@@ -183,10 +184,16 @@ func _on_AttackAnimation_animation_finished():
 	get_node("AttackCooldown").start()
 
 
+func set_max_health_scaling(new_scaling):
+	max_health = BASE_MAX_HEALTH * new_scaling
+	health = max_health
+	emit_signal("health_change", health)
+	
+
 func set_health(new_health):
 	if not is_alive:
 		return
-	health = min(new_health, MAX_HEALTH)
+	health = min(new_health, max_health)
 	if health <= 0:
 		is_alive = false
 		health = 0

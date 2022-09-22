@@ -80,9 +80,9 @@ func _on_PauseMenu_resume_pressed():
 	$PauseMenu.hide()
 
 
-func _on_ExperimenterScenes_scene_loaded(scene):
+func _on_ExperimenterScenes_scene_loaded(scene, _attempt_number):
 	active_scene = scene
 
 
-func _on_IslanderScenes_scene_loaded(scene):
+func _on_IslanderScenes_scene_loaded(scene, _attempt_number):
 	active_scene = scene

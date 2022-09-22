@@ -12,6 +12,7 @@ var _death_cooldown = -1
 var min_idle_time = 2
 var scale_idle_time = 3.5
 var wandering_scale = 8000
+var speed_scaling = 1.0
 
 enum State {
 	IDLE
@@ -49,6 +50,10 @@ func is_alive():
 	return HEALTH > 0
 
 
+func set_speed_scaling(new_scaling):
+	speed_scaling = new_scaling
+
+
 var MIN_WANDER_DISTANCE = 500
 var MAX_WANDER_DISTANCE = 1000
 
@@ -83,7 +88,7 @@ func move(x, y):
 	if not _state == State.IDLE:
 		return
 	direction = Vector2(x, y).normalized()
-	velocity = Vector2(direction.x * SPEED, direction.y * SPEED)
+	velocity = direction * SPEED
 	
 	if _turn_if_needed(x):
 		return
@@ -127,7 +132,7 @@ func _physics_process(delta):
 		velocity = Vector2(direction.x * ATTACK_SPEED, direction.y * ATTACK_SPEED) * easing_value
 	
 # warning-ignore:return_value_discarded
-	move_and_slide(velocity * delta)
+	move_and_slide(velocity * delta * speed_scaling)
 	velocity = Vector2.ZERO
 
 

@@ -12,6 +12,9 @@
 pause_mode = 0
 script = ExtResource( 2 )
 
+[node name="DifficultyManager" type="Node" parent="." index="0"]
+script = ExtResource( 7 )
+
 [node name="Camera2D" type="Camera2D" parent="Objects/Props/Islander" index="10"]
 current = true
 zoom = Vector2( 0.5, 0.5 )
@@ -20,17 +23,14 @@ smoothing_enabled = true
 [node name="DialogueManager" parent="HUDLayer/HUD" index="7" instance=ExtResource( 6 )]
 DIALOGUE_FILE = "res://assets/Dialogue/Day2b.json"
 
-[node name="ExperimentReplay" type="Node" parent="." index="5"]
+[node name="ExperimentReplay" type="Node" parent="." index="6"]
 script = ExtResource( 3 )
 
-[node name="IslanderInput" type="Node" parent="." index="6"]
+[node name="IslanderInput" type="Node" parent="." index="7"]
 script = ExtResource( 5 )
 
-[node name="FPS counter" type="Node" parent="." index="7"]
+[node name="FPS counter" type="Node" parent="." index="8"]
 script = ExtResource( 4 )
-
-[node name="DifficultyManager" type="Node" parent="." index="10"]
-script = ExtResource( 7 )
 [connection signal="die" from="Objects/Props/Islander" to="." method="_on_Islander_die"]
 [connection signal="throw_stone" from="Objects/Props/Islander" to="Objects/Props/Projectiles" method="_on_Islander_throw_stone"]
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="IslanderInput" method="_on_PlayerInteraction_area_entered"]

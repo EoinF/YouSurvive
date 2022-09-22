@@ -10,6 +10,7 @@ var _is_dying = false
 var min_idle_time = 0.2
 var scale_idle_time = 3.5
 var is_struggling = false
+var speed_scaling = 1.0
 
 var object_type = "shark"
 
@@ -38,6 +39,10 @@ func is_alive():
 
 func idle():
 	pass
+
+
+func set_speed_scaling(new_scaling):
+	speed_scaling = new_scaling
 
 
 var MIN_WANDER_DISTANCE = 60
@@ -81,7 +86,7 @@ func _process(delta):
 
 func _physics_process(delta):
 # warning-ignore:return_value_discarded
-	move_and_slide(velocity * delta)
+	move_and_slide(velocity * delta * speed_scaling)
 	
 	velocity = Vector2.ZERO
 
