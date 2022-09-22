@@ -4,6 +4,7 @@ signal load_initial_data(save_data)
 
 var DEFAULT_SAVE_DATA = {
 	"current_chapter": "Experimenter",
+	"player_name": "cheater", # To have this name you need to skip the intro somehow
 	"current_level":"Intro",
 	"current_attempt": 1,
 	"volume": {
@@ -48,6 +49,7 @@ func save_game(level_name, chapter_name, new_experiment_data = null, experiment_
 	save_file.store_string(to_json(save_data))
 	save_file.close()
 
+
 func save_attempt_number(new_number):
 	save_data["current_attempt"] = new_number
 	var save_file = File.new()
@@ -70,7 +72,6 @@ func _on_Settings_set_fullscreen(new_value):
 	save_file.open(constants.SAVE_FILE_LOCATION, File.WRITE)
 	save_file.store_string(to_json(save_data))
 	save_file.close()
-
 
 
 func _on_IslanderScenes_save_game(level_name, chapter_name):

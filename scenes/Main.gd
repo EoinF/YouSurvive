@@ -6,6 +6,8 @@ var constants
 
 func _ready():
 	constants = preload("res://scripts/constants.gd").new()
+	
+	print(OS.get_window_size())
 
 
 func _process(_delta):

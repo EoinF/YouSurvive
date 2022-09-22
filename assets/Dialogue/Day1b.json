@@ -3,7 +3,7 @@
     {
       "type": "config",
       "letter_delay": 0.06,
-      "x": 0.1,
+      "x": 0.5,
       "y": 0.9,
       "foreground": "pink"
     },

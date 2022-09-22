@@ -1,5 +1,12 @@
 {
   "Main": [
+    {
+      "type": "config",
+      "letter_delay": 0.06,
+      "x": 0.5,
+      "y": 0.9,
+      "foreground": "pink"
+    },
     { "type": "text", "content": "Hello again......." },
     {
       "type": "text",
@@ -11,7 +18,7 @@
     },
     {
       "type": "text",
-      "content": "A substance called a \"pixel\"."
+      "content": "Each of these is called a \"pixel\"."
     },
     {
       "type": "text",
@@ -19,7 +26,7 @@
     },
     {
       "type": "text",
-      "content": "And every separate object is really just a pattern"
+      "content": "And every separate object is really just a pattern."
     },
     {
       "type": "text",
@@ -27,7 +34,7 @@
     },
     {
       "type": "text",
-      "content": "Does this mean that objects are just a mental construct?"
+      "content": "Could it be that objects are just a mental construct?"
     },
     {
       "type": "text",

@@ -14,7 +14,7 @@ extents = Vector2( 24, 12 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 106.953, 70.1457 )
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 15.5895
 height = 144.65
 
@@ -93,12 +93,12 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SharkBlocker"]
 position = Vector2( 1.87291, -36.3339 )
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SharkBlocker"]
 position = Vector2( 1.87289, 35.2102 )
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="SharkBlocker"]
 position = Vector2( 1.12375, -4.12033 )

@@ -10,11 +10,15 @@
 [node name="IslanderDay4" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
 
+[node name="DifficultyManager" type="Node" parent="." index="0"]
+script = ExtResource( 6 )
+ISLANDER_NODE_PATH = NodePath("../Objects/Props/Raft/Islander")
+
 [node name="Camera2D" type="Camera2D" parent="Objects/Props/Raft/Islander" index="13"]
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
-[node name="AIController" parent="." index="1"]
+[node name="AIController" parent="." index="2"]
 ISLANDER_PATH = NodePath("../../IslanderDay4/Objects/Props/Raft/Islander")
 
 [node name="HUD" parent="HUDLayer" index="0"]
@@ -26,15 +30,12 @@ margin_bottom = 0.0
 [node name="DialogueManager" parent="HUDLayer/HUD" index="8" instance=ExtResource( 4 )]
 DIALOGUE_FILE = "res://assets/Dialogue/Day4b.json"
 
-[node name="ExperimentReplay" type="Node" parent="." index="4"]
+[node name="ExperimentReplay" type="Node" parent="." index="5"]
 script = ExtResource( 3 )
 
-[node name="IslanderInput" type="Node" parent="." index="5"]
+[node name="IslanderInput" type="Node" parent="." index="6"]
 script = ExtResource( 2 )
 ISLANDER_NODE_PATH = NodePath("../Objects/Props/Raft/Islander")
-
-[node name="DifficultyManager" type="Node" parent="." index="9"]
-script = ExtResource( 6 )
 [connection signal="edge_reached" from="Objects/ScrollingManager" to="." method="_on_ScrollingManager_edge_reached"]
 [connection signal="finish" from="Objects/ScrollingManager" to="." method="_on_ScrollingManager_finish"]
 [connection signal="enemy_struggle" from="Objects/Props" to="." method="_on_Props_enemy_struggle"]

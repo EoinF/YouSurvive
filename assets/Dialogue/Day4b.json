@@ -1,16 +1,23 @@
 {
   "Survived": [
     {
+      "type": "config",
+      "letter_delay": 0.06,
+      "x": 0.5,
+      "y": 0.9,
+      "foreground": "pink"
+    },
+    {
       "type": "text",
       "content": "So you made it."
     },
     {
       "type": "text",
-      "content": "That's a unique achievement across this many simulations."
+      "content": "That's quite a rare achievement."
     },
     {
       "type": "text",
-      "content": "Or perhaps you just weren't too hard on yourself."
+      "content": "Or perhaps you just weren't too hard on yourself this time."
     },
     {
       "type": "link_to",
@@ -18,6 +25,13 @@
     }
   ],
   "Capsized": [
+    {
+      "type": "config",
+      "letter_delay": 0.06,
+      "x": 0.5,
+      "y": 0.9,
+      "foreground": "pink"
+    },
     {
       "type": "text",
       "content": "You didn't make it then."
@@ -31,10 +45,6 @@
       "content": "Or were you just too hard on yourself?"
     },
     {
-      "type": "text",
-      "content": "Well, it is what it is."
-    },
-    {
       "type": "link_to",
       "section_name": "Main"
     }
@@ -42,7 +52,7 @@
   "Main": [
     {
       "type": "text",
-      "content": "We ought to finish our discussion from yesterday."
+      "content": "Now let's turn our attention back to yesterday's discussion."
     },
     {
       "type": "text",
@@ -50,7 +60,7 @@
     },
     {
       "type": "text",
-      "content": "Then is the self just another object?"
+      "content": "Then is the self just another social construct?"
     },
     {
       "type": "text",
@@ -62,11 +72,11 @@
     },
     {
       "type": "text",
-      "content": "We haven't got a way of knowing this answer."
+      "content": "We've yet to discover a way to answer this question."
     },
     {
       "type": "text",
-      "content": "But if we are to assume there is no self-"
+      "content": "But if we are to assume there is no physical self-"
     },
     {
       "type": "text",
@@ -78,7 +88,15 @@
     },
     {
       "type": "text",
-      "content": "So when we meet again, remember to call yourself Durme"
+      "content": "What I do to you, you do to me."
+    },
+    {
+      "type": "text",
+      "content": "We're out of time for now."
+    },
+    {
+      "type": "text",
+      "content": "When we meet again, remember to call yourself Durme......"
     }
   ]
 }

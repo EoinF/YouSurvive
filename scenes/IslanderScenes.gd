@@ -46,7 +46,7 @@ func load_scene(scene_name, current_attempt = 1):
 	
 	new_scene.connect("finish_scene", self, "_on_" + scene_name + "_finish_scene")
 	new_scene.connect("restart_scene", self, "load_scene", [scene_name, current_attempt + 1])
-	emit_signal("load_scene", new_scene, current_attempt)
+	emit_signal("scene_loaded", new_scene, current_attempt)
 
 
 func _instance_scene(scene_name):

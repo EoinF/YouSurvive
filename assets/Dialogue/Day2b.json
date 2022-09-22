@@ -3,27 +3,43 @@
     {
       "type": "config",
       "letter_delay": 0.06,
-      "x": 0.1,
+      "x": 0.5,
       "y": 0.9,
       "foreground": "pink"
     },
     { "type": "text", "content": "Hello." },
-    { "type": "text", "content": "It's me again - Durme......." },
+    { "type": "text", "content": "It's me again. It's Durme......." },
     {
       "type": "text",
-      "content": "I need to explain what's really going on here."
+      "content": "I need you to know what's really going on here."
     },
     {
       "type": "text",
-      "content": "About this island. About these tasks."
+      "content": "I need to ask-"
+    },
+    {
+      "type": "config",
+      "letter_delay": 0.15
     },
     {
       "type": "text",
-      "content": "I need to ask - who are you?"
+      "content": "Who are you?",
+      "highlight": {
+        "begin": 8,
+        "end": 10
+      }
+    },
+    {
+      "type": "config",
+      "letter_delay": 0.06
     },
     {
       "type": "text",
-      "content": "Where do you begin and end?"
+      "content": "Where do you begin and end?",
+      "highlight": {
+        "begin": 9,
+        "end": 11
+      }
     },
     {
       "type": "text",
@@ -35,11 +51,11 @@
     },
     {
       "type": "text",
-      "content": "But you can separate an arm from the body - the rest is still you right?"
+      "content": "But if you separate your arm from your body - the rest is still you right?"
     },
     {
       "type": "text",
-      "content": "Imagine separating more and more parts of the body."
+      "content": "But if we were to separate more and more parts of your body."
     },
     {
       "type": "text",
@@ -47,11 +63,15 @@
     },
     {
       "type": "text",
-      "content": "Perhaps none of it is really you."
+      "content": "Perhaps there is no individual you.",
+      "highlight": {
+        "begin": 31,
+        "end": 33
+      }
     },
     {
       "type": "text",
-      "content": "Or maybe all of it."
+      "content": "But rather you are a part of something much bigger."
     }
   ]
 }
