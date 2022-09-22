@@ -4,7 +4,6 @@ signal restart_scene
 signal finish_scene(experiment_data)
 
 var player_name: String
-
 var is_islander_dead = false
 
 
@@ -73,6 +72,7 @@ func _on_Raft_health_change(new_amount):
 
 func _on_Raft_start_sinking():
 	$IslanderAIController.is_paused = true
+	$MusicLoop.stop()
 
 
 func _on_Raft_finish_sinking():
@@ -86,6 +86,7 @@ func _on_ScrollingManager_edge_reached():
 
 func _on_ScrollingManager_finish():
 	$HUDLayer/HUD/DialogueManager.start_section("Survived")
+	$MusicLoop.stop()
 
 
 func _on_SeaGameOver_finish():

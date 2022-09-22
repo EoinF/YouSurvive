@@ -14,12 +14,14 @@ class SeaAINode:
 	var target: Node2D
 	var wander_target: Vector2
 	var wander_timeout
+	var approach_timeout
 	func _init(_node, _initial_state):
 		node = _node
 		state = _initial_state
 		target = null
 		wander_target = node.get_wander_target()
 		wander_timeout = -1
+		approach_timeout = randf()
 		
 	func set_state(next_state):
 		state = next_state
@@ -71,7 +73,13 @@ func _process(delta):
 						closest_distance = distance
 				ai_node.target = attack_nodes[best_node_index]
 				ai_node.set_state(AIState.APPROACHING)
+				ai_node.approach_timeout = rand_range(0.3, 1.0)
 			AIState.APPROACHING:
+				ai_node.approach_timeout -= delta
+				if ai_node.approach_timeout <= 0.0:
+					ai_node.set_state(AIState.FINDING_TARGET)
+					return
+				
 				var direction = ai_node.target.global_position - ai_node.node.global_position
 				if ai_node.distance_to_target() < 10:
 					ai_node.set_state(AIState.STRUGGLING)
