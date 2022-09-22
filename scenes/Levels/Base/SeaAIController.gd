@@ -32,13 +32,6 @@ export(AIState) var INITIAL_STATE = AIState.FINDING_TARGET
 var WANDER_TIMEOUT = 4.0
 var ai_nodes = []
 var is_ai_enabled = true
-var speed_scaling = 1.0
-
-
-func set_speed_scaling(new_scaling):
-	speed_scaling = new_scaling
-	for ai_node in ai_nodes:
-		ai_node.node.set_speed_scaling(new_scaling)
 
 
 func disable_ai():
@@ -101,7 +94,6 @@ func _process(delta):
 func _on_Props_prop_added(prop):
 	if prop.is_in_group("AI") and prop.is_in_group("Sea"):
 		ai_nodes.append(SeaAINode.new(prop, INITIAL_STATE))
-		prop.set_speed_scaling(speed_scaling)
 
 
 func _on_Raft_start_sinking():

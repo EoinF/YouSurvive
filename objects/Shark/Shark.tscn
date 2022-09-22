@@ -33,7 +33,7 @@ height = 3.34459
 "Sea",
 ]]
 collision_layer = 16
-collision_mask = 125
+collision_mask = 381
 script = ExtResource( 7 )
 
 [node name="Shadow" type="Sprite" parent="."]

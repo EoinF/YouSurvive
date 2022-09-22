@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://objects/Raft/Raft.gd" type="Script" id=1]
 [ext_resource path="res://effects/ShakeEffect/ShakeEffect.tscn" type="PackedScene" id=2]
@@ -14,8 +14,12 @@ extents = Vector2( 24, 12 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 106.953, 70.1457 )
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 89.7875, 53.7068 )
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 15.5895
+height = 144.65
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 33.5692, 87.5398 )
 
 [node name="Raft" type="YSort"]
 script = ExtResource( 1 )
@@ -83,12 +87,23 @@ shape = SubResource( 3 )
 
 [node name="SharkBlocker" type="StaticBody2D" parent="."]
 visible = false
-collision_layer = 64
+collision_layer = 256
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SharkBlocker"]
-position = Vector2( 2.62204, 0 )
+position = Vector2( 1.87291, -36.3339 )
+rotation = 1.5708
 shape = SubResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SharkBlocker"]
+position = Vector2( 1.87289, 35.2102 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="SharkBlocker"]
+position = Vector2( 1.12375, -4.12033 )
+rotation = 1.5708
+shape = SubResource( 5 )
 [connection signal="body_entered" from="SteeringAreaTop" to="." method="_on_SteeringAreaTop_body_entered"]
 [connection signal="body_exited" from="SteeringAreaTop" to="." method="_on_SteeringAreaTop_body_exited"]
 [connection signal="body_entered" from="SteeringAreaBottom" to="." method="_on_SteeringAreaBottom_body_entered"]

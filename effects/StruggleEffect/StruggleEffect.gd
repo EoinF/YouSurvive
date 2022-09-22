@@ -13,7 +13,7 @@ var _backward_cutoff
 var is_forwards = false
 var is_playing = false
 var is_starting = false
-
+	
 
 func start(anchor_node: Node2D, direction: Vector2):
 	_direction = direction.normalized()

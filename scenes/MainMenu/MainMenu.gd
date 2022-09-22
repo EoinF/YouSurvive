@@ -6,6 +6,13 @@ signal start_settings
 
 var is_active
 
+var menu_background_scene
+
+func _ready():
+	is_active = true
+	$CanvasModulate/HintLabel.modulate.a = 0
+	menu_background_scene = preload("res://scenes/MainMenu/MenuBackground.tscn")
+
 
 func show():
 	is_active = true
@@ -13,7 +20,9 @@ func show():
 	$CanvasModulate.visible = true
 	$CanvasModulate/MusicLoop.play()
 	$CanvasModulate/MusicLoop.set_volume_db(-12)
-	$CanvasModulate/MenuBackground.resume()
+	var scene_instance = menu_background_scene.instance()
+	$CanvasModulate.add_child(scene_instance)
+	$CanvasModulate.move_child(scene_instance, 0)
 
 
 func hide():
@@ -21,17 +30,13 @@ func hide():
 	$CanvasModulate.visible = false
 	$CanvasModulate/MusicLoop.stop()
 	$CanvasModulate/MenuBackground.pause()
+	$CanvasModulate.remove_child($CanvasModulate/MenuBackground)
 
 
 func remove_new_game():
 	var new_game_panel = $CanvasModulate/Control/Panel/CenterContainer/Grid/NewGame
 	new_game_panel.disabled = true
 	new_game_panel.visible = false
-
-
-func _ready():
-	is_active = true
-	$CanvasModulate/HintLabel.modulate.a = 0
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

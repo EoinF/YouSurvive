@@ -18,7 +18,7 @@ func set_is_following(_is_following):
 
 
 func _process(delta):
-	if is_following:
+	if is_following and current_follow_target != null:
 		var direction_to_target = (current_follow_target.global_position - position)
 		var distance_to_target = direction_to_target.length()
 		
