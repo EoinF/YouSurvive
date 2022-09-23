@@ -43,6 +43,7 @@ ISLANDER_NODE_PATH = NodePath("../Objects/Props/Raft/Islander")
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="prop_added" from="Objects/Props" to="SeaAIController" method="_on_Props_prop_added"]
 [connection signal="finish_sinking" from="Objects/Props/Raft" to="." method="_on_Raft_finish_sinking"]
+[connection signal="health_change" from="Objects/Props/Raft" to="HUDLayer/HUD/RaftHealthBar" method="_on_Raft_health_change"]
 [connection signal="start_sinking" from="Objects/Props/Raft" to="." method="_on_Raft_start_sinking"]
 [connection signal="die" from="Objects/Props/Raft/Islander" to="." method="_on_Islander_die"]
 [connection signal="inventory_slot_change" from="Objects/Props/Raft/Islander" to="HUDLayer/HUD" method="_on_Islander_inventory_slot_change"]

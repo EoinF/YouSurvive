@@ -21,7 +21,7 @@
     },
     {
       "type": "link_to",
-      "section_name": "Main"
+      "section_name": "Outro"
     }
   ],
   "Capsized": [
@@ -46,10 +46,10 @@
     },
     {
       "type": "link_to",
-      "section_name": "Main"
+      "section_name": "Outro"
     }
   ],
-  "Main": [
+  "Outro": [
     {
       "type": "text",
       "content": "Now let's turn our attention back to yesterday's discussion."
