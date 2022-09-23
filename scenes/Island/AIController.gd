@@ -104,5 +104,4 @@ func _process(delta):
 func _on_Props_prop_added(prop):
 	if prop.is_in_group("AI") and not prop.is_in_group("Sea"):
 		ai_nodes.append(AINode.new(prop))
-		print(speed_scaling)
 		prop.set_speed_scaling(speed_scaling)

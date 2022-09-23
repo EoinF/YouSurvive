@@ -5,6 +5,8 @@ signal inventory_slot_change(inventory_slot)
 signal place_item(item_type, source_location)
 
 export var CAMERA_MOVE_SPEED = 1000
+# Use the following node as a reference point for placing props
+export var RELATIVE_POSITION_NODE_PATH: NodePath = "../Objects/Props"
 
 var experiment_data = []
 var current_time = 0.0
@@ -98,13 +100,16 @@ func _on_ItemPlacementTool_place_item(_item_type, _location):
 		if item_type_to_slot[_item_type].amount == 0:
 			get_node("ItemPlacementTool").set_item_type(null)
 		emit_signal("inventory_slot_change", item_type_to_slot[_item_type])
-		emit_signal("place_item", _item_type,_location)
+		
+		var relative_node = get_node(RELATIVE_POSITION_NODE_PATH)
+		var relative_location = _location - relative_node.global_position
+		emit_signal("place_item", _item_type, relative_location)
 		
 		experiment_data.push_back({
 			"action_type": "place_item",
 			"current_time": current_time,
 			"location": {
-				"x": _location.x, "y": _location.y
+				"x": relative_location.x, "y": relative_location.y
 			},
 			"item_type": _item_type
 		})

@@ -13,6 +13,11 @@ func save_game(level_name, experiment_level_name = null, new_experiment_data = n
 	emit_signal("save_game", level_name, chapter_name, new_experiment_data, experiment_level_name)
 
 
+func reload_scene(scene_name, current_attempt):
+	get_node(scene_name).free()
+	load_scene(scene_name, current_attempt)
+
+
 func load_scene(scene_name, current_attempt = 1):
 	var new_scene = _instance_scene(scene_name)
 	
@@ -21,7 +26,7 @@ func load_scene(scene_name, current_attempt = 1):
 	new_scene.set_attempt_number(current_attempt)
 
 	new_scene.connect("finish_scene", self, "_on_" + scene_name + "_finish_scene")
-	new_scene.connect("restart_scene", self, "load_scene", [scene_name, current_attempt + 1])
+	new_scene.connect("restart_scene", self, "reload_scene", [scene_name, current_attempt + 1], CONNECT_DEFERRED)
 	emit_signal("scene_loaded", new_scene, current_attempt)
 
 

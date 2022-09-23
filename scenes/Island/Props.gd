@@ -7,6 +7,9 @@ signal enemy_struggle
 export var CUSTOM_LAND_PROPS_PATH: NodePath = "."
 export var CUSTOM_SEA_PROPS_PATH: NodePath = "."
 
+# Use the following node as a reference point for placing props
+export var RELATIVE_POSITION_NODE_PATH: NodePath = "."
+
 var sea_item_types = ["shark", "sea_rock"]
 
 var scene_map = {
@@ -34,7 +37,7 @@ func _ready():
 
 
 func _add_prop(destination_node, prop, source_position, owner_instance_id):
-	prop.position = source_position - destination_node.global_position
+	prop.position = source_position
 	if prop.has_node("CollectableItem"):
 		prop.get_node("CollectableItem").set_owner_instance_id(owner_instance_id)
 	destination_node.add_child_prop(prop)
@@ -64,16 +67,24 @@ func _add_falling_prop(destination_node, prop, source_position):
 
 func _spawn_item_falling(item_type, source_position):
 	var scene_instance = scene_map[item_type].instance()
-	var destination_node = get_node(CUSTOM_SEA_PROPS_PATH) if \
-		item_type in sea_item_types else get_node(CUSTOM_LAND_PROPS_PATH)
+	var destination_node = get_node(CUSTOM_LAND_PROPS_PATH)
 	_add_falling_prop(destination_node, scene_instance, source_position)
 
 
 func _spawn_item(item_type, source_position, owner_instance_id = null):
 	var scene_instance = scene_map[item_type].instance()
 	
-	var destination_node = get_node(CUSTOM_SEA_PROPS_PATH) if \
-		item_type in sea_item_types else get_node(CUSTOM_LAND_PROPS_PATH)
+	var destination_node: Node2D
+	
+	if item_type in sea_item_types:
+		destination_node = get_node(CUSTOM_SEA_PROPS_PATH)
+		var relative_node = get_node(RELATIVE_POSITION_NODE_PATH)
+		source_position -= destination_node.position
+		source_position += relative_node.position
+	else:
+		destination_node = get_node(CUSTOM_LAND_PROPS_PATH)
+		
+		
 	_add_prop(destination_node, scene_instance, source_position, owner_instance_id)
 
 

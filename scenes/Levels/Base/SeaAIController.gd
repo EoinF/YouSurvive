@@ -105,6 +105,10 @@ func _on_Props_prop_added(prop):
 
 
 func _on_Raft_start_sinking():
+	start_wandering()
+
+
+func start_wandering():
 	for ai_node in ai_nodes:
 		ai_node.set_state(AIState.WANDER)
 		ai_node.node.stop_struggling()

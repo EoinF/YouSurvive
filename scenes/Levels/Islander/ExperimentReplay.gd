@@ -16,6 +16,10 @@ func _process(delta):
 			trigger_next_action()
 
 
+func stop():
+	current_action = null
+
+
 func prepare_next_action():
 	if len(experiment_data) == 0:
 		current_action = null
@@ -27,6 +31,7 @@ func prepare_next_action():
 	# Move time forward to prevent long waits where nothing happens
 	if current_action["current_time"] > next_action_time_max:
 		current_time = current_action["current_time"] - MAX_ACTION_DELAY_TIME
+
 
 func trigger_next_action():
 	if current_action != null:

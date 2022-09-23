@@ -38,14 +38,21 @@ func _on_Day4_finish_scene():
 	emit_signal("finish_scenes")
 
 
+func reload_scene(scene_name, current_attempt):
+	get_node(scene_name).free()
+	load_scene(scene_name, current_attempt)
+
+
 func load_scene(scene_name, current_attempt = 1):
-	var new_scene = _instance_scene(scene_name)
+	var new_scene: Node = _instance_scene(scene_name)
 	
-	new_scene.set_experiment_data(save_data[scene_name])
+	# Create a copy so we don't affect the original data
+	var cloned_array = save_data[scene_name] + []
+	new_scene.set_experiment_data(cloned_array)
 	new_scene.set_attempt_number(current_attempt)
 	
 	new_scene.connect("finish_scene", self, "_on_" + scene_name + "_finish_scene")
-	new_scene.connect("restart_scene", self, "load_scene", [scene_name, current_attempt + 1])
+	new_scene.connect("restart_scene", self, "reload_scene", [scene_name, current_attempt + 1], CONNECT_DEFERRED)
 	emit_signal("scene_loaded", new_scene, current_attempt)
 
 
@@ -55,6 +62,7 @@ func _instance_scene(scene_name):
 		var scene = scene_file.instance()
 		add_child(scene)
 		return scene
+		
 		
 	var scene_placeholder = get_node(scene_name)
 	scene_placeholder.replace_by_instance()
