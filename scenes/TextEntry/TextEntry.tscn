@@ -41,8 +41,8 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 margin_left = 351.0
-margin_top = 521.0
+margin_top = 482.109
 margin_right = 460.0
-margin_bottom = 535.0
+margin_bottom = 497.109
 custom_fonts/font = ExtResource( 3 )
 [connection signal="pressed" from="ButtonOk" to="." method="_on_ButtonOk_pressed"]

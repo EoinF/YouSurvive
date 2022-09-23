@@ -27,10 +27,15 @@ func _on_Name_Entry_text_entered(text: String):
 	if len(player_name) == 0:
 		player_name = "nameless one"
 		manager.start_section("Nameless")
-	else:
-		manager.set_variables({
-			"player_name": player_name
-		})
-		manager.start_section("Named")
+		return
+		
+	manager.set_variables({
+		"player_name": player_name
+	})
+	if player_name.to_lower() == "durme":
+		manager.start_section("Remembered")
+		return
+		
+	manager.start_section("Named")
 
 

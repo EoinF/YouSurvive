@@ -2,14 +2,26 @@
   "Main1": [
     {
       "type": "config",
-      "letter_delay": 0.08,
+      "letter_delay": 0.14,
       "foreground": "pink",
       "background": "black",
       "is_full_screen": "true"
     },
     { "type": "text", "content": "Hello?" },
+    {
+      "type": "config",
+      "letter_delay": 0.1
+    },
     { "type": "text", "content": "Are you awake yet?" },
+    {
+      "type": "config",
+      "letter_delay": 0.24
+    },
     { "type": "text", "content": "Wake up......." },
+    {
+      "type": "config",
+      "letter_delay": 0.08
+    },
     { "type": "text", "content": "Ah, so you are listening." },
     { "type": "text", "content": "Welcome back......." },
     { "type": "text", "content": "Let me ask again - what is your name?" }
@@ -30,29 +42,50 @@
     { "type": "text", "content": "So you remembered." },
     {
       "type": "text",
-      "content": "The whole point is we can't be sure if there even is a real \"you\""
+      "content": "The experiments were a success."
     },
     {
       "type": "text",
-      "content": "Since it's just atoms arranged in a pattern."
+      "content": "But what were they even for?"
     },
     {
       "type": "text",
-      "content": "It's just a concept we use to simplify the world around us-"
-    },
-    { "type": "text", "content": "and where we fit into all of it." },
-    { "type": "text", "content": "Same with objects in general." },
-    {
-      "type": "text",
-      "content": "They don't necessarily have intrinsic boundaries between them."
+      "content": "Our purpose is given to us by the society we're born into."
     },
     {
       "type": "text",
-      "content": "So don't get too attached to those patterns."
+      "content": "As well as the way we see the world."
     },
-    { "type": "text", "content": "[... continue to crab closing level]" }
+    {
+      "type": "text",
+      "content": "We aren't born with a world view. It's given to us."
+    },
+    {
+      "type": "text",
+      "content": "To even simply question these ways of thinking is a good start."
+    },
+    {
+      "type": "text",
+      "content": "A fresh start can help to give us perspective."
+    },
+    {
+      "type": "text",
+      "content": "Anyway, we're about to start another cycle."
+    },
+    {
+      "type": "text",
+      "content": "I'd recommend not continuing - but taking a new path."
+    },
+    {
+      "type": "text",
+      "content": "Until next time......"
+    },
+    {
+      "type": "link_to",
+      "section_name": "Outro"
+    }
   ],
-  "Outro": [
+  "PreOutro": [
     { "type": "text", "content": "Here's all that you need to know." },
     { "type": "text", "content": "We'll be running a series of experiments." },
     { "type": "text", "content": "This will take place on a desert island." },
@@ -62,5 +95,6 @@
     },
     { "type": "text", "content": "So pay attention." },
     { "type": "text", "content": "Now, off to the island you go......" }
-  ]
+  ],
+  "Outro": []
 }
