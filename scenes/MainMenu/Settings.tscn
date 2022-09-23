@@ -40,9 +40,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -171.5
-margin_top = -210.0
+margin_top = -180.0
 margin_right = 171.5
-margin_bottom = 210.0
+margin_bottom = 240.0
 custom_styles/panel = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -198,6 +198,6 @@ text = "Back"
 [connection signal="value_changed" from="Panel/MarginContainer/GridContainer/GridContainer/GridContainer/MainVolumeSlider" to="." method="_on_MainVolumeSlider_value_changed"]
 [connection signal="value_changed" from="Panel/MarginContainer/GridContainer/GridContainer/GridContainer2/MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
 [connection signal="value_changed" from="Panel/MarginContainer/GridContainer/GridContainer/GridContainer3/SfxVolumeSlider" to="." method="_on_SfxVolumeSlider_value_changed"]
-[connection signal="pressed" from="Panel/MarginContainer/GridContainer/GridContainer/CheckButton" to="Panel/MarginContainer/GridContainer/GridContainer/CheckButton" method="_on_CheckButton_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/GridContainer/GridContainer/CheckButton" to="." method="_on_CheckButton_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/GridContainer/GridContainer/CheckButton" to="Panel/MarginContainer/GridContainer/GridContainer/CheckButton" method="_on_CheckButton_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/Back Button" to="." method="_on_Back_Button_pressed"]

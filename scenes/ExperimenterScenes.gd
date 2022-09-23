@@ -75,7 +75,7 @@ func _on_Day4_finish_scene(experiment_data):
 
 
 func _instance_scene(scene_name):
-	if get_node(scene_name) == null:
+	if not has_node(scene_name):
 		var scene_file = load(BASE_PATH + scene_name + "/" + scene_name + ".tscn")
 		var scene = scene_file.instance()
 		add_child(scene)
