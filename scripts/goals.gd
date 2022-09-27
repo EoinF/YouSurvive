@@ -48,7 +48,7 @@ class LocateGoal extends Goal:
 				return -1
 		if (not target in _owner_context.inventory) or (_owner_context.inventory[target].amount < limit):
 			return 1
-		return 0
+		return -1
 
 
 class CollectGoal extends Goal:
@@ -94,7 +94,7 @@ class DodgeGoal extends Goal:
 class KillGoal extends Goal:
 	func _init(_target, _limit).(_target, _limit):
 		self.goal_type = GoalTypes.KILL_ENEMY
-	
+		
 	func get_priority(_owner_context):
 		var has_stone = "stone" in _owner_context.inventory \
 			and _owner_context.inventory["stone"].amount > 0

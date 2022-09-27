@@ -73,9 +73,12 @@ func _process(delta):
 			var islander_position = get_node(ISLANDER_PATH).global_position
 			var direction_to_player = islander_position - ai_node.node.get_position()
 			
-			if not is_peaceful and direction_to_player.length() < 200:
+			if direction_to_player.length() < 200:
 				ai_node.set_state(AIState.CHASE)
 				ai_node.state_timeout = 0
+			
+			if is_peaceful and ai_node.state == AIState.CHASE:
+				ai_node.set_state(AIState.IDLE)
 			
 			match(ai_node.state):
 				AIState.IDLE:

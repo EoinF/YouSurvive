@@ -131,6 +131,7 @@ func _process(delta):
 			current_priority = next_priority
 	
 	if current_goal.goal_type == GoalTypes.IDLE:
+		current_direction = Vector2.ZERO
 		idle_timeout -= delta
 	else:
 		idle_timeout = -1
