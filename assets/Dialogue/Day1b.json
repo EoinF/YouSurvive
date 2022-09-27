@@ -22,7 +22,7 @@
     },
     {
       "type": "text",
-      "content": "You just appeared on this island"
+      "content": "You just appeared on this island."
     },
     {
       "type": "text",
@@ -46,10 +46,10 @@
       "type": "text",
       "content": "Or have you always existed?"
     },
-    { "type": "text", "content": "How could you even know such a thing?" },
+    { "type": "text", "content": "Is it even possible to know such a thing?" },
     {
       "type": "text",
-      "content": "Just because you can't remember-"
+      "content": "Just because you can't remember something-"
     },
     {
       "type": "text",

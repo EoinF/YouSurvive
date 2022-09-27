@@ -38,14 +38,16 @@ func set_attempt_number(attempt_number):
 	
 
 func _is_objective_complete(objective):
-	return objective.is_complete and objective.is_visible
+	return objective.is_complete and objective.is_active
 
 
 func _on_Day2Objectives_objectives_updated(objectives):
 	var replay_manager = get_node("ExperimentReplay")
 	if not objectives[0]["is_complete"] or not objectives[1]["is_complete"]:
 		replay_manager.trigger_next_action()
-	if  _is_objective_complete(objectives[2]) \
+	if objectives[0]["is_complete"] \
+	and objectives[1]["is_complete"] \
+	and _is_objective_complete(objectives[2]) \
 	and _is_objective_complete(objectives[3]) \
 	and _is_objective_complete(objectives[4]):
 		if replay_manager.is_finished():

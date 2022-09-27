@@ -11,22 +11,18 @@
     { "type": "text", "content": "It's me again. It's Durme......." },
     {
       "type": "text",
-      "content": "I need you to know what's really going on here."
-    },
-    {
-      "type": "text",
       "content": "I need to ask-"
     },
     {
       "type": "config",
-      "letter_delay": 0.15
+      "letter_delay": 0.13
     },
     {
       "type": "text",
       "content": "Who are you?",
       "highlight": {
         "begin": 8,
-        "end": 10
+        "end": 11
       }
     },
     {
@@ -38,7 +34,7 @@
       "content": "Where do you begin and end?",
       "highlight": {
         "begin": 9,
-        "end": 11
+        "end": 12
       }
     },
     {
@@ -55,18 +51,22 @@
     },
     {
       "type": "text",
-      "content": "But if we were to separate more and more parts of your body."
+      "content": "And if we were to separate more and more parts of your body."
     },
     {
       "type": "text",
-      "content": "At what point can we stop and conclude that the remainder is the true \"you\"?"
+      "content": "At what point can we stop and conclude that the remainder is the true \"you\"?",
+      "highlight": {
+        "begin": 70,
+        "end": 75
+      }
     },
     {
       "type": "text",
       "content": "Perhaps there is no individual you.",
       "highlight": {
         "begin": 31,
-        "end": 33
+        "end": 34
       }
     },
     {
