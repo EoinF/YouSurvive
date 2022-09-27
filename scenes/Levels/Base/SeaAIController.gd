@@ -108,6 +108,10 @@ func _on_Raft_start_sinking():
 	start_wandering()
 
 
+func _on_ScrollingManager_finish():
+	start_wandering()
+
+
 func start_wandering():
 	for ai_node in ai_nodes:
 		ai_node.set_state(AIState.WANDER)

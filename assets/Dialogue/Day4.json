@@ -89,7 +89,7 @@
     },
     {
       "type": "text",
-      "content": "It's up to them to decide where they go next."
+      "content": "To eventually meet their end someplace else..."
     },
     {
       "type": "link_to",
@@ -103,11 +103,15 @@
     },
     {
       "type": "text",
-      "content": "But our task is not done yet."
+      "content": "But our work is not done yet."
     },
     {
       "type": "text",
-      "content": "We must continue...",
+      "content": "The cycle goes on."
+    },
+    {
+      "type": "text",
+      "content": "And we must continue...",
       "highlight": {
         "begin": 8,
         "end": 16

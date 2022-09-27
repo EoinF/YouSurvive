@@ -87,6 +87,8 @@ func _on_ScrollingManager_edge_reached():
 func _on_ScrollingManager_finish():
 	$HUDLayer/HUD/DialogueManager.start_section("Survived")
 	$MusicLoop.stop()
+	$IslanderAIController.is_paused = true
+	$Experimenter.disable_placement()
 
 
 func _on_SeaGameOver_finish():
