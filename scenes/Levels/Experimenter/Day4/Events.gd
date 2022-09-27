@@ -26,6 +26,8 @@ func enable_controls():
 	owner.get_node("AnimationPlayer").play("fade_in_music")
 	owner.get_node("Objects/ScrollingManager").start()
 	owner.get_node("Objects/Props/Raft").reset()
+	
+	get_owner().get_node("Experimenter").reset_timer()
 
 
 func gift_items():

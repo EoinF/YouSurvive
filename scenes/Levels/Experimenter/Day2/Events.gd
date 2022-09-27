@@ -43,3 +43,4 @@ func enable_ai():
 	get_owner().get_node("Day2Objectives").set_objective_active("place_weapon", false)
 	get_owner().get_node("Day2Objectives").set_objective_active("place_predators", false)
 	get_owner().get_node("AIController").enable_ai()
+	get_owner().get_node("Experimenter").reset_timer()

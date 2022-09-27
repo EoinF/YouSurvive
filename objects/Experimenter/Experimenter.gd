@@ -40,23 +40,28 @@ func disable_placement():
 	get_node("ItemPlacementTool").disable_item_placement()
 
 
+func reset_timer():
+	current_time = 0.0
+
+
 func move(deltaVector: Vector2):
-	if is_controls_enabled:
-		var translate = deltaVector * CAMERA_MOVE_SPEED
-		var camera = get_node("Camera")
-		var newX = camera.global_position.x + translate.x
-		var newY = camera.global_position.y + translate.y
+	if not is_controls_enabled:
+		return
+	var translate = deltaVector * CAMERA_MOVE_SPEED
+	var camera = get_node("Camera")
+	var newX = camera.global_position.x + translate.x
+	var newY = camera.global_position.y + translate.y
+	
+	if newX < camera.limit_left:
+		translate.x += camera.limit_left - newX
+	elif newX > camera.limit_right:
+		translate.x -= newX - camera.limit_right
+	if newY < camera.limit_top:
+		translate.y += camera.limit_top - newY
+	elif newY > camera.limit_bottom:
+		translate.y -= newY - camera.limit_bottom
 		
-		if newX < camera.limit_left:
-			translate.x += camera.limit_left - newX
-		elif newX > camera.limit_right:
-			translate.x -= newX - camera.limit_right
-		if newY < camera.limit_top:
-			translate.y += camera.limit_top - newY
-		elif newY > camera.limit_bottom:
-			translate.y -= newY - camera.limit_bottom
-			
-		camera.translate(translate)
+	camera.translate(translate)
 
 
 func focus_target(_target: Node2D):

@@ -24,6 +24,7 @@ func start_camera_follow():
 func gift_branches():
 	var owner = get_owner()
 	owner.get_node("Experimenter").pick_up_item("branch", 10)
+	owner.get_node("Experimenter").reset_timer()
 	owner.get_node("Day1Objectives").set_objective_active("locate_islander", false)
 	owner.get_node("Day1Objectives").set_objective_active("collect_branches", true)
 	owner.get_node("AnimationPlayer").play("highlight_inventory")

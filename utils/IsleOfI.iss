@@ -5,7 +5,8 @@
 #define MyAppVersion "0.1.0"
 #define MyAppPublisher "Outterest Games"
 #define MyAppURL "https://outterest.com/isleofi"
-#define MyAppExeName "IsleOfI.exe"
+#define MyAppExeName "IsleOfI 1.0.exe"
+#define MyAppResourcesFolderName "IsleOfI 1.0"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -36,7 +37,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "C:\Users\Eoin\Desktop\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Eoin\Desktop\IsleOfI\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
+Source: "C:\Users\Eoin\Desktop\{#MyAppResourcesFolderName}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

@@ -59,9 +59,6 @@ margin_right = 0.0
 margin_bottom = 0.0
 INVENTORY_TYPE = "Experimenter"
 
-[node name="Day4Label" parent="HUDLayer/HUD" index="6"]
-self_modulate = Color( 1, 1, 1, 1 )
-
 [node name="DialogueManager" parent="HUDLayer/HUD" index="7" instance=ExtResource( 3 )]
 DIALOGUE_FILE = "res://assets/Dialogue/Day4.json"
 
