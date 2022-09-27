@@ -106,6 +106,11 @@ class KillGoal extends Goal:
 			for object in _owner_context.objects_in_view[target].values():
 				if object.has_method("is_alive") and object.is_alive():
 					return 5
+		
+		if has_weapon and target in _owner_context.seen_targets:
+			for object in _owner_context.seen_targets[target]:
+				if object != null and object.has_method("is_alive") and object.is_alive():
+					return 5
 		return -1
 
 

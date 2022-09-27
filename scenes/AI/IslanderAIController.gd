@@ -262,7 +262,7 @@ func kill_enemy():
 	if current_enemy == null or \
 		not current_enemy.is_alive() or \
 		(current_enemy != closest_enemy and distance_to_closest_enemy < half_distance_along_path):
-		current_enemy = closest_enemy
+		_set_current_kill_target(closest_enemy)
 		current_move_path = _get_quickest_path_to(islander_position, current_enemy.global_position)
 		if current_move_path == null:
 			return
@@ -422,9 +422,12 @@ func _get_closest_target_of_type(target_type, default_node = null):
 			closest_node = node
 			distance_to_closest = distance_to_current
 			
-	for node in seen_targets[target_type]:
+	for i in range(len(seen_targets[target_type]) - 1, -1, -1):
+		var node = seen_targets[target_type][i]
+		
 		# Skip dead targets
-		if node.has_method("is_alive") and not node.is_alive():
+		if node == null or (node.has_method("is_alive") and not node.is_alive()):
+			seen_targets[target_type].remove(i)
 			continue
 
 		var distance_to_current = islander_position.distance_to(node.global_position)
@@ -532,6 +535,14 @@ func _start_new_target_animation(target):
 	
 	is_paused = true
 	islander.start_target_spotted_emote(funcref(self, "_on_finish_animation"))
+
+
+func _set_current_kill_target(new_target):
+	current_enemy = new_target
+	if not current_goal.target in seen_targets:
+		seen_targets[current_goal.target] = []
+	if not current_enemy in seen_targets[current_goal.target]:
+		seen_targets[current_goal.target].push_back(current_enemy)
 
 
 func _set_current_target(new_target):
