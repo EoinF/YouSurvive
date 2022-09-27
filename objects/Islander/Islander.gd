@@ -32,8 +32,8 @@ var direction = Vector2.DOWN
 var active_sprite_state = "Stand"
 var active_sprite_direction = "Down"
 var _is_hurting = false
-var max_health = BASE_MAX_HEALTH * 100
-var health = max_health
+onready var max_health = BASE_MAX_HEALTH * 100
+onready var health = max_health
 var is_alive = true
 
 
