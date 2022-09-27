@@ -49,15 +49,13 @@ script = ExtResource( 3 )
 [node name="Day4" parent="ExperimenterScenes" instance_placeholder="res://scenes/Levels/Experimenter/Day4/Day4.tscn"]
 
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
-layer = 127
 
 [node name="Credits" parent="MainMenu" instance=ExtResource( 5 )]
-visible = false
 
 [node name="Settings" parent="MainMenu" instance=ExtResource( 6 )]
-visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource( 7 )]
+[connection signal="load_initial_data" from="SaveManager" to="." method="_on_SaveManager_load_initial_data"]
 [connection signal="load_initial_data" from="SaveManager" to="MainMenu/Settings" method="_on_SaveManager_load_initial_data"]
 [connection signal="finish_scenes" from="IslanderScenes" to="." method="_on_IslanderScenes_finish_scenes"]
 [connection signal="save_game" from="IslanderScenes" to="SaveManager" method="_on_IslanderScenes_save_game"]

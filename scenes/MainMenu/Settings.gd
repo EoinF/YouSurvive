@@ -1,10 +1,18 @@
-extends Control
+extends CanvasLayer
 
 signal change_volume(index, amount)
 signal set_fullscreen
 signal finish_scene
 
 var constants
+
+
+func show():
+	$Panel.visible = true
+
+
+func hide():
+	$Panel.visible = false
 
 
 func _on_SaveManager_load_initial_data(save_data):

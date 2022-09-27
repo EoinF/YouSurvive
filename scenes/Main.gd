@@ -50,6 +50,7 @@ func pause_game():
 func _on_ExperimenterScenes_finish_scenes():
 	$MainMenu.show()
 	$MainMenu.remove_new_game()
+	$MainMenu.darken()
 	active_scene.queue_free()
 	active_scene = null
 
@@ -75,19 +76,19 @@ func _on_MainMenu_continue_game():
 
 
 func _on_MainMenu_start_credits():
-	get_node("MainMenu/Credits").visible = true
+	$MainMenu/Credits.show()
 
 
 func _on_Credits_finish_scene():
-	get_node("MainMenu/Credits").visible = false
+	$MainMenu/Credits.hide()
 
 
 func _on_MainMenu_start_settings():
-	$MainMenu/Settings.visible = true
+	$MainMenu/Settings.show()
 
 
 func _on_Settings_finish_scene():
-	get_node("MainMenu/Settings").visible = false
+	$MainMenu/Settings.hide()
 
 
 func _on_PauseMenu_main_menu_pressed():
@@ -109,3 +110,8 @@ func _on_ExperimenterScenes_scene_loaded(scene, _attempt_number):
 
 func _on_IslanderScenes_scene_loaded(scene, _attempt_number):
 	active_scene = scene
+
+
+func _on_SaveManager_load_initial_data(save_data):
+	if save_data["current_chapter"] == "Islander":
+		$MainMenu.darken()
