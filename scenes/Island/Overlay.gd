@@ -14,7 +14,6 @@ func _enter_tree():
 
 
 func _on_Ghost_health_change(health):
-	print(health)
 	if health > 400:
 		set_intensity(0)
 	else:

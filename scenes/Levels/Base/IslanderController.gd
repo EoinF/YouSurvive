@@ -20,7 +20,6 @@ func _process(delta):
 	if is_controls_enabled:
 		_process_movement_input(delta)
 		_process_interaction_input(delta)
-		_process_attack_input(delta)
 		_process_inventory_item_input()
 
 
@@ -49,12 +48,6 @@ func _process_interaction_input(_delta):
 	and current_interaction_item.is_usable:
 		current_interaction_item.interact()
 		get_node(ISLANDER_NODE_PATH).pick_up_item(current_interaction_item.object_type)
-
-
-func _process_attack_input(_delta):
-	var islander = get_node(ISLANDER_NODE_PATH)
-	if Input.is_action_just_released('attack') and not islander.is_attacking():
-		islander.attack()
 
 
 func _process_inventory_item_input():

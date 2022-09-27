@@ -16,11 +16,10 @@ func activate():
 	is_active = true
 
 
-func _process(delta):
+func _process(_delta):
 	if not is_active:
 		return
-		
-	if Input.is_action_pressed('attack'):
+	if Input.is_action_just_released('use_item'):
 		is_active = false
 
 

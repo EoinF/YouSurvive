@@ -3,6 +3,7 @@ extends Node2D
 signal finish_scene
 
 var is_ghost_shown = false
+var is_tutorial_shown = false
 
 
 func _ready():
@@ -48,7 +49,9 @@ func _onFadeOutFinish():
 
 
 func _on_Islander_inventory_slot_change(inventory_slot):
-	$HUDLayer/AttackTutorial.activate()
+	if not is_tutorial_shown:
+		$HUDLayer/AttackTutorial.activate()
+		is_tutorial_shown = true
 
 
 func _on_MovementTutorialTimer_timeout():

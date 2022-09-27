@@ -16,7 +16,7 @@ func activate():
 	is_active = true
 
 
-func _process(delta):
+func _process(_delta):
 	if not is_active:
 		return
 		
