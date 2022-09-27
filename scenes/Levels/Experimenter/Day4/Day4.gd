@@ -76,6 +76,7 @@ func _on_Raft_start_sinking():
 
 
 func _on_Raft_finish_sinking():
+	$Experimenter.disable_placement()
 	$HUDLayer/HUD/DialogueManager.start_section("Capsized")
 
 

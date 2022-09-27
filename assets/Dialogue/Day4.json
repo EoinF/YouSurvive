@@ -62,11 +62,11 @@
     },
     {
       "type": "text",
-      "content": "At the end of a game of chess, all the pieces go back into the bag."
+      "content": "At the end, we all go into the unknown-"
     },
     {
       "type": "text",
-      "content": "Regardless of it being a queen or a pawn."
+      "content": "regardless of what happens in life."
     },
     {
       "type": "link_to",
@@ -85,7 +85,7 @@
     },
     {
       "type": "text",
-      "content": "They go on their own journey now."
+      "content": "They will continue on their own journey now."
     },
     {
       "type": "text",
@@ -113,8 +113,8 @@
       "type": "text",
       "content": "And we must continue...",
       "highlight": {
-        "begin": 8,
-        "end": 16
+        "begin": 12,
+        "end": 20
       }
     }
   ]

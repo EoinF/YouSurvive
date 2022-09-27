@@ -25,6 +25,9 @@ func _ready():
 
 
 func _on_Raft_y_change(amount):
+	if is_finished:
+		return
+	
 	# Move in the opposite direction to the raft (relative movement)
 	var y_delta = -amount
 	var sea_tilemap = get_owner().get_node("Objects/GroundTiles")
