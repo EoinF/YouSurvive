@@ -255,7 +255,7 @@ func kill_enemy():
 		return
 	var islander_position = islander.global_position
 	
-	var closest_enemy = _get_closest_target_of_type(current_goal.target)
+	var closest_enemy = _get_closest_target_of_type(current_goal.target, current_enemy)
 	var distance_to_closest_enemy = islander_position.distance_to(closest_enemy.global_position)
 	var half_distance_along_path = len(current_move_path) * 16 / 2.0
 	
@@ -408,9 +408,9 @@ func _get_closest_enemy_in_path(target_type):
 	return closest_node
 
 
-func _get_closest_target_of_type(target_type):
+func _get_closest_target_of_type(target_type, default_node = null):
 	var islander_position = get_node(ISLANDER_PATH).global_position
-	var closest_node = null
+	var closest_node = default_node
 	var distance_to_closest = INF
 	for node in objects_in_view[target_type].values():
 		# Skip dead targets

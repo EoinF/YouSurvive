@@ -64,7 +64,7 @@ tracks/1/keys = {
 color = Color( 0.894118, 0.839216, 0.8, 1 )
 
 [node name="Islander" parent="Objects/Props" index="0"]
-MAX_HEALTH = 3000
+BASE_MAX_HEALTH = 25
 
 [node name="Day2Label" type="Label" parent="HUDLayer/HUD" index="6"]
 self_modulate = Color( 1, 1, 1, 0 )

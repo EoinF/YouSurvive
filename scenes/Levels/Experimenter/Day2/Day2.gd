@@ -62,7 +62,7 @@ var is_kill_predators_complete = false
 
 
 func _is_objective_complete(objective):
-	return objective.is_complete and objective.is_visible
+	return objective.is_complete and objective.is_active
 
 
 func _on_Day2Objectives_objectives_updated(objectives):

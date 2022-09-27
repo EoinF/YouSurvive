@@ -40,4 +40,6 @@ func enable_ai():
 	ai_controller.add_kill_goal("boar", 99999)
 	ai_controller.is_paused = false
 	get_owner().get_node("Day2Objectives").set_objective_active("kill_predators", true)
+	get_owner().get_node("Day2Objectives").set_objective_active("place_weapon", false)
+	get_owner().get_node("Day2Objectives").set_objective_active("place_predators", false)
 	get_owner().get_node("AIController").enable_ai()

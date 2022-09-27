@@ -48,27 +48,32 @@ func _get_objectives():
 		{
 			"description": "Place predators (%d/%d)" % [_num_predators_placed(), NUM_PREDATORS_REQUIRED],
 			"is_complete": _num_predators_placed() >= NUM_PREDATORS_REQUIRED,
-			"is_visible": is_predator_placement_active
+			"is_visible": is_predator_placement_active,
+			"is_active": is_predator_placement_active
 		},
 		{
 			"description": "Place weapon (%d/1)" % [num_weapons_placed],
 			"is_complete": num_weapons_placed >= 1,
-			"is_visible": is_weapon_placement_active
+			"is_visible": is_weapon_placement_active,
+			"is_active": is_weapon_placement_active
 		},
 		{
 			"description": "Kill crabs (%d/%d)" % [num_crabs_killed, num_crabs_placed],
 			"is_complete": num_crabs_killed == num_crabs_placed,
-			"is_visible": is_kill_mode_active and num_crabs_placed > 0
+			"is_visible": is_kill_mode_active and num_crabs_placed > 0,
+			"is_active": is_kill_mode_active
 		},
 		{
 			"description": "Kill porcupines (%d/%d)" % [num_porcupines_killed, num_porcupines_placed],
 			"is_complete": num_porcupines_killed == num_porcupines_placed,
-			"is_visible": is_kill_mode_active and num_porcupines_placed > 0
+			"is_visible": is_kill_mode_active and num_porcupines_placed > 0,
+			"is_active": is_kill_mode_active
 		},
 		{
 			"description": "Kill boars (%d/%d)" % [num_boars_killed, num_boars_placed],
 			"is_complete": num_boars_killed == num_boars_placed,
-			"is_visible": is_kill_mode_active and num_boars_placed > 0
+			"is_visible": is_kill_mode_active and num_boars_placed > 0,
+			"is_active": is_kill_mode_active
 		}
 	]
 
