@@ -4,6 +4,7 @@ signal restart_scene
 signal finish_scene
 
 var experiment_data
+var is_islander_dead = false
 
 var IS_DEBUG_ACTIVE = false
 
@@ -51,7 +52,6 @@ func _on_ScrollingManager_finish():
 func _on_DialogueManager_finish_dialogue(section_name):
 	if section_name == "Outro":
 		$AnimationPlayer.play("fade_out")
-		emit_signal("finish_scene")
 
 
 func _on_Raft_finish_sinking():
@@ -64,4 +64,14 @@ func _on_Raft_start_sinking():
 
 
 func _on_Islander_die():
-	emit_signal("restart_scene")
+	$AnimationPlayer.play("fade_out")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "fade_out":
+		if is_islander_dead:
+			emit_signal("restart_scene")
+		else:
+			emit_signal("finish_scene")
+			queue_free()
+
