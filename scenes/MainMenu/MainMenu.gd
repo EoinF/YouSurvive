@@ -22,6 +22,7 @@ func darken():
 
 func show():
 	is_active = true
+	$HUD/Control/Panel/HintLabel.modulate.a = 0
 	$Background/CanvasModulate.color = Color.white
 	$Background/CanvasModulate.visible = true
 	$HUD/Control.visible = true
@@ -31,6 +32,9 @@ func show():
 	var scene_instance = menu_background_scene.instance()
 	$Background/CanvasModulate.add_child(scene_instance)
 	$Background/CanvasModulate.move_child(scene_instance, 0)
+	
+	if is_dark:
+		$AnimationPlayer.play("darken")
 
 
 func hide():

@@ -1,8 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/MainMenu/MenuButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Fonts/Large.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/PauseMenu/PauseMenu.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+resource_local_to_scene = true
+resource_name = "Panel"
+bg_color = Color( 0.952941, 0.901961, 0.552941, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.796078, 0.615686, 0.309804, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 16
 
 [node name="PauseMenu" type="CanvasLayer"]
 pause_mode = 2
@@ -15,49 +30,56 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -150.0
-margin_top = -100.0
-margin_right = 150.0
-margin_bottom = 100.0
+margin_left = -171.5
+margin_top = -125.0
+margin_right = 171.5
+margin_bottom = 175.0
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="CenterContainer2" type="CenterContainer" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 16
-custom_constants/margin_top = 8
-custom_constants/margin_left = 16
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer"]
-margin_left = 16.0
-margin_top = 8.0
-margin_right = 284.0
-margin_bottom = 200.0
-custom_constants/vseparation = 16
+[node name="GridContainer2" type="GridContainer" parent="Panel/CenterContainer2"]
+margin_left = 78.0
+margin_top = 25.0
+margin_right = 264.0
+margin_bottom = 275.0
+custom_constants/vseparation = 32
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/GridContainer"]
-margin_right = 268.0
+[node name="Label" type="Label" parent="Panel/CenterContainer2/GridContainer2"]
+margin_right = 186.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.0352941, 0.262745, 0.52549, 1 )
 text = "Game Paused"
 align = 1
 
-[node name="Resume" parent="Panel/MarginContainer/GridContainer" instance=ExtResource( 1 )]
-margin_top = 38.0
-margin_right = 268.0
-margin_bottom = 98.0
+[node name="GridContainer" type="GridContainer" parent="Panel/CenterContainer2/GridContainer2"]
+margin_top = 54.0
+margin_right = 186.0
+margin_bottom = 250.0
+custom_constants/vseparation = 8
+
+[node name="Resume" parent="Panel/CenterContainer2/GridContainer2/GridContainer" instance=ExtResource( 1 )]
 text = "Resume"
 
-[node name="MainMenu" parent="Panel/MarginContainer/GridContainer" instance=ExtResource( 1 )]
-margin_top = 114.0
-margin_right = 268.0
-margin_bottom = 174.0
+[node name="MainMenu" parent="Panel/CenterContainer2/GridContainer2/GridContainer" instance=ExtResource( 1 )]
+margin_top = 68.0
+margin_bottom = 128.0
 text = "Main Menu"
-[connection signal="pressed" from="Panel/MarginContainer/GridContainer/Resume" to="." method="_on_Resume_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/GridContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
+
+[node name="ExitGame" parent="Panel/CenterContainer2/GridContainer2/GridContainer" instance=ExtResource( 1 )]
+margin_top = 136.0
+margin_bottom = 196.0
+text = "Exit Game"
+[connection signal="pressed" from="Panel/CenterContainer2/GridContainer2/GridContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer2/GridContainer2/GridContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer2/GridContainer2/GridContainer/ExitGame" to="." method="_on_ExitGame_pressed"]

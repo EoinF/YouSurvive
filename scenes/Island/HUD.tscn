@@ -60,6 +60,7 @@ __meta__ = {
 margin_top = 4.0
 margin_right = -4.0
 margin_bottom = 40.0
+LABEL_TEXT = "Test Subject"
 [connection signal="use_item" from="Inventory" to="." method="_on_Inventory_use_item"]
 [connection signal="set_active_item" from="ExperimenterInventory" to="." method="_on_ExperimenterInventory_set_active_item"]
 [connection signal="use_item" from="ExperimenterInventory" to="." method="_on_Inventory_use_item"]

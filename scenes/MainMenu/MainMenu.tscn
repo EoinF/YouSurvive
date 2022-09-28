@@ -9,9 +9,9 @@
 [ext_resource path="res://scenes/MainMenu/Panel.tres" type="StyleBox" id=7]
 [ext_resource path="res://assets/title.png" type="Texture" id=8]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "darken"
-length = 2.0
+length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Background/CanvasModulate:color")
 tracks/0/interp = 1
@@ -19,14 +19,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.105882, 0.0941176, 0.286275, 1 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "fadeLabel"
+[sub_resource type="Animation" id=2]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("HUD/Control/Panel/HintLabel:modulate")
@@ -41,7 +40,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Background/CanvasModulate:color")
@@ -221,9 +220,9 @@ margin_bottom = 332.0
 text = "Exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/darken = SubResource( 3 )
-anims/fadeLabel = SubResource( 1 )
-anims/fadeOut = SubResource( 2 )
+anims/darken = SubResource( 1 )
+anims/fadeLabel = SubResource( 2 )
+anims/fadeOut = SubResource( 3 )
 "anims/fadeOut - dark" = SubResource( 4 )
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="."]

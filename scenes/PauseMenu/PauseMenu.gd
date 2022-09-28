@@ -18,3 +18,7 @@ func _on_MainMenu_pressed():
 
 func _on_Resume_pressed():
 	emit_signal("resume_pressed")
+
+
+func _on_ExitGame_pressed():
+	get_tree().quit()

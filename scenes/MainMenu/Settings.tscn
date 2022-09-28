@@ -194,6 +194,6 @@ text = "Back"
 [connection signal="value_changed" from="Panel/MarginContainer/GridContainer/GridContainer/GridContainer/MainVolumeSlider" to="." method="_on_MainVolumeSlider_value_changed"]
 [connection signal="value_changed" from="Panel/MarginContainer/GridContainer/GridContainer/GridContainer2/MusicVolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
 [connection signal="value_changed" from="Panel/MarginContainer/GridContainer/GridContainer/GridContainer3/SfxVolumeSlider" to="." method="_on_SfxVolumeSlider_value_changed"]
-[connection signal="pressed" from="Panel/MarginContainer/GridContainer/GridContainer/CheckButton" to="Panel/MarginContainer/GridContainer/GridContainer/CheckButton" method="_on_CheckButton_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/GridContainer/GridContainer/CheckButton" to="." method="_on_CheckButton_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/GridContainer/GridContainer/CheckButton" to="Panel/MarginContainer/GridContainer/GridContainer/CheckButton" method="_on_CheckButton_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/Back Button" to="." method="_on_Back_Button_pressed"]
