@@ -126,7 +126,7 @@ func a_star(frontier: Array, destination: Vector2):
 	# Optimisation to avoid expanding the same nodes too many times
 	var explored_nodes = {}
 	
-	while frontier[0].location != destination:
+	while not frontier.empty() and frontier[0].location != destination:
 		var current = frontier.pop_front()
 		for next_node in get_surrounding_nodes(current):
 			if get_cellv(next_node.location) == 0:
@@ -141,6 +141,9 @@ func a_star(frontier: Array, destination: Vector2):
 					append_by_priority(frontier, next_node)
 					explored_nodes[location_key] = g_cost
 
+	if frontier.empty():
+		return []
+	
 	var path = []
 	var current_node = frontier[0]
 	while(current_node != null):
