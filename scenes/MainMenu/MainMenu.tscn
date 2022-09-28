@@ -24,6 +24,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.105882, 0.0941176, 0.286275, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("HUD/Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.745098, 0.784314, 0.905882, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 2.0
@@ -116,7 +128,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 3.61 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+"values": [ Color( 0.745098, 0.784314, 0.905882, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
 [node name="MainMenu" type="Node"]
@@ -125,12 +137,14 @@ script = ExtResource( 1 )
 [node name="Background" type="CanvasLayer" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Background"]
+color = Color( 0.105882, 0.0941176, 0.286275, 1 )
 
 [node name="MenuBackground" parent="Background/CanvasModulate" instance=ExtResource( 6 )]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="HUD"]
+modulate = Color( 0.745098, 0.784314, 0.905882, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {

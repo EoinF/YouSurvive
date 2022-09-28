@@ -2,8 +2,11 @@ extends CanvasLayer
 
 signal finish_scene
 
+export var BACK_BUTTON_TEXT = "Back"
+
 
 func show():
+	$"Panel/MarginContainer/Back Button".text = BACK_BUTTON_TEXT
 	$Panel.visible = true
 
 

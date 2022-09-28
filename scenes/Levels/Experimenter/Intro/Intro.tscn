@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Audio/beach_loop_day.ogg" type="AudioStream" id=1]
+[ext_resource path="res://scenes/MainMenu/Credits.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/TextEntry/TextEntry.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Levels/Experimenter/Intro/Intro.gd" type="Script" id=4]
 [ext_resource path="res://scenes/UIMessages/DialogueManager2.tscn" type="PackedScene" id=5]
@@ -34,5 +35,9 @@ DIALOGUE_FILE = "res://assets/Dialogue/Intro.json"
 stream = ExtResource( 1 )
 volume_db = -16.0
 autoplay = true
+
+[node name="Credits" parent="." instance=ExtResource( 2 )]
+BACK_BUTTON_TEXT = "Continue"
 [connection signal="text_entered" from="Name Entry" to="." method="_on_Name_Entry_text_entered"]
 [connection signal="finish_dialogue" from="DialogueManager" to="." method="_on_DialogueManager_finish_dialogue"]
+[connection signal="finish_scene" from="Credits" to="." method="_on_Credits_finish_scene"]

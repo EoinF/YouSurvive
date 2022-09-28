@@ -58,34 +58,38 @@
     },
     {
       "type": "text",
-      "content": "We aren't born with a world view. It's given to us."
+      "content": "We aren't born with an innate world view. It's given to us."
     },
     {
       "type": "text",
-      "content": "To even simply question these ways of thinking is a good start."
+      "content": "And dispelling this illusion gives us a sort of freedom."
     },
     {
       "type": "text",
-      "content": "A fresh start can help to give us perspective."
+      "content": "A freedom to decide our own world view."
     },
     {
       "type": "text",
-      "content": "Anyway, we're about to start another cycle."
+      "content": "To look at the world with fresh eyes."
     },
     {
       "type": "text",
-      "content": "I'd recommend not continuing - but taking a new path."
+      "content": "Anyway, we are about to start another cycle."
+    },
+    {
+      "type": "text",
+      "content": "Continuing now will bring you back to where you began."
+    },
+    {
+      "type": "text",
+      "content": "And onwards into an endless loop."
     },
     {
       "type": "text",
       "content": "Until next time......"
-    },
-    {
-      "type": "link_to",
-      "section_name": "Outro"
     }
   ],
-  "PreOutro": [
+  "Outro": [
     { "type": "text", "content": "Here's all that you need to know." },
     { "type": "text", "content": "We'll be running a series of experiments." },
     { "type": "text", "content": "This will take place on a desert island." },
@@ -95,6 +99,5 @@
     },
     { "type": "text", "content": "So pay attention." },
     { "type": "text", "content": "Now, off to the island you go......" }
-  ],
-  "Outro": []
+  ]
 }

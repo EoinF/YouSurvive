@@ -34,7 +34,7 @@ func set_attempt_number(attempt_number):
 func _on_Day3Objectives_objectives_updated(objectives):
 	if objectives[0]["is_complete"] and objectives[1]["is_complete"]:
 		get_node("HUDLayer/HUD/DialogueManager").start_section("Main")
-		$AIController.set_is_peaceful()
+		$AIController.set_is_peaceful(true)
 
 
 func _on_DialogueManager_finish_dialogue(section_name):
