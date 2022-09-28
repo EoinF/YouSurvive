@@ -11,6 +11,7 @@
 "coconut",
 ] instance=ExtResource( 1 )]
 object_type = "coconut"
+is_usable = true
 fall_duration_seconds = 0.2
 fall_sway = 0.0
 display_name = "Coconut"
@@ -20,14 +21,15 @@ stream = ExtResource( 4 )
 volume_db = -8.0
 pitch_scale = 0.5
 autoplay = true
-attenuation = 6.9644
+max_distance = 1200.0
+attenuation = 3.0
 bus = "SFX"
 
 [node name="Shadow" type="Sprite" parent="CollectableItem"]
 position = Vector2( 0.707108, 3.97748 )
-rotation = 67.5243
+rotation = 68.7735
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="CollectableItem"]
-rotation = 67.5243
+rotation = 68.7735
 texture = ExtResource( 3 )
