@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Island/Island.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Levels/Base/Day1Objectives.gd" type="Script" id=2]
 [ext_resource path="res://objects/Boar/Boar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Fonts/Large.tres" type="DynamicFont" id=4]
 [ext_resource path="res://objects/CollectableItems/Branch.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
@@ -87,6 +88,7 @@ position = Vector2( 2444.83, 610.286 )
 position = Vector2( 1890.46, 337.343 )
 
 [node name="Day1Label" type="Label" parent="HUDLayer/HUD" index="1"]
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -94,6 +96,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "Day 1"
 __meta__ = {
 "_edit_use_anchors_": false

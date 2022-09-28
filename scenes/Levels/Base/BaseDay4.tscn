@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/Island/AIController.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Levels/Base/SeaAIController.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://objects/Rock/SeaRock.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Levels/Base/SeaRocks.gd" type="Script" id=14]
 [ext_resource path="res://scenes/Levels/Experimenter/Day4/ScrollingManager.gd" type="Script" id=15]
+[ext_resource path="res://assets/Fonts/Large.tres" type="DynamicFont" id=16]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.61711
@@ -344,6 +345,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 16 )
 text = "Day 4"
 __meta__ = {
 "_edit_use_anchors_": false

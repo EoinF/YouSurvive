@@ -23,6 +23,7 @@ func _screen_resized():
 	var window_size = OS.get_window_size()
 	
 	var highest_resolution = RESOLUTIONS[0]
+	print (window_size)
 	for resolution in RESOLUTIONS.slice(1, len(RESOLUTIONS) - 1):
 		if resolution.x <= window_size.x and resolution.y <= window_size.y:
 			highest_resolution = resolution
