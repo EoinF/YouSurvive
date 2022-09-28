@@ -18,6 +18,10 @@ func _ready():
 func darken():
 	is_dark = true
 	$AnimationPlayer.play("darken")
+	
+	for child in get_children():
+		if child.is_in_group("MainMenuScreen"):
+			child.darken()
 
 
 func show():
@@ -33,8 +37,13 @@ func show():
 	$Background/CanvasModulate.add_child(scene_instance)
 	$Background/CanvasModulate.move_child(scene_instance, 0)
 	
+	
 	if is_dark:
-		$AnimationPlayer.play("darken")
+		darken()
+		return
+	for child in get_children():
+		if child.is_in_group("MainMenuScreen"):
+			child.lighten()
 
 
 func hide():

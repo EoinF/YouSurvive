@@ -4,7 +4,13 @@ signal change_volume(index, amount)
 signal set_fullscreen
 signal finish_scene
 
-var constants
+
+func lighten():
+	$Panel.modulate = Color.white
+
+
+func darken():
+	$Panel.modulate = Color("bec8e7")
 
 
 func show():
