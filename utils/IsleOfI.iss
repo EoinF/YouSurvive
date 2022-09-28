@@ -2,11 +2,11 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Isle Of I"
-#define MyAppVersion "0.1.0"
+#define MyAppVersion "0.2.0"
 #define MyAppPublisher "Outterest Games"
 #define MyAppURL "https://outterest.com/isleofi"
-#define MyAppExeName "IsleOfI 1.0.exe"
-#define MyAppResourcesFolderName "IsleOfI 1.0"
+#define MyAppExeName "IsleOfI.exe"
+#define MyAppResourcesFolderName "IsleOfI"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
