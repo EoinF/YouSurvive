@@ -9,7 +9,7 @@
 [ext_resource path="res://scenes/MainMenu/Panel.tres" type="StyleBox" id=7]
 [ext_resource path="res://assets/title.png" type="Texture" id=8]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=5]
 resource_name = "darken"
 length = 1.5
 tracks/0/type = "value"
@@ -37,7 +37,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.745098, 0.784314, 0.905882, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=6]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("HUD/Control/Panel/HintLabel:modulate")
@@ -137,14 +137,12 @@ script = ExtResource( 1 )
 [node name="Background" type="CanvasLayer" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Background"]
-color = Color( 0.105882, 0.0941176, 0.286275, 1 )
 
 [node name="MenuBackground" parent="Background/CanvasModulate" instance=ExtResource( 6 )]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="HUD"]
-modulate = Color( 0.745098, 0.784314, 0.905882, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -234,8 +232,8 @@ margin_bottom = 332.0
 text = "Exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/darken = SubResource( 1 )
-anims/fadeLabel = SubResource( 2 )
+anims/darken = SubResource( 5 )
+anims/fadeLabel = SubResource( 6 )
 anims/fadeOut = SubResource( 3 )
 "anims/fadeOut - dark" = SubResource( 4 )
 

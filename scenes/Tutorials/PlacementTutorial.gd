@@ -23,5 +23,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	get_node("AnimationPlayer").play(next_animation_name)
 
 
-func _on_Experimenter_place_item(item_type, source_location):
+func _on_Experimenter_place_item(_item_type, _source_location):
 	is_active = false

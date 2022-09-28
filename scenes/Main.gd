@@ -1,7 +1,6 @@
 extends Node
 
 var active_scene: Node
-var is_dark = false
 
 var constants
 
@@ -96,8 +95,6 @@ func _on_PauseMenu_main_menu_pressed():
 	get_tree().paused = false
 	$PauseMenu.hide()
 	$MainMenu.show()
-	if is_dark:
-		$MainMenu.darken()
 	active_scene.queue_free()
 	active_scene = null
 
@@ -117,5 +114,4 @@ func _on_IslanderScenes_scene_loaded(scene, _attempt_number):
 
 func _on_SaveManager_load_initial_data(save_data):
 	if save_data["current_chapter"] == "Islander":
-		is_dark = true
 		$MainMenu.darken()
