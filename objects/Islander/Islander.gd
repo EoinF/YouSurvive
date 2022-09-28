@@ -96,6 +96,7 @@ func update_direction(x, y):
 	
 	_update_active_sprite("Run", directionVertical + directionHorizontal)
 
+
 func move(x, y):
 	if not is_alive:
 		return
@@ -122,10 +123,10 @@ func throw_stone(x, y):
 func attack(_x = 0, _y = 0):
 	if not attack_ready or not is_alive:
 		return
+	attack_ready = false
 	
 	if _x != 0 or _y != 0:
 		update_direction(_x, _y)
-	attack_ready = false
 	get_node("AttackPivotPoint/AttackAnimation/AttackArea/Shape").disabled = false
 	var attack_animation = get_node("AttackPivotPoint/AttackAnimation")
 	get_node("AttackPivotPoint").rotation = atan2(direction.y, direction.x) - PI / 2

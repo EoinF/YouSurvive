@@ -19,7 +19,7 @@ func set_is_following(_is_following):
 
 func _process(delta):
 	if is_following and current_follow_target != null:
-		var direction_to_target = (current_follow_target.global_position - position)
+		var direction_to_target = current_follow_target.global_position - position
 		var distance_to_target = direction_to_target.length()
 		
 		if distance_to_target > FOLLOW_SPEED_RATIO * MAX_FOLLOW_SPEED * delta:
@@ -27,4 +27,3 @@ func _process(delta):
 		elif distance_to_target > FOLLOW_SPEED_RATIO * MIN_FOLLOW_SPEED * delta:
 			var follow_speed = lerp(MIN_FOLLOW_SPEED, MAX_FOLLOW_SPEED, distance_to_target / (FOLLOW_SPEED_RATIO * MAX_FOLLOW_SPEED * delta))
 			translate(direction_to_target.normalized() * delta * follow_speed)
-

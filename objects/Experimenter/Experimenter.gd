@@ -60,7 +60,7 @@ func move(deltaVector: Vector2):
 		translate.y += camera.limit_top - newY
 	elif newY > camera.limit_bottom:
 		translate.y -= newY - camera.limit_bottom
-		
+	
 	camera.translate(translate)
 
 
