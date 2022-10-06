@@ -20,15 +20,14 @@ func _ready():
 	
 
 func _screen_resized():
-	var window_size = OS.get_window_size()
+	var window_size = OS.get_real_window_size()
 	
 	var highest_resolution = RESOLUTIONS[0]
-	print (window_size)
 	for resolution in RESOLUTIONS.slice(1, len(RESOLUTIONS) - 1):
 		if resolution.x <= window_size.x and resolution.y <= window_size.y:
 			highest_resolution = resolution
 	
-	var viewport_offset = (window_size - highest_resolution) / 2
+	var viewport_offset = (OS.window_size - highest_resolution) / 2
 	viewport.set_attach_to_screen_rect(Rect2(viewport_offset, highest_resolution))
 
 
