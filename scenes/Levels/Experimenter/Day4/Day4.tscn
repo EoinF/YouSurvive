@@ -90,11 +90,11 @@ ISLANDER_PATH = NodePath("../Objects/Props/Raft/Islander")
 [node name="ObjectivesTimer" type="Timer" parent="." index="10"]
 wait_time = 1e+09
 [connection signal="edge_reached" from="Objects/ScrollingManager" to="." method="_on_ScrollingManager_edge_reached"]
-[connection signal="finish" from="Objects/ScrollingManager" to="." method="_on_ScrollingManager_finish"]
 [connection signal="finish" from="Objects/ScrollingManager" to="SeaAIController" method="_on_ScrollingManager_finish"]
+[connection signal="finish" from="Objects/ScrollingManager" to="." method="_on_ScrollingManager_finish"]
 [connection signal="enemy_struggle" from="Objects/Props" to="." method="_on_Props_enemy_struggle"]
-[connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="prop_added" from="Objects/Props" to="SeaAIController" method="_on_Props_prop_added"]
+[connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="finish_sinking" from="Objects/Props/Raft" to="." method="_on_Raft_finish_sinking"]
 [connection signal="health_change" from="Objects/Props/Raft" to="." method="_on_Raft_health_change"]
 [connection signal="start_sinking" from="Objects/Props/Raft" to="." method="_on_Raft_start_sinking"]
