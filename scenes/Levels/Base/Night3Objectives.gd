@@ -19,7 +19,7 @@ func _ready():
 func _on_GhostDetectionArea_body_entered(body):
 	if body.is_in_group("Ghost"):
 		body.queue_free()
-		var current_ghost = ghosts.pop_front()
+		current_ghost = ghosts.pop_front()
 		
 		if current_ghost == null:
 			emit_signal("complete_objective")

@@ -48,7 +48,7 @@ func _process(_delta):
 		return
 	for i in range(ai_nodes.size() - 1, -1, -1):
 		var ai_node = ai_nodes[i]
-		if ai_node.node == null:
+		if not is_instance_valid(ai_node.node):
 			ai_nodes.remove(i)
 		else:
 			var islander_position = get_owner().get_node("Objects/Props/Islander").global_position

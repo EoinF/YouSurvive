@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Isle Of I"
-#define MyAppVersion "0.2.0"
+#define MyAppVersion "0.3.1"
 #define MyAppPublisher "Outterest Games"
 #define MyAppURL "https://outterest.com/isleofi"
 #define MyAppExeName "IsleOfI.exe"

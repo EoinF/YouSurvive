@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/MainMenu/MenuButton.gd" type="Script" id=1]
 [ext_resource path="res://assets/Audio/button_press.wav" type="AudioStream" id=2]
@@ -20,7 +20,18 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 shadow_size = 4
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.184314, 0.364706, 0.545098, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.133333, 0.337255, 0.54902, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.133333, 0.337255, 0.54902, 1 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -34,8 +45,11 @@ margin_bottom = 60.0
 rect_min_size = Vector2( 186, 60 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 4 )
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

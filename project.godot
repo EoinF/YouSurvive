@@ -124,3 +124,4 @@ vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
+2d/snapping/use_gpu_pixel_snap=true

@@ -37,6 +37,8 @@ func show():
 	$Background/CanvasModulate.add_child(scene_instance)
 	$Background/CanvasModulate.move_child(scene_instance, 0)
 	
+	for button in $HUD/Control/Panel/CenterContainer/Grid.get_children():
+		button.disabled = false
 	
 	if is_dark:
 		darken()
@@ -77,6 +79,8 @@ func _on_NewGame_pressed():
 
 
 func _on_ContinueGame_pressed():
+	for button in $HUD/Control/Panel/CenterContainer/Grid.get_children():
+		button.disabled = true
 	var animation_name = "fadeOut - dark" if is_dark else "fadeOut"
 	$AnimationPlayer.play(animation_name)
 

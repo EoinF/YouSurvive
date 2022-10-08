@@ -427,7 +427,7 @@ func _get_closest_target_of_type(target_type, default_node = null):
 		var node = seen_targets[target_type][i]
 		
 		# Skip dead targets
-		if node == null or (node.has_method("is_alive") and not node.is_alive()):
+		if not is_instance_valid(node) or (node.has_method("is_alive") and not node.is_alive()):
 			seen_targets[target_type].remove(i)
 			continue
 

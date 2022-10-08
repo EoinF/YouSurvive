@@ -109,7 +109,7 @@ class KillGoal extends Goal:
 		
 		if has_weapon and target in _owner_context.seen_targets:
 			for object in _owner_context.seen_targets[target]:
-				if object != null and object.has_method("is_alive") and object.is_alive():
+				if is_instance_valid(object) and object.has_method("is_alive") and object.is_alive():
 					return 5
 		return -1
 

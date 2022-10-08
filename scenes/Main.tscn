@@ -60,8 +60,8 @@ script = ExtResource( 3 )
 ] instance=ExtResource( 6 )]
 
 [node name="PauseMenu" parent="." instance=ExtResource( 7 )]
-[connection signal="load_initial_data" from="SaveManager" to="MainMenu/Settings" method="_on_SaveManager_load_initial_data"]
 [connection signal="load_initial_data" from="SaveManager" to="." method="_on_SaveManager_load_initial_data"]
+[connection signal="load_initial_data" from="SaveManager" to="MainMenu/Settings" method="_on_SaveManager_load_initial_data"]
 [connection signal="finish_scenes" from="IslanderScenes" to="." method="_on_IslanderScenes_finish_scenes"]
 [connection signal="save_game" from="IslanderScenes" to="SaveManager" method="_on_IslanderScenes_save_game"]
 [connection signal="scene_loaded" from="IslanderScenes" to="." method="_on_IslanderScenes_scene_loaded"]
