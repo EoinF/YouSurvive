@@ -11,6 +11,10 @@ func set_player_name(name: String):
 	})
 
 
+func _enter_tree():
+	$Objects.color = Color.black
+
+
 func set_attempt_number(attempt_number):
 	$DifficultyManager.adjust_difficulty(attempt_number)
 

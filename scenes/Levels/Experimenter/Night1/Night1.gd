@@ -6,6 +6,10 @@ var is_tutorial_shown = false
 var is_finished = false
 var light_scene = preload("res://objects/SimpleLight.tscn")
 
+func _enter_tree():
+	$Objects.color = Color.black
+
+
 func _ready():
 	$IslanderController.disable_controls()
 	$AnimationPlayer.play("ShowIslander")

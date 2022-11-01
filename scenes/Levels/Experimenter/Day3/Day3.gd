@@ -33,6 +33,10 @@ func set_attempt_number(attempt_number):
 	$DifficultyManager.adjust_difficulty(attempt_number)
 
 
+func _enter_tree():
+	$Objects.color = Color.black
+
+
 func _ready():
 	var save_data = SaveManager.save_data
 	get_node("HUDLayer/HUD/DialogueManager").set_variables({

@@ -38,7 +38,6 @@ color = Color( 0.0431373, 0.0392157, 0.0941176, 1 )
 
 [node name="ScrollingManager" type="Node2D" parent="Objects"]
 script = ExtResource( 12 )
-RAFT_SPEED = 150
 
 [node name="SceneEdge" type="Position2D" parent="Objects/ScrollingManager"]
 position = Vector2( 2040.39, 253.058 )
@@ -192,6 +191,7 @@ margin_bottom = 1.5874
 [node name="TooltipContainer" parent="HUDLayer" instance=ExtResource( 3 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [connection signal="y_change" from="Objects/Props/Raft" to="Objects/ScrollingManager" method="_on_Raft_y_change"]
 [connection signal="health_change" from="Objects/Props/Raft/Islander" to="HUDLayer/HUD" method="_on_Islander_health_change"]
 [connection signal="spawn_item" from="Objects/Props/Projectiles" to="Objects/Props" method="_on_Projectiles_spawn_item"]

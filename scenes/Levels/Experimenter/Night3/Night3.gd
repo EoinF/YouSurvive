@@ -3,6 +3,10 @@ extends Node2D
 var rocks_hit = 0
 var sea_props
 
+func _enter_tree():
+	$Objects.color = Color.black
+
+
 func _ready():
 	sea_props = $Objects/Props/SeaProps.get_children()
 	for sea_prop in sea_props:
@@ -10,10 +14,6 @@ func _ready():
 	$IslanderController.disable_controls()
 	$Objects/Props/Raft.disable_steering()
 	$AnimationPlayer.play("ShowIslander")
-
-
-func set_attempt_number(_attempt_number):
-	pass
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

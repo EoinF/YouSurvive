@@ -7,6 +7,9 @@ var is_crab_shown = false
 var crab_spawn_position: Vector2
 var items_spawned = 0
 
+func _enter_tree():
+	$Objects.color = Color.black
+
 
 func _ready():
 	var crab = get_node("Objects/Props/Crab")

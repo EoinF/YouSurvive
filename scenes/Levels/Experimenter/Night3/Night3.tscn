@@ -104,15 +104,24 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0, 0.8 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Objects:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.0431373, 0.0392157, 0.0941176, 1 ) ]
+}
 
 [node name="Night3" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
 
 [node name="Objects" parent="." index="0"]
-color = Color( 0.0705882, 0.0666667, 0.137255, 1 )
-
-[node name="ScrollingManager" parent="Objects" index="0"]
-RAFT_SPEED = 50
+color = Color( 0.0431373, 0.0392157, 0.0941176, 1 )
 
 [node name="Props" parent="Objects" index="2"]
 CUSTOM_LAND_PROPS_PATH = NodePath("../../../Night3/Objects/Props")
@@ -153,5 +162,6 @@ anims/FadeOut = SubResource( 1 )
 anims/RevealLeftSteering = SubResource( 2 )
 anims/RevealRightSteering = SubResource( 3 )
 anims/ShowIslander = SubResource( 4 )
+
 [connection signal="hit_raft" from="Objects/Props/SeaProps" to="." method="_on_SeaProps_hit_raft"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -12,6 +12,10 @@ func set_attempt_number(attempt_number):
 	$DifficultyManager.adjust_difficulty(attempt_number)
 
 
+func _enter_tree():
+	$Objects.color = Color.black
+
+
 func _ready():
 	get_node("AIController").disable_ai()
 	var save_data = SaveManager.save_data
