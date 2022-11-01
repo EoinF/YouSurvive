@@ -450,7 +450,7 @@ func _get_next_exploration_node():
 	# Only take from the first few nodes to avoid re-exploring the same ones
 	# so frequently
 # warning-ignore:integer_division
-	var exploration_nodes_cap = len(exploration_nodes) / 2
+	var exploration_nodes_cap = len(exploration_nodes) / 4
 	for index in range(0, exploration_nodes_cap):
 		var node = exploration_nodes[index]
 		var distance_score = islander_position.distance_to(node.global_position)
