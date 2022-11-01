@@ -16,7 +16,7 @@
 radius = 4.61711
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 203.455
+radius = 262.566
 
 [node name="Island" type="Node2D"]
 pause_mode = 1
@@ -739,5 +739,6 @@ stream = ExtResource( 8 )
 volume_db = -16.0
 autoplay = true
 bus = "Music"
+
 [connection signal="health_change" from="Objects/Props/Islander" to="HUDLayer/HUD" method="_on_Islander_health_change"]
 [connection signal="spawn_item" from="Objects/Props/Projectiles" to="Objects/Props" method="_on_Projectiles_spawn_item"]

@@ -16,6 +16,7 @@ var current_goal = null
 var current_direction: Vector2 = Vector2.ZERO
 var exploration_nodes = []
 var current_move_path = []
+var current_exploration_target: Node = null
 var current_target: Node = null
 var current_enemy: Node = null
 
@@ -162,7 +163,10 @@ func _process(delta):
 func locate():
 	var islander = get_node(ISLANDER_PATH)
 	if current_target == null:
-		current_target = _get_next_exploration_node()
+		if current_exploration_target == null:
+			current_exploration_target = _get_next_exploration_node()
+			
+		current_target = current_exploration_target
 		current_move_path = _get_quickest_path_to(islander.global_position, current_target.get_resting_position())
 		on_update_current_move_path()
 	var current_tile = Vector2(floor(islander.global_position.x / 16), floor(islander.global_position.y / 16))
@@ -175,7 +179,8 @@ func locate():
 	if len(current_move_path) == 0:
 		idle_timeout = rand.randf_range(MIN_IDLE_DURATION, MAX_IDLE_DURATION)
 		current_direction = Vector2.ZERO
-		current_target = _get_next_exploration_node()
+		current_exploration_target = _get_next_exploration_node()
+		current_target = current_exploration_target
 		current_move_path = _get_quickest_path_to(islander.global_position, current_target.get_resting_position())
 		on_update_current_move_path()
 	else:
@@ -442,10 +447,14 @@ func _get_next_exploration_node():
 	var islander_position = get_node(ISLANDER_PATH).global_position
 	var best_h_score = INF
 	var best_node_index = 0
-	for index in range(0, len(exploration_nodes)):
+	# Only take from the first few nodes to avoid re-exploring the same ones
+	# so frequently
+# warning-ignore:integer_division
+	var exploration_nodes_cap = len(exploration_nodes) / 2
+	for index in range(0, exploration_nodes_cap):
 		var node = exploration_nodes[index]
 		var distance_score = islander_position.distance_to(node.global_position)
-		var h_score = distance_score + (index * index * 50)
+		var h_score = distance_score + (index * index * 20)
 		if h_score < best_h_score:
 			best_h_score = h_score
 			best_node_index = index
