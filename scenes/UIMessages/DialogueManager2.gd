@@ -3,7 +3,7 @@ extends Control
 signal finish_dialogue(section_name)
 signal trigger_event(event_name)
 
-var LABEL_MARGIN_X = 16
+var LABEL_MARGIN_X = 24
 
 var highlight_info
 var final_text
@@ -83,7 +83,10 @@ func _set_label_text(text: String):
 		var after_highlight = text.substr(highlight_info.end)
 		text = before_highlight + opening_tag + highlighted_text + closing_tag + after_highlight
 	
-	$Button/LabelContainer/Label.bbcode_text = "[center]%s[/center]" % [text]
+	var flashing_cursor = ""
+	if len(text) == len(final_text):
+		flashing_cursor = "  [wave amp=15 freq=10]>[/wave]"
+	$Button/LabelContainer/Label.bbcode_text = "[center]%s%s[/center]" % [text, flashing_cursor]
 
 func stop():
 	visible = false
@@ -144,7 +147,7 @@ func _next_node():
 			label.modulate = FOREGROUND_MAP[config["foreground"]]
 			# Use the hidden label to calculate the text area
 			# as the rich text label automatically wraps to new lines
-			var text_area = $Button/LabelContainer/HiddenLabel.get_font("Regular").get_string_size(final_text)
+			var text_area = $Button/LabelContainer/HiddenLabel.get_font("Regular").get_string_size(final_text + " ▼")
 			var background = get_node("Button/LabelContainer")
 			background.color = BACKGROUND_MAP[config["background"]]
 

@@ -50,9 +50,6 @@ script = ExtResource( 20 )
 [node name="DifficultyManager" type="Node" parent="." index="0"]
 script = ExtResource( 9 )
 
-[node name="IslanderVisionSensor" parent="Objects/Props/Islander" index="14"]
-visible = false
-
 [node name="HUD" parent="HUDLayer" index="0"]
 INVENTORY_TYPE = "Experimenter"
 

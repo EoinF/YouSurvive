@@ -41,20 +41,13 @@ custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LabelContainer" type="ColorRect" parent="Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 7.62939e-06
 margin_bottom = 3.24249e-05
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="RichTextLabel" parent="Button/LabelContainer"]
 margin_bottom = 26.0
@@ -99,6 +92,7 @@ bus = "SFX"
 
 [node name="NodeTimer" type="Timer" parent="."]
 one_shot = true
+
 [connection signal="resized" from="." to="." method="_on_DialogueManager_resized"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="LetterTimer" to="." method="_on_LetterTimer_timeout"]
