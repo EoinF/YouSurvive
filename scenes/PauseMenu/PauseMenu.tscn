@@ -48,17 +48,17 @@ __meta__ = {
 
 [node name="GridContainer2" type="GridContainer" parent="Panel/CenterContainer2"]
 margin_left = 78.0
-margin_top = 25.0
+margin_top = 23.0
 margin_right = 264.0
-margin_bottom = 275.0
+margin_bottom = 276.0
 custom_constants/vseparation = 32
 
 [node name="Label" type="Label" parent="Panel/CenterContainer2/GridContainer2"]
 margin_right = 186.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.0352941, 0.262745, 0.52549, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Game Paused"
 align = 1
 
@@ -80,6 +80,7 @@ text = "Main Menu"
 margin_top = 136.0
 margin_bottom = 196.0
 text = "Exit Game"
+
 [connection signal="pressed" from="Panel/CenterContainer2/GridContainer2/GridContainer/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Panel/CenterContainer2/GridContainer2/GridContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
 [connection signal="pressed" from="Panel/CenterContainer2/GridContainer2/GridContainer/ExitGame" to="." method="_on_ExitGame_pressed"]

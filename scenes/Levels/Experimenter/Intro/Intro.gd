@@ -8,16 +8,12 @@ func _ready():
 	get_node("DialogueManager").start_section("Main1")
 
 
-func set_attempt_number(_attempt_number):
-	pass
-	
-
 func _on_DialogueManager_finish_dialogue(section_name):
 	if section_name == "Main1":
 		get_node("Name Entry").visible = true
 	elif section_name == "Outro":
-		emit_signal("finish_scene", player_name)
-		queue_free()
+		SaveManager.save_player_name(player_name)
+		SceneManager.load_next_level(null)
 	elif section_name == "Remembered":
 		$Credits.show()
 
@@ -42,5 +38,5 @@ func _on_Name_Entry_text_entered(text: String):
 
 
 func _on_Credits_finish_scene():
-	emit_signal("finish_scene", player_name)
-	queue_free()
+	SaveManager.save_player_name(player_name)
+	SceneManager.load_next_level(null)

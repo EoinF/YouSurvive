@@ -1,8 +1,6 @@
 extends Node2D
 
 
-signal finish_scene
-
 var is_tree_shown = false
 var is_crab_shown = false
 
@@ -19,9 +17,9 @@ func _ready():
 	$Particles2D.emitting = false
 	
 	# Workaround for delay in CanvasModulate changing between scenes
-	$Objects.hide()
-	yield(get_tree(), "idle_frame")
-	$Objects.show()
+	# $Objects.hide()
+	# yield(get_tree(), "idle_frame")
+	# $Objects.show()
 
 
 func set_attempt_number(_attempt_number):
@@ -41,7 +39,7 @@ func _on_TreeArea_body_entered(body):
 		get_node("AnimationPlayer").queue("SpawnAndShowCrab")
 
 
-func _on_Tree_spawn_item(item_type, source_position):
+func _on_Tree_spawn_item(_item_type, _source_position):
 	items_spawned += 1
 	if items_spawned == 3:
 		get_node("AnimationPlayer").queue("RainCoconuts")
@@ -54,5 +52,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		get_node("IslanderController").enable_controls()
 		
 	if anim_name == "RainCoconuts":
-		emit_signal("finish_scene")
-		queue_free()
+		SceneManager.load_next_level()

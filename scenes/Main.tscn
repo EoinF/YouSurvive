@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/MainMenu/Credits.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/MainMenu/Settings.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/PauseMenu/PauseMenu.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/SaveManager.gd" type="Script" id=8]
+[ext_resource path="res://scenes/MainMenu/LoadingScreen.tscn" type="PackedScene" id=9]
 
 [node name="Main" type="Node"]
 pause_mode = 2
@@ -15,9 +15,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }
-
-[node name="SaveManager" type="Node" parent="."]
-script = ExtResource( 8 )
 
 [node name="IslanderScenes" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -51,31 +48,18 @@ script = ExtResource( 3 )
 
 [node name="MainMenu" parent="." instance=ExtResource( 1 )]
 
-[node name="Credits" parent="MainMenu" groups=[
-"MainMenuScreen",
-] instance=ExtResource( 5 )]
+[node name="Credits" parent="MainMenu" groups=["MainMenuScreen"] instance=ExtResource( 5 )]
 
-[node name="Settings" parent="MainMenu" groups=[
-"MainMenuScreen",
-] instance=ExtResource( 6 )]
+[node name="Settings" parent="MainMenu" groups=["MainMenuScreen"] instance=ExtResource( 6 )]
 
 [node name="PauseMenu" parent="." instance=ExtResource( 7 )]
-[connection signal="load_initial_data" from="SaveManager" to="." method="_on_SaveManager_load_initial_data"]
-[connection signal="load_initial_data" from="SaveManager" to="MainMenu/Settings" method="_on_SaveManager_load_initial_data"]
+
+[node name="LoadingScreen" parent="." instance=ExtResource( 9 )]
+visible = false
+
 [connection signal="finish_scenes" from="IslanderScenes" to="." method="_on_IslanderScenes_finish_scenes"]
-[connection signal="save_game" from="IslanderScenes" to="SaveManager" method="_on_IslanderScenes_save_game"]
 [connection signal="scene_loaded" from="IslanderScenes" to="." method="_on_IslanderScenes_scene_loaded"]
-[connection signal="scene_loaded" from="IslanderScenes" to="SaveManager" method="_on_IslanderScenes_scene_loaded"]
 [connection signal="finish_scenes" from="ExperimenterScenes" to="." method="_on_ExperimenterScenes_finish_scenes"]
-[connection signal="save_game" from="ExperimenterScenes" to="SaveManager" method="_on_ExperimenterScenes_save_game"]
 [connection signal="scene_loaded" from="ExperimenterScenes" to="." method="_on_ExperimenterScenes_scene_loaded"]
-[connection signal="scene_loaded" from="ExperimenterScenes" to="SaveManager" method="_on_ExperimenterScenes_scene_loaded"]
-[connection signal="continue_game" from="MainMenu" to="." method="_on_MainMenu_continue_game"]
-[connection signal="start_credits" from="MainMenu" to="." method="_on_MainMenu_start_credits"]
-[connection signal="start_settings" from="MainMenu" to="." method="_on_MainMenu_start_settings"]
 [connection signal="finish_scene" from="MainMenu/Credits" to="." method="_on_Credits_finish_scene"]
-[connection signal="change_volume" from="MainMenu/Settings" to="SaveManager" method="_on_Settings_change_volume"]
 [connection signal="finish_scene" from="MainMenu/Settings" to="." method="_on_Settings_finish_scene"]
-[connection signal="set_fullscreen" from="MainMenu/Settings" to="SaveManager" method="_on_Settings_set_fullscreen"]
-[connection signal="main_menu_pressed" from="PauseMenu" to="." method="_on_PauseMenu_main_menu_pressed"]
-[connection signal="resume_pressed" from="PauseMenu" to="." method="_on_PauseMenu_resume_pressed"]

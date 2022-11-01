@@ -15,11 +15,17 @@ _global_script_class_icons={
 [application]
 
 config/name="Isle of I"
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="res://scenes/MainMenu/MainMenu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Isle Of I"
 config/icon="res://utils/icon.png"
 config/windows_native_icon="res://icon.ico"
+
+[autoload]
+
+SaveManager="*res://scripts/SaveManager.gd"
+SceneManager="*res://scripts/SceneManager.gd"
+PauseMenu="*res://scenes/PauseMenu/PauseMenu.tscn"
 
 [display]
 

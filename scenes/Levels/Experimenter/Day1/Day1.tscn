@@ -192,6 +192,7 @@ one_shot = true
 autostart = true
 
 [node name="PauseMenu" parent="." index="12" instance=ExtResource( 10 )]
+
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="die" from="Objects/Props/Islander" to="." method="_on_Islander_die"]
 [connection signal="area_entered" from="Objects/Props/Islander/IslanderVisionSensor" to="IslanderAIController" method="_on_IslanderVisionSensor_area_entered"]

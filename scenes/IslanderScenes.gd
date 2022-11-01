@@ -44,6 +44,7 @@ func reload_scene(scene_name, current_attempt):
 
 
 func load_scene(scene_name, current_attempt = 1):
+	get_node("../LoadingScreen").visible = true;
 	var new_scene: Node = _instance_scene(scene_name)
 	
 	# Create a copy so we don't affect the original data
@@ -54,6 +55,7 @@ func load_scene(scene_name, current_attempt = 1):
 	new_scene.connect("finish_scene", self, "_on_" + scene_name + "_finish_scene")
 	new_scene.connect("restart_scene", self, "reload_scene", [scene_name, current_attempt + 1], CONNECT_DEFERRED)
 	emit_signal("scene_loaded", new_scene, current_attempt)
+	get_node("../LoadingScreen").visible = false;
 
 
 func _instance_scene(scene_name):

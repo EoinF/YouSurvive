@@ -1,9 +1,5 @@
 extends Node
 
-signal continue_game
-signal start_credits
-signal start_settings
-
 var is_active
 var is_dark = false
 
@@ -13,6 +9,10 @@ func _ready():
 	is_active = true
 	$HUD/Control/Panel/HintLabel.modulate.a = 0
 	menu_background_scene = preload("res://scenes/MainMenu/MenuBackground.tscn")
+	
+	var save_data = SaveManager.save_data
+	if save_data["current_chapter"] == "Islander":
+		$MainMenu.darken()
 
 
 func darken():
@@ -24,38 +24,6 @@ func darken():
 			child.darken()
 
 
-func show():
-	is_active = true
-	$HUD/Control/Panel/HintLabel.modulate.a = 0
-	$Background/CanvasModulate.color = Color.white
-	$Background/CanvasModulate.visible = true
-	$HUD/Control.visible = true
-	$HUD/Control.modulate = Color.white
-	$MusicLoop.play()
-	$MusicLoop.set_volume_db(-12)
-	var scene_instance = menu_background_scene.instance()
-	$Background/CanvasModulate.add_child(scene_instance)
-	$Background/CanvasModulate.move_child(scene_instance, 0)
-	
-	for button in $HUD/Control/Panel/CenterContainer/Grid.get_children():
-		button.disabled = false
-	
-	if is_dark:
-		darken()
-		return
-	for child in get_children():
-		if child.is_in_group("MainMenuScreen"):
-			child.lighten()
-
-
-func hide():
-	is_active = false
-	$Background/CanvasModulate.visible = false
-	$HUD/Control.visible = false
-	$MusicLoop.stop()
-	$Background/CanvasModulate.remove_child($Background/CanvasModulate/MenuBackground)
-
-
 func remove_new_game():
 	var new_game_panel = $HUD/Control/Panel/CenterContainer/Grid/NewGame
 	new_game_panel.disabled = true
@@ -64,7 +32,7 @@ func remove_new_game():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "fadeOut" or anim_name == "fadeOut - dark":
-		emit_signal("continue_game")
+		SceneManager.continue_game()
 	
 
 func _on_NewGame_pressed():
@@ -86,12 +54,20 @@ func _on_ContinueGame_pressed():
 
 
 func _on_Credits_pressed():
-	emit_signal("start_credits")
+	$Credits.show()
 
 
 func _on_Settings_pressed():
-	emit_signal("start_settings")
+	$Settings.show()
 
 
 func _on_Exit_pressed():
 	get_tree().quit()
+
+
+func _on_Settings_finish_scene():
+	$Settings.hide()
+
+
+func _on_Credits_finish_scene():
+	$Credits.hide()

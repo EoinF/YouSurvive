@@ -1,7 +1,5 @@
 extends Node2D
 
-signal finish_scene
-
 var is_ghost_shown = false
 var is_tutorial_shown = false
 
@@ -11,13 +9,11 @@ func _ready():
 	$AnimationPlayer.play("ShowIslander")
 	
 	# Workaround for delay in CanvasModulate changing between scenes
-	$Objects.hide()
-	yield(get_tree(), "idle_frame")
-	$Objects.show()
+	# $Objects.hide()
+	# yield(get_tree(), "idle_frame")
+	# $Objects.show()
 
 
-func set_attempt_number(attempt_number):
-	pass
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "ShowIslander":
@@ -28,8 +24,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		get_node("Objects/Props/Tree").hit()
 		get_node("AnimationPlayer").play("HighlightRock")
 	if anim_name == "FadeOutFast":
-		emit_signal("finish_scene")
-		queue_free()
+		SceneManager.load_next_level()
 
 
 func _on_StartingArea_body_exited(body):
@@ -42,10 +37,6 @@ func _on_Ghost_health_change(health):
 	if health <= 0:
 		$IslanderController.disable_controls()
 		$AnimationPlayer.play("FadeOutFast")
-
-
-func _onFadeOutFinish():
-	emit_signal("finish_scene")
 
 
 func _on_Islander_inventory_slot_change(inventory_slot):

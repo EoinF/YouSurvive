@@ -1,7 +1,5 @@
 extends Node
 
-signal load_initial_data(save_data)
-
 var DEFAULT_SAVE_DATA = {
 	"current_chapter": "Experimenter",
 	"player_name": "cheater", # To have this name you need to skip the intro somehow
@@ -19,7 +17,6 @@ var constants
 var save_data
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	constants = preload("res://scripts/constants.gd").new()
 	var save_file = File.new()
@@ -29,7 +26,6 @@ func _ready():
 		save_file.close()
 	else:
 		save_data = DEFAULT_SAVE_DATA
-	emit_signal("load_initial_data", save_data)
 
 
 func get_save_data():
@@ -58,7 +54,7 @@ func save_attempt_number(new_number):
 	save_file.close()
 
 
-func _on_Settings_change_volume(index, amount):
+func save_volume(index, amount):
 	save_data["volume"][str(index)] = amount
 	var save_file = File.new()
 	save_file.open(constants.SAVE_FILE_LOCATION, File.WRITE)
@@ -66,7 +62,7 @@ func _on_Settings_change_volume(index, amount):
 	save_file.close()
 
 
-func _on_Settings_set_fullscreen(new_value):
+func save_fullscreen(new_value):
 	save_data["is_fullscreen"] = new_value
 	var save_file = File.new()
 	save_file.open(constants.SAVE_FILE_LOCATION, File.WRITE)
@@ -74,17 +70,9 @@ func _on_Settings_set_fullscreen(new_value):
 	save_file.close()
 
 
-func _on_IslanderScenes_save_game(level_name, chapter_name):
-	save_game(level_name, chapter_name)
-
-
-func _on_ExperimenterScenes_save_game(level_name, chapter_name, new_experiment_data, experiment_level_name):
-	save_game(level_name, chapter_name, new_experiment_data, experiment_level_name)
-
-
-func _on_ExperimenterScenes_scene_loaded(_scene, current_attempt):
-	save_attempt_number(current_attempt)
-
-
-func _on_IslanderScenes_scene_loaded(_scene, current_attempt):
-	save_attempt_number(current_attempt)
+func save_player_name(player_name):
+	save_data["player_name"] = player_name
+	var save_file = File.new()
+	save_file.open(constants.SAVE_FILE_LOCATION, File.WRITE)
+	save_file.store_string(to_json(save_data))
+	save_file.close()

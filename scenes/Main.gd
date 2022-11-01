@@ -17,7 +17,10 @@ func _ready():
 	constants = preload("res://scripts/constants.gd").new()
 # warning-ignore:return_value_discarded
 	get_tree().connect("screen_resized", self, "_screen_resized")
-	
+	var save_data = SaveManager.save_data
+	if save_data["current_chapter"] == "Islander":
+		$MainMenu.darken()
+
 
 func _screen_resized():
 	var window_size = OS.get_real_window_size()
@@ -63,7 +66,7 @@ func _on_IslanderScenes_finish_scenes():
 
 
 func _on_MainMenu_continue_game():
-	var save_data = $SaveManager.get_save_data()
+	var save_data = get_node("/root").save_data
 	var chapter_scenes
 	if save_data["current_chapter"] == "Experimenter":
 		chapter_scenes = get_node("ExperimenterScenes")
@@ -110,8 +113,3 @@ func _on_ExperimenterScenes_scene_loaded(scene, _attempt_number):
 
 func _on_IslanderScenes_scene_loaded(scene, _attempt_number):
 	active_scene = scene
-
-
-func _on_SaveManager_load_initial_data(save_data):
-	if save_data["current_chapter"] == "Islander":
-		$MainMenu.darken()

@@ -1,8 +1,5 @@
 extends CanvasLayer
 
-signal resume_pressed
-signal main_menu_pressed
-
 
 func hide():
 	$Panel.visible = false
@@ -13,11 +10,12 @@ func show():
 
 
 func _on_MainMenu_pressed():
-	emit_signal("main_menu_pressed")
+	SceneManager.pause_game()
+	SceneManager.load_main_menu()
 
 
 func _on_Resume_pressed():
-	emit_signal("resume_pressed")
+	SceneManager.pause_game()
 
 
 func _on_ExitGame_pressed():
