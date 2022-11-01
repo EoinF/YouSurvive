@@ -7,7 +7,7 @@ func _on_DialogueManager_trigger_event(event_name):
 
 func enable_controls():
 	var owner = get_owner()
-	owner.get_node("Experimenter").enable_controls()
+	owner.get_node("Experimenter").enable_controls(false)
 	owner.get_node("Day1Objectives").set_objective_active("locate_islander", true)
 	owner.get_node("HUDLayer/HUD/MovementTutorial").activate()
 
@@ -24,13 +24,15 @@ func start_camera_follow():
 func gift_branches():
 	var owner = get_owner()
 	owner.get_node("Experimenter").pick_up_item("branch", 10)
-	owner.get_node("Experimenter").reset_timer()
 	owner.get_node("Day1Objectives").set_objective_active("locate_islander", false)
 	owner.get_node("Day1Objectives").set_objective_active("collect_branches", true)
 	owner.get_node("AnimationPlayer").play("highlight_inventory")
-	owner.get_node("HUDLayer/HUD/PlacementTutorial").activate()
 
 
 func stop_camera_follow():
 	var experimenter = get_owner().get_node("Experimenter")
+	owner.get_node("HUDLayer/HUD/PlacementTutorial").activate()
+	
+	experimenter.enable_placement()
+	experimenter.reset_timer()
 	experimenter.set_is_following(false)

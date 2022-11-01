@@ -26,10 +26,11 @@ func get_experiment_data():
 	return experiment_data
 
 
-func enable_controls():
-	get_node("ItemPlacementTool").enable_item_placement()
+func enable_controls(should_enable_placement = true):
+	if should_enable_placement:
+		enable_placement()
 	is_controls_enabled = true
-	
+
 
 func disable_controls():
 	disable_placement()
@@ -38,6 +39,10 @@ func disable_controls():
 
 func disable_placement():
 	get_node("ItemPlacementTool").disable_item_placement()
+	
+	
+func enable_placement():
+	get_node("ItemPlacementTool").enable_item_placement()
 
 
 func reset_timer():

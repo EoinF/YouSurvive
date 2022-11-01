@@ -26,8 +26,8 @@
     }
   ],
   "Main1": [
-    { "type": "event", "event_name": "start_camera_follow" },
     { "type": "text", "content": "Perfect." },
+    { "type": "event", "event_name": "start_camera_follow" },
     {
       "type": "text",
       "content": "They've already started their search for branches."
