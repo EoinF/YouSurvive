@@ -12,7 +12,7 @@ func _ready():
 	
 	var save_data = SaveManager.save_data
 	if save_data["current_chapter"] == "Islander":
-		$MainMenu.darken()
+		darken()
 
 
 func darken():
