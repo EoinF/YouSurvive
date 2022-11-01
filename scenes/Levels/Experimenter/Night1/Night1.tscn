@@ -29,6 +29,7 @@ script = ExtResource( 2 )
 [node name="MovementTutorialTimer" type="Timer" parent="." index="8"]
 wait_time = 10.0
 one_shot = true
+
 [connection signal="inventory_slot_change" from="Objects/Props/Islander" to="." method="_on_Islander_inventory_slot_change"]
 [connection signal="move" from="Objects/Props/Islander" to="." method="_on_Islander_move"]
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="IslanderController" method="_on_PlayerInteraction_area_entered"]

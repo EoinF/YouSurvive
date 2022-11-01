@@ -21,11 +21,6 @@ func _ready():
 	for sea_prop in $Objects/Props/SeaProps.get_children():
 		sea_prop.deactivate()
 	
-	# Workaround for delay in CanvasModulate changing between scenes
-	# $Objects.hide()
-	# yield(get_tree(), "idle_frame")
-	# $Objects.show()
-	
 	var save_data = SaveManager.save_data
 	get_node("HUDLayer/HUD/DialogueManager").set_variables({
 		"player_name": save_data["player_name"]

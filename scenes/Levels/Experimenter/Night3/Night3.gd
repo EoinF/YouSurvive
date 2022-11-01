@@ -10,11 +10,6 @@ func _ready():
 	$IslanderController.disable_controls()
 	$Objects/Props/Raft.disable_steering()
 	$AnimationPlayer.play("ShowIslander")
-	
-	# Workaround for delay in CanvasModulate changing between scenes
-	# $Objects.hide()
-	# yield(get_tree(), "idle_frame")
-	# $Objects.show()
 
 
 func set_attempt_number(_attempt_number):

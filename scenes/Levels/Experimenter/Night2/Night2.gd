@@ -15,11 +15,6 @@ func _ready():
 	get_node("AnimationPlayer").play("ShowIslander")
 	get_node("IslanderController").disable_controls()
 	$Particles2D.emitting = false
-	
-	# Workaround for delay in CanvasModulate changing between scenes
-	# $Objects.hide()
-	# yield(get_tree(), "idle_frame")
-	# $Objects.show()
 
 
 func set_attempt_number(_attempt_number):

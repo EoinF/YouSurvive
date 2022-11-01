@@ -34,11 +34,6 @@ func set_attempt_number(attempt_number):
 
 
 func _ready():
-	# Workaround for delay in CanvasModulate changing between scenes
-	# $Objects.hide()
-	# yield(get_tree(), "idle_frame")
-	# $Objects.show()
-	
 	var save_data = SaveManager.save_data
 	get_node("HUDLayer/HUD/DialogueManager").set_variables({
 		"player_name": save_data["player_name"]

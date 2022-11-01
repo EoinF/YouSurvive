@@ -7,12 +7,6 @@ var is_tutorial_shown = false
 func _ready():
 	$IslanderController.disable_controls()
 	$AnimationPlayer.play("ShowIslander")
-	
-	# Workaround for delay in CanvasModulate changing between scenes
-	# $Objects.hide()
-	# yield(get_tree(), "idle_frame")
-	# $Objects.show()
-
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
