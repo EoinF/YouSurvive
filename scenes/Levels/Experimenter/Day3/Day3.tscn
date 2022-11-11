@@ -31,7 +31,7 @@ BRANCH_DROPS = 1
 BRANCH_DROPS = 1
 
 [node name="Branch" parent="Objects/Props" index="33"]
-position = Vector2( 2097.34, 442.749 )
+position = Vector2( 2186.48, 402.386 )
 
 [node name="HUD" parent="HUDLayer" index="0"]
 INVENTORY_TYPE = "Experimenter"

@@ -20,6 +20,7 @@ func gift_branches():
 
 func gift_crabs():
 	get_owner().get_node("Experimenter").pick_up_item("crab", 25)
+	get_owner().get_node("Experimenter").pick_up_item("porcupine", 25)
 	get_owner().get_node("Experimenter").pick_up_item("boar", 25)
 	get_owner().get_node("Experimenter").reset_timer()
 
