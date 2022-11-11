@@ -28,5 +28,6 @@ func enable_ai():
 	var ai_controller = get_owner().get_node("IslanderAIController")
 	ai_controller.add_collection_goal("coconut", 10)
 	ai_controller.add_collection_goal("branch", 10)
+	ai_controller.add_investigation_goal("tree")
 	ai_controller.is_paused = false
 	get_owner().get_node("AIController").enable_ai()

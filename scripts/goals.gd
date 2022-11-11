@@ -7,6 +7,7 @@ enum GoalTypes {
 	DODGE_ENEMY
 	KILL_ENEMY
 	STEER_RAFT
+	INVESTIGATE
 }
 
 class Goal:
@@ -66,8 +67,8 @@ class CollectGoal extends Goal:
 			return -1
 		for object in _owner_context.objects_in_view[target].values():
 			if object.global_position.distance_to(_owner_context.islander_position) < 30:
-				return 4
-		return 2
+				return 5
+		return 3
 
 
 class DodgeGoal extends Goal:
@@ -86,7 +87,7 @@ class DodgeGoal extends Goal:
 					
 					var angle_between_directions = acos(direction_to_enemy.dot(direction_to_target))
 					if angle_between_directions < PI / 4.0:
-						return 3
+						return 4
 		
 		return -1
 
@@ -105,12 +106,12 @@ class KillGoal extends Goal:
 		if has_weapon and target in _owner_context.objects_in_view:
 			for object in _owner_context.objects_in_view[target].values():
 				if object.has_method("is_alive") and object.is_alive():
-					return 5
+					return 6
 		
 		if has_weapon and target in _owner_context.seen_targets:
 			for object in _owner_context.seen_targets[target]:
 				if is_instance_valid(object) and object.has_method("is_alive") and object.is_alive():
-					return 5
+					return 6
 		return -1
 
 
@@ -134,5 +135,27 @@ class SteerGoal extends Goal:
 			var obstacle_y_top = object.global_position.y
 			var obstacle_y_bottom = object.global_position.y + object.get_height()
 			if obstacle_y_bottom > raft_top and obstacle_y_top < raft_bottom:
-				return 4
+				return 5
+		return -1
+
+
+class InvestigateGoal extends Goal:
+	func _init(_target).(_target, 0):
+		self.goal_type = GoalTypes.INVESTIGATE
+		
+	func is_in_view(object_dict, type):
+		return object_dict.has(type) \
+			and not object_dict[type].empty()
+	
+	func get_priority(_owner_context):
+		if _owner_context.investigate_timeout > 0:
+			return -1
+		# Avoid investigating in the face of enemies
+		if is_in_view(_owner_context.objects_in_view, "crab") or \
+			is_in_view(_owner_context.objects_in_view, "shark") or \
+			is_in_view(_owner_context.objects_in_view, "boar") or \
+			is_in_view(_owner_context.objects_in_view, "porcupine"):
+			return -1
+		if is_in_view(_owner_context.objects_in_view, target):
+			return 2
 		return -1

@@ -8,6 +8,7 @@ export var PATHFINDER_PATH: NodePath = "../Pathfinder"
 
 var NEW_OBJECT_RECOGNISE_TIME = 0.5
 var STEERING_TIMEOUT_SECONDS = 2.5
+var INVESTIGATE_TIMEOUT_SECONDS = 6
 var RAFT_ERROR_MARGIN = 10
 
 var goals = []
@@ -31,6 +32,7 @@ var raft: Node2D
 var desired_raft_y
 var steering_direction = 0
 var steering_timeout = -1
+var investigate_timeout = -1
 
 var rand = RandomNumberGenerator.new()
 
@@ -84,6 +86,12 @@ func add_collection_goal(target_type, limit):
 	))
 
 
+func add_investigation_goal(target_type):
+	goals.push_back(InvestigateGoal.new(
+		target_type
+	))
+
+
 func _process(delta):
 	if is_paused:
 		return
@@ -121,7 +129,8 @@ func _process(delta):
 		next_move_node = current_move_path.front() if len(current_move_path) > 0 else null,
 		idle_timeout = idle_timeout,
 		steering_timeout = steering_timeout,
-		steering_direction = steering_direction
+		steering_direction = steering_direction,
+		investigate_timeout = investigate_timeout
 	}
 	
 	var current_priority = current_goal.get_priority(owner_context)
@@ -142,15 +151,17 @@ func _process(delta):
 	
 	match current_goal.goal_type:
 		GoalTypes.KILL_ENEMY:
-			kill_enemy()
+			$Behaviours.kill_enemy(self, islander)
 		GoalTypes.DODGE_ENEMY:
-			dodge_enemy()
+			$Behaviours.dodge_enemy(self, islander)
 		GoalTypes.LOCATE:
-			locate()
+			$Behaviours.locate(self, islander)
 		GoalTypes.COLLECT:
-			collect()
+			$Behaviours.collect(self, islander)
 		GoalTypes.STEER_RAFT:
-			steer_raft()
+			$Behaviours.steer_raft(self, islander)
+		GoalTypes.INVESTIGATE:
+			$Behaviours.investigate(self, islander)
 	
 	
 	if current_goal.goal_type != GoalTypes.DODGE_ENEMY and current_goal.goal_type != GoalTypes.KILL_ENEMY:
@@ -158,237 +169,6 @@ func _process(delta):
 	
 	if current_direction.length() > 0:
 		islander.move(current_direction.x, current_direction.y)
-
-
-func locate():
-	var islander = get_node(ISLANDER_PATH)
-	if current_target == null:
-		if current_exploration_target == null:
-			current_exploration_target = _get_next_exploration_node()
-			
-		current_target = current_exploration_target
-		current_move_path = _get_quickest_path_to(islander.global_position, current_target.get_resting_position())
-		on_update_current_move_path()
-	var current_tile = Vector2(floor(islander.global_position.x / 16), floor(islander.global_position.y / 16))
-		
-	while len(current_move_path) != 0 and \
-		current_tile.distance_to(get_pathfinder_offset() + current_move_path[0]) <= 1.0:
-		current_move_path.pop_front()
-		
-	on_update_current_move_path()
-	if len(current_move_path) == 0:
-		idle_timeout = rand.randf_range(MIN_IDLE_DURATION, MAX_IDLE_DURATION)
-		current_direction = Vector2.ZERO
-		current_exploration_target = _get_next_exploration_node()
-		current_target = current_exploration_target
-		current_move_path = _get_quickest_path_to(islander.global_position, current_target.get_resting_position())
-		on_update_current_move_path()
-	else:
-		var next_tile = current_move_path[0]
-		current_direction = (get_pathfinder_offset() + next_tile - current_tile).normalized()
-
-
-func collect():
-	var islander = get_node(ISLANDER_PATH)
-	
-	if current_target == null or current_target.object_type != current_goal.target:
-		var new_target = _get_closest_target_of_type(current_goal.target)
-		_set_current_target(new_target)
-		return
-	
-	if not current_target.get_instance_id() in objects_in_view[current_goal.target]:
-		var closest_target = _get_closest_target_of_type(current_goal.target)
-		if closest_target != current_target:
-			_set_current_target(closest_target)
-			return
-	
-	
-	var current_tile = Vector2(floor(islander.global_position.x / 16), floor(islander.global_position.y / 16))
-	
-	if current_target != null:
-		while len(current_move_path) != 0 and current_tile.distance_to(current_move_path[0]) <= 1.0:
-			current_move_path.pop_front()
-		
-		on_update_current_move_path()
-		if len(current_move_path) == 0:
-			if current_target.has_method("interact"):
-				current_target.interact()
-			islander.pick_up_item(current_target.object_type)
-			var index = seen_targets[current_target.object_type].find(current_target)
-			seen_targets[current_target.object_type].remove(index)
-			current_target = null
-		else:
-			var next_tile = current_move_path[0]
-			current_direction = (get_pathfinder_offset() + next_tile - current_tile).normalized()
-
-
-func dodge_enemy():
-	var islander_position = get_node(ISLANDER_PATH).global_position
-	
-	var closest_enemy = _get_closest_enemy_in_path(current_goal.target)
-	
-	if current_enemy == null or not current_enemy.is_alive() or closest_enemy.global_position.distance_to(islander_position) < 20:
-		current_enemy = closest_enemy
-		var direction_to_target = current_enemy.global_position - islander_position
-		var dodge_left = Vector2(-direction_to_target.y, direction_to_target.x)
-		var dodge_right = Vector2(direction_to_target.y, -direction_to_target.x)
-		
-		var path_left: Array = _get_path_in_direction_of(dodge_left).slice(0, 8)
-		var path_right: Array = _get_path_in_direction_of(dodge_right).slice(0, 8)
-		
-		var chosen_path = path_left if len(path_left) > len(path_right) else path_right
-		if len(chosen_path) <= 2:
-			chosen_path = _get_path_in_direction_of(-direction_to_target).slice(0, 8)
-		var path_back_to_destination = _get_quickest_path_to(chosen_path.back() * 16, current_move_path.back() * 16)
-		current_move_path = chosen_path + path_back_to_destination
-		on_update_current_move_path()
-	else:
-		var current_tile = Vector2(floor(islander_position.x / 16), floor(islander_position.y / 16))
-		
-		while len(current_move_path) != 0 and \
-		current_tile.distance_to(current_move_path[0] + get_pathfinder_offset()) <= 1.0:
-			current_move_path.pop_front()
-			
-		on_update_current_move_path()
-		if len(current_move_path) > 0:
-			var next_tile = current_move_path[0]
-			current_direction = (get_pathfinder_offset() + next_tile - current_tile).normalized()
-
-
-func kill_enemy():
-	var islander = get_node(ISLANDER_PATH)
-	if islander.is_attacking():
-		return
-	var islander_position = islander.global_position
-	
-	var closest_enemy = _get_closest_target_of_type(current_goal.target, current_enemy)
-	var distance_to_closest_enemy = islander_position.distance_to(closest_enemy.global_position)
-	var half_distance_along_path = len(current_move_path) * 16 / 2.0
-	
-	if current_enemy == null or \
-		not current_enemy.is_alive() or \
-		(current_enemy != closest_enemy and distance_to_closest_enemy < half_distance_along_path):
-		_set_current_kill_target(closest_enemy)
-		current_move_path = _get_quickest_path_to(islander_position, current_enemy.global_position)
-		if current_move_path == null:
-			return
-			
-		on_update_current_move_path()
-	else:
-		var direction_to_target = current_enemy.global_position - islander_position
-		if direction_to_target.length() < 100:
-			if islander.has_item("stick") and direction_to_target.length() < 25:
-				islander.attack(direction_to_target.x, direction_to_target.y)
-				return
-			if islander.has_item("stone"):
-				# ensure there is a clear path to the enemy with nothing blocking it
-				# so the stone will actually reach it
-				var straight_path_to_enemy = _get_path_in_direction_of(direction_to_target, current_enemy.global_position)
-				
-				if (straight_path_to_enemy.back() * 16).distance_to(current_enemy.global_position) <= 16:
-					islander.throw_stone(direction_to_target.x, direction_to_target.y)
-					return
-	
-	var current_tile = Vector2(floor(islander_position.x / 16), floor(islander_position.y / 16))
-
-	while len(current_move_path) != 0 and \
-		current_tile.distance_to(current_move_path[0] + get_pathfinder_offset()) <= 1.0:
-		current_move_path.pop_front()
-		
-	on_update_current_move_path()
-	if len(current_move_path) > 0:
-		var next_tile = current_move_path[0]
-		current_direction = (get_pathfinder_offset() + next_tile - current_tile).normalized()
-	else:
-		current_move_path = _get_quickest_path_to(islander_position, current_enemy.global_position)
-		on_update_current_move_path()
-
-
-func steer_raft():
-	var islander_position = get_node(ISLANDER_PATH).global_position
-	if steering_direction != 0:
-		if raft.steering_direction != steering_direction:
-			var current_tile = Vector2(floor(islander_position.x / 16), floor(islander_position.y / 16))
-			
-			while len(current_move_path) != 0 and \
-				current_tile.distance_to(current_move_path[0] + get_pathfinder_offset()) <= 1.0:
-				current_move_path.pop_front()
-			on_update_current_move_path()
-				
-			if current_move_path.empty():
-				steering_direction = 0
-				idle_timeout = 0.2
-				return
-			
-			var next_tile = current_move_path[0]
-			current_direction = (get_pathfinder_offset() + next_tile - current_tile).normalized()
-			return
-		current_direction = Vector2.ZERO
-		return
-		
-	if steering_timeout > 0:
-		return
-	
-	var raft_top = raft.get_y_top() - RAFT_ERROR_MARGIN
-	var raft_bottom = raft.get_y_bottom() + RAFT_ERROR_MARGIN
-	var raft_left = raft.get_x_left()
-	var raft_right = raft.get_x_right()
-	
-	# Find the closest obstacle
-	var obstacles: Array = objects_in_view["sea_rock"].values()
-	var closest_obstacle = null
-	var obstacles_left = []
-	var obstacles_right = []
-	for obstacle in obstacles:
-		var obstacle_x = int(obstacle.global_position.x)
-		var obstacle_y = int(obstacle.global_position.y)
-		if obstacle_y < raft_top:
-			if obstacle_x > raft_left and obstacle_x < raft_right:
-				obstacles_left.append(obstacle)
-			continue
-		if obstacle_y > raft_bottom:
-			if obstacle_x > raft_left and obstacle_x < raft_right:
-				obstacles_right.append(obstacle)
-			continue
-		if closest_obstacle == null or closest_obstacle.global_position.x > obstacle_x:
-			closest_obstacle = obstacle
-	
-	if closest_obstacle == null:
-		return
-	
-	var obstacle_y = int(closest_obstacle.global_position.y)
-	var distance_up = raft_bottom - obstacle_y
-	var distance_down = obstacle_y - raft_top
-	
-	# Figure out which obstacles would be hit by moving
-	var up_penalty = 0
-	for obstacle in obstacles_left:
-		if raft_top - (distance_up + RAFT_ERROR_MARGIN) < int(obstacle.global_position.y):
-			up_penalty += 1
-	var down_penalty = 0
-	for obstacle in obstacles_right:
-		if raft_bottom + (distance_down + RAFT_ERROR_MARGIN) > int(obstacle.global_position.y):
-			down_penalty += 1
-	
-	# If moving up/down results in more collisions then don't move at all
-	if up_penalty > 1 and down_penalty > 1:
-		steering_timeout = STEERING_TIMEOUT_SECONDS
-		return
-	
-	var should_go_up = up_penalty < down_penalty
-	if up_penalty == down_penalty:
-		should_go_up = distance_up < distance_down
-	
-	if should_go_up:
-		desired_raft_y = raft_top - distance_up
-		steering_direction = -1
-		current_move_path = _get_quickest_path_to(islander_position, raft.get_node("SteerLeftNode").global_position)
-	else:
-		desired_raft_y = raft_top + distance_down
-		steering_direction = +1
-		current_move_path = _get_quickest_path_to(islander_position, raft.get_node("SteerRightNode").global_position)
-	
-	steering_timeout = STEERING_TIMEOUT_SECONDS
 
 
 func _get_closest_enemy_in_path(target_type):
