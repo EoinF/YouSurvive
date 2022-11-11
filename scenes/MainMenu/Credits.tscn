@@ -1,10 +1,37 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/MainMenu/MenuButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Fonts/Regular.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/MainMenu/Panel.tres" type="StyleBox" id=3]
 [ext_resource path="res://assets/Fonts/Small.tres" type="DynamicFont" id=4]
 [ext_resource path="res://scenes/MainMenu/Credits.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fadeIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 2.54912, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="Credits" type="CanvasLayer"]
 script = ExtResource( 5 )
@@ -53,10 +80,10 @@ __meta__ = {
 
 [node name="Game" type="Label" parent="Panel/MarginContainer/GridContainer"]
 margin_right = 279.0
-margin_bottom = 25.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.0352941, 0.262745, 0.52549, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "A game by Eoin Flanagan (@Outterest)"
 align = 1
 __meta__ = {
@@ -64,26 +91,26 @@ __meta__ = {
 }
 
 [node name="AudioContainer" type="GridContainer" parent="Panel/MarginContainer/GridContainer"]
-margin_top = 49.0
+margin_top = 44.0
 margin_right = 279.0
-margin_bottom = 93.0
+margin_bottom = 83.0
 
 [node name="Audio" type="Label" parent="Panel/MarginContainer/GridContainer/AudioContainer"]
 margin_right = 279.0
-margin_bottom = 25.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.0352941, 0.262745, 0.52549, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Music/sfx"
 align = 1
 
 [node name="Audio1" type="Label" parent="Panel/MarginContainer/GridContainer/AudioContainer"]
-margin_top = 29.0
+margin_top = 24.0
 margin_right = 114.0
-margin_bottom = 44.0
+margin_bottom = 39.0
 size_flags_horizontal = 0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.0352941, 0.262745, 0.52549, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "All from zapsplat.com"
 align = 1
 __meta__ = {
@@ -91,26 +118,26 @@ __meta__ = {
 }
 
 [node name="ArtContainer" type="GridContainer" parent="Panel/MarginContainer/GridContainer"]
-margin_top = 117.0
+margin_top = 107.0
 margin_right = 279.0
-margin_bottom = 218.0
+margin_bottom = 203.0
 
 [node name="Art" type="Label" parent="Panel/MarginContainer/GridContainer/ArtContainer"]
 margin_right = 279.0
-margin_bottom = 25.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.0352941, 0.262745, 0.52549, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Art assets"
 align = 1
 
 [node name="Art1" type="Label" parent="Panel/MarginContainer/GridContainer/ArtContainer"]
-margin_top = 29.0
+margin_top = 24.0
 margin_right = 175.0
-margin_bottom = 44.0
+margin_bottom = 39.0
 size_flags_horizontal = 0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.0352941, 0.262745, 0.52549, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Beach tileset - finalbossblues.com"
 align = 1
 __meta__ = {
@@ -118,12 +145,12 @@ __meta__ = {
 }
 
 [node name="Art2" type="Label" parent="Panel/MarginContainer/GridContainer/ArtContainer"]
-margin_top = 48.0
+margin_top = 43.0
 margin_right = 169.0
-margin_bottom = 63.0
+margin_bottom = 58.0
 size_flags_horizontal = 0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.0352941, 0.262745, 0.52549, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Crab sprites - Camacebra Games"
 align = 1
 __meta__ = {
@@ -131,12 +158,12 @@ __meta__ = {
 }
 
 [node name="Art3" type="Label" parent="Panel/MarginContainer/GridContainer/ArtContainer"]
-margin_top = 67.0
+margin_top = 62.0
 margin_right = 199.0
-margin_bottom = 82.0
+margin_bottom = 77.0
 size_flags_horizontal = 0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.0352941, 0.262745, 0.52549, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Boar/porcupine sprites - elthen.itch.io"
 align = 1
 __meta__ = {
@@ -144,12 +171,12 @@ __meta__ = {
 }
 
 [node name="Art4" type="Label" parent="Panel/MarginContainer/GridContainer/ArtContainer"]
-margin_top = 86.0
+margin_top = 81.0
 margin_right = 168.0
-margin_bottom = 101.0
+margin_bottom = 96.0
 size_flags_horizontal = 0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.0352941, 0.262745, 0.52549, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Various other sprites - Outterest"
 align = 1
 __meta__ = {
@@ -164,4 +191,8 @@ margin_bottom = 396.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Back"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fadeIn = SubResource( 1 )
+
 [connection signal="pressed" from="Panel/MarginContainer/Back Button" to="." method="_on_Back_Button_pressed"]

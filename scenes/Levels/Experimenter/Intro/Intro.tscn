@@ -1,10 +1,27 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/Audio/beach_loop_day.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scenes/MainMenu/Credits.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/TextEntry/TextEntry.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Levels/Experimenter/Intro/Intro.gd" type="Script" id=4]
 [ext_resource path="res://scenes/UIMessages/DialogueManager2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Levels/Experimenter/Intro/Events.gd" type="Script" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fadeOut"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
 
 [node name="Intro" type="Control"]
 anchor_right = 1.0
@@ -12,17 +29,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Name Entry" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -31,6 +42,9 @@ LABEL_TEXT = "Enter your name"
 [node name="DialogueManager" parent="." instance=ExtResource( 5 )]
 DIALOGUE_FILE = "res://assets/Dialogue/Intro.json"
 
+[node name="Events" type="Node" parent="DialogueManager"]
+script = ExtResource( 6 )
+
 [node name="BeachLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 volume_db = -16.0
@@ -38,6 +52,12 @@ autoplay = true
 
 [node name="Credits" parent="." instance=ExtResource( 2 )]
 BACK_BUTTON_TEXT = "Continue"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fadeOut = SubResource( 1 )
+
 [connection signal="text_entered" from="Name Entry" to="." method="_on_Name_Entry_text_entered"]
 [connection signal="finish_dialogue" from="DialogueManager" to="." method="_on_DialogueManager_finish_dialogue"]
+[connection signal="trigger_event" from="DialogueManager" to="DialogueManager/Events" method="_on_DialogueManager_trigger_event"]
 [connection signal="finish_scene" from="Credits" to="." method="_on_Credits_finish_scene"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

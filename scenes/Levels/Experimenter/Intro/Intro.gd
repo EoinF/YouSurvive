@@ -14,8 +14,6 @@ func _on_DialogueManager_finish_dialogue(section_name):
 	elif section_name == "Outro":
 		SaveManager.save_player_name(player_name)
 		SceneManager.load_next_level(null)
-	elif section_name == "Remembered":
-		$Credits.show()
 
 
 func _on_Name_Entry_text_entered(text: String):
@@ -40,3 +38,7 @@ func _on_Name_Entry_text_entered(text: String):
 func _on_Credits_finish_scene():
 	SaveManager.save_player_name(player_name)
 	SceneManager.load_next_level(null)
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	$Credits.show(true)
