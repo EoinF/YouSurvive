@@ -10,6 +10,9 @@ _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 [node name="Night2" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
+[node name="Objects" parent="." index="0"]
+color = Color( 0.0352941, 0.0313726, 0.0784314, 1 )
+
 [node name="Islander" parent="Objects/Props" index="0"]
 modulate = Color( 1, 1, 1, 1 )
 

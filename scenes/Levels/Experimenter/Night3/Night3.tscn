@@ -114,11 +114,14 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0.0431373, 0.0392157, 0.0941176, 1 ) ]
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.0509804, 0.0431373, 0.105882, 1 ) ]
 }
 
 [node name="Night3" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
+
+[node name="Objects" parent="." index="0"]
+color = Color( 0.0352941, 0.0333333, 0.0686275, 1 )
 
 [node name="Props" parent="Objects" index="2"]
 CUSTOM_LAND_PROPS_PATH = NodePath("../../../Night3/Objects/Props")
