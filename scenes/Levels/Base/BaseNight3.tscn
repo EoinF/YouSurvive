@@ -32,6 +32,7 @@ extents = Vector2( 270.658, 55.6321 )
 extents = Vector2( 306.726, 56.0857 )
 
 [node name="BaseNight3" type="Node2D"]
+pause_mode = 1
 
 [node name="Objects" type="CanvasModulate" parent="."]
 color = Color( 0.0431373, 0.0392157, 0.0941176, 1 )

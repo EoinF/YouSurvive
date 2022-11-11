@@ -47,6 +47,7 @@ shader_param/intensity = 0.0
 shader_param/noise = SubResource( 5 )
 
 [node name="DreamIsland" type="Node2D"]
+pause_mode = 1
 
 [node name="Objects" type="CanvasModulate" parent="."]
 color = Color( 0.45098, 0.027451, 0.027451, 1 )
@@ -101,7 +102,6 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-INTENSITY = 0.0
 
 [node name="AIController" type="Node" parent="."]
 script = ExtResource( 11 )
@@ -114,5 +114,6 @@ stream = ExtResource( 10 )
 volume_db = -20.0
 autoplay = true
 bus = "SFX"
+
 [connection signal="spawn_item" from="Objects/Projectiles" to="Objects/Props" method="_on_Projectiles_spawn_item"]
 [connection signal="throw_stone" from="Objects/Props/Islander" to="Objects/Projectiles" method="_on_Islander_throw_stone"]

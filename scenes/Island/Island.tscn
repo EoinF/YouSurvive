@@ -729,12 +729,14 @@ layer = 2
 [node name="TooltipContainer" parent="HUDLayer" instance=ExtResource( 5 )]
 
 [node name="BeachLoop" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 6 )
 volume_db = -16.0
 autoplay = true
 bus = "SFX"
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 8 )
 volume_db = -16.0
 autoplay = true

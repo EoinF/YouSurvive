@@ -129,6 +129,12 @@ script = ExtResource( 11 )
 [node name="ObjectivesTimer" type="Timer" parent="." index="10"]
 wait_time = 1e+09
 
+[node name="BeachLoop" parent="." index="11"]
+pause_mode = 0
+
+[node name="MusicLoop" parent="." index="12"]
+pause_mode = 0
+
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="die" from="Objects/Props/Islander" to="." method="_on_Islander_die"]
 [connection signal="throw_stone" from="Objects/Props/Islander" to="Objects/Props/Projectiles" method="_on_Islander_throw_stone"]

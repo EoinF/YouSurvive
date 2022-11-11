@@ -27,6 +27,7 @@ script = ExtResource( 3 )
 
 [node name="DifficultyManager" type="Node" parent="." index="9"]
 script = ExtResource( 6 )
+
 [connection signal="prop_added" from="Objects/Props" to="AIController" method="_on_Props_prop_added"]
 [connection signal="die" from="Objects/Props/Islander" to="." method="_on_Islander_die"]
 [connection signal="area_entered" from="Objects/Props/Islander/PlayerInteraction" to="IslanderInput" method="_on_PlayerInteraction_area_entered"]

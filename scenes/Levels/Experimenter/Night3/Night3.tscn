@@ -120,9 +120,6 @@ tracks/1/keys = {
 [node name="Night3" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
 
-[node name="Objects" parent="." index="0"]
-color = Color( 0.0431373, 0.0392157, 0.0941176, 1 )
-
 [node name="Props" parent="Objects" index="2"]
 CUSTOM_LAND_PROPS_PATH = NodePath("../../../Night3/Objects/Props")
 CUSTOM_SEA_PROPS_PATH = NodePath("../../../Night3/Objects/Props")
