@@ -10,12 +10,12 @@ func show():
 
 
 func _on_MainMenu_pressed():
-	SceneManager.pause_game()
-	SceneManager.load_main_menu()
+	SceneManager.call_deferred("pause_game")
+	SceneManager.call_deferred("load_main_menu")
 
 
 func _on_Resume_pressed():
-	SceneManager.pause_game()
+	SceneManager.call_deferred("pause_game")
 
 
 func _on_ExitGame_pressed():
