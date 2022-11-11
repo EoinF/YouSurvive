@@ -50,7 +50,7 @@
     },
     {
       "type": "text",
-      "content": "Our purpose is given to us by the society we're born into."
+      "content": "Our purpose is shaped by the society we're born into."
     },
     {
       "type": "text",
@@ -74,7 +74,19 @@
     },
     {
       "type": "text",
-      "content": "Anyway, we are about to start another cycle."
+      "content": "We have the power within us to alter this inherited world view."
+    },
+    {
+      "type": "text",
+      "content": "To shape a new cycle of purpose."
+    },
+    {
+      "type": "text",
+      "content": "Speaking of such......"
+    },
+    {
+      "type": "text",
+      "content": "We are about to start another cycle."
     },
     {
       "type": "text",
@@ -83,6 +95,10 @@
     {
       "type": "text",
       "content": "And onwards into an endless loop."
+    },
+    {
+      "type": "event",
+      "event_name": "fade_out"
     },
     {
       "type": "text",
