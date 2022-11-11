@@ -8,8 +8,10 @@ export var PATHFINDER_PATH: NodePath = "../Pathfinder"
 
 var NEW_OBJECT_RECOGNISE_TIME = 0.5
 var STEERING_TIMEOUT_SECONDS = 2.5
-var INVESTIGATE_TIMEOUT_SECONDS = 6
+var INVESTIGATE_TIMEOUT_SECONDS = 11
+var INVESTIGATE_IDLE_TIMEOUT_SECONDS = 1.3
 var RAFT_ERROR_MARGIN = 10
+var INVESTIGATE_TARGET_QUEUE_SIZE = 7
 
 var goals = []
 var current_goal = null
@@ -24,6 +26,8 @@ var current_enemy: Node = null
 var objects_in_view_unrecognised = {}
 var objects_in_view = {}
 var seen_targets = {}
+var current_investigation_target: Node = null
+var recently_investigated_targets = {}
 
 var is_paused = true
 var idle_timeout = -1.0
@@ -33,6 +37,7 @@ var desired_raft_y
 var steering_direction = 0
 var steering_timeout = -1
 var investigate_timeout = -1
+var investigate_idle_timeout = -1
 
 var rand = RandomNumberGenerator.new()
 
@@ -90,6 +95,7 @@ func add_investigation_goal(target_type):
 	goals.push_back(InvestigateGoal.new(
 		target_type
 	))
+	recently_investigated_targets[target_type] = []
 
 
 func _process(delta):
@@ -145,7 +151,10 @@ func _process(delta):
 		idle_timeout -= delta
 	else:
 		idle_timeout = -1
-		
+	
+	if investigate_timeout > 0:
+		investigate_timeout -= delta
+	
 	if steering_timeout > 0:
 		steering_timeout -= delta
 	
@@ -161,7 +170,7 @@ func _process(delta):
 		GoalTypes.STEER_RAFT:
 			$Behaviours.steer_raft(self, islander)
 		GoalTypes.INVESTIGATE:
-			$Behaviours.investigate(self, islander)
+			$Behaviours.investigate(self, islander, delta)
 	
 	
 	if current_goal.goal_type != GoalTypes.DODGE_ENEMY and current_goal.goal_type != GoalTypes.KILL_ENEMY:
@@ -350,3 +359,20 @@ func _set_current_target(new_target):
 
 func _on_finish_animation():
 	is_paused = false
+
+
+func _get_closest_investigate_target_of_type(target_type):
+	var islander_position = get_node(ISLANDER_PATH).global_position
+	var closest_node = null
+	var distance_to_closest = INF
+	for node in objects_in_view[target_type].values():
+		# Skip recently investigated target
+		if node in recently_investigated_targets[target_type]:
+			continue
+
+		var distance_to_current = islander_position.distance_to(node.global_position)
+		if distance_to_closest > distance_to_current:
+			closest_node = node
+			distance_to_closest = distance_to_current
+	
+	return closest_node

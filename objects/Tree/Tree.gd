@@ -11,6 +11,9 @@ signal spawn_item(item_type, source_position)
 var item_drops = []
 var is_hittable = true
 
+func get_resting_position():
+	return global_position
+
 func _ready():
 	for _i in range(0, COCONUT_DROPS):
 		item_drops.append("coconut")

@@ -239,5 +239,53 @@ func steer_raft(context, ai_node):
 	context.steering_timeout = context.STEERING_TIMEOUT_SECONDS
 
 
-func investigate(context, ai_node):
-	pass
+
+func investigate(context, ai_node, delta):
+	if context.investigate_idle_timeout > 0:
+		context.investigate_idle_timeout -= delta
+		if context.investigate_idle_timeout > 0:
+			if ai_node.global_position.distance_to(context.current_investigation_target.get_resting_position()) > 20:
+				context.current_direction = (context.current_investigation_target.get_resting_position() - ai_node.global_position).normalized()
+			else:
+				context.current_direction = Vector2.ZERO
+			return
+		
+		var target_type = context.current_goal.target
+		context.recently_investigated_targets[target_type].push_back(context.current_investigation_target)
+		if len(context.recently_investigated_targets[target_type]) > context.INVESTIGATE_TARGET_QUEUE_SIZE:
+			context.recently_investigated_targets[target_type].pop_front()
+		context.current_investigation_target = null
+		context.investigate_timeout = context.INVESTIGATE_TIMEOUT_SECONDS
+		if context.current_target != null:
+			context.current_move_path = context._get_quickest_path_to(ai_node.global_position, context.current_target.get_resting_position())
+			context.on_update_current_move_path()
+		return
+		
+	if context.current_investigation_target == null or context.current_investigation_target.object_type != context.current_goal.target:
+		var new_target = context._get_closest_investigate_target_of_type(context.current_goal.target)
+		context.current_investigation_target = new_target
+		context.current_move_path = context._get_quickest_path_to(ai_node.global_position, new_target.get_resting_position())
+		context.on_update_current_move_path()
+		return
+	
+	if not context.current_investigation_target.get_instance_id() in context.objects_in_view[context.current_goal.target]:
+		var closest_target = context._get_closest_investigate_target_of_type(context.current_goal.target)
+		if closest_target != context.current_investigation_target:
+			context.current_investigation_target = closest_target
+			context.current_move_path = context._get_quickest_path_to(ai_node.global_position, closest_target.get_resting_position())
+			context.on_update_current_move_path()
+			return
+
+	var current_tile = Vector2(floor(ai_node.global_position.x / 16), floor(ai_node.global_position.y / 16))
+	
+	if context.current_investigation_target != null:
+		while len(context.current_move_path) != 0 and current_tile.distance_to(context.current_move_path[0]) <= 1.0:
+			context.current_move_path.pop_front()
+		
+		context.on_update_current_move_path()
+		if len(context.current_move_path) == 0:
+			context.current_direction = Vector2.ZERO
+			context.investigate_idle_timeout = context.INVESTIGATE_IDLE_TIMEOUT_SECONDS
+		else:
+			var next_tile = context.current_move_path[0]
+			context.current_direction = (context.get_pathfinder_offset() + next_tile - current_tile).normalized()
