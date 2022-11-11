@@ -44,6 +44,7 @@ func _on_Day2Objectives_objectives_updated(objectives):
 	and _is_objective_complete(objectives[4]):
 		if replay_manager.is_finished():
 			get_node("HUDLayer/HUD/DialogueManager").start_section("Main")
+			get_node("MusicLoop").stop()
 		while not replay_manager.is_finished():
 			replay_manager.trigger_next_action()
 

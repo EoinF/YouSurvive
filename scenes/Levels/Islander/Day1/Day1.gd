@@ -27,7 +27,6 @@ func _ready():
 	$DifficultyManager.adjust_difficulty(save_data["current_attempt"])
 
 
-
 func _on_Day1Objectives_objectives_updated(objectives):
 	if not is_collect_branches_complete and objectives[1]["is_complete"]:
 		is_collect_branches_complete = true

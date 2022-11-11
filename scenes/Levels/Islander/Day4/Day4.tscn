@@ -37,6 +37,7 @@ script = ExtResource( 3 )
 [node name="IslanderInput" type="Node" parent="." index="6"]
 script = ExtResource( 2 )
 ISLANDER_NODE_PATH = NodePath("../Objects/Props/Raft/Islander")
+
 [connection signal="edge_reached" from="Objects/ScrollingManager" to="." method="_on_ScrollingManager_edge_reached"]
 [connection signal="finish" from="Objects/ScrollingManager" to="." method="_on_ScrollingManager_finish"]
 [connection signal="enemy_struggle" from="Objects/Props" to="." method="_on_Props_enemy_struggle"]

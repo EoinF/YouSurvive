@@ -27,6 +27,7 @@ func _ready():
 func _on_Day3Objectives_objectives_updated(objectives):
 	if objectives[0]["is_complete"] and objectives[1]["is_complete"]:
 		get_node("HUDLayer/HUD/DialogueManager").start_section("Main")
+		get_node("MusicLoop").stop()
 		$AIController.set_is_peaceful(true)
 
 

@@ -38,6 +38,7 @@ func _on_ScrollingManager_finish():
 	$ExperimentReplay.stop()
 	$IslanderInput.disable_controls()
 	$SeaAIController.start_wandering()
+	get_node("MusicLoop").stop()
 
 
 func _on_DialogueManager_finish_dialogue(section_name):
@@ -50,8 +51,10 @@ func _on_Raft_finish_sinking():
 
 
 func _on_Raft_start_sinking():
+	$SeaAIController.start_wandering()
 	$IslanderInput.disable_controls()
 	$ExperimentReplay.stop()
+	get_node("MusicLoop").stop()
 
 
 func _on_Islander_die():
