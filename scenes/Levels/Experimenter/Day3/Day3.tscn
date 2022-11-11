@@ -30,6 +30,9 @@ BRANCH_DROPS = 1
 [node name="Tree28" parent="Objects/Props" index="23"]
 BRANCH_DROPS = 1
 
+[node name="Branch" parent="Objects/Props" index="33"]
+position = Vector2( 2097.34, 442.749 )
+
 [node name="HUD" parent="HUDLayer" index="0"]
 INVENTORY_TYPE = "Experimenter"
 
@@ -118,7 +121,7 @@ OBJECTS_NODE_PATH = NodePath("../Objects/Props")
 [node name="Experimenter" parent="." index="7" instance=ExtResource( 4 )]
 
 [node name="Camera" parent="Experimenter" index="0"]
-position = Vector2( 907.691, 493.891 )
+position = Vector2( 419.14, 355.068 )
 
 [node name="ExperimenterController" type="Node" parent="." index="8"]
 script = ExtResource( 11 )
