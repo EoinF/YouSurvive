@@ -84,6 +84,7 @@ func _on_Day2Objectives_objectives_updated(objectives):
 	if not is_kill_predators_complete and _is_objective_complete(objectives[2]) \
 	and _is_objective_complete(objectives[3]) and _is_objective_complete(objectives[4]):
 		$Experimenter.disable_placement()
+		$AIController.set_is_peaceful(true)
 		if enemies_score < SCORE_THRESHOLD:
 			dialogue_manager.start_section("Complete - Easy")
 		else:

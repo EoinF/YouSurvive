@@ -189,9 +189,8 @@ anims/highlight_inventory = SubResource( 2 )
 script = ExtResource( 18 )
 
 [node name="SlowCompletionTimer" type="Timer" parent="Day1Objectives" index="0"]
-wait_time = 50.0
+wait_time = 30.0
 one_shot = true
-autostart = true
 
 [node name="PauseMenu" parent="." index="12" instance=ExtResource( 10 )]
 

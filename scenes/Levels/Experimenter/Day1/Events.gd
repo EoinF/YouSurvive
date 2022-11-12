@@ -19,6 +19,7 @@ func start_camera_follow():
 	experimenter.set_follow_target(islander, true)
 	ai_controller.add_collection_goal("branch", 10)
 	ai_controller.is_paused = false
+	owner.get_node("Day1Objectives/SlowCompletionTimer").start()
 
 
 func gift_branches():

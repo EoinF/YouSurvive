@@ -44,6 +44,7 @@ func _on_Day1Objectives_objectives_updated(objectives):
 		
 	if not is_collect_branches_complete and objectives[1]["is_complete"]:
 		is_collect_branches_complete = true
+		$AIController.set_is_peaceful(true)
 		var timer: Timer = get_node("Day1Objectives/SlowCompletionTimer")
 		if timer.time_left > 0:
 			get_node("HUDLayer/HUD/DialogueManager").start_section("Complete - Fast")

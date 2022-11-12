@@ -150,12 +150,6 @@ class InvestigateGoal extends Goal:
 	func get_priority(_owner_context):
 		if _owner_context.investigate_timeout > 0:
 			return -1
-		# Avoid investigating in the face of enemies
-		if is_in_view(_owner_context.objects_in_view, "crab") or \
-			is_in_view(_owner_context.objects_in_view, "shark") or \
-			is_in_view(_owner_context.objects_in_view, "boar") or \
-			is_in_view(_owner_context.objects_in_view, "porcupine"):
-			return -1
 		if is_in_view(_owner_context.objects_in_view, target):
 			return 2
 		return -1
